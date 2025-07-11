@@ -16,8 +16,20 @@
       id: ValyrianStandard
     - type: trait
       id: Azaziba
-    - type: trait # Floof
+    # Floof section start
+    - type: trait
       id: Ratvarian
+    - type: trait
+      id: FoxLanguage
+    - type: trait
+      id: DogLanguage
+    - type: trait
+      id: CatLanguage
+    - type: trait
+      id: MonkeyLanguage
+    - type: trait
+      id: KoboldLanguage
+    # Floof section end
 
 - type: characterItemGroup
   id: TraitsAccents
