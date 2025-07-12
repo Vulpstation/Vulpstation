@@ -272,7 +272,12 @@
   - !type:TraitReplaceComponent
     components:
     - type: Silicon
-      drainPerSecond: 2
+      entityType: enum.SiliconType.Player
+      batteryPowered: true
+      drainPerSecond: 2 # Floof - M3739 - TaskAdjustIV - Lasts roughly 10 minutes on a medium cap power cell.
+      chargeThresholdMid: 0.80
+      chargeThresholdLow: 0.35
+      chargeThresholdCritical: 0.10
       speedModifierThresholds:
         4: 1
         3: 1
@@ -296,8 +301,13 @@
   - !type:TraitReplaceComponent
     components:
     - type: Silicon
-      drainPerSecond: 1
-      speedModifierThresholds: # We hate Linter, this weirdly what it gets stuck on linterwise
+      entityType: enum.SiliconType.Player
+      batteryPowered: true
+      drainPerSecond: 1.25 # Floof - M3739 - TaskAdjustIV - Roughly 32 minutes on a medium capacity power cell.
+      chargeThresholdMid: 0.80
+      chargeThresholdLow: 0.35
+      chargeThresholdCritical: 0.10
+      speedModifierThresholds:
         4: 1
         3: 1
         2: 0.80
