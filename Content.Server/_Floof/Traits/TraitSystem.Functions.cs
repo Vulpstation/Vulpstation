@@ -8,10 +8,11 @@ using Content.Shared.Body.Components;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.HeightAdjust;
 using System.Linq;
+using Content.Shared.Silicon.Components;
+
 
 namespace Content.Server._Floof.Traits;
 
-// FLOOF START
 [UsedImplicitly]
 public sealed partial class TraitModifyMetabolism : TraitFunction
 {
@@ -79,7 +80,6 @@ public sealed partial class TraitModifyMetabolism : TraitFunction
         }
     }
 }
-// FLOOF END
 
 // Scales/modifies the size of the character using the Floofstation modified heightAdjustSystem function SetScale
 public sealed partial class TraitSetScale : TraitFunction
@@ -93,5 +93,28 @@ public sealed partial class TraitSetScale : TraitFunction
         ISerializationManager serializationManager)
     {
         entityManager.System<HeightAdjustSystem>().SetScale(uid, scale, restricted: false);
+    }
+}
+/// <summary>
+///     Used for traits that modify SiliconComponent.
+/// </summary>
+[UsedImplicitly]
+public sealed partial class TraitModifySilicon : TraitFunction
+{
+    /// <summary>
+    ///     Flat modifier to a silicon's battery drain per second.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public float BatteryDrainModifier;
+
+    public override void OnPlayerSpawn(EntityUid uid,
+        IComponentFactory factory,
+        IEntityManager entityManager,
+        ISerializationManager serializationManager)
+    {
+        if (!entityManager.TryGetComponent<SiliconComponent>(uid, out var siliconComponent))
+            return;
+
+        siliconComponent.DrainPerSecond += BatteryDrainModifier;
     }
 }
