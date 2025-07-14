@@ -153,7 +153,8 @@ public sealed class MoodSystem : EntitySystem
             if (!component.UncategorisedEffects.ContainsKey(prototype.ID))
                 SendEffectText(uid, prototype);
 
-            component.UncategorisedEffects.Add(prototype.ID, moodChange);
+            // Floof - use setter syntax instead of Add to avoid having that if statement above
+            component.UncategorisedEffects[prototype.ID] = moodChange;
 
             // Floof - add cancellation tokens
             oldToken?.Cancel();
