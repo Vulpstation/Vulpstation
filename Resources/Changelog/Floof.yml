@@ -6850,3 +6850,43 @@ Entries:
   id: 721
   time: '2025-07-11T16:02:38.0000000+00:00'
   url: https://github.com/Floof-Station/Floof-Station/pull/1205
+- author: Raikyr0
+  changes:
+    - type: Fix
+      message: Fixed BORK!
+  id: 722
+  time: '2025-07-13T18:23:57.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1210
+- author: archangelmarcy
+  changes:
+    - type: Tweak
+      message: >-
+        Characters using the 'Vampirism' trait can now eat blood tomatoes in
+        order to satiate their bloodthirst.
+  id: 723
+  time: '2025-07-13T18:26:50.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1202
+- author: ashkitten
+  changes:
+    - type: Add
+      message: >-
+        Added favorite drink preference to character profile, which improves
+        mood when consumed.
+  id: 724
+  time: '2025-07-13T18:32:41.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1195
+- author: ashkitten
+  changes:
+    - type: Tweak
+      message: >-
+        Typing indicator no longer shows up when typing in channels whose
+        participation is meant to be secret (Admin, Console, OOC, Telepathic)
+    - type: Tweak
+      message: Allow using sign language while speech-blocked
+    - type: Fix
+      message: >-
+        Whispering in sign language now properly checks that your hands are
+        available
+  id: 725
+  time: '2025-07-14T22:21:30.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1184
