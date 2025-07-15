@@ -8,7 +8,9 @@ using Content.Shared.Body.Components;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.HeightAdjust;
 using System.Linq;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Silicon.Components;
+using Content.Shared.Speech;
 
 
 namespace Content.Server._Floof.Traits;
@@ -130,11 +132,11 @@ public sealed partial class TraitModifySilicon : TraitFunction
     /// <summary>
     ///     The new percentages at which the silicon will enter each state.
     /// </summary>
-    /// <remarks>
+    /// <example>
     ///     The Silicon will always be Full at 100%.
     ///     Setting Critical to 0 will cause the Silicon to never enter the dead state.
     ///     Unlike the ChargeThreshold variables in SiliconComponent.cs, it does not support null.
-    /// </remarks>
+    /// </example>
     [DataField, AlwaysPushInheritance]
     public float? NewThresholdMid;
     
@@ -174,5 +176,49 @@ public sealed partial class TraitModifySilicon : TraitFunction
         
         if (IsAbleToDreamOfElectricSheep.HasValue)
         siliconComponent.DoSiliconsDreamOfElectricSheep = IsAbleToDreamOfElectricSheep.Value;
+    }
+}
+
+/// <summary>
+///     Used for traits that modify SpeechComponent.
+/// </summary>
+[UsedImplicitly]
+public sealed partial class TraitModifySpeech : TraitFunction
+{
+    /// <summary>
+    ///     Replaces SpeechComponent's 'SpeechSounds'.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public ProtoId<SpeechSoundsPrototype>? NewSounds;
+    
+    /// <summary>
+    ///     Replaces SpeechComponent's 'SpeechVerb'.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public ProtoId<SpeechVerbPrototype>? NewVerb;
+    
+    /// <summary>
+    ///     Replaces SpeechComponent's list of allowed emotes.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public List<ProtoId<EmotePrototype>>? NewAllowedEmotes;
+    
+    public override void OnPlayerSpawn(EntityUid uid,
+        IComponentFactory factory,
+        IEntityManager entityManager,
+        ISerializationManager serializationManager)
+    {
+        if (!entityManager.TryGetComponent<SpeechComponent>(uid, out var speechComponent))
+            return;
+
+        if (NewSounds != null)
+            speechComponent.SpeechSounds = NewSounds.Value;
+
+        if (NewVerb != null)
+            speechComponent.SpeechVerb = NewVerb.Value;
+        
+        if (NewAllowedEmotes != null)
+            speechComponent.AllowedEmotes = NewAllowedEmotes;
+            
     }
 }
