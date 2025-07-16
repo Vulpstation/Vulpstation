@@ -304,11 +304,11 @@
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp_wag-tip_FRONT
-    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_BACK
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp_wag-tip_BACK
+      state: vulp_wag-fade_FRONT
+    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
+      state: vulp_wag-fade_BACK
 
 - type: marking
   id: VulpTailTip
@@ -324,9 +324,9 @@
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp-tip_FRONT
-    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_BACK
+    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
+      state: vulp-tip_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp-tip_BACK
 
@@ -344,9 +344,9 @@
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp_wag-tip_FRONT
-    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_BACK
+    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
+      state: vulp_wag-tip_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag-tip_BACK
 
@@ -364,9 +364,9 @@
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp_alt-fade_FRONT
-    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_BACK
+    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
+      state: vulp_alt-fade_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt-fade_BACK
 
@@ -384,9 +384,9 @@
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: vulp_alt-tip_FRONT
-    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_BACK
+    - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
+      state: vulp_alt-tip_FRONT
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt-tip_BACK
 
