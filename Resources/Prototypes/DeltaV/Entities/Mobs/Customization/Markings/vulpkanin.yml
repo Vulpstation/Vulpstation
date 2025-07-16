@@ -305,7 +305,7 @@
     vulp_wag-fade_FRONT: TailOversuit
   colorLinks:
     vulp_wag_FRONT: vulp_wag_BACK
-    vulp_wag-tip_FRONT: vulp_wag-fade_BACK
+    vulp_wag-fade_FRONT: vulp_wag-fade_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_FRONT
@@ -328,7 +328,7 @@
     tip_FRONT: TailOversuit
   colorLinks:
     vulp_FRONT: vulp_BACK
-    tip_FRONT: tip_BACK
+    vulp-tip_FRONT: vulp-tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_FRONT
@@ -369,12 +369,12 @@
   speciesRestriction: [Vulpkanin, Human, SlimePerson, IPC, Oni, Felinid, Rodentia, Kitsune]
   layering: # Floof
     vulp_alt_BACK: TailBehind
-    vulp_alt_fade_BACK: TailBehind
+    vulp_alt-fade_BACK: TailBehind
     vulp_alt_FRONT: TailOversuit
-    vulp_alt_fade_FRONT: TailOversuit
+    vulp_alt-fade_FRONT: TailOversuit
   colorLinks:
     vulp_alt_FRONT: vulp_alt_BACK
-    vulp_alt_fade_FRONT: vulp_alt_fade_BACK
+    vulp_alt-fade_FRONT: vulp_alt-fade_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
@@ -392,12 +392,12 @@
   speciesRestriction: [Vulpkanin, Human, SlimePerson, IPC, Oni, Felinid, Rodentia, Kitsune]
   layering: # Floof
     vulp_alt_BACK: TailBehind
-    fade_alt_tip_BACK: TailBehind
+    vulp_alt-tip_BACK: TailBehind
     vulp_alt_FRONT: TailOversuit
-    fade_alt_tip_FRONT: TailOversuit
+    vulp_alt-tip_FRONT: TailOversuit
   colorLinks:
     vulp_alt_FRONT: vulp_alt_BACK
-    vulp_alt_tip_FRONT: vulp_alt_tip_BACK
+    vulp_alt-tip_FRONT: vulp_alt-tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
