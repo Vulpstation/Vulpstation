@@ -280,6 +280,9 @@
     fade_BACK: TailBehind
     vulp_FRONT: TailOversuit
     fade_FRONT: TailOversuit
+  colorLinks:
+    vulp_FRONT: vulp_BACK
+    fade_FRONT: fade_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_FRONT
@@ -300,6 +303,9 @@
     vulp_wag-tip_BACK: TailBehind
     vulp_wag_FRONT: TailOversuit
     vulp_wag-tip_FRONT: TailOversuit
+  colorLinks:
+    vulp_wag_FRONT: vulp_wag_BACK
+    vulp_wag-tip_FRONT: vulp_wag-tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_FRONT
@@ -317,9 +323,12 @@
   speciesRestriction: [Vulpkanin, Human, SlimePerson, IPC, Oni, Felinid, Rodentia, Kitsune]
   layering: # Floof
     vulp_BACK: TailBehind
-    fade_BACK: TailBehind
+    tip_BACK: TailBehind
     vulp_FRONT: TailOversuit
-    fade_FRONT: TailOversuit
+    tip_FRONT: TailOversuit
+  colorLinks:
+    vulp_FRONT: vulp_BACK
+    tip_FRONT: tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_FRONT
@@ -340,6 +349,9 @@
     vulp_wag-tip_BACK: TailBehind
     vulp_wag_FRONT: TailOversuit
     vulp_wag-tip_FRONT: TailOversuit
+  colorLinks:
+    vulp_wag_FRONT: vulp_wag_BACK
+    vulp_wag-tip_FRONT: vulp_wag-tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag_FRONT
@@ -360,6 +372,9 @@
     vulp_alt_fade_BACK: TailBehind
     vulp_alt_FRONT: TailOversuit
     vulp_alt_fade_FRONT: TailOversuit
+  colorLinks:
+    vulp_alt_FRONT: vulp_alt_BACK
+    vulp_alt_fade_FRONT: vulp_alt_fade_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
@@ -380,6 +395,9 @@
     fade_alt_tip_BACK: TailBehind
     vulp_alt_FRONT: TailOversuit
     fade_alt_tip_FRONT: TailOversuit
+  colorLinks:
+    vulp_alt_FRONT: vulp_alt_BACK
+    vulp_alt_tip_FRONT: vulp_alt_tip_BACK
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt_FRONT
