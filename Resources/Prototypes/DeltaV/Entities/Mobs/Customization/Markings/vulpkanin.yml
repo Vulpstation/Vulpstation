@@ -278,11 +278,11 @@
   layering: # Floof
     vulp_BACK: TailBehind
     vulp-fade_BACK: TailBehind
-    vulp_FRONT: TailOversuit
-    vulp-fade_FRONT: TailOversuit
+    vulp: TailOversuit
+    vulp-fade: TailOversuit
   colorLinks:
-    vulp_FRONT: vulp_BACK
-    vulp-fade_FRONT: vulp-fade_BACK
+    vulp_BACK: vulp
+    vulp-fade_BACK: vulp-fade
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
@@ -304,8 +304,8 @@
     vulp_wag: TailOversuit
     vulp_wag-fade: TailOversuit
   colorLinks:
-    vulp_wag: vulp_wag_BACK
-    vulp_wag-fade: vulp_wag-fade_BACK
+    vulp_wag_BACK: vulp_wag
+    vulp_wag-fade_BACK: vulp_wag-fade
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag
@@ -327,8 +327,8 @@
     vulp: TailOversuit
     tip: TailOversuit
   colorLinks:
-    vulp: vulp_BACK
-    vulp-tip: vulp-tip_BACK
+    vulp_BACK: vulp
+    vulp-tip_BACK: vulp-tip
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp
@@ -350,8 +350,8 @@
     vulp_wag: TailOversuit
     vulp_wag-tip: TailOversuit
   colorLinks:
-    vulp_wag: vulp_wag_BACK
-    vulp_wag-tip: vulp_wag-tip_BACK
+    vulp_wag_BACK: vulp_wag
+    vulp_wag-tip_BACK: vulp_wag-tip
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_wag
@@ -373,8 +373,8 @@
     vulp_alt: TailOversuit
     vulp_alt-fade: TailOversuit
   colorLinks:
-    vulp_alt: vulp_alt_BACK
-    vulp_alt-fade: vulp_alt-fade_BACK
+    vulp_alt_BACK: vulp_alt
+    vulp_alt-fade_BACK: vulp_alt-fade
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt
@@ -396,8 +396,8 @@
     vulp_alt: TailOversuit
     vulp_alt-tip: TailOversuit
   colorLinks:
-    vulp_alt: vulp_alt_BACK
-    vulp_alt-tip: vulp_alt-tip_BACK
+    vulp_alt_BACK: vulp_alt
+    vulp_alt-tip_BACK: vulp_alt-tip
   sprites:
     - sprite: _Floof/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: vulp_alt
