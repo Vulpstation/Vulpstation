@@ -48,6 +48,33 @@
   weather: true
   indestructible: true
 
+# Vulp: use indestructible sand on planets
+- type: tile
+  id: FloorSand
+  name: tiles-sand-floor
+  sprite: /Textures/Tiles/Asteroid/asteroid.png
+  variants: 13
+  placementVariants:
+  - 0.8
+  - 0.0166 #Should be roughly 20%.... I think??? I don't know dude, I'm just a YAML monkey.
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0116
+  - 0.0116
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
 # Grass
 - type: tile
   id: FloorPlanetGrass
@@ -71,12 +98,13 @@
     West: /Textures/Tiles/Planet/Grass/double_edge.png
   baseTurf: FloorPlanetDirt
   isSubfloor: true
+  canShovel: true # Vulp
   footstepSounds:
     collection: FootstepGrass
   itemDrop: FloorTileItemGrass
   heatCapacity: 10000
   weather: true
-  indestructible: true
+  indestructible: false # Vulp
 
 # Lava
 - type: tile

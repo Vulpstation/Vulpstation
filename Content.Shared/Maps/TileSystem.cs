@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Decals;
+using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
@@ -20,6 +21,7 @@ public sealed class TileSystem : EntitySystem
     [Dependency] private readonly SharedDecalSystem _decal = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly SharedBiomeSystem _biome = default!;
 
     /// <summary>
     ///     Returns a weighted pick of a tile variant.
@@ -146,6 +148,30 @@ public sealed class TileSystem : EntitySystem
         return true;
     }
 
+    // Vulp
+    public ContentTileDefinition GetBasestTurf(ContentTileDefinition tile) =>
+        _tileDefinitionManager.TryGetDefinition(tile.BaseTurf, out var baseTile)
+            ? GetBasestTurf((ContentTileDefinition) baseTile)
+            : tile;
+
+    public string BasestTurfOrLatticeForGridTile(EntityUid gridUid, Vector2i indices)
+    {
+        if (TryComp<BiomeComponent>(gridUid, out var biome)
+            && _biome.TryGetTile(indices, biome.Layers, biome.Seed, null, out var tile))
+            return GetBasestTurf(tile.Value.GetContentTileDefinition(_tileDefinitionManager)).ID;
+        return "Lattice";
+    }
+
+    public ITileDefinition BaseTurfForGridTile(TileRef tileRef)
+    {
+        var plating = _tileDefinitionManager[tileRef.Tile.GetContentTileDefinition(_tileDefinitionManager).BaseTurf];
+
+        if (plating == _tileDefinitionManager["Lattice"])
+            return _tileDefinitionManager[BasestTurfOrLatticeForGridTile(tileRef.GridUid, tileRef.GridIndices)];
+
+        return plating;
+    }
+
     public bool DeconstructTile(TileRef tileRef)
     {
         if (tileRef.Tile.IsEmpty)
@@ -178,7 +204,9 @@ public sealed class TileSystem : EntitySystem
             _decal.RemoveDecal(tileRef.GridUid, id);
         }
 
-        var plating = _tileDefinitionManager[tileDef.BaseTurf];
+        // Vulp
+        var plating = BaseTurfForGridTile(tileRef);
+
         _maps.SetTile(gridUid, mapGrid, tileRef.GridIndices, new Tile(plating.TileId));
 
         return true;

@@ -135,7 +135,10 @@ public sealed class FloorTileSystem : EntitySystem
                 var tile = mapGrid.GetTileRef(location);
                 var baseTurf = (ContentTileDefinition) _tileDefinitionManager[tile.Tile.TypeId];
 
-                if (HasBaseTurf(currentTileDefinition, baseTurf.ID))
+                // Vulp: use basest turf instead of lattice on planets
+                if (currentTileDefinition.BaseTurf == "Lattice"
+                    && baseTurf.BaseTurf == ""
+                    || HasBaseTurf(currentTileDefinition, baseTurf.ID))
                 {
                     if (!_stackSystem.Use(uid, 1, stack))
                         continue;
