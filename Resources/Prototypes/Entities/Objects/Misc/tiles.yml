@@ -921,7 +921,6 @@
   - type: FloorTile
     outputs:
       - FloorPlanetGrass # Vulp
-      - Plating
       - FloorGrass
   - type: Stack
     stackType: FloorTileGrass
