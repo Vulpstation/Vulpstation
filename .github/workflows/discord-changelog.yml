@@ -1,4 +1,4 @@
-name: Discord Changelog
+name: Discord Changelog (OLD, DO NOT USE)
 
 on:
   workflow_dispatch:
