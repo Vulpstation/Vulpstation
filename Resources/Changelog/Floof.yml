@@ -6899,3 +6899,10 @@ Entries:
   id: 726
   time: '2025-07-19T17:22:36.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/1
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: Animals such as foxes should once again be able to wear internals.
+  id: 727
+  time: '2025-07-19T17:44:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/3
