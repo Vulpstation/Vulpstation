@@ -6890,3 +6890,12 @@ Entries:
   id: 725
   time: '2025-07-14T22:21:30.0000000+00:00'
   url: https://github.com/Floof-Station/Floof-Station/pull/1184
+- author: ashkitten
+  changes:
+    - type: Tweak
+      message: >-
+        Improved the tile prying system to allow more complex tile layering on
+        planets.
+  id: 726
+  time: '2025-07-19T17:22:36.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/1
