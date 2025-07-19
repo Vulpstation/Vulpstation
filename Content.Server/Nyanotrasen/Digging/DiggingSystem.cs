@@ -29,6 +29,10 @@ public sealed class DiggingSystem : EntitySystem
 
     private void OnEarthDigComplete(EntityUid shovel, EarthDiggingComponent comp, EarthDiggingDoAfterEvent args)
     {
+        // Vulp: fix cancelled
+        if (args.Handled || args.Cancelled)
+            return;
+
         var coordinates = GetCoordinates(args.Coordinates);
         if (!TryComp<EarthDiggingComponent>(shovel, out var _))
             return;

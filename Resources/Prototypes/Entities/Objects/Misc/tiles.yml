@@ -920,6 +920,7 @@
     heldPrefix: grass
   - type: FloorTile
     outputs:
+      - FloorPlanetGrass # Vulp
       - Plating
       - FloorGrass
   - type: Stack
