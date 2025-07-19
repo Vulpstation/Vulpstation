@@ -1,7 +1,9 @@
 # Vulpstation
-Vulpstation is an attempt to revive Floofstation, a recently closed down SS14 server.
+Vulpstation is a medium-roleplay 18+ fork of Floofstation.
 
-[Floof Station](https://github.com/floof-station/floof-station) was a fork of [Einstein-Engines](https://github.com/Simple-Station/Einstein-Engines).
+We are a medium-roleplay 18+ furry-friendly Space Station 14 server, with focus on continuous roleplay, where players are expected to immerse into their characters and act in accordance to their stories and personalities rather than just their current job. The server permits adult roleplay so long as it is done in a more subtle manner, but does not consider it a sacred or protected thing.
+
+[Floof Station](https://github.com/floof-station/floof-station) was a fork of [Einstein-Engines](https://github.com/Simple-Station/Einstein-Engines), and so is Vulpstation.
 
 
 ## Contributing
