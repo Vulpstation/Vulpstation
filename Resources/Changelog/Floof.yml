@@ -6906,3 +6906,12 @@ Entries:
   id: 727
   time: '2025-07-19T17:44:46.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/3
+- author: Vulpstation
+  changes:
+    - type: Tweak
+      message: >-
+        Words in languages you don't understand should now be obfuscated the
+        same way across all rounds.
+  id: 728
+  time: '2025-07-19T17:47:09.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/4
