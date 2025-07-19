@@ -241,6 +241,10 @@ namespace Content.Server.Administration.Systems
                             {
                                 _mindSystem.TransferTo(targetMind.Value, mobUid);
                             }
+                            // Vulpstation - raise PlayerSpawnCompleteEvent to load traits and loadouts. TODO this doesn't work if the player joined as an observer.
+                            RaiseLocalEvent(mobUid,
+                                new PlayerSpawnCompleteEvent(mobUid, targetActor.PlayerSession, "Passenger", false, 0, stationUid ?? EntityUid.Invalid, profile),
+                                true);
                         },
                         ConfirmationPopup = true,
                         Impact = LogImpact.High,
