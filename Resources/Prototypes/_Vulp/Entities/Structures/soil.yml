@@ -1,0 +1,8 @@
+- type: entity
+  id: hydroponicsSoilEmpty
+  parent: hydroponicsSoil
+  components:
+  - type: PlantHolder
+    drawWarnings: false
+    waterLevel: 0
+    nutritionLevel: 0

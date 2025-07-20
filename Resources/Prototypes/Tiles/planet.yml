@@ -1,7 +1,11 @@
 - type: tile
   id: FloorPlanetDirt
   name: tiles-dirt-floor
-  sprite: /Textures/Tiles/Planet/dirt.rsi/dirt.png
+  sprite: /Textures/_Nuclear14/Tiles/Dirt/dirt.png # Vulp
+  # Vulp: dirt drops dirt, infinitely
+  baseTurf: FloorPlanetDirt
+  canShovel: true
+  itemDrop: Dirt
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid

@@ -1,0 +1,15 @@
+- type: reagent
+  id: PlantMatter
+  name: reagent-name-plant-matter
+  group: Botanical
+  desc: reagent-desc-plant-matter
+  physicalDesc: reagent-physical-desc-fibrous
+  flavor: bitter
+  color: "#708600"
+  metabolisms:
+    Food:
+      effects:
+        - !type:SatiateHunger
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 2
