@@ -150,7 +150,9 @@ public sealed class TileSystem : EntitySystem
 
     // Vulp
     public ContentTileDefinition GetBasestTurf(ContentTileDefinition tile) =>
-        _tileDefinitionManager.TryGetDefinition(tile.BaseTurf, out var baseTile)
+        // prevent infinite loops by self-reference
+        // does not prevent longer infinite loops
+        tile.BaseTurf != tile.ID && _tileDefinitionManager.TryGetDefinition(tile.BaseTurf, out var baseTile)
             ? GetBasestTurf((ContentTileDefinition) baseTile)
             : tile;
 

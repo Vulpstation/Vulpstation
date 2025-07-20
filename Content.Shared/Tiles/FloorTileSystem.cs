@@ -50,6 +50,10 @@ public sealed class FloorTileSystem : EntitySystem
         if (!args.CanReach || args.Handled)
             return;
 
+        // Vulp: avoid mispredicting tile placement when interacting with entities
+        if (_netManager.IsClient && args.Target != null)
+            return;
+
         if (!TryComp<StackComponent>(uid, out var stack))
             return;
 
@@ -137,7 +141,8 @@ public sealed class FloorTileSystem : EntitySystem
 
                 // Vulp: use basest turf instead of lattice on planets
                 if (currentTileDefinition.BaseTurf == "Lattice"
-                    && baseTurf.BaseTurf == ""
+                    // if no base turf or self-loop
+                    && (baseTurf.BaseTurf == "" || baseTurf.BaseTurf == currentTileDefinition.ID)
                     || HasBaseTurf(currentTileDefinition, baseTurf.ID))
                 {
                     if (!_stackSystem.Use(uid, 1, stack))

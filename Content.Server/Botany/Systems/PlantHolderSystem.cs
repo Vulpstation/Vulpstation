@@ -18,6 +18,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Random;
+using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -44,6 +45,7 @@ public sealed class PlantHolderSystem : EntitySystem
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedStackSystem _stackSystem = default!; // Vulp
 
 
     public const float HydroponicsSpeedMultiplier = 1f;
@@ -325,6 +327,10 @@ public sealed class PlantHolderSystem : EntitySystem
 
         if (TryComp<ProduceComponent>(args.Used, out var produce))
         {
+            // Vulp: handle stacks
+            if (TryComp(args.Used, out StackComponent? stack) && stack.Count < 1)
+                return;
+
             _popup.PopupCursor(Loc.GetString("plant-holder-component-compost-message",
                 ("owner", uid),
                 ("usingItem", args.Used)), args.User, PopupType.Medium);
@@ -352,7 +358,12 @@ public sealed class PlantHolderSystem : EntitySystem
                 var nutrientBonus = seed.Potency / 2.5f;
                 AdjustNutrient(uid, nutrientBonus, component);
             }
-            QueueDel(args.Used);
+
+            // Vulp
+            if (!_stackSystem.Use(args.Used, 1, stack))
+                QueueDel(args.Used);
+
+            args.Handled = true;
         }
     }
 
