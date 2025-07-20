@@ -6915,3 +6915,12 @@ Entries:
   id: 728
   time: '2025-07-19T17:47:09.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/4
+- author: ashkitten
+  changes:
+    - type: Add
+      message: Digging dirt now rewards you with dirt, which can be used to craft soil.
+    - type: Add
+      message: Grass tiles can now be composted for nutrients.
+  id: 729
+  time: '2025-07-20T08:09:16.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/6
