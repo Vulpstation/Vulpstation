@@ -69,7 +69,8 @@ namespace Content.IntegrationTests.Tests
             "Train", // Floof
             "Fland", // Floof,
             "Amber", // Apparently, floof?
-            "Europa"
+            "Europa",
+            "PlanetContinental" // Vulp
         };
 
         /// <summary>
