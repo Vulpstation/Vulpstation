@@ -141,8 +141,8 @@ public sealed class FloorTileSystem : EntitySystem
 
                 // Vulp: use basest turf instead of lattice on planets
                 if (currentTileDefinition.BaseTurf == "Lattice"
-                    // if no base turf or self-loop
-                    && (baseTurf.BaseTurf == "" || baseTurf.BaseTurf == currentTileDefinition.ID)
+                    // if self-loop (like planet dirt)
+                    || currentTileDefinition.BaseTurf == currentTileDefinition.ID
                     || HasBaseTurf(currentTileDefinition, baseTurf.ID))
                 {
                     if (!_stackSystem.Use(uid, 1, stack))
