@@ -173,6 +173,7 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
+    - type: LoadedMap
 - proto: AirAlarm
   entities:
   - uid: 113
@@ -866,6 +867,181 @@ entities:
     - type: Transform
       pos: -0.5,-1.5
       parent: 1
+- proto: SpawnPointAdminAssistant
+  entities:
+  - uid: 140
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+- proto: SpawnPointAtmos
+  entities:
+  - uid: 141
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+- proto: SpawnPointBartender
+  entities:
+  - uid: 142
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointBlueshieldOfficer
+  entities:
+  - uid: 143
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+- proto: SpawnPointBorg
+  entities:
+  - uid: 157
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointBotanist
+  entities:
+  - uid: 144
+    components:
+    - type: Transform
+      pos: -0.5,0.5
+      parent: 1
+- proto: SpawnPointBoxer
+  entities:
+  - uid: 145
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointBrigmedic
+  entities:
+  - uid: 155
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointCaptain
+  entities:
+  - uid: 146
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 1
+- proto: SpawnPointCargoTechnician
+  entities:
+  - uid: 147
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+- proto: SpawnPointChaplain
+  entities:
+  - uid: 148
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointChef
+  entities:
+  - uid: 149
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointChemist
+  entities:
+  - uid: 150
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointChiefEngineer
+  entities:
+  - uid: 151
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+- proto: SpawnPointChiefJustice
+  entities:
+  - uid: 152
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+- proto: SpawnPointChiefMedicalOfficer
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointClerk
+  entities:
+  - uid: 196
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointClown
+  entities:
+  - uid: 154
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointDetective
+  entities:
+  - uid: 158
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointForensicMantis
+  entities:
+  - uid: 166
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointGhostParadoxAnomaly
+  entities:
+  - uid: 195
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointHeadOfPersonnel
+  entities:
+  - uid: 159
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+- proto: SpawnPointHeadOfSecurity
+  entities:
+  - uid: 160
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
+- proto: SpawnPointInventorySpecialist
+  entities:
+  - uid: 161
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+- proto: SpawnPointJanitor
+  entities:
+  - uid: 162
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
 - proto: SpawnPointLatejoin
   entities:
   - uid: 139
@@ -873,12 +1049,243 @@ entities:
     - type: Transform
       pos: 1.5,1.5
       parent: 1
+- proto: SpawnPointLawyer
+  entities:
+  - uid: 163
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointLibrarian
+  entities:
+  - uid: 164
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointMailCarrier
+  entities:
+  - uid: 156
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointMartialArtist
+  entities:
+  - uid: 167
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointMedicalBorg
+  entities:
+  - uid: 168
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointMedicalDoctor
+  entities:
+  - uid: 170
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointMedicalIntern
+  entities:
+  - uid: 169
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointMime
+  entities:
+  - uid: 171
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointMusician
+  entities:
+  - uid: 172
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
 - proto: SpawnPointObserver
   entities:
   - uid: 138
     components:
     - type: Transform
       pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointParamedic
+  entities:
+  - uid: 174
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointPassenger
+  entities:
+  - uid: 175
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointPrisoner
+  entities:
+  - uid: 197
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointPrisonGuard
+  entities:
+  - uid: 176
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointProsecutor
+  entities:
+  - uid: 177
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointPsychologist
+  entities:
+  - uid: 178
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointQuartermaster
+  entities:
+  - uid: 165
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+- proto: SpawnPointReporter
+  entities:
+  - uid: 179
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointResearchAssistant
+  entities:
+  - uid: 180
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointResearchDirector
+  entities:
+  - uid: 173
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointRoboticist
+  entities:
+  - uid: 181
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointSalvageSpecialist
+  entities:
+  - uid: 182
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+- proto: SpawnPointScientist
+  entities:
+  - uid: 183
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointSecurityCadet
+  entities:
+  - uid: 184
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointSecurityOfficer
+  entities:
+  - uid: 185
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 186
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 187
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 188
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 189
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+- proto: SpawnPointServiceWorker
+  entities:
+  - uid: 190
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: SpawnPointStationEngineer
+  entities:
+  - uid: 191
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+- proto: SpawnPointTechnicalAssistant
+  entities:
+  - uid: 192
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+- proto: SpawnPointWarden
+  entities:
+  - uid: 193
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 1
+- proto: SpawnPointZookeeper
+  entities:
+  - uid: 194
+    components:
+    - type: Transform
+      pos: 1.5,0.5
       parent: 1
 - proto: SubstationWallBasic
   entities:
