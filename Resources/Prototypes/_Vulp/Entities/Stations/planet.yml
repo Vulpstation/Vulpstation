@@ -1,22 +1,15 @@
 - type: entity
-  id: PlanetStation # same as NoATS but without emergency shuttle too
+  id: PlanetStation
   parent:
   - BaseStation
   - BaseStationNews
   - BaseStationCargo
   - BaseStationJobsSpawning
   - BaseStationRecords
-  - BaseStationArrivals
-  - BaseStationGateway
-  - BaseStationShuttlesSalvageOnly
   - BaseStationCentcomm
   - BaseStationAlertLevels
-  - BaseStationMagnet
-  - BaseStationExpeditions
   - BaseStationSiliconLawCrewsimov
-  - BaseStationAllEventsEligible
   - BaseStationNanotrasen
-  - BaseRandomStation
   - BaseStationMail
   categories: [ HideSpawnMenu ]
   components:
