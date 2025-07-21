@@ -3,6 +3,11 @@
   category: Marked
   points: 2
   slots: 0
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Anomaly
   functions:
   - !type:TraitAddComponent
     components:
@@ -14,6 +19,15 @@
   category: Marked
   points: 1
   slots: 0
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Anomaly
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+        - Command # No double-dipping!
   functions:
   - !type:TraitAddComponent
     components:
