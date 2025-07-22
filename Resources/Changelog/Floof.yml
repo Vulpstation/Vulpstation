@@ -6949,15 +6949,6 @@ Entries:
   id: 732
   time: '2025-07-21T23:52:32.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/8
-- author: ashkitten
-  changes:
-    - type: Fix
-      message: Crew members should no longer spawn at arrivals.
-    - type: Fix
-      message: Placing plating on dirt works again.
-  id: 733
-  time: '2025-07-21T23:52:32.0000000+00:00'
-  url: https://github.com/Vulpstation/Vulpstation/pull/8
 - author: Floofstation - M3739
   changes:
     - type: Fix
