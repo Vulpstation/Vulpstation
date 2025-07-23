@@ -6931,3 +6931,41 @@ Entries:
   id: 730
   time: '2025-07-21T19:04:55.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/7
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Uncategorized mood effects (such as the "i can't breathe" one) should
+        now properly get removed after their time runs out.
+  id: 731
+  time: '2025-07-21T23:51:02.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/9
+- author: ashkitten
+  changes:
+    - type: Fix
+      message: Crew members should no longer spawn at arrivals.
+    - type: Fix
+      message: Placing plating on dirt works again.
+  id: 732
+  time: '2025-07-21T23:52:32.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/8
+- author: Floofstation - M3739
+  changes:
+    - type: Fix
+      message: The Slow Battery Drain, and Fast Battery Drain now behave as expected.
+    - type: Tweak
+      message: >-
+        'Marked For Death' cannot be taken by command members. No
+        double-dipping. In addition, anomalies can no longer take either Marked
+        trait.
+    - type: Fix
+      message: the "Dog Accent" was still borked, and has been unborked.
+    - type: Fix
+      message: Female shadekin should no longer laugh like a male shadekin.
+    - type: Fix
+      message: Cyber traits should now be properly restricted from prisoners.
+    - type: Tweak
+      message: Cyber-Eyes have had a bit of a rewrite for both clarity and flavor.
+  id: 734
+  time: '2025-07-21T23:51:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/10

@@ -7,9 +7,6 @@
     bouba:
       stationProto: PlanetStation
       components:
-      - type: StationRandomTransform
-        enableStationRotation: false
-        maxStationOffset: null
       - type: StationNameSetup
         mapNameTemplate: 'Landing Shuttle'
         nameGenerator:
