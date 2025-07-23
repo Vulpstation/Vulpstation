@@ -39,7 +39,7 @@
   miningPoints: 1
   completetime: 0
   materials:
-    Glass: 100
+    RawQuartz: 100
     RawIron: 50
     Coal: 15
 
