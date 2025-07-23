@@ -41,6 +41,10 @@ namespace Content.Server.Atmos.EntitySystems
 
             tile.GridIndex = owner;
             tile.GridIndices = index;
+            // Vulp - new tile, try to apply the map atmosphere
+            if (TryComp<MapAtmosphere>(owner, out var mapAtmos))
+                tile.Air.CopyFrom(mapAtmos.Mixture);
+            
             return tile;
         }
 
