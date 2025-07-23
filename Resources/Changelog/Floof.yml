@@ -6985,3 +6985,10 @@ Entries:
   id: 736
   time: '2025-07-23T08:29:15.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/11
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: You can now correctly print reinforced glass in the ore processor
+  id: 737
+  time: '2025-07-23T16:23:14.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/14
