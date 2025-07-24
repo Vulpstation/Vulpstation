@@ -6999,3 +6999,10 @@ Entries:
   id: 738
   time: '2025-07-23T22:40:09.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/15
+- author: ashkitten
+  changes:
+    - type: Add
+      message: Grass now spreads to adjacent dirt tiles!
+  id: 739
+  time: '2025-07-24T14:04:02.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/16
