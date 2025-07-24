@@ -17,6 +17,10 @@
         mapLightColor: '#D8B059FF'
         components:
         - type: DayNightCycle
+        - type: TileSpread
+          tiles:
+          - id: FloorPlanetGrass
+            spreadsTo: [ FloorPlanetDirt ]
       - type: StationJobs
         overflowJobs:
         - Passenger
