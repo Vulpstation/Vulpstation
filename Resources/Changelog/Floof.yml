@@ -7006,3 +7006,10 @@ Entries:
   id: 739
   time: '2025-07-24T14:04:02.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/16
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: Grid atmosphere should now correctly work on planets.
+  id: 740
+  time: '2025-07-24T14:05:14.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/13
