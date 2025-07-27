@@ -32,7 +32,7 @@
           - { time: 0.83, colorHex: '#12043A' }
           - { time: 0.92, colorHex: '#0A0020' }
           - { time: 1.00, colorHex: '#000010' }
-      - type: TradeStation
+        - type: TradeStation
       - type: StationJobs
         overflowJobs:
         - Passenger
