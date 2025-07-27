@@ -70,7 +70,8 @@ namespace Content.IntegrationTests.Tests
             "Fland", // Floof,
             "Amber", // Apparently, floof?
             "Europa",
-            "PlanetContinental" // Vulp
+            "PlanetContinentalBoubaLandingShuttle", // Vulp
+            "PlanetContinentalColonyDropPod", // Vulp
         };
 
         /// <summary>
