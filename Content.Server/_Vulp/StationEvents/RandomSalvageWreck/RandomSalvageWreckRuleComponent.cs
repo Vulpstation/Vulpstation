@@ -22,5 +22,5 @@ public sealed partial class RandomSalvageWreckRuleComponent : Component
     public MapId? TargetMap;
 
     [DataField]
-    public SoundSpecifier EndSound = new SoundCollectionSpecifier("ExplosionFar", AudioParams.Default.WithVolume(5f));
+    public SoundSpecifier EndSound = new SoundCollectionSpecifier("ExplosionFar", AudioParams.Default.WithVolume(2f));
 }
