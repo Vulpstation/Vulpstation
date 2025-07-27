@@ -33,6 +33,10 @@
           - { time: 0.92, colorHex: '#0A0020' }
           - { time: 1.00, colorHex: '#000010' }
         - type: TradeStation
+        - type: TileSpread
+          tiles:
+          - id: FloorPlanetGrass
+            spreadsTo: [ FloorPlanetDirt ]
       - type: StationJobs
         overflowJobs:
         - Passenger
