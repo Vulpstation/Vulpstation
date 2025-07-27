@@ -145,6 +145,7 @@ function writeChangelog(entry) {
     // Write updated changelogs file
     fs.writeFileSync(
         `../../${process.env.CHANGELOG_DIR}`,
+        "Order: " + (data.Order !== undefined ? data.Order : 0) + "\n" + // Vulpstation - why does this not just yaml.dump the entire object???
         "Entries:\n" +
             yaml.dump(data.Entries, { indent: 2 }).replace(/^---/, "")
     );
