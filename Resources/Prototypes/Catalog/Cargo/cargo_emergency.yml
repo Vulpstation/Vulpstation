@@ -77,3 +77,13 @@
   cost: 800
   category: cargoproduct-category-name-emergency
   group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineSecDrobe
+  icon:
+   sprite: Structures/Machines/VendingMachines/secdrobe.rsi
+   state: icon
+  product: VendingMachineSecDrobe
+  cost: 6500
+  category: cargoproduct-category-name-emergency
+  group: market

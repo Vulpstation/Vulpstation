@@ -13,6 +13,9 @@
     {
       "name": "off"
     },
+	{
+      "name": "icon"
+    },
     {
       "name": "panel"
     },
