@@ -2452,7 +2452,7 @@ Entries:
   changes:
     - type: Add
       message: Girl failure plushie added to the spawner
-  ]
+  id: 0
   time: '2025-01-25T18:16:00.0000000+00:00'
   url: https://github.com/Fansana/floofstation1/pull/507
 - author: WhiteLightningTwister
