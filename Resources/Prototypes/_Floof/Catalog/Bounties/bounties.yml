@@ -2,7 +2,7 @@
 
 - type: cargoBounty
   id: BountyDiamond
-  reward: 80000
+  reward: 10000 # Vulp - just, no
   description: bounty-description-diamond
   entries:
   - name: bounty-item-diamond

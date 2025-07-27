@@ -1,26 +1,38 @@
 - type: gameMap
-  id: PlanetContinental
-  mapName: 'Planet (Continental)'
-  mapPath: /Maps/_Vulp/bouba.yml
+  id: PlanetContinentalColonyDropPod
+  mapName: 'Planet (Continental, Colony Drop Pod)'
+  mapPath: /Maps/_Vulp/StartingShuttles/colony-drop-pod.yml
   minPlayers: 0
   stations:
-    bouba:
+    colony-drop-pod:
       stationProto: PlanetStation
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'Landing Shuttle'
+        mapNameTemplate: 'Colony Drop Pod'
         nameGenerator:
           !type:NanotrasenNameGenerator
-          prefixCreator: 'VLP'
+          prefixCreator: 'NVS'
       - type: PlanetStation
         biome: Continental
         mapLightColor: '#D8B059FF'
         components:
         - type: DayNightCycle
-        - type: TileSpread
-          tiles:
-          - id: FloorPlanetGrass
-            spreadsTo: [ FloorPlanetDirt ]
+          timeEntries:
+          - { time: 0.0, colorHex: '#0A0020' }
+          - { time: 0.04, colorHex: '#12043A' }
+          - { time: 0.08, colorHex: '#1B1450' }
+          - { time: 0.17, colorHex: '#2A1E5C' }
+          - { time: 0.25, colorHex: '#3B256B' }
+          - { time: 0.33, colorHex: '#4A2F7A' }
+          - { time: 0.42, colorHex: '#3C3C7E' }
+          - { time: 0.50, colorHex: '#4B4B9C' }
+          - { time: 0.58, colorHex: '#3A3A7A' }
+          - { time: 0.66, colorHex: '#2C255C' }
+          - { time: 0.75, colorHex: '#1B1440' }
+          - { time: 0.83, colorHex: '#12043A' }
+          - { time: 0.92, colorHex: '#0A0020' }
+          - { time: 1.00, colorHex: '#000010' }
+      - type: TradeStation
       - type: StationJobs
         overflowJobs:
         - Passenger
@@ -81,6 +93,7 @@
           InventorySpecialist: [ 1, 1 ] #FloofStation
           SalvageSpecialist: [ 1, 3 ]
           CargoTechnician: [ 2, 4 ]
+          MailCarrier: [ 1, 2 ]
           #civillian
           Clown: [ 1, 1 ]
           Mime: [ 1, 1 ]

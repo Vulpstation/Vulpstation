@@ -1,3 +1,4 @@
+Order: -1
 Entries:
 - author: FoxxoTrystan
   changes:
@@ -3358,7 +3359,8 @@ Entries:
     - type: Add
       message: >-
         Check Out interact function to check people out from across rooms and be
-        a lot less subtle about wanting to come onto them.
+        a lot less subtle about wanting to 
+        come onto them.
   id: 358
   time: '2025-03-21T14:22:06.0000000+00:00'
   url: https://github.com/Fansana/floofstation1/pull/642
@@ -7013,3 +7015,63 @@ Entries:
   id: 740
   time: '2025-07-24T14:05:14.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/13
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Uncategorized mood effects (such as the "i can't breathe" one) should
+        now properly get removed after their time runs out.
+  id: 726
+  time: '2025-07-22T03:33:26.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1216
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: Tweaked hypno examine text.
+  id: 727
+  time: '2025-07-26T15:30:17.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1246
+- author: RosySaturniidae
+  changes:
+    - type: Tweak
+      message: shadekin plushies mar now
+  id: 728
+  time: '2025-07-26T21:57:25.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1242
+- author: Karlm4x
+  changes:
+    - type: Add
+      message: Added Welding Gas Mask to CE's loadout options
+  id: 729
+  time: '2025-07-26T22:01:43.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1239
+- author: KyuPolaris
+  changes:
+    - type: Add
+      message: 'Sharks are now more ferocious (from Deathnerd on Wizden #31142)'
+  id: 730
+  time: '2025-07-26T22:08:45.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1243
+- author: ashkitten
+  changes:
+    - type: Fix
+      message: >-
+        Fixed another instance of The Rotation Bug that occurred when being
+        stunned or falling asleep while lying down
+  id: 731
+  time: '2025-07-26T23:10:04.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1211
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Certain species can now choose to speak the languages of their
+        less-intelligent but similar animals (e.g. felinids can choose to speak
+        the cat language)
+    - type: Tweak
+      message: >-
+        Traits of the "natural language speaker" kind no longer take up trait
+        slots.
+  id: 732
+  time: '2025-07-26T23:19:59.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1206

@@ -36,7 +36,7 @@ public sealed partial class GatherableSystem : EntitySystem
         if (_whitelistSystem.IsWhitelistFailOrNull(gatherable.Comp.ToolWhitelist, args.Used))
             return;
 
-        Gather(gatherable, args.User);
+        Gather(gatherable, args.User, used: args.Used); // Vulpstation - added the used arg
     }
 
     private void OnActivate(Entity<GatherableComponent> gatherable, ref ActivateInWorldEvent args)
@@ -51,13 +51,24 @@ public sealed partial class GatherableSystem : EntitySystem
         args.Handled = true;
     }
 
-    public void Gather(EntityUid gatheredUid, EntityUid? gatherer = null, GatherableComponent? component = null)
+    // Vulpstation - added the used arg
+    public void Gather(EntityUid gatheredUid, EntityUid? gatherer = null, GatherableComponent? component = null, EntityUid? used = null)
     {
         if (!Resolve(gatheredUid, ref component))
             return;
 
+        // Vulpstation - calculate gathering efficiency
+        var efficiency = CompOrNull<GathererComponent>(used)?.Efficiency ?? 1f;
+        component.Toughness -= efficiency;
+
+        // Vulpstation - sound volume depends on gathering efficiency - UNLESS the gatherable ends up being destroyed
+        var soundVolume = component.Toughness <= 0 ? 0f : (-10 + MathF.Max(0f, efficiency) * 5f);
         if (TryComp<SoundOnGatherComponent>(gatheredUid, out var soundComp))
-            _audio.PlayPvs(soundComp.Sound, Transform(gatheredUid).Coordinates);
+            _audio.PlayPvs(soundComp.Sound, Transform(gatheredUid).Coordinates, audioParams: soundComp.Sound.Params.AddVolume(soundVolume));
+
+        // Vulpstation - don't actually gather in one hit.
+        if (component.Toughness > 0)
+            return;
 
         // Complete the gathering process
         _destructible.DestroyEntity(gatheredUid);
