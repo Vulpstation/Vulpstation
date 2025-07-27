@@ -10,19 +10,23 @@ using Content.Shared.CCVar;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Salvage;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Maps;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 
 namespace Content.Server._Vulp.StationEvents.RandomSalvageWreck;
 
 public sealed class RandomSalvageWreckRule : StationEventSystem<RandomSalvageWreckRuleComponent>
 {
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly IMapManager _mapMan = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
@@ -50,6 +54,7 @@ public sealed class RandomSalvageWreckRule : StationEventSystem<RandomSalvageWre
             return;
 
         var targetMapId = Transform(targetStation).MapID;
+        component.TargetMap = targetMapId;
         if (!_map.MapExists(targetMapId))
             return;
 
@@ -134,5 +139,18 @@ public sealed class RandomSalvageWreckRule : StationEventSystem<RandomSalvageWre
         foreach (var map in component.TemporaryMaps)
             if (_mapMan.MapExists(map))
                 _mapMan.DeleteMap(map);
+
+        if (!_map.MapExists(component.TargetMap))
+            return;
+
+        // Play global explosionfar sounds
+        var filter = Filter.Empty().AddInMap(component.TargetMap.Value);
+        for (var i = 0; i < component.TemporaryMaps.Count; i++)
+        {
+            var delay = _random.NextFloat(2, 5f);
+            Timer.Spawn(
+                TimeSpan.FromSeconds(delay),
+                () => _audio.PlayGlobal(component.EndSound, filter, true, component.EndSound.Params));
+        }
     }
 }

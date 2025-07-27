@@ -9,8 +9,9 @@
     reoccurrenceDelay: 45
     maxOccurrences: 4
     minimumPlayers: 3
-    duration: 30 # This is the delay between loading wrecks & sending them to ftl, and deleting their temporary maps (possibly deleting leftover debris)
-  - type: RandomSalvageWreckRuleComponent
-    debrisDistanceRange: 200, 750
+    duration: 15 # This is the delay between loading wrecks & sending them to ftl, and deleting their temporary maps (possibly deleting leftover debris)
+    startAnnouncement: true
+  - type: RandomSalvageWreckRule
+    debrisDistanceRange: 200, 550
     debrisOffsetRange: 0, 50
     debrisCountRange: 2, 4
