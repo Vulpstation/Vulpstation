@@ -883,7 +883,7 @@ entities:
       parent: 1
 - proto: EffectHearts
   entities:
-  - uid: 301
+  - uid: 302
     components:
     - type: Transform
       pos: 4.375067,10.858314
@@ -1444,6 +1444,14 @@ entities:
     - type: Transform
       pos: 4.5,6.5
       parent: 1
+- proto: PosterLegitMoreBread
+  entities:
+  - uid: 312
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 2.5,11.5
+      parent: 1
 - proto: PoweredlightSodium
   entities:
   - uid: 225
@@ -1474,6 +1482,45 @@ entities:
     - type: Transform
       pos: 1.5,7.5
       parent: 1
+- proto: RandomPosterAny
+  entities:
+  - uid: 310
+    components:
+    - type: Transform
+      pos: 5.5,6.5
+      parent: 1
+  - uid: 311
+    components:
+    - type: Transform
+      pos: 4.5,12.5
+      parent: 1
+  - uid: 313
+    components:
+    - type: Transform
+      pos: -1.5,7.5
+      parent: 1
+  - uid: 314
+    components:
+    - type: Transform
+      pos: 0.5,10.5
+      parent: 1
+  - uid: 315
+    components:
+    - type: Transform
+      pos: 2.5,0.5
+      parent: 1
+- proto: RandomPosterContraband
+  entities:
+  - uid: 308
+    components:
+    - type: Transform
+      pos: 5.5,-0.5
+      parent: 1
+  - uid: 309
+    components:
+    - type: Transform
+      pos: 1.5,-3.5
+      parent: 1
 - proto: ResearchAndDevelopmentServerMachineCircuitboard
   entities:
   - uid: 139
@@ -1498,7 +1545,7 @@ entities:
     - type: InsideEntityStorage
 - proto: SheetPlasma
   entities:
-  - uid: 299
+  - uid: 300
     components:
     - type: Transform
       pos: -0.6314297,7.5611677
@@ -1634,18 +1681,26 @@ entities:
       parent: 1
 - proto: SpawnMobCatGeneric
   entities:
-  - uid: 302
+  - uid: 303
     components:
     - type: Transform
       pos: 6.5,4.5
       parent: 1
 - proto: SpawnMobFoxRenault
   entities:
-  - uid: 300
+  - uid: 301
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,10.5
+      parent: 1
+- proto: SpawnPointLatejoin
+  entities:
+  - uid: 298
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 8.5,5.5
       parent: 1
 - proto: SubstationWallBasic
   entities:
@@ -1664,7 +1719,7 @@ entities:
       parent: 1
 - proto: TableGlass
   entities:
-  - uid: 298
+  - uid: 299
     components:
     - type: Transform
       pos: 2.5,5.5
@@ -2113,25 +2168,25 @@ entities:
       parent: 1
 - proto: Windoor
   entities:
-  - uid: 303
+  - uid: 304
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.5,-1.5
       parent: 1
-  - uid: 304
+  - uid: 305
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.5,-2.5
       parent: 1
-  - uid: 305
+  - uid: 306
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 5.5,-1.5
       parent: 1
-  - uid: 306
+  - uid: 307
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
