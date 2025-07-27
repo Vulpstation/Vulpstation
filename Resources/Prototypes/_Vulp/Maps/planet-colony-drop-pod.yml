@@ -1,7 +1,7 @@
 - type: gameMap
   id: PlanetContinentalColonyDropPod
   mapName: 'Planet (Continental, Colony Drop Pod)'
-  mapPath: /_Vulp/StartingShuttles/colony-drop-pod.yml
+  mapPath: /Maps/_Vulp/StartingShuttles/colony-drop-pod.yml
   minPlayers: 0
   stations:
     bouba:
