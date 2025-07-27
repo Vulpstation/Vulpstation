@@ -7,6 +7,8 @@
   - type: Tag
     tags:
     - Pickaxe
+  - type: Gatherer # Vulpstation
+    efficiency: 1
   - type: Sprite
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     state: pickaxe
@@ -47,6 +49,8 @@
   - type: Tag
     tags:
     - Pickaxe
+  - type: Gatherer # Vulpstation - less than a pick, but ends up being better due to faster attack rate.
+    efficiency: 0.3
   - type: Sprite
     sprite: Objects/Tools/handdrill.rsi
     state: handdrill

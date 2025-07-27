@@ -71,7 +71,7 @@
 
 - type: entity
   id: AsteroidRockGold
-  parent: AsteroidRock
+  parent: [GatherableTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -93,7 +93,7 @@
 
 - type: entity
   id: AsteroidRockDiamond
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with diamonds.
   suffix: Diamond
   components:
@@ -115,7 +115,7 @@
 
 - type: entity
   id: AsteroidRockPlasma
-  parent: AsteroidRock
+  parent: [GatherableTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -137,7 +137,7 @@
 
 - type: entity
   id: AsteroidRockQuartz
-  parent: AsteroidRock
+  parent: [GatherableTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with quartz.
   suffix: Quartz
   components:
@@ -181,7 +181,7 @@
 
 - type: entity
   id: AsteroidRockSilver
-  parent: AsteroidRock
+  parent: [GatherableTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -213,7 +213,7 @@
 # Yes I know it drops steel but we may get smelting at some point
 - type: entity
   id: AsteroidRockTin
-  parent: AsteroidRock
+  parent: [GatherableTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with iron.
   suffix: Iron
   components:
@@ -244,7 +244,7 @@
 
 - type: entity
   id: AsteroidRockUranium
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -275,7 +275,7 @@
 
 - type: entity
   id: AsteroidRockBananium
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -297,7 +297,7 @@
 
 - type: entity
   id: AsteroidRockArtifactFragment
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -319,7 +319,7 @@
 
 - type: entity
   id: AsteroidRockBluespace
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -341,7 +341,7 @@
 
 - type: entity
   id: AsteroidRockNormality
-  parent: AsteroidRock
+  parent: [GatherableVeryTough, AsteroidRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -441,6 +441,7 @@
       noRot: true
     - type: SoundOnGather
     - type: Gatherable
+      toughness: 2.5
       toolWhitelist:
         tags:
           - Pickaxe
@@ -481,7 +482,7 @@
 # Ore veins
 - type: entity
   id: WallRockCoal
-  parent: WallRock
+  parent: [GatherableTough, WallRock] # Vulpstation
   description: An ore vein rich with coal.
   suffix: Coal
   components:
@@ -503,7 +504,7 @@
 
 - type: entity
   id: WallRockGold
-  parent: WallRock
+  parent: [GatherableTough, WallRock] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -547,7 +548,7 @@
 
 - type: entity
   id: WallRockPlasma
-  parent: WallRock
+  parent: [GatherableTough, WallRock] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -591,7 +592,7 @@
 
 - type: entity
   id: WallRockSilver
-  parent: WallRock
+  parent: [GatherableTough, WallRock] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -636,7 +637,7 @@
 
 - type: entity
   id: WallRockUranium
-  parent: WallRock
+  parent: [GatherableVeryTough, WallRock] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -659,7 +660,7 @@
 
 - type: entity
   id: WallRockBananium
-  parent: WallRock
+  parent: [GatherableVeryTough, WallRock] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -681,7 +682,7 @@
 
 - type: entity
   id: WallRockArtifactFragment
-  parent: WallRock
+  parent: [GatherableVeryTough, WallRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -725,7 +726,7 @@
 
 - type: entity
   id: WallRockBluespace
-  parent: WallRock
+  parent: [GatherableVeryTough, WallRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -747,7 +748,7 @@
 
 - type: entity
   id: WallRockNormality
-  parent: WallRock
+  parent: [GatherableVeryTough, WallRock] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -813,7 +814,7 @@
 
 - type: entity
   id: WallRockBasaltGold
-  parent: WallRockBasalt
+  parent: [GatherableTough, WallRockBasalt] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -857,7 +858,7 @@
 
 - type: entity
   id: WallRockBasaltPlasma
-  parent: WallRockBasalt
+  parent: [GatherableTough, WallRockBasalt] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -901,7 +902,7 @@
 
 - type: entity
   id: WallRockBasaltSilver
-  parent: WallRockBasalt
+  parent: [GatherableTough, WallRockBasalt] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -945,7 +946,7 @@
 
 - type: entity
   id: WallRockBasaltUranium
-  parent: WallRockBasalt
+  parent: [GatherableVeryTough, WallRockBasalt] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -968,7 +969,7 @@
 
 - type: entity
   id: WallRockBasaltBananium
-  parent: WallRockBasalt
+  parent: [GatherableVeryTough, WallRockBasalt] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -990,7 +991,7 @@
 
 - type: entity
   id: WallRockBasaltArtifactFragment
-  parent: WallRockBasalt
+  parent: [GatherableVeryTough, WallRockBasalt] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -1034,7 +1035,7 @@
 
 - type: entity
   id: WallRockBasaltBluespace
-  parent: WallRockBluespace
+  parent: [GatherableVeryTough, WallRockBluespace] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -1056,7 +1057,7 @@
 
 - type: entity
   id: WallRockBasaltNormality
-  parent: WallRockNormality
+  parent: [GatherableVeryTough, WallRockNormality] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -1122,7 +1123,7 @@
 
 - type: entity
   id: WallRockSnowGold
-  parent: WallRockSnow
+  parent: [GatherableTough, WallRockSnow] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -1166,7 +1167,7 @@
 
 - type: entity
   id: WallRockSnowPlasma
-  parent: WallRockSnow
+  parent: [GatherableTough, WallRockSnow] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -1210,7 +1211,7 @@
 
 - type: entity
   id: WallRockSnowSilver
-  parent: WallRockSnow
+  parent: [GatherableTough, WallRockSnow] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -1254,7 +1255,7 @@
 
 - type: entity
   id: WallRockSnowUranium
-  parent: WallRockSnow
+  parent: [GatherableVeryTough, WallRockSnow] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -1277,7 +1278,7 @@
 
 - type: entity
   id: WallRockSnowBananium
-  parent: WallRockSnow
+  parent: [GatherableVeryTough, WallRockSnow] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -1299,7 +1300,7 @@
 
 - type: entity
   id: WallRockSnowArtifactFragment
-  parent: WallRockSnow
+  parent: [GatherableVeryTough, WallRockSnow] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -1343,7 +1344,7 @@
 
 - type: entity
   id: WallRockSnowBluespace
-  parent: WallRockSnow
+  parent: [GatherableVeryTough, WallRockSnow] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -1365,7 +1366,7 @@
 
 - type: entity
   id: WallRockSnowNormality
-  parent: WallRockSnow
+  parent: [GatherableVeryTough, WallRockSnow] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -1431,7 +1432,7 @@
 
 - type: entity
   id: WallRockSandGold
-  parent: WallRockSand
+  parent: [GatherableTough, WallRockSand] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -1475,7 +1476,7 @@
 
 - type: entity
   id: WallRockSandPlasma
-  parent: WallRockSand
+  parent: [GatherableTough, WallRockSand] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -1519,7 +1520,7 @@
 
 - type: entity
   id: WallRockSandSilver
-  parent: WallRockSand
+  parent: [GatherableTough, WallRockSand] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -1563,7 +1564,7 @@
 
 - type: entity
   id: WallRockSandUranium
-  parent: WallRockSand
+  parent: [GatherableVeryTough, WallRockSand] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -1585,7 +1586,7 @@
 
 - type: entity
   id: WallRockSandBananium
-  parent: WallRockSand
+  parent: [GatherableVeryTough, WallRockSand] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -1607,7 +1608,7 @@
 
 - type: entity
   id: WallRockSandArtifactFragment
-  parent: WallRockSand
+  parent: [GatherableVeryTough, WallRockSand] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -1651,7 +1652,7 @@
 
 - type: entity
   id: WallRockSandBluespace
-  parent: WallRockSand
+  parent: [GatherableVeryTough, WallRockSand] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -1673,7 +1674,7 @@
 
 - type: entity
   id: WallRockSandNormality
-  parent: WallRockSand
+  parent: [GatherableVeryTough, WallRockSand] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -1739,7 +1740,7 @@
 
 - type: entity
   id: WallRockChromiteGold
-  parent: WallRockChromite
+  parent: [GatherableTough, WallRockChromite] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -1783,7 +1784,7 @@
 
 - type: entity
   id: WallRockChromitePlasma
-  parent: WallRockChromite
+  parent: [GatherableTough, WallRockChromite] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -1827,7 +1828,7 @@
 
 - type: entity
   id: WallRockChromiteSilver
-  parent: WallRockChromite
+  parent: [GatherableTough, WallRockChromite] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -1871,7 +1872,7 @@
 
 - type: entity
   id: WallRockChromiteUranium
-  parent: WallRockChromite
+  parent: [GatherableVeryTough, WallRockChromite] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -1894,7 +1895,7 @@
 
 - type: entity
   id: WallRockChromiteBananium
-  parent: WallRockChromite
+  parent: [GatherableVeryTough, WallRockChromite] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -1916,7 +1917,7 @@
 
 - type: entity
   id: WallRockChromiteArtifactFragment
-  parent: WallRockChromite
+  parent: [GatherableVeryTough, WallRockChromite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -1960,7 +1961,7 @@
 
 - type: entity
   id: WallRockChromiteBluespace
-  parent: WallRockChromite
+  parent: [GatherableVeryTough, WallRockChromite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -1982,7 +1983,7 @@
 
 - type: entity
   id: WallRockChromiteNormality
-  parent: WallRockChromite
+  parent: [GatherableVeryTough, WallRockChromite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
@@ -2048,7 +2049,7 @@
 
 - type: entity
   id: WallRockAndesiteGold
-  parent: WallRockAndesite
+  parent: [GatherableTough, WallRockAndesite] # Vulpstation
   description: An ore vein rich with gold.
   suffix: Gold
   components:
@@ -2092,7 +2093,7 @@
 
 - type: entity
   id: WallRockAndesitePlasma
-  parent: WallRockAndesite
+  parent: [GatherableTough, WallRockAndesite] # Vulpstation
   description: An ore vein rich with plasma.
   suffix: Plasma
   components:
@@ -2136,7 +2137,7 @@
 
 - type: entity
   id: WallRockAndesiteSilver
-  parent: WallRockAndesite
+  parent: [GatherableTough, WallRockAndesite] # Vulpstation
   description: An ore vein rich with silver.
   suffix: Silver
   components:
@@ -2180,7 +2181,7 @@
 
 - type: entity
   id: WallRockAndesiteUranium
-  parent: WallRockAndesite
+  parent: [GatherableVeryTough, WallRockAndesite] # Vulpstation
   description: An ore vein rich with uranium.
   suffix: Uranium
   components:
@@ -2203,7 +2204,7 @@
 
 - type: entity
   id: WallRockAndesiteBananium
-  parent: WallRockAndesite
+  parent: [GatherableVeryTough, WallRockAndesite] # Vulpstation
   description: An ore vein rich with bananium.
   suffix: Bananium
   components:
@@ -2225,7 +2226,7 @@
 
 - type: entity
   id: WallRockAndesiteArtifactFragment
-  parent: WallRockAndesite
+  parent: [GatherableVeryTough, WallRockAndesite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
@@ -2269,7 +2270,7 @@
 
 - type: entity
   id: WallRockAndesiteBluespace
-  parent: WallRockAndesite
+  parent: [GatherableVeryTough, WallRockAndesite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Bluespace
   components:
@@ -2291,7 +2292,7 @@
 
 - type: entity
   id: WallRockAndesiteNormality
-  parent: WallRockAndesite
+  parent: [GatherableVeryTough, WallRockAndesite] # Vulpstation
   description: A rock wall. What's that sticking out of it?
   suffix: Normality
   components:
