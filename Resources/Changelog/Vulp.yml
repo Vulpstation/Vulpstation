@@ -31,3 +31,16 @@ Entries:
   id: 3
   time: '2025-07-27T15:11:57.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/20
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Rocks can now take more than 1 hit to destroy. You can no longer just
+        clear out the world with a single pickaxe.
+    - type: Tweak
+      message: >-
+        Diamonds are no longer worth 60k/stack, and some of the obscenely
+        profitable cargo bounties now yield less money.
+  id: 4
+  time: '2025-07-27T15:12:16.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/21
