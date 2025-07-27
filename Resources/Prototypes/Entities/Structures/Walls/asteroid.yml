@@ -474,6 +474,9 @@
           state: rock_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_west
+    - type: Construction # Vulpstation
+      graph: Rock
+      node: rock
 
 # Ore veins
 - type: entity
