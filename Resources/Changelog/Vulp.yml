@@ -1,2 +1,8 @@
-Order: -2
-Entries: []
+Entries:
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: The start of a separate changelog! Merged some upstream changes.
+  id: 1
+  time: '2025-07-27T08:53:11.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/18
