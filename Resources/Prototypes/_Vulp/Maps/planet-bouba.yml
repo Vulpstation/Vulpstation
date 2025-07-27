@@ -1,7 +1,7 @@
 - type: gameMap
   id: PlanetContinentalBoubaLandingShuttle
   mapName: 'Planet (Continental)'
-  mapPath: /Maps/_Vulp/bouba.yml
+  mapPath: /Maps/_Vulp/StartingShuttles/bouba.yml
   minPlayers: 0
   stations:
     bouba:
