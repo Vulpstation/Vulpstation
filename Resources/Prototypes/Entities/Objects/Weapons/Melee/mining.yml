@@ -50,7 +50,7 @@
     tags:
     - Pickaxe
   - type: Gatherer # Vulpstation - less than a pick, but ends up being better due to faster attack rate.
-    efficiency: 0.3
+    efficiency: 0.37
   - type: Sprite
     sprite: Objects/Tools/handdrill.rsi
     state: handdrill
@@ -94,6 +94,8 @@
     heavyStaminaCost: 0 #floof
   - type: DamageOtherOnHit #floof
     staminaCost: 8
+  - type: Gatherer # Vulpstation
+    efficiency: 0.6 # Better than a normal drill
 
 - type: entity
   abstract: true
