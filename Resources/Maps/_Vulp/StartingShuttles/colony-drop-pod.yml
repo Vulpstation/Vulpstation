@@ -20,7 +20,7 @@ entities:
     - type: MetaData
       name: NVS Colony Hub
     - type: Transform
-      pos: -4.9794407,2.2048216
+      pos: -4.8919406,2.2048216
       parent: invalid
     - type: MapGrid
       chunks:
@@ -883,7 +883,7 @@ entities:
       parent: 1
 - proto: EffectHearts
   entities:
-  - uid: 300
+  - uid: 301
     components:
     - type: Transform
       pos: 4.375067,10.858314
@@ -1634,10 +1634,18 @@ entities:
       parent: 1
 - proto: SpawnMobCatGeneric
   entities:
-  - uid: 301
+  - uid: 302
     components:
     - type: Transform
       pos: 6.5,4.5
+      parent: 1
+- proto: SpawnMobFoxRenault
+  entities:
+  - uid: 300
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 4.5,10.5
       parent: 1
 - proto: SubstationWallBasic
   entities:
@@ -2105,25 +2113,25 @@ entities:
       parent: 1
 - proto: Windoor
   entities:
-  - uid: 302
+  - uid: 303
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.5,-1.5
       parent: 1
-  - uid: 303
+  - uid: 304
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.5,-2.5
       parent: 1
-  - uid: 304
+  - uid: 305
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 5.5,-1.5
       parent: 1
-  - uid: 305
+  - uid: 306
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
