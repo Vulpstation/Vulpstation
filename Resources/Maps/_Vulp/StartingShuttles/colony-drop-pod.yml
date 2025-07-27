@@ -22,6 +22,8 @@ entities:
     - type: Transform
       pos: -4.8919406,2.2048216
       parent: invalid
+    - type: BecomesStation
+      id: colony-drop-pod
     - type: MapGrid
       chunks:
         0,0:

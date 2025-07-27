@@ -4,7 +4,7 @@
   mapPath: /Maps/_Vulp/StartingShuttles/colony-drop-pod.yml
   minPlayers: 0
   stations:
-    bouba:
+    colony-drop-pod:
       stationProto: PlanetStation
       components:
       - type: StationNameSetup
