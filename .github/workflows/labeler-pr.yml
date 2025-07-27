@@ -9,6 +9,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      label: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
