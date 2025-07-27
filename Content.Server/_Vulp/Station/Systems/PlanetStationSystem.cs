@@ -51,8 +51,9 @@ public sealed partial class PlanetStationSystem : EntitySystem
         _station.RenameStation(station, name, false, stationData);
 
         // planet should be the only part of the station
-        foreach (var grid in stationData.Grids)
-            _station.RemoveGridFromStation(station, grid, null, stationData);
+        // not sure if this is necessary
+        // foreach (var grid in stationData.Grids)
+        //     _station.RemoveGridFromStation(station, grid, null, stationData);
 
         _station.AddGridToStation(station, mapUid, null, stationData, name);
 
