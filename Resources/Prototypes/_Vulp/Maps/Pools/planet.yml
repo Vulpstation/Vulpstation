@@ -1,4 +1,5 @@
 - type: gameMapPool
   id: PlanetPool
   maps:
-  - PlanetContinental
+  - PlanetContinentalBoubaLandingShuttle
+  - PlanetContinentalColonyDropPod
