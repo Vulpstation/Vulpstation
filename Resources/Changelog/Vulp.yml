@@ -18,3 +18,16 @@ Entries:
   id: 2
   time: '2025-07-27T09:50:08.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/19
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Added a new starting shuttle option - colony drop pod. Unlike Bouba, it
+        is self-sufficient without admin interference.
+    - type: Tweak
+      message: >-
+        Mappers no longer have to map one of each of the 50 job spawns on their
+        shuttles and maps.
+  id: 3
+  time: '2025-07-27T15:11:57.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/20
