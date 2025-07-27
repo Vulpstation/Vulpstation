@@ -69,7 +69,8 @@ namespace Content.IntegrationTests.Tests
             "Train", // Floof
             "Fland", // Floof,
             "Amber", // Apparently, floof?
-            "Europa"
+            "Europa",
+            "PlanetContinental" // Vulp
         };
 
         /// <summary>
@@ -198,7 +199,8 @@ namespace Content.IntegrationTests.Tests
 
                 var grids = mapManager.GetAllGrids(mapId).ToList();
                 var gridUids = grids.Select(o => o.Owner).ToList();
-                targetGrid = gridUids.First();
+                // Vulp: account for first grid not being station member (planet maps)
+                targetGrid = gridUids.First(uid => memberQuery.HasComponent(uid));
 
                 foreach (var grid in grids)
                 {

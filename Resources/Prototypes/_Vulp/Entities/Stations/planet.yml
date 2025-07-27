@@ -1,0 +1,17 @@
+- type: entity
+  id: PlanetStation
+  parent:
+  - BaseStation
+  - BaseStationNews
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationCentcomm
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationNanotrasen
+  - BaseStationMail
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: StationEventEligible

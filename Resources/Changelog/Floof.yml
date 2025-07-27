@@ -1,3 +1,4 @@
+Order: -1
 Entries:
 - author: FoxxoTrystan
   changes:
@@ -2451,7 +2452,7 @@ Entries:
   changes:
     - type: Add
       message: Girl failure plushie added to the spawner
-  id: 0
+  ]
   time: '2025-01-25T18:16:00.0000000+00:00'
   url: https://github.com/Fansana/floofstation1/pull/507
 - author: WhiteLightningTwister
@@ -3358,7 +3359,8 @@ Entries:
     - type: Add
       message: >-
         Check Out interact function to check people out from across rooms and be
-        a lot less subtle about wanting to come onto them.
+        a lot less subtle about wanting to 
+        come onto them.
   id: 358
   time: '2025-03-21T14:22:06.0000000+00:00'
   url: https://github.com/Fansana/floofstation1/pull/642
@@ -6890,6 +6892,129 @@ Entries:
   id: 725
   time: '2025-07-14T22:21:30.0000000+00:00'
   url: https://github.com/Floof-Station/Floof-Station/pull/1184
+- author: ashkitten
+  changes:
+    - type: Tweak
+      message: >-
+        Improved the tile prying system to allow more complex tile layering on
+        planets.
+  id: 726
+  time: '2025-07-19T17:22:36.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/1
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: Animals such as foxes should once again be able to wear internals.
+  id: 727
+  time: '2025-07-19T17:44:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/3
+- author: Vulpstation
+  changes:
+    - type: Tweak
+      message: >-
+        Words in languages you don't understand should now be obfuscated the
+        same way across all rounds.
+  id: 728
+  time: '2025-07-19T17:47:09.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/4
+- author: ashkitten
+  changes:
+    - type: Add
+      message: Digging dirt now rewards you with dirt, which can be used to craft soil.
+    - type: Add
+      message: Grass tiles can now be composted for nutrients.
+  id: 729
+  time: '2025-07-20T08:09:16.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/6
+- author: ashkitten
+  changes:
+    - type: Add
+      message: Randomly generated planet map!
+  id: 730
+  time: '2025-07-21T19:04:55.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/7
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Uncategorized mood effects (such as the "i can't breathe" one) should
+        now properly get removed after their time runs out.
+  id: 731
+  time: '2025-07-21T23:51:02.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/9
+- author: ashkitten
+  changes:
+    - type: Fix
+      message: Crew members should no longer spawn at arrivals.
+    - type: Fix
+      message: Placing plating on dirt works again.
+  id: 732
+  time: '2025-07-21T23:52:32.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/8
+- author: Floofstation - M3739
+  changes:
+    - type: Fix
+      message: The Slow Battery Drain, and Fast Battery Drain now behave as expected.
+    - type: Tweak
+      message: >-
+        'Marked For Death' cannot be taken by command members. No
+        double-dipping. In addition, anomalies can no longer take either Marked
+        trait.
+    - type: Fix
+      message: the "Dog Accent" was still borked, and has been unborked.
+    - type: Fix
+      message: Female shadekin should no longer laugh like a male shadekin.
+    - type: Fix
+      message: Cyber traits should now be properly restricted from prisoners.
+    - type: Tweak
+      message: Cyber-Eyes have had a bit of a rewrite for both clarity and flavor.
+  id: 734
+  time: '2025-07-21T23:51:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/10
+- author: Dunrab
+  changes:
+    - type: Tweak
+      message: >-
+        Tweaked colony starting ship to make starting a tiny bit easier (for
+        now)
+  id: 735
+  time: '2025-07-23T08:19:58.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/12
+- author: ashkitten
+  changes:
+    - type: Fix
+      message: Fixed tile placement issues (real).
+  id: 736
+  time: '2025-07-23T08:29:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/11
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: You can now correctly print reinforced glass in the ore processor
+  id: 737
+  time: '2025-07-23T16:23:14.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/14
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: Shovels can now be crafted in the autolathe.
+  id: 738
+  time: '2025-07-23T22:40:09.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/15
+- author: ashkitten
+  changes:
+    - type: Add
+      message: Grass now spreads to adjacent dirt tiles!
+  id: 739
+  time: '2025-07-24T14:04:02.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/16
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: Grid atmosphere should now correctly work on planets.
+  id: 740
+  time: '2025-07-24T14:05:14.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/13
 - author: Mnemotechnician
   changes:
     - type: Fix

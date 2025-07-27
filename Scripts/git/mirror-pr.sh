@@ -6,7 +6,7 @@ For example: $( basename $0 ) 1002 floofstation space-wizards/space-station-14 f
 
 This script will cherry-pick a pull request from a GitHub repo into a new branch and make a pull request for you.
 
-Default pull remote is 'upstream', default GitHub repo is 'simple-station/einstein-engines', default GitHub repo to create a PR in is 'fansana/floofstation1'"
+Default pull remote is 'upstream', default GitHub repo is 'simple-station/einstein-engines', default GitHub repo to create a PR in is 'vulpstation/vulpstation'"
 
 PRNUM=$1 # First arg to a shell script
 if [[ -z $PRNUM || $PRNUM == "--help" || $PRNUM == "-h" ]]; then
@@ -15,7 +15,7 @@ if [[ -z $PRNUM || $PRNUM == "--help" || $PRNUM == "-h" ]]; then
 fi
 PUSH_REMOTE=${2:-upstream}
 PULL_REPO=${3:-simple-station/einstein-engines}
-PUSH_REPO=${4:-fansana/floofstation1}
+PUSH_REPO=${4:-vulpstation/vulpstation}
 
 echo "Pulling from $PULL_REPO and pushing to $PUSH_REMOTE, then creating a PR in $PUSH_REPO"
 

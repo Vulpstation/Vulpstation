@@ -1,0 +1,26 @@
+- type: entity
+  name: dirt
+  parent: BaseItem
+  id: Dirt
+  description: "Tastes like dirt."
+  components:
+  - type: Stack
+    stackType: Dirt
+    count: 1
+  - type: Sprite
+    sprite: Objects/Misc/reagent_fillings.rsi
+    state: powderpile
+    color: "#603e2a"
+  - type: Item
+    size: Tiny
+  - type: UserInterface
+    interfaces:
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI
+  - type: ActivatableUI
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
+  - type: ShortConstruction
+    entries:
+    - prototype: Soil

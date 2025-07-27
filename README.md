@@ -1,30 +1,13 @@
-# Floof Station
+# Vulpstation
+Vulpstation is a medium-roleplay 18+ fork of Floofstation.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Fansana/floofstation1/master/Resources/Textures/Logo/flooflogo.png" width="512px" /></p>
+We are a medium-roleplay 18+ furry-friendly Space Station 14 server, with focus on continuous roleplay, where players are expected to immerse into their characters and act in accordance to their stories and personalities rather than just their current job. The server permits adult roleplay so long as it is done in a more subtle manner, but does not consider it a sacred or protected thing.
 
----
-
-Floof Station is a whitelist-only 18+ Medium Roleplay furry-oriented server (ERP enabled), of the game [Space Station 14](https://spacestation14.com/). Anybody interested in checking us out or joining us, can apply for membership in our Discord linked down below.
-
-Floof Station is a relaxing environment offering slow-paced, admin-driven events where members can develop their stories. The focus is on building meaningful interpersonal relationships, from friendships to romantic connections. This includes erotic roleplay, allowing members to explore and bring their wildest fantasies to life, all within a framework of mutual respect and consent.
-
-Floof Station is a fork of [Einstein-Engines](https://github.com/Simple-Station/Einstein-Engines).
-
-## Links
-
-[Steam (WizDen Launcher)](https://store.steampowered.com/app/1255460/Space_Station_14/) (NOTE: in order to see us on the Hub, you will have to opt-in seeing 18+ servers in the filters!)
-
-[Discord](https://discord.com/invite/floofstation) (NOTE: in order to access to the rest of the Discord, you will have to be whitelisted first!)
-
-[Wiki](https://wiki.floofstation.com/index.php/Main_Page) (NOTE: you will need a SS14 account in order to access the Wiki!)
-
-[Online Cookbook](https://heurl.in/ss14/recipes?fork=floof) (kindly provided by the wonderful Arimah <3)
+[Floof Station](https://github.com/floof-station/floof-station) was a fork of [Einstein-Engines](https://github.com/Simple-Station/Einstein-Engines), and so is Vulpstation.
 
 
 ## Contributing
-
 We are happy to accept contributions from anybody, come join our Discord if you want to help!
-We got a [list of issues](https://github.com/Fansana/floofstation1/issues) that need to be dealt with, which anybody interested is free to try and sort out. Don't be afraid to ask for help in the Discord if you need any!
 
 ## Building
 

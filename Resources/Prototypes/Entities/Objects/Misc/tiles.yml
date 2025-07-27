@@ -920,10 +920,22 @@
     heldPrefix: grass
   - type: FloorTile
     outputs:
-      - Plating
+      - FloorPlanetGrass # Vulp
       - FloorGrass
   - type: Stack
     stackType: FloorTileGrass
+  # Vulp: nutritious and compostable!
+  - type: Produce
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: PlantMatter
+          Quantity: 5 # 10 nutrition per tile seems fine
+  - type: Food
+    requiredStomachs: 2
+  - type: Extractable
+    grindableSolutionName: food
 
 - type: entity
   name: jungle grass tile

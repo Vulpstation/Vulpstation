@@ -1,0 +1,7 @@
+- type: stack
+  id: Dirt
+  name: dirt
+  icon: { sprite: /Textures/Objects/Misc/reagent_fillings.rsi, state: powderpile, color: "#603e2a" }
+  spawn: Dirt
+  maxCount: 5
+  itemSize: 1

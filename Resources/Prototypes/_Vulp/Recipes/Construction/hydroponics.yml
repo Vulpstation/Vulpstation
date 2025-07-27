@@ -1,0 +1,14 @@
+- type: construction
+  name: soil
+  id: Soil
+  graph: Soil
+  startNode: start
+  targetNode: soil
+  category: construction-category-misc
+  description: "Soil to plant things in."
+  icon:
+    sprite: Structures/Hydroponics/misc.rsi
+    state: soil
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true

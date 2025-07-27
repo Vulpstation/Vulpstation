@@ -50,6 +50,10 @@ public sealed class FloorTileSystem : EntitySystem
         if (!args.CanReach || args.Handled)
             return;
 
+        // Vulp: avoid mispredicting tile placement when interacting with entities
+        if (_netManager.IsClient && args.Target != null)
+            return;
+
         if (!TryComp<StackComponent>(uid, out var stack))
             return;
 
@@ -120,7 +124,8 @@ public sealed class FloorTileSystem : EntitySystem
 
         foreach (var currentTile in component.OutputTiles)
         {
-            var currentTileDefinition = (ContentTileDefinition) _tileDefinitionManager[currentTile];
+            // Vulp: make names less confusing
+            var tileToPlace = (ContentTileDefinition) _tileDefinitionManager[currentTile];
 
             if (mapGrid != null)
             {
@@ -132,20 +137,25 @@ public sealed class FloorTileSystem : EntitySystem
                     return;
                 }
 
-                var tile = mapGrid.GetTileRef(location);
-                var baseTurf = (ContentTileDefinition) _tileDefinitionManager[tile.Tile.TypeId];
+                // Vulp: make names less confusing
+                var existingTile = mapGrid.GetTileRef(location);
+                var existingTileDef = (ContentTileDefinition) _tileDefinitionManager[existingTile.Tile.TypeId];
 
-                if (HasBaseTurf(currentTileDefinition, baseTurf.ID))
+                // Vulp: use basest turf instead of lattice on planets
+                if (tileToPlace.BaseTurf == "Lattice" &&
+                    // if tile has no base turf or self-loops (like planet dirt)
+                    (existingTileDef.BaseTurf == "" || existingTileDef.BaseTurf == existingTileDef.ID)
+                    || HasBaseTurf(tileToPlace, existingTileDef.ID))
                 {
                     if (!_stackSystem.Use(uid, 1, stack))
                         continue;
 
-                    PlaceAt(args.User, gridUid, mapGrid, location, currentTileDefinition.TileId, component.PlaceTileSound);
+                    PlaceAt(args.User, gridUid, mapGrid, location, tileToPlace.TileId, component.PlaceTileSound);
                     args.Handled = true;
                     return;
                 }
             }
-            else if (HasBaseTurf(currentTileDefinition, ContentTileDefinition.SpaceID))
+            else if (HasBaseTurf(tileToPlace, ContentTileDefinition.SpaceID))
             {
                 if (!_stackSystem.Use(uid, 1, stack))
                     continue;

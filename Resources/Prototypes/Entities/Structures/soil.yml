@@ -55,3 +55,6 @@
         solution: soil
   - type: Appearance
   - type: PlantHolderVisuals
+  - type: Construction # Vulp
+    graph: Soil
+    node: soil

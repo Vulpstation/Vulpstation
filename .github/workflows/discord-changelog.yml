@@ -1,4 +1,4 @@
-name: Discord Changelog
+name: Discord Changelog (OLD, DO NOT USE)
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
       with:
-        ref: stable
+        ref: master
 
     - name: Publish changelog
       run: Tools/actions_changelogs_since_last_run.py
