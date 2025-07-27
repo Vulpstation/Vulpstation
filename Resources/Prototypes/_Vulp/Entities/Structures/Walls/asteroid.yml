@@ -1,0 +1,15 @@
+# For ore veins
+- type: entity
+  id: GatherableTough
+  parent: WallRock
+  components:
+  - type: Gatherable
+    toughness: 4
+
+# For extra hard rocks, such as diamonds
+- type: entity
+  id: GatherableVeryTough
+  parent: WallRock
+  components:
+  - type: Gatherable
+    toughness: 6

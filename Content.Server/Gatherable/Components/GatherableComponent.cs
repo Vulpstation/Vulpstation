@@ -36,4 +36,12 @@ public sealed partial class GatherableComponent : Component
     /// </summary>
     [DataField]
     public float GatherOffset = 0.3f;
+
+    // Vulpstation section
+    /// <summary>
+    ///     How many hits it will take to destroy, assuming gathering efficiency is 1.
+    /// </summary>
+    [DataField]
+    public float Toughness = 2.5f;
+    // Vulpstation section end
 }
