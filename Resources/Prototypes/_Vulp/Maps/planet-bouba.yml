@@ -1,7 +1,7 @@
 - type: gameMap
-  id: PlanetContinentalBoubaLandingShuttle
-  mapName: 'Planet (Continental, Bouba Landing Shuttle)'
-  mapPath: /Maps/_Vulp/StartingShuttles/bouba.yml
+  id: PlanetContinental
+  mapName: 'Planet (Continental)'
+  mapPath: /Maps/_Vulp/bouba.yml
   minPlayers: 0
   stations:
     bouba:
@@ -17,7 +17,10 @@
         mapLightColor: '#D8B059FF'
         components:
         - type: DayNightCycle
-      - type: TradeStation
+        - type: TileSpread
+          tiles:
+          - id: FloorPlanetGrass
+            spreadsTo: [ FloorPlanetDirt ]
       - type: StationJobs
         overflowJobs:
         - Passenger

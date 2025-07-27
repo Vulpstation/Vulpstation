@@ -685,7 +685,7 @@
           state: omnitool-pulsing
         changeSound:
           path: /Audio/Items/change_drill.ogg
-    # Floof Shitmed - Improv Tools, this is more so for consistency and unlikely to be used     
+    # Floof Shitmed - Improv Tools, this is more so for consistency and unlikely to be used
   - type: SurgeryTool
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/saw.ogg

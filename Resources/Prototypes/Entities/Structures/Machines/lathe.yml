@@ -203,6 +203,7 @@
       - LeashBasic # FloofStation
       - ClothingEyesHypnoVisor # FloofStation
       - ToolRadioHandheld # Floofstation
+      - Shovel # Vulpstation
   - type: EmagLatheRecipes
     emagStaticRecipes:
     - BoxLethalshot
