@@ -5,7 +5,7 @@
   description: A machine printed circuit board for a long-range fax machine.
   components:
   - type: MachineBoard
-    prototype: FaxMachineBase
+    prototype: FaxMachineConstructible
     requirements:
       Manipulator: 2
     materialRequirements:
