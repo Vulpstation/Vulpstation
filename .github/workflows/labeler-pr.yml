@@ -7,8 +7,11 @@ jobs:
   labeler:
     if: github.actor != 'PJBot' && github.actor != 'DeltaV-Bot' && github.actor != 'SimpleStation14' && github.actor != 'Floof-Station-Bot'
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
+      label: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

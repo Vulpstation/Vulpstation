@@ -44,3 +44,16 @@ Entries:
   id: 4
   time: '2025-07-27T15:12:16.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/21
+- author: raposa3573
+  changes:
+    - type: Add
+      message: >-
+        Added SecDrobe (6500$),  SecTech (6500$), Salvage Vendor (5000$),
+        HyDrobe (3500$), ChemVend (6000$), PTech (7000$), EngiVend (5500$),
+        YouTool (4500$), ChefVend (3500$), DinnerWare (3500$), Condiment Machine
+        (3000$) and Booze-O-Mat (3000$) to the cargo listing.
+    - type: Tweak
+      message: Added access configurator to Engi-Vend's inventory (renewable resource!)
+  id: 5
+  time: '2025-07-27T19:56:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/25
