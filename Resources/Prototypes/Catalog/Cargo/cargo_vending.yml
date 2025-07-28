@@ -273,7 +273,7 @@
   icon:
     sprite: Structures/Machines/VendingMachines/secdrobe.rsi
     state: off
-  product: VendingMachineSecDrobe
+  product: CrateSecDrobe
   cost: 6500
   category: cargoproduct-category-name-emergency
   group: market
@@ -333,7 +333,7 @@
   icon:
     sprite: Structures/Machines/VendingMachines/laptop.rsi
     state: off
-  product: VendingMachineCart
+  product: CratePtech
   cost: 7000
   category: cargoproduct-category-name-emergency
   group: market
@@ -373,7 +373,7 @@
   icon:
     sprite: Structures/Machines/VendingMachines/security.rsi
     state: off
-  product: VendingMachineSec
+  product: CrateSecTech
   cost: 6500
   category: cargoproduct-category-name-emergency
   group: market

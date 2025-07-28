@@ -239,3 +239,30 @@
   components:
   - type: Flatpack
     entity: SpaceHeaterAnchored
+
+- type: entity
+  parent: BaseFlatpack
+  id: VendingMachineSecDrobeFlatpack
+  name: secdrobe flatpack
+  description: A flatpack used for constructing a SecDrobe.
+  components:
+  - type: Flatpack
+    entity: VendingMachineSecDrobe
+
+- type: entity
+  parent: BaseFlatpack
+  id: VendingMachineSecFlatpack
+  name: sectech flatpack
+  description: A flatpack used for constructing a SecTech.
+  components:
+  - type: Flatpack
+    entity: VendingMachineSec
+
+- type: entity
+  parent: BaseFlatpack
+  id: VendingMachineCartFlatpack
+  name: ptech flatpack
+  description: A flatpack used for constructing a PTech.
+  components:
+  - type: Flatpack
+    entity: VendingMachineCart
