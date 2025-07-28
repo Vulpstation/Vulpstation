@@ -4,7 +4,7 @@
   parent: WallRock
   components:
   - type: Gatherable
-    toughness: 4
+    toughness: 3.5
 
 # For extra hard rocks, such as diamonds
 - type: entity
@@ -12,4 +12,4 @@
   parent: WallRock
   components:
   - type: Gatherable
-    toughness: 6
+    toughness: 5

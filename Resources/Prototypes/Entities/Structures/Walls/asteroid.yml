@@ -441,7 +441,7 @@
       noRot: true
     - type: SoundOnGather
     - type: Gatherable
-      toughness: 2.5
+      toughness: 2
       toolWhitelist:
         tags:
           - Pickaxe
@@ -792,7 +792,7 @@
     - type: Construction # Vulpstation
       graph: Basalt
       node: basalt
-      
+
 - type: entity
   id: WallRockBasaltCoal
   parent: WallRockBasalt
@@ -1104,7 +1104,7 @@
     - type: Construction # Vulpstation
       graph: Snow
       node: snow
-      
+
 - type: entity
   id: WallRockSnowCoal
   parent: WallRockSnow
