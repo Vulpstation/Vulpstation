@@ -68,3 +68,12 @@ Entries:
   id: 6
   time: '2025-07-28T07:46:59.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/27
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        As a random event, salvage wrecks can appear scattered around the planet
+        surface now.
+  id: 7
+  time: '2025-07-28T07:47:59.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/26
