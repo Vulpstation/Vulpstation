@@ -1,0 +1,7 @@
+- type: entity
+  parent: [FaxMachineBase, ConstructibleMachine]
+  id: FaxMachineConstructible
+  components:
+  - type: WiresPanel # just so people dont immediately take it apart
+  - type: Machine
+    board: FaxMachineCircuitboard
