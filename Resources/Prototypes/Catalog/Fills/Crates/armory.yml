@@ -73,7 +73,7 @@
 - type: entity
   id: CrateSecDrobe
   parent: CrateSecgear
-  name: SecDrobe
+  name: SecDrobe crate
   description: Contains a flatpacked SecDrobe. Requires Security access to open.
   components:
   - type: StorageFill
@@ -84,7 +84,7 @@
 - type: entity
   id: CrateSecTech
   parent: CrateSecgear
-  name: SecTech
+  name: SecTech crate
   description: Contains a flatpacked SecTech. Requires Security access to open.
   components:
   - type: StorageFill
@@ -95,7 +95,7 @@
 - type: entity
   id: CratePtech
   parent: CrateCommandSecure
-  name: PTech
+  name: PTech crate
   description: Contains a flatpacked PTech. Requires Command access to open.
   components:
   - type: StorageFill
