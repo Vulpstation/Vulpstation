@@ -1,7 +1,7 @@
 ﻿name: "Labels: PR"
 
 on:
-- pull_request_target
+- pull_request
 
 jobs:
   labeler:
@@ -9,9 +9,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      label: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
