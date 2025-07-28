@@ -30,6 +30,8 @@ game-ticker-welcome-to-the-station = Welcome to the station crew, enjoy your sta
 # Displayed in chat to admins when a player joins
 player-join-message = Player {$name} joined.
 player-first-join-message = Player {$name} joined for the first time.
+# Vulpstation change
+player-first-join-message-public = Player {$name} is joining for the first time. Make sure to teach them the basics!
 
 # Displayed in chat to admins when a player leaves
 player-leave-message = Player {$name} left.
