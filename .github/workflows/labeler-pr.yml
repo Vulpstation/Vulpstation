@@ -1,13 +1,13 @@
 ﻿name: "Labels: PR"
 
 on:
-- pull_request_target
+- pull_request
 
 jobs:
   labeler:
     if: github.actor != 'PJBot' && github.actor != 'DeltaV-Bot' && github.actor != 'SimpleStation14' && github.actor != 'Floof-Station-Bot'
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     runs-on: ubuntu-latest
     steps:

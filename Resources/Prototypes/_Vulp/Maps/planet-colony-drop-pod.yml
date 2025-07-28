@@ -32,7 +32,11 @@
           - { time: 0.83, colorHex: '#12043A' }
           - { time: 0.92, colorHex: '#0A0020' }
           - { time: 1.00, colorHex: '#000010' }
-      - type: TradeStation
+        - type: TradeStation
+        - type: TileSpread
+          tiles:
+          - id: FloorPlanetGrass
+            spreadsTo: [ FloorPlanetDirt ]
       - type: StationJobs
         overflowJobs:
         - Passenger
@@ -41,9 +45,9 @@
           # Anomaly: [ 4, 4 ] # I'm not mapping a dark portal in a teeny tiny shuttle, fuck you
           #service
           Captain: [ 1, 1 ]
-          #BlueshieldOfficer: [ 1, 1] Floof - uncomment once implemented on Floof maps
+          BlueshieldOfficer: [ 1, 1] #Floof - uncomment once implemented on Floof maps
           #NanotrasenRepresentative: [ 1, 1 ] Floof - uncomment once implemented on Floof maps
-          #AdministrativeAssistant: [ 1, 1 ] Floof - uncomment once implemented on Floof maps
+          AdministrativeAssistant: [ 1, 1 ] #Floof - uncomment once implemented on Floof maps
           HeadOfPersonnel: [ 1, 1 ]
           Bartender: [ 1, 2 ]
           Botanist: [ 1, 3 ]
@@ -88,6 +92,7 @@
           Prisoner: [ 1, 5 ]
           PrisonGuard: [ 1, 2 ] # someday a 2:1 ratio of guard:prisoner is preferred
           SeniorOfficer: [ 1, 1 ]
+          Brigmedic: [ 1, 1 ]
           #supply
           Quartermaster: [ 1, 1 ]
           InventorySpecialist: [ 1, 1 ] #FloofStation
