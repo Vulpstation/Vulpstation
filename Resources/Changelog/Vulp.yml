@@ -77,3 +77,12 @@ Entries:
   id: 7
   time: '2025-07-28T07:47:59.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/26
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        Added andesite, basalt, chromite, sand, sandstone and snow as buildable
+        walls through the build menu.
+  id: 8
+  time: '2025-07-28T07:49:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/24
