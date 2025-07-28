@@ -217,8 +217,8 @@
     sprite: _Nuclear14/Structures/Windows/window_ruins.rsi
     state: housewindowvertical
   - type: Construction # Vulpstation
-    graph: Housewindowvertical
-    node: housewindowvertical
+    graph: HousewindowverticalTan
+    node: housewindowverticaltan
 
 - type: entity
   parent: N14WindowBaseAirtight
