@@ -681,6 +681,9 @@
   - type: IconSmooth
     key: walls
     base: sandstone
+  - type: Construction # Vulpstation
+    graph: Sandstone
+    node: sandstone
 
 - type: entity
   parent: BaseWall
