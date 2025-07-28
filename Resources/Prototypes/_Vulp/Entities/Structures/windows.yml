@@ -36,7 +36,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: Glass1
+        prototype: SheetGlass1
         amount: 2
       steps:
       - tool: Prying
@@ -82,7 +82,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: Glass1
+        prototype: SheetGlass1
         amount: 2
       steps:
       - tool: Prying
@@ -128,7 +128,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: Glass1
+        prototype: SheetGlass1
         amount: 2
       steps:
       - tool: Prying
@@ -174,7 +174,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: Glass1
+        prototype: SheetGlass1
         amount: 2
       steps:
       - tool: Prying
@@ -220,7 +220,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: Glass1
+        prototype: SheetGlass1
         amount: 2
       steps:
       - tool: Prying
