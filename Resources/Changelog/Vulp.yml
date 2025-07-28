@@ -86,3 +86,10 @@ Entries:
   id: 8
   time: '2025-07-28T07:49:37.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/24
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added a brigmed, blueshield officer and admin assistant job slot.
+  id: 9
+  time: '2025-07-28T07:49:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/22
