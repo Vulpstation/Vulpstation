@@ -267,3 +267,123 @@
   cost: 1200
   category: cargoproduct-category-name-service
   group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineSecDrobe
+  icon:
+    sprite: Structures/Machines/VendingMachines/secdrobe.rsi
+    state: off
+  product: VendingMachineSecDrobe
+  cost: 6500
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineSalvage
+  icon:
+    sprite: Structures/Machines/VendingMachines/mining.rsi
+    state: off
+  product: VendingMachineSalvage
+  cost: 5000
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineHydrobe
+  icon:
+    sprite: Structures/Machines/VendingMachines/hydrobe.rsi
+    state: off
+  product: VendingMachineHydrobe
+  cost: 3500
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineChemicals
+  icon:
+    sprite: Structures/Machines/VendingMachines/chemvend.rsi
+    state: off
+  product: VendingMachineChemicals
+  cost: 6000
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineCondiments
+  icon:
+    sprite: Structures/Machines/VendingMachines/condiments.rsi
+    state: off
+  product: VendingMachineCondiments
+  cost: 3000
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineBoozeUnlocked
+  icon:
+    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    state: off
+  product: VendingMachineBoozeUnlocked
+  cost: 3000
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineCart
+  icon:
+    sprite: Structures/Machines/VendingMachines/laptop.rsi
+    state: off
+  product: VendingMachineCart
+  cost: 7000
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineChefvend
+  icon:
+    sprite: Structures/Machines/VendingMachines/chefvend.rsi
+    state: off
+  product: VendingMachineChefvend
+  cost: 3500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineDinnerware
+  icon:
+    sprite: Structures/Machines/VendingMachines/dinnerware.rsi
+    state: off
+  product: VendingMachineDinnerware
+  cost: 3500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineEngivend
+  icon:
+    sprite: Structures/Machines/VendingMachines/engivend.rsi
+    state: off
+  product: VendingMachineEngivend
+  cost: 5500
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineSec
+  icon:
+    sprite: Structures/Machines/VendingMachines/security.rsi
+    state: off
+  product: VendingMachineSec
+  cost: 6500
+  category: cargoproduct-category-name-emergency
+  group: market
+
+- type: cargoProduct
+  id: CargoVendingMachineYouTool
+  icon:
+    sprite: Structures/Machines/VendingMachines/youtool.rsi
+    state: off
+  product: VendingMachineYouTool
+  cost: 4500
+  category: cargoproduct-category-name-emergency
+  group: market

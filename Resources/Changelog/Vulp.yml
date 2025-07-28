@@ -44,3 +44,52 @@ Entries:
   id: 4
   time: '2025-07-27T15:12:16.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/21
+- author: raposa3573
+  changes:
+    - type: Add
+      message: >-
+        Added SecDrobe (6500$),  SecTech (6500$), Salvage Vendor (5000$),
+        HyDrobe (3500$), ChemVend (6000$), PTech (7000$), EngiVend (5500$),
+        YouTool (4500$), ChefVend (3500$), DinnerWare (3500$), Condiment Machine
+        (3000$) and Booze-O-Mat (3000$) to the cargo listing.
+    - type: Tweak
+      message: Added access configurator to Engi-Vend's inventory (renewable resource!)
+  id: 5
+  time: '2025-07-27T19:56:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/25
+- author: raposa3573
+  changes:
+    - type: Tweak
+      message: cargo's restraints crate now comes with 2 brig timer electronics
+    - type: Tweak
+      message: >-
+        removed all gas/pressure related artifact triggers (until atmos is
+        fixed)
+  id: 6
+  time: '2025-07-28T07:46:59.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/27
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        As a random event, salvage wrecks can appear scattered around the planet
+        surface now.
+  id: 7
+  time: '2025-07-28T07:47:59.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/26
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        Added andesite, basalt, chromite, sand, sandstone and snow as buildable
+        walls through the build menu.
+  id: 8
+  time: '2025-07-28T07:49:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/24
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added a brigmed, blueshield officer and admin assistant job slot.
+  id: 9
+  time: '2025-07-28T07:49:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/22
