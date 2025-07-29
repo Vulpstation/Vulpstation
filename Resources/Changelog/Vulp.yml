@@ -137,3 +137,12 @@ Entries:
   id: 14
   time: '2025-07-29T12:41:17.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/33
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Faxes and holopads now have their respective circuit boards available in
+        the circuit imprinter and can be constructed.
+  id: 15
+  time: '2025-07-29T12:53:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/28
