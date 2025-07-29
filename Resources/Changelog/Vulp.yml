@@ -111,3 +111,13 @@ Entries:
   id: 11
   time: '2025-07-29T12:22:00.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/29
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Vulpstation now has its own ruleset, based on Floofstation's. Most
+        notably some of the more extreme and ERP-oriented rules were removed or
+        softened to allow for more player freedom.
+  id: 12
+  time: '2025-07-29T12:30:48.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/32
