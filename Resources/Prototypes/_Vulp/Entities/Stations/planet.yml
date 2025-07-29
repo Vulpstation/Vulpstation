@@ -11,6 +11,7 @@
   - BaseStationSiliconLawCrewsimov
   - BaseStationNanotrasen
   - BaseStationMail
+  - BaseStationAllEventsEligible
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
