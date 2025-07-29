@@ -5,3 +5,11 @@
   components:
   - type: Machine
     board: FaxMachineCircuitboard
+  - type: ContainerContainer # Just because the entity manager won't merge those properly
+    containers:
+      Paper: !type:ContainerSlot
+        ent: null
+      machine_board: !type:Container
+        ents: []
+      machine_parts: !type:Container
+        ents: []
