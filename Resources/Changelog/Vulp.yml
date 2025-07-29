@@ -128,3 +128,12 @@ Entries:
   id: 13
   time: '2025-07-29T12:38:50.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/31
+- author: RAP0SA
+  changes:
+    - type: Tweak
+      message: >-
+        Cargo-purchased SecDrobe, SecTech and PTech now come in flatpack form
+        and secured into their respective department crates
+  id: 14
+  time: '2025-07-29T12:41:17.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/33
