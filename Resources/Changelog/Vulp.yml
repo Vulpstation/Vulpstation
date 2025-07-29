@@ -121,3 +121,10 @@ Entries:
   id: 12
   time: '2025-07-29T12:30:48.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/32
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added multiple wooden windows for houses and structures.
+  id: 13
+  time: '2025-07-29T12:38:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/31
