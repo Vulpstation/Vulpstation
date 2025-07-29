@@ -12,6 +12,8 @@
   - BaseStationNanotrasen
   - BaseStationMail
   - BaseStationAllEventsEligible
+  - BaseStationExpeditions
+  - BaseStationTheDark
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
