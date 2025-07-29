@@ -63,6 +63,10 @@ namespace Content.Server.GameTicking
                         ? Loc.GetString("player-first-join-message", ("name", args.Session.Name))
                         : Loc.GetString("player-join-message", ("name", args.Session.Name)));
 
+                    // Vulp - also send a global notification when someone new joins
+                    if (firstConnection)
+                        _chatManager.DispatchServerAnnouncement(Loc.GetString("player-first-join-message-public", ("name", args.Session.Name)));
+
                     RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 
                     if (firstConnection && _configurationManager.GetCVar(CCVars.AdminNewPlayerJoinSound))
