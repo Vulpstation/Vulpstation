@@ -93,3 +93,12 @@ Entries:
   id: 9
   time: '2025-07-28T07:49:50.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/22
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Made the server send a global announcement when a player joins for the
+        first time, to help spot new players and especially raiders.
+  id: 10
+  time: '2025-07-29T12:21:33.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/30
