@@ -102,3 +102,12 @@ Entries:
   id: 10
   time: '2025-07-29T12:21:33.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/30
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Rocks should now take 1 swing less to destroy with a pickaxe or a
+        diamond drill, and 2 swings less with a normal drill.
+  id: 11
+  time: '2025-07-29T12:22:00.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/29
