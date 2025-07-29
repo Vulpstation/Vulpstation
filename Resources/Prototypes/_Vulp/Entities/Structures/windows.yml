@@ -26,6 +26,9 @@
       completed:
       - !type:SnapToGrid { }
       steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 5
       - material: Glass
         amount: 2
         doAfter: 5
@@ -72,6 +75,9 @@
       completed:
       - !type:SnapToGrid { }
       steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 5
       - material: Glass
         amount: 2
         doAfter: 5
@@ -118,6 +124,9 @@
       completed:
       - !type:SnapToGrid { }
       steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 5
       - material: Glass
         amount: 2
         doAfter: 5
@@ -164,6 +173,9 @@
       completed:
       - !type:SnapToGrid { }
       steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 5
       - material: Glass
         amount: 2
         doAfter: 5
@@ -210,6 +222,9 @@
       completed:
       - !type:SnapToGrid { }
       steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 5
       - material: Glass
         amount: 2
         doAfter: 5
