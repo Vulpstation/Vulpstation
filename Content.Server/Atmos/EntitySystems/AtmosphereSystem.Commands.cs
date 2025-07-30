@@ -4,6 +4,7 @@ using Content.Server.Atmos.Components;
 using Content.Shared.Administration;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -89,6 +90,10 @@ public sealed partial class AtmosphereSystem
            // Force Invalidate & update air on all tiles
            Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> grid =
                new(euid.Value, gridAtmosphere, Comp<GasTileOverlayComponent>(euid.Value), gridComp, Transform(euid.Value));
+
+           // Vulpstation - clear unloaded biomes
+           if (TryComp<BiomeComponent>(grid, out var biome))
+               biome.ModifiedAtmos = new();
 
            RebuildGridTiles(grid);
 

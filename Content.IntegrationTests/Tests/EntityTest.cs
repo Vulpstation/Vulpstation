@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Station.Components;
+using Content.Shared.Prototypes;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
 using Robust.Shared.Log;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
@@ -272,6 +275,9 @@ namespace Content.IntegrationTests.Tests
                 // Fails due to audio components made when making anouncements
                 if (protoId == "StandardNanotrasenStation")
                     continue;
+
+                if (server.ProtoMan.Index<EntityPrototype>(protoId).Components.ContainsKey("StationData"))
+                    continue; // vulp - makes no sense to test spawning a station
 
                 var count = server.EntMan.EntityCount;
                 var clientCount = client.EntMan.EntityCount;

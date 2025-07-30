@@ -117,16 +117,16 @@
       effects:
       - !type:ActivateArtifact
 
-#- type: artifactTrigger
-#  id: TriggerGas
-#  targetDepth: 2
-#  triggerHint: artifact-trigger-hint-regular-gases
-#components:
-#- type: ArtifactGasTrigger
-#possibleGas:
-#- Oxygen
-#- Nitrogen
-#- CarbonDioxide
+- type: artifactTrigger
+  id: TriggerGas
+  targetDepth: 2
+  triggerHint: artifact-trigger-hint-regular-gases
+  components:
+  - type: ArtifactGasTrigger
+    possibleGas:
+    - Oxygen
+    - Nitrogen
+    - CarbonDioxide
 
 - type: artifactTrigger
   id: TriggerDeath
@@ -142,13 +142,13 @@
   components:
   - type: ArtifactMagnetTrigger
 
-#- type: artifactTrigger
- # id: TriggerLowPressure
- # targetDepth: 2
- # triggerHint: artifact-trigger-hint-pressure
- # components:
- # - type: ArtifactPressureTrigger
-#  minPressureThreshold: 50
+- type: artifactTrigger
+  id: TriggerLowPressure
+  targetDepth: 2
+  triggerHint: artifact-trigger-hint-pressure
+  components:
+  - type: ArtifactPressureTrigger
+    minPressureThreshold: 50
 
 - type: artifactTrigger
   id: TriggerHighDamage
@@ -170,22 +170,22 @@
     damageThreshold: 50
   - type: RadiationReceiver
 
-# - type: artifactTrigger
-#  id: TriggerHighPressure
-#  targetDepth: 3
-#  triggerHint: artifact-trigger-hint-pressure
-#  components:
-#  - type: ArtifactPressureTrigger
-#    maxPressureThreshold: 385
+- type: artifactTrigger
+  id: TriggerHighPressure
+  targetDepth: 3
+  triggerHint: artifact-trigger-hint-pressure
+  components:
+  - type: ArtifactPressureTrigger
+    maxPressureThreshold: 385
 
-#- type: artifactTrigger
-#  id: TriggerPlasma
-#  targetDepth: 3
-#  triggerHint: artifact-trigger-hint-plasma
-#  components:
-#  - type: ArtifactGasTrigger
-#    possibleGas:
-#    - Plasma
+- type: artifactTrigger
+  id: TriggerPlasma
+  targetDepth: 3
+  triggerHint: artifact-trigger-hint-plasma
+  components:
+  - type: ArtifactGasTrigger
+    possibleGas:
+    - Plasma
 
 #don't add in new targetdepth values until you have a few
 #or else it will skew heavily towards a few options.

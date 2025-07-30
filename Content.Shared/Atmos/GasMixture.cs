@@ -302,5 +302,20 @@ namespace Content.Shared.Atmos
             };
             return newMixture;
         }
+
+        // Vulpstation - this is primarily for use in the BiomeSystem, that's why it's so permissive.
+        public bool ApproximatelyEqual(GasMixture other)
+        {
+            if (Math.Abs(Temperature - other.Temperature) > 2f)
+                return false;
+
+            for (var i = 0; i < Atmospherics.AdjustedNumberOfGases; i++)
+            {
+                if (Math.Abs(Moles[i] - other.Moles[i]) > 0.5f)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

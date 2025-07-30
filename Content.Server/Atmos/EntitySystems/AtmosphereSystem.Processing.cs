@@ -30,7 +30,8 @@ namespace Content.Server.Atmos.EntitySystems
         private int _currentRunAtmosphereIndex;
         private bool _simulationPaused;
 
-        private TileAtmosphere GetOrNewTile(EntityUid owner, GridAtmosphereComponent atmosphere, Vector2i index, bool invalidateNew = true)
+        // Vulpstation - made public
+        public TileAtmosphere GetOrNewTile(EntityUid owner, GridAtmosphereComponent atmosphere, Vector2i index, bool invalidateNew = true)
         {
             var tile = atmosphere.Tiles.GetOrNew(index, out var existing);
             if (existing)
@@ -43,8 +44,11 @@ namespace Content.Server.Atmos.EntitySystems
             tile.GridIndices = index;
             // Vulp - new tile, try to apply the map atmosphere
             if (TryComp<MapAtmosphereComponent>(owner, out var mapAtmos) && mapAtmos.Mixture is {} mapMixture)
+            {
+                tile.Air = new();
                 tile.Air?.CopyFrom(mapMixture);
-            
+            }
+
             return tile;
         }
 

@@ -1,3 +1,4 @@
+using Content.Shared.Atmos;
 using Content.Shared.Parallax.Biomes.Layers;
 using Content.Shared.Parallax.Biomes.Markers;
 using Robust.Shared.GameStates;
@@ -45,6 +46,11 @@ public sealed partial class BiomeComponent : Component
     /// </summary>
     [DataField("modifiedTiles")]
     public Dictionary<Vector2i, HashSet<Vector2i>> ModifiedTiles = new();
+
+    // Vulpstation
+    /// All modified atmos in this chunk.
+    [DataField, Access(Other = AccessPermissions.ReadWriteExecute)]
+    public Dictionary<Vector2i, Dictionary<Vector2i, GasMixture>> ModifiedAtmos = new();
 
     /// <summary>
     /// Decals that have been loaded as a part of this biome.
