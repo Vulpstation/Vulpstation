@@ -146,3 +146,16 @@ Entries:
   id: 15
   time: '2025-07-29T12:53:15.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/28
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Grid atmos work on planets now! Atmospheric technicians and
+        xenoarcheologists, rejoice!
+    - type: Tweak
+      message: >-
+        Ghosts (non-admin ones) will no longer cause terrain to load or generate
+        when flying around.
+  id: 16
+  time: '2025-07-30T03:31:52.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/34
