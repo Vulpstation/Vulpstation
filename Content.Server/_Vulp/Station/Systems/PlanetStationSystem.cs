@@ -1,4 +1,5 @@
 using Content.Server._Vulp.Station.Components;
+using Content.Server.Atmos.Components;
 using Content.Server.Parallax;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
@@ -40,6 +41,8 @@ public sealed partial class PlanetStationSystem : EntitySystem
         var mapUid = _mapManager.GetMapEntityIdOrThrow(mapId);
 
         _biome.EnsurePlanet(mapUid, _proto.Index(map.Comp.Biome), map.Comp.Seed, mapLight: map.Comp.MapLightColor);
+
+        EnsureComp<GridAtmosphereComponent>(mapUid); // Pray to god the map also has a MapAtmosphereComponent
 
         // stolen from salvage gateway generation
         const string planetNames = "names_borer";
