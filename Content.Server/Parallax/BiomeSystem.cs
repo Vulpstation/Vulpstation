@@ -10,6 +10,7 @@ using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Atmos;
 using Content.Shared.Decals;
+using Content.Shared.Ghost;
 using Content.Shared.Gravity;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Parallax.Biomes.Layers;
@@ -51,6 +52,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     private EntityQuery<BiomeComponent> _biomeQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<GhostComponent> _ghostQuery;
+    private EntityQuery<GridAtmosphereComponent> _gridAtmosQuery;
+    private EntityQuery<MapAtmosphereComponent> _mapAtmosQuery;
 
     private readonly HashSet<EntityUid> _handledEntities = new();
     private const float DefaultLoadRange = 16f;
@@ -60,6 +64,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
     private ObjectPool<HashSet<Vector2i>> _tilePool =
         new DefaultObjectPool<HashSet<Vector2i>>(new SetPolicy<Vector2i>(), 256);
+
+    private ObjectPool<Dictionary<Vector2i, GasMixture>> _gasPool = // Vulpstation
+        new DefaultObjectPool<Dictionary<Vector2i, GasMixture>>(new DictPolicy<Vector2i, GasMixture>(), 256);
 
     /// <summary>
     /// Load area for chunks containing tiles, decals etc.
@@ -81,6 +88,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _biomeQuery = GetEntityQuery<BiomeComponent>();
         _fixturesQuery = GetEntityQuery<FixturesComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _ghostQuery = GetEntityQuery<GhostComponent>(); // Vulpstation
+        _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>();
+        _gridAtmosQuery = GetEntityQuery<GridAtmosphereComponent>();
         SubscribeLocalEvent<BiomeComponent, MapInitEvent>(OnBiomeMapInit);
         SubscribeLocalEvent<FTLStartedEvent>(OnFTLStarted);
         SubscribeLocalEvent<ShuttleFlattenEvent>(OnShuttleFlatten);
@@ -336,6 +346,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             foreach (var viewer in pSession.ViewSubscriptions)
             {
                 if (!_handledEntities.Add(viewer) ||
+                    _ghostQuery.TryComp(viewer, out var ghost) && !ghost.CanGhostInteract || // Vulp - don't allow ghosts to generate terrain, except admin ghosts
                     !_xformQuery.TryGetComponent(viewer, out xform) ||
                     !_biomeQuery.TryGetComponent(xform.MapUid, out biome) ||
                     !biome.Enabled)
@@ -747,11 +758,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _tiles.Clear();
 
         // Set tiles first
+        var oldChunkAtmos = component.ModifiedAtmos.GetValueOrDefault(chunk); // Vulpstation
+        var gridAtmos = _gridAtmosQuery.CompOrNull(gridUid); // Vulpstation
+        var defaultMix = _mapAtmosQuery.CompOrNull(gridUid)?.Mixture; // Vulpstation
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
             {
                 var indices = new Vector2i(x + chunk.X, y + chunk.Y);
+
+                // Vulpstation - set tile atmos first
+                if (gridAtmos != null && oldChunkAtmos != null && oldChunkAtmos.TryGetValue(indices, out var oldMix))
+                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(oldMix);
+                else if (gridAtmos != null && defaultMix != null)
+                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(defaultMix);
 
                 // Pass in null so we don't try to get the tileref.
                 if (modified.Contains(indices))
@@ -924,11 +944,29 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         // Unset tiles (if the data is custom)
 
+        // Vulpstation section
+        var atmos = _gridAtmosQuery.CompOrNull(gridUid);
+        var mapAtmos = atmos == null ? null : _mapAtmosQuery.CompOrNull(gridUid);
+        var defaultMix = mapAtmos?.Mixture;
+        if (!component.ModifiedAtmos.TryGetValue(chunk, out var atmosChunk))
+        {
+            atmosChunk = _gasPool.Get();
+            component.ModifiedAtmos[chunk] = atmosChunk;
+        }
+        atmosChunk.Clear();
+        // Vulpstation section end
+
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
             {
                 var indices = new Vector2i(x + chunk.X, y + chunk.Y);
+
+                // Vulpstation - serialize atmos first. This does not care if the tile itself was modified, only the atmos.
+                if (defaultMix != null
+                    && _atmos.GetTileMixture((gridUid, atmos, null), (gridUid, mapAtmos), indices) is { } currentMix
+                    && !defaultMix.ApproximatelyEqual(currentMix))
+                    atmosChunk[indices] = currentMix;
 
                 if (modified.Contains(indices))
                     continue;
@@ -965,6 +1003,13 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         else
         {
             component.ModifiedTiles[chunk] = modified;
+        }
+
+        // Vulpstation
+        if (atmosChunk.Count == 0)
+        {
+            component.ModifiedAtmos.Remove(chunk);
+            _gasPool.Return(atmosChunk);
         }
     }
 

@@ -302,5 +302,20 @@ namespace Content.Shared.Atmos
             };
             return newMixture;
         }
+
+        // Vulpstation
+        public bool ApproximatelyEqual(GasMixture other)
+        {
+            if (Math.Abs(Temperature - other.Temperature) > 0.01f)
+                return false;
+
+            for (var i = 0; i < Atmospherics.AdjustedNumberOfGases; i++)
+            {
+                if (Math.Abs(Moles[i] - other.Moles[i]) > 0.01f)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
