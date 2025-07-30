@@ -44,3 +44,105 @@ Entries:
   id: 4
   time: '2025-07-27T15:12:16.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/21
+- author: raposa3573
+  changes:
+    - type: Add
+      message: >-
+        Added SecDrobe (6500$),  SecTech (6500$), Salvage Vendor (5000$),
+        HyDrobe (3500$), ChemVend (6000$), PTech (7000$), EngiVend (5500$),
+        YouTool (4500$), ChefVend (3500$), DinnerWare (3500$), Condiment Machine
+        (3000$) and Booze-O-Mat (3000$) to the cargo listing.
+    - type: Tweak
+      message: Added access configurator to Engi-Vend's inventory (renewable resource!)
+  id: 5
+  time: '2025-07-27T19:56:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/25
+- author: raposa3573
+  changes:
+    - type: Tweak
+      message: cargo's restraints crate now comes with 2 brig timer electronics
+    - type: Tweak
+      message: >-
+        removed all gas/pressure related artifact triggers (until atmos is
+        fixed)
+  id: 6
+  time: '2025-07-28T07:46:59.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/27
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        As a random event, salvage wrecks can appear scattered around the planet
+        surface now.
+  id: 7
+  time: '2025-07-28T07:47:59.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/26
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        Added andesite, basalt, chromite, sand, sandstone and snow as buildable
+        walls through the build menu.
+  id: 8
+  time: '2025-07-28T07:49:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/24
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added a brigmed, blueshield officer and admin assistant job slot.
+  id: 9
+  time: '2025-07-28T07:49:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/22
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Made the server send a global announcement when a player joins for the
+        first time, to help spot new players and especially raiders.
+  id: 10
+  time: '2025-07-29T12:21:33.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/30
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Rocks should now take 1 swing less to destroy with a pickaxe or a
+        diamond drill, and 2 swings less with a normal drill.
+  id: 11
+  time: '2025-07-29T12:22:00.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/29
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Vulpstation now has its own ruleset, based on Floofstation's. Most
+        notably some of the more extreme and ERP-oriented rules were removed or
+        softened to allow for more player freedom.
+  id: 12
+  time: '2025-07-29T12:30:48.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/32
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added multiple wooden windows for houses and structures.
+  id: 13
+  time: '2025-07-29T12:38:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/31
+- author: RAP0SA
+  changes:
+    - type: Tweak
+      message: >-
+        Cargo-purchased SecDrobe, SecTech and PTech now come in flatpack form
+        and secured into their respective department crates
+  id: 14
+  time: '2025-07-29T12:41:17.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/33
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Faxes and holopads now have their respective circuit boards available in
+        the circuit imprinter and can be constructed.
+  id: 15
+  time: '2025-07-29T12:53:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/28

@@ -1,0 +1,17 @@
+- type: entity
+  id: RandomSalvageWreck
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    weight: 8
+    earliestStart: 30
+    reoccurrenceDelay: 45
+    maxOccurrences: 4
+    minimumPlayers: 3
+    duration: 15 # This is the delay between loading wrecks & sending them to ftl, and deleting their temporary maps (possibly deleting leftover debris)
+    startAnnouncement: true
+  - type: RandomSalvageWreckRule
+    debrisDistanceRange: 200, 550
+    debrisOffsetRange: 0, 50
+    debrisCountRange: 2, 4
