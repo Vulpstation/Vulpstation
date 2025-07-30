@@ -276,7 +276,7 @@ namespace Content.IntegrationTests.Tests
                 if (protoId == "StandardNanotrasenStation")
                     continue;
 
-                if (server.ProtoMan.Index<EntityPrototype>(protoId).HasComponent<StationDataComponent>())
+                if (server.ProtoMan.Index<EntityPrototype>(protoId).Components.ContainsKey("StationData"))
                     continue; // vulp - makes no sense to test spawning a station
 
                 var count = server.EntMan.EntityCount;
