@@ -762,20 +762,11 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _tiles.Clear();
 
         // Set tiles first
-        var oldChunkAtmos = component.ModifiedAtmos.GetValueOrDefault(chunk); // Vulpstation
-        var gridAtmos = _gridAtmosQuery.CompOrNull(gridUid); // Vulpstation
-        var defaultMix = _mapAtmosQuery.CompOrNull(gridUid)?.Mixture; // Vulpstation
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
             {
                 var indices = new Vector2i(x + chunk.X, y + chunk.Y);
-
-                // Vulpstation - set tile atmos first
-                if (gridAtmos != null && oldChunkAtmos != null && oldChunkAtmos.TryGetValue(indices, out var oldMix))
-                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(oldMix);
-                else if (gridAtmos != null && defaultMix != null)
-                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(defaultMix);
 
                 // Pass in null so we don't try to get the tileref.
                 if (modified.Contains(indices))
@@ -799,11 +790,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         var loadedEntities = new Dictionary<EntityUid, Vector2i>();
         component.LoadedEntities.Add(chunk, loadedEntities);
 
+        var oldChunkAtmos = component.ModifiedAtmos.GetValueOrDefault(chunk); // Vulpstation
+        var gridAtmos = _gridAtmosQuery.CompOrNull(gridUid); // Vulpstation
+        var defaultMix = _mapAtmosQuery.CompOrNull(gridUid)?.Mixture; // Vulpstation
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
             {
                 var indices = new Vector2i(x + chunk.X, y + chunk.Y);
+
+                // Vulpstation - set tile atmos first. This has to be done AFTER tiles are placed.
+                if (gridAtmos != null && oldChunkAtmos != null && oldChunkAtmos.TryGetValue(indices, out var oldMix))
+                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(oldMix);
+                else if (gridAtmos != null && defaultMix != null)
+                    _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(defaultMix);
 
                 if (modified.Contains(indices))
                     continue;
