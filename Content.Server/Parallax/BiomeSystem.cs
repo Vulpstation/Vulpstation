@@ -52,9 +52,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     private EntityQuery<BiomeComponent> _biomeQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
     private EntityQuery<TransformComponent> _xformQuery;
-    private EntityQuery<GhostComponent> _ghostQuery;
-    private EntityQuery<GridAtmosphereComponent> _gridAtmosQuery;
-    private EntityQuery<MapAtmosphereComponent> _mapAtmosQuery;
+    private EntityQuery<GhostComponent> _ghostQuery; // Vulpstation
+    private EntityQuery<GridAtmosphereComponent> _gridAtmosQuery; // Vulpstation
+    private EntityQuery<MapAtmosphereComponent> _mapAtmosQuery; // Vulpstation
 
     private readonly HashSet<EntityUid> _handledEntities = new();
     private const float DefaultLoadRange = 16f;
@@ -89,8 +89,8 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _fixturesQuery = GetEntityQuery<FixturesComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
         _ghostQuery = GetEntityQuery<GhostComponent>(); // Vulpstation
-        _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>();
-        _gridAtmosQuery = GetEntityQuery<GridAtmosphereComponent>();
+        _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>(); // Vulpstation
+        _gridAtmosQuery = GetEntityQuery<GridAtmosphereComponent>(); // Vulpstation
         SubscribeLocalEvent<BiomeComponent, MapInitEvent>(OnBiomeMapInit);
         SubscribeLocalEvent<FTLStartedEvent>(OnFTLStarted);
         SubscribeLocalEvent<ShuttleFlattenEvent>(OnShuttleFlatten);
@@ -328,6 +328,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         // Get chunks in range
         foreach (var pSession in Filter.GetAllPlayers(_playerManager))
         {
+            // Vulp - don't allow ghosts to generate terrain, except admin ghosts
+            if (_ghostQuery.TryComp(pSession.AttachedEntity, out var ghost) && !ghost.CanGhostInteract)
+                continue;
+
             if (_xformQuery.TryGetComponent(pSession.AttachedEntity, out var xform) &&
                 _handledEntities.Add(pSession.AttachedEntity.Value) &&
                  _biomeQuery.TryGetComponent(xform.MapUid, out var biome) &&
@@ -346,7 +350,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             foreach (var viewer in pSession.ViewSubscriptions)
             {
                 if (!_handledEntities.Add(viewer) ||
-                    _ghostQuery.TryComp(viewer, out var ghost) && !ghost.CanGhostInteract || // Vulp - don't allow ghosts to generate terrain, except admin ghosts
+                    _ghostQuery.TryComp(viewer, out ghost) && !ghost.CanGhostInteract || // Vulp - don't allow ghosts to generate terrain, except admin ghosts
                     !_xformQuery.TryGetComponent(viewer, out xform) ||
                     !_biomeQuery.TryGetComponent(xform.MapUid, out biome) ||
                     !biome.Enabled)
