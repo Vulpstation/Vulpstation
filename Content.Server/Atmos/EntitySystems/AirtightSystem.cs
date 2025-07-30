@@ -45,7 +45,8 @@ namespace Content.Server.Atmos.EntitySystems
             var xform = Transform(airtight);
 
             // If the grid is deleting no point updating atmos.
-            if (xform.GridUid != null && LifeStage(xform.GridUid.Value) <= EntityLifeStage.MapInitialized)
+            // Vulpstation - this used to skip update if the grid IS POST MAP INIT, not post termination. Fixed the issue.
+            if (xform.GridUid != null && LifeStage(xform.GridUid.Value) <= EntityLifeStage.Terminating)
                 SetAirblocked(airtight, false, xform);
         }
 
