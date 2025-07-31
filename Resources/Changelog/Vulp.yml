@@ -159,3 +159,13 @@ Entries:
   id: 16
   time: '2025-07-30T03:31:52.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/34
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Fixed an ages-old bug in the airight system that would leave a tile
+        airtight even after the anchored airtight entity has been removed from
+        it (e.g. a rock was mined up).
+  id: 17
+  time: '2025-07-31T06:48:00.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/35
