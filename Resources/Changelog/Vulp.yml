@@ -180,3 +180,12 @@ Entries:
   id: 18
   time: '2025-07-31T19:33:21.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/37
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Updated the colony drop pod. It now includes a round-start cargo sale
+        computer, more scrubbers. and less mice.
+  id: 19
+  time: '2025-07-31T19:33:53.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/36
