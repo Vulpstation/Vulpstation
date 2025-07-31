@@ -103,7 +103,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
         var time = _random.Next(ftlTime.Min, ftlTime.Max);
         // Hardcoding this because I cant imagine why you'd want to change this for one map only
         var target = new EntityCoordinates(map, _random.NextVector2(5f, 20f));
-        var targetAngle = _random.NextAngle(-Angle.FromDegrees(10), Angle.FromDegrees(10));
+        var targetAngle = Angle.Zero; // A bit annoying
         var shuttleComp = EnsureComp<ShuttleComponent>(grid);
 
         _shuttle.FTLToCoordinates(grid, shuttleComp, target, targetAngle, 0f, time);
