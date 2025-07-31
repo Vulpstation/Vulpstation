@@ -17,9 +17,9 @@
         components:
         - type: DayNightCycle
           timeEntries:
-          - { time: 0.0, colorHex: '#0A0020' }
-          - { time: 0.04, colorHex: '#12043A' }
-          - { time: 0.08, colorHex: '#1B1450' }
+          - { time: 0.0, colorHex: '#000000' }
+          - { time: 0.04, colorHex: '#010010' }
+          - { time: 0.08, colorHex: '#06043A' }
           - { time: 0.17, colorHex: '#2A1E5C' }
           - { time: 0.25, colorHex: '#3B256B' }
           - { time: 0.33, colorHex: '#4A2F7A' }
@@ -27,10 +27,10 @@
           - { time: 0.50, colorHex: '#4B4B9C' }
           - { time: 0.58, colorHex: '#3A3A7A' }
           - { time: 0.66, colorHex: '#2C255C' }
-          - { time: 0.75, colorHex: '#1B1440' }
-          - { time: 0.83, colorHex: '#12043A' }
-          - { time: 0.92, colorHex: '#0A0020' }
-          - { time: 1.00, colorHex: '#000010' }
+          - { time: 0.75, colorHex: '#1F1440' }
+          - { time: 0.83, colorHex: '#0A042A' }
+          - { time: 0.92, colorHex: '#040010' }
+          - { time: 1.00, colorHex: '#000000' }
         - type: TradeStation
         - type: TileSpread
           tiles:
