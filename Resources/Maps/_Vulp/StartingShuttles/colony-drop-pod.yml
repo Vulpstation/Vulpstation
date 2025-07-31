@@ -1158,7 +1158,7 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#FF5566FF'
-  - uid: 320
+  - uid: 322
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1166,7 +1166,7 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#FF5566FF'
-  - uid: 321
+  - uid: 323
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1770,6 +1770,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 8.5,5.5
       parent: 1
+- proto: SpawnPointObserver
+  entities:
+  - uid: 320
+    components:
+    - type: Transform
+      pos: 4.5,5.5
+      parent: 1
 - proto: SubstationWallBasic
   entities:
   - uid: 163
@@ -2220,6 +2227,15 @@ entities:
     - type: Transform
       pos: 8.5,3.5
       parent: 1
+- proto: WarpPoint
+  entities:
+  - uid: 321
+    components:
+    - type: Transform
+      pos: 5.5,5.5
+      parent: 1
+    - type: WarpPoint
+      location: Colony Drop Pod
 - proto: WeldingFuelTankFull
   entities:
   - uid: 117
