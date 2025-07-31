@@ -169,3 +169,14 @@ Entries:
   id: 17
   time: '2025-07-31T06:48:00.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/35
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        The initial landing pod will now FTL onto the planet surface rather than
+        spawn in immediately.
+    - type: Fix
+      message: Fixed a bug that prevented custom day/night cycles from working.
+  id: 18
+  time: '2025-07-31T19:33:21.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/37
