@@ -681,7 +681,7 @@ namespace Content.Server.Atmos.EntitySystems
             {
                 var nonNull = tile.AdjacentTiles.Where(x => x != null).Count();
                 // Vulpstation - log warning and schedule re-evaluation of the tile instead of just erroring
-                Log.Warning($"Encountered null adjacent tile in {nameof(AdjustEqMovement)}. Dir: {direction}, Tile: ({tile.GridIndex}, {tile.GridIndices}), non-null adj count: {nonNull}, Trace: {Environment.StackTrace}");
+                Log.Debug($"Encountered null adjacent tile in {nameof(AdjustEqMovement)}. Dir: {direction}, Tile: ({tile.GridIndex}, {tile.GridIndices}), non-null adj count: {nonNull}, Trace: {Environment.StackTrace}");
                 InvalidateTile(tile.GridIndex, tile.GridIndices);
                 return;
             }
