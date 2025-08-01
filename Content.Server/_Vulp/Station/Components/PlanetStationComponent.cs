@@ -1,4 +1,5 @@
 using Content.Server._Vulp.Station.Systems;
+using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Prototypes;
 
@@ -18,12 +19,13 @@ public sealed partial class PlanetStationComponent : Component
     public int? Seed = null;
 
     [DataField]
-    public Color MapLightColor = Color.Black;
-
-    [DataField]
     public bool SpawnLoot = true;
 
-    // components to add to the map post-planetization
+    /// Components to add to the map post-planetization.
+    [DataField(required: true)]
+    public ComponentRegistry Components = default!;
+
+    /// Time range between the spawn of the station and its arrival on the planet, in seconds. If null, skips FTL.
     [DataField]
-    public ComponentRegistry Components;
+    public MinMax FtlTime = new(60, 90);
 }

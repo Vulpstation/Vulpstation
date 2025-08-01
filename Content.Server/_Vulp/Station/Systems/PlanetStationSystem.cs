@@ -1,11 +1,14 @@
 using Content.Server._Vulp.Station.Components;
 using Content.Server.Atmos.Components;
 using Content.Server.Parallax;
+using Content.Server.Shuttles.Components;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared._NC14.DayNightCycle;
 using Content.Shared.Dataset;
+using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Procedural.Loot;
 using Robust.Shared.Map;
@@ -21,6 +24,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly ShuttleSystem _shuttle = default!;
 
     public override void Initialize()
     {
@@ -28,9 +32,9 @@ public sealed partial class PlanetStationSystem : EntitySystem
         SubscribeLocalEvent<PlanetStationComponent, StationPostInitEvent>(OnStationPostInit);
     }
 
-    private void OnStationPostInit(Entity<PlanetStationComponent> map, ref StationPostInitEvent args)
+    private void OnStationPostInit(Entity<PlanetStationComponent> stationEnt, ref StationPostInitEvent args)
     {
-        if (!TryComp(map, out StationDataComponent? stationData))
+        if (!TryComp(stationEnt, out StationDataComponent? stationData))
             return;
 
         var stationGrid = _station.GetLargestGrid(stationData);
@@ -40,8 +44,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
         var mapId = Transform(stationGrid.Value).MapID;
         var mapUid = _mapManager.GetMapEntityIdOrThrow(mapId);
 
-        _biome.EnsurePlanet(mapUid, _proto.Index(map.Comp.Biome), map.Comp.Seed, mapLight: map.Comp.MapLightColor);
-
+        _biome.EnsurePlanet(mapUid, _proto.Index(stationEnt.Comp.Biome), stationEnt.Comp.Seed);
         EnsureComp<GridAtmosphereComponent>(mapUid); // Pray to god the map also has a MapAtmosphereComponent
 
         // stolen from salvage gateway generation
@@ -52,18 +55,14 @@ public sealed partial class PlanetStationSystem : EntitySystem
         var station = _station.GetOwningStation(stationGrid)!.Value;
 
         _station.RenameStation(station, name, false, stationData);
-
-        // planet should be the only part of the station
-        // not sure if this is necessary
-        // foreach (var grid in stationData.Grids)
-        //     _station.RemoveGridFromStation(station, grid, null, stationData);
-
         _station.AddGridToStation(station, mapUid, null, stationData, name);
+        if (stationEnt.Comp.FtlTime is { } ftlTime)
+            DoFtl(stationGrid.Value, mapUid, ftlTime);
 
         // add all the components
-        _entityManager.AddComponents(mapUid, map.Comp.Components);
+        _entityManager.AddComponents(mapUid, stationEnt.Comp.Components);
 
-        if (!map.Comp.SpawnLoot)
+        if (!stationEnt.Comp.SpawnLoot)
             return;
 
         // copypasted from PlanetCommand. go ahead sue me
@@ -97,6 +96,16 @@ public sealed partial class PlanetStationSystem : EntitySystem
                 }
             }
         }
+    }
 
+    private void DoFtl(EntityUid grid, EntityUid map, MinMax ftlTime)
+    {
+        var time = _random.Next(ftlTime.Min, ftlTime.Max);
+        // Hardcoding this because I cant imagine why you'd want to change this for one map only
+        var target = new EntityCoordinates(map, _random.NextVector2(5f, 20f));
+        var targetAngle = Angle.Zero; // A bit annoying
+        var shuttleComp = EnsureComp<ShuttleComponent>(grid);
+
+        _shuttle.FTLToCoordinates(grid, shuttleComp, target, targetAngle, 0f, time);
     }
 }

@@ -18,3 +18,6 @@
   components:
   - type: Transform
   - type: StationEventEligible
+  - type: Gravity # just so we don't have to map grav gens
+    inherent: true
+    enabled: true
