@@ -189,3 +189,12 @@ Entries:
   id: 19
   time: '2025-07-31T19:33:53.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/36
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Hopefully fixed the issue with some atmos tiles remaining "stuck" after
+        having their chunk unloaded and reloaded.
+  id: 20
+  time: '2025-08-01T22:14:10.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/39
