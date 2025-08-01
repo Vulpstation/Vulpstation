@@ -27,5 +27,5 @@ public sealed partial class PlanetStationComponent : Component
 
     /// Time range between the spawn of the station and its arrival on the planet, in seconds. If null, skips FTL.
     [DataField]
-    public MinMax FtlTime = new(60, 90);
+    public MinMax? FtlTime = null; // new(60, 90); // TODO: broken - doesn't allow ContainerFills to run properly (only happens in prod, can't debug)
 }
