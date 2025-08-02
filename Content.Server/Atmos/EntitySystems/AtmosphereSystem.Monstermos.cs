@@ -333,8 +333,11 @@ namespace Content.Server.Atmos.EntitySystems
 
                         AdjustEqMovement(otherTile, otherTile.MonstermosInfo.CurrentTransferDirection, otherTile.MonstermosInfo.CurrentTransferAmount);
 
-                        otherTile.AdjacentTiles[otherTile.MonstermosInfo.CurrentTransferDirection.ToIndex()]!
-                            .MonstermosInfo.CurrentTransferAmount += otherTile.MonstermosInfo.CurrentTransferAmount;
+                        // Vulpstation - don't throw NPE
+                        var adjAtmos = otherTile.AdjacentTiles[otherTile.MonstermosInfo.CurrentTransferDirection.ToIndex()];
+                        if (adjAtmos == null)
+                            continue;
+                        adjAtmos.MonstermosInfo.CurrentTransferAmount += otherTile.MonstermosInfo.CurrentTransferAmount;
                         otherTile.MonstermosInfo.CurrentTransferAmount = 0;
                     }
                 }
