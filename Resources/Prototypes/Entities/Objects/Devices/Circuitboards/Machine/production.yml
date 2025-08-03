@@ -1755,6 +1755,6 @@
     requirements:
       Capacitor: 1
       Manipulator: 1
-    stackRequirements:
+    materialRequirements:
       Steel: 2
       Cable: 1

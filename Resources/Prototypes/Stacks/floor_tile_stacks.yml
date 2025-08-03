@@ -60,13 +60,6 @@
   itemSize: 5
 
 - type: stack
-  id: FloorTileMetalDiamond
-  name: steel tile
-  spawn: FloorTileItemMetalDiamond
-  maxCount: 30
-  itemSize: 5
-
-- type: stack
   id: FloorTileSteelOffset
   name: offset steel tile
   spawn: FloorTileItemSteelOffset
@@ -115,22 +108,9 @@
   maxCount: 30
 
 - type: stack
-  id: FloorTileSteelPavementVertical
-  name: steel vertical pavement
-  spawn: FloorTileItemSteelPavementVertical
-  maxCount: 30
-
-- type: stack
   id: FloorTileWhite
   name: white tile
   spawn: FloorTileItemWhite
-  maxCount: 30
-  itemSize: 5
-
-- type: stack
-  id: FloorTileDark
-  name: dark tile
-  spawn: FloorTileItemDark
   maxCount: 30
   itemSize: 5
 
@@ -601,6 +581,18 @@
   id: FloorTileOldConcrete
   name: old concrete tile
   spawn: FloorTileItemOldConcrete
+  maxCount: 30
+
+- type: stack
+  id: FloorTileOldConcreteMono
+  name: old concrete mono tile
+  spawn: FloorTileItemOldConcreteMono
+  maxCount: 30
+
+- type: stack
+  id: FloorTileOldConcreteSmooth
+  name: old concrete smooth
+  spawn: FloorTileItemOldConcreteSmooth
   maxCount: 30
 
 - type: stack
