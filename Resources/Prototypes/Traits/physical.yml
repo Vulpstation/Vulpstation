@@ -145,6 +145,7 @@
       inverted: true
       species:
         - Felinid
+        - Tajaran
   functions:
     - !type:TraitReplaceComponent
       components:
@@ -255,6 +256,7 @@
       inverted: true
       species:
         - Felinid
+        - Tajaran
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -278,6 +280,7 @@
       inverted: true
       species:
         - Felinid
+        - Tajaran
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -320,7 +323,8 @@
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
-        - Felinid # Felinids already have this feature by default.
+        - Felinid # Felinids/Tajaran already have this feature by default.
+        - Tajaran # Floof - Tajaran Update b7660b9
         - Rodentia # Floof - Rodentia
         - Resomi # Floof - have this by default after porting Goob changes
         - Kitsune # Floof - M3739 - #937 - Kitsune have this by default.
@@ -351,6 +355,7 @@
       inverted: true
       species:
         - Vulpkanin # This trait functions exactly as-is for the Vulpkanin trait.
+        - Tajaran #Floof - Has innate temperature protection
   functions:
     - !type:TraitReplaceComponent
       components:
@@ -363,7 +368,8 @@
 - type: trait
   id: Talons
   category: Physical
-  points: -1
+  points: 0
+  slots: 0
   requirements:
     - !type:CharacterSpeciesRequirement
       inverted: true
@@ -390,12 +396,14 @@
 - type: trait
   id: Claws
   category: Physical
-  points: -1
+  points: 0
+  slots: 0
   requirements:
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
         - Felinid # Felinids already have cat claws.
+        - Tajaran # Tajaran also have cat claws
         - Reptilian # Reptilians also have cat claws.
         - Shadowkin # Shadowkins also have claws.
         # - Vulpkanin # Vulpkanin have "Blunt" claws. One could argue this trait "Sharpens" their claws.
@@ -423,6 +431,7 @@
   id: NaturalWeaponRemoval
   category: Physical
   points: 0
+  slots: 0
   requirements:
     - !type:CharacterSpeciesRequirement
       inverted: true
@@ -599,6 +608,7 @@
   id: CyberEyes
   category: Physical
   points: -4
+  slots: 0
   requirements:
     - !type:CharacterJobRequirement
       inverted: true
@@ -862,6 +872,8 @@
       species:
         - Shadowkin
         - Felinid
+        - Rodentia
+        - Tajaran
     - !type:CharacterTraitRequirement
       traits:
         - CyberEyes

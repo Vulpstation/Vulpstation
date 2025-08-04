@@ -137,7 +137,7 @@ public sealed partial class TraitModifyComponent : TraitFunction
 }
 
 
-/// <summary>
+// <summary>
 ///     Used for traits that modify SiliconComponent.
 /// </summary>
 [UsedImplicitly]
@@ -148,27 +148,27 @@ public sealed partial class TraitModifySilicon : TraitFunction
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public float BatteryDrainModifier;
-    
+
     /// <summary>
     ///     Flat modifier to a silicon's flammability multiplier. This only affects the overheat mechanic, and
     ///     does not affect overall flammability.
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public float FireStackModifier;
-    
+
     /// <summary>
     ///     If true, should go along with a battery component. One will not be added automatically.
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public bool? IsBatteryPowered;
-    
+
     /// <summary>
     ///     Whether or not a Silicon will cancel all sleep events.
     ///     Maybe you want an android that can sleep as well as drink APCs? I'm not going to judge..
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public bool? IsAbleToDreamOfElectricSheep;
-    
+
     /// <summary>
     ///     The new percentages at which the silicon will enter each state.
     /// </summary>
@@ -179,15 +179,15 @@ public sealed partial class TraitModifySilicon : TraitFunction
     /// </example>
     [DataField, AlwaysPushInheritance]
     public float? NewThresholdMid;
-    
+
     /// <inheritdoc cref="NewThresholdMid"/>
     [DataField, AlwaysPushInheritance]
     public float? NewThresholdLow;
-    
+
     /// <inheritdoc cref="NewThresholdMid"/>
     [DataField, AlwaysPushInheritance]
     public float? NewThresholdCritical;
-    
+
 
     public override void OnPlayerSpawn(EntityUid uid,
         IComponentFactory factory,
@@ -199,21 +199,21 @@ public sealed partial class TraitModifySilicon : TraitFunction
 
         siliconComponent.DrainPerSecond += BatteryDrainModifier;
         siliconComponent.FireStackMultiplier += FireStackModifier;
-        
+
         // M3739 - #1209 - Ideally, I would have wanted the possibility for null to be supplied by the YAML to the
         // battery threshold datafields, but as it turns out, it is easier said than done to do it properly.
         if (NewThresholdMid.HasValue)
         siliconComponent.ChargeThresholdMid = NewThresholdMid;
-        
+
         if (NewThresholdLow.HasValue)
         siliconComponent.ChargeThresholdLow = NewThresholdLow;
-        
+
         if (NewThresholdCritical.HasValue)
         siliconComponent.ChargeThresholdCritical = NewThresholdCritical;
-        
+
         if (IsBatteryPowered.HasValue)
         siliconComponent.BatteryPowered = IsBatteryPowered.Value;
-        
+
         if (IsAbleToDreamOfElectricSheep.HasValue)
         siliconComponent.DoSiliconsDreamOfElectricSheep = IsAbleToDreamOfElectricSheep.Value;
     }
@@ -230,19 +230,19 @@ public sealed partial class TraitModifySpeech : TraitFunction
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public ProtoId<SpeechSoundsPrototype>? NewSounds;
-    
+
     /// <summary>
     ///     Replaces SpeechComponent's 'SpeechVerb'.
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public ProtoId<SpeechVerbPrototype>? NewVerb;
-    
+
     /// <summary>
     ///     Replaces SpeechComponent's list of allowed emotes.
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public List<ProtoId<EmotePrototype>>? NewAllowedEmotes;
-    
+
     public override void OnPlayerSpawn(EntityUid uid,
         IComponentFactory factory,
         IEntityManager entityManager,
@@ -256,9 +256,9 @@ public sealed partial class TraitModifySpeech : TraitFunction
 
         if (NewVerb != null)
             speechComponent.SpeechVerb = NewVerb.Value;
-        
+
         if (NewAllowedEmotes != null)
             speechComponent.AllowedEmotes = NewAllowedEmotes;
-            
+
     }
 }
