@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.StationEvents.Components;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Station.Components;
@@ -28,16 +29,21 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
         var validLocations = new List<EntityCoordinates>();
-        while (locations.MoveNext(out var ventUid, out _, out var transform))
+        while (locations.MoveNext(out var ventUid, out var ventSpawn, out var transform))
         {
             // Floof: do not spawn on welded vents
             if (TryComp<WeldableComponent>(ventUid, out var weldable) && weldable.IsWelded)
                 continue;
 
+
             if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == station)
             {
                 validLocations.Add(transform.Coordinates);
-                foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
+                // Vulpstation
+                var weighted = component.Entries.Select(
+                    it => new EntitySpawnEntry(it) { SpawnProbability = it.SpawnProbability * ventSpawn.Weight });
+
+                foreach (var spawn in EntitySpawnCollection.GetSpawns(weighted, RobustRandom))
                 {
                     SpawnCritter(spawn, transform.Coordinates, component); // Floof - changed to delayed spawn
                 }

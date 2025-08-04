@@ -187,3 +187,18 @@
   minGroupSize: 1
   maxGroupSize: 2
   radius: 4
+
+# Vulpstation - vent critter nests.
+- type: biomeMarkerLayer
+  id: CritterSpawnLocations
+  entityMask:
+    AsteroidRock: VentEventSpawnerWeight3
+    WallRock: VentEventSpawnerWeight3
+    WallRockBasalt: VentEventSpawnerWeight3
+    WallRockChromite: VentEventSpawnerWeight3
+    WallRockSand: VentEventSpawnerWeight3
+    WallRockSnow: VentEventSpawnerWeight3
+  maxCount: 6
+  radius: 16
+  minGroupSize: 1
+  maxGroupSize: 5
