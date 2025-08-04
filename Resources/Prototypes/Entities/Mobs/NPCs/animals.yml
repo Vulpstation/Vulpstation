@@ -579,7 +579,7 @@
   - type: CanEscapeInventory
   - type: NpcFactionMember
     factions:
-    - Mouse
+    - Critter
   - type: Body
     prototype: Mothroach
   - type: TypingIndicator
@@ -3487,6 +3487,9 @@
     bloodMaxVolume: 60
   - type: CanEscapeInventory
     baseResistTime: 3
+  - type: NpcFactionMember
+    factions:
+      - Critter
   - type: MobPrice
     price: 60
   - type: NonSpreaderZombie
