@@ -227,3 +227,12 @@ Entries:
   id: 23
   time: '2025-08-04T02:57:00.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/44
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Merged some upstream changes. Most notably, Tajaran are here and sharks
+        go rawr~
+  id: 24
+  time: '2025-08-04T05:24:05.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/45
