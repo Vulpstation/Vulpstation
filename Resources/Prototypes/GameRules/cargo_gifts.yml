@@ -4,10 +4,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
-    weight: 5
+    weight: 0.2 # Vulpstation - this is bad for botanists
     startDelay: 10
     duration: 120
     earliestStart: 20
+    maxOccurences: 1 # Vulpstation
   - type: CargoGiftsRule
     description: cargo-gift-pizza-small
     sender: cargo-gift-default-sender
@@ -24,10 +25,11 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: StationEvent
-      weight: 2
+      weight: 0.05 # Vulpstation - this is TERRIBLE for botanists
       startDelay: 10
       duration: 240
       earliestStart: 20
+      maxOccurences: 1 # Vulpstation
     - type: CargoGiftsRule
       description: cargo-gift-pizza-large
       sender: cargo-gift-default-sender
