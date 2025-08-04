@@ -37,6 +37,13 @@
   - type: Tag
     tags:
       - NoPaint
+  - type: PlaceableSurface # Vulpstation
+  - type: ItemPlacer # Vulpstation
+    maxEntities: 4
+    whitelist:
+      components:
+      - Temperature
+  - type: IntrinsicEntityHeater # Vulpstation
 
 - type: entity
   id: Bonfire
