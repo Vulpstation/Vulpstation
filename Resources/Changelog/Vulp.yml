@@ -214,3 +214,16 @@ Entries:
   id: 22
   time: '2025-08-02T22:58:26.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/43
+- author: Ko4erga
+  changes:
+    - type: Add
+      message: >-
+        Added a cutter machine for crafting patterned steel tiles, concrete and
+        wooden tiles.
+    - type: Tweak
+      message: >-
+        After ripping off patterned tiles, you get tiles with the respective
+        pattern, not just steel tiles.
+  id: 23
+  time: '2025-08-04T02:57:00.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/44
