@@ -270,3 +270,16 @@ Entries:
   id: 28
   time: '2025-08-05T21:14:49.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/49
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Added a Native job for those who like to roleplay as planet's native
+        population, and renamed passengers to colonists.
+    - type: Tweak
+      message: >-
+        Planet maps now have 2 anomaly slots open by default. Ahelp if you need
+        a dark portal placed for this.
+  id: 29
+  time: '2025-08-05T23:22:30.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/50
