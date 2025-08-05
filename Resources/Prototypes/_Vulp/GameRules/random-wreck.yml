@@ -6,12 +6,12 @@
   - type: StationEvent
     weight: 8
     earliestStart: 30
-    reoccurrenceDelay: 45
-    maxOccurrences: 4
+    reoccurrenceDelay: 60
+    maxOccurrences: 3
     minimumPlayers: 3
     duration: 15 # This is the delay between loading wrecks & sending them to ftl, and deleting their temporary maps (possibly deleting leftover debris)
     startAnnouncement: true
   - type: RandomSalvageWreckRule
-    debrisDistanceRange: 200, 550
-    debrisOffsetRange: 0, 50
+    debrisDistanceRange: 200, 300
+    debrisOffsetRange: 0, 25
     debrisCountRange: 2, 4

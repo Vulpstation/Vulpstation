@@ -1,8 +1,8 @@
 - type: biomeMarkerLayer
   id: Lizards
   prototype: MobLizard
-  minGroupSize: 3
-  maxGroupSize: 5
+  minGroupSize: 1
+  maxGroupSize: 3 # Vulpstation - nerfed due to potential performance issues with 3-5 lizards per group
 
 - type: biomeMarkerLayer
   id: WatchersLavaland

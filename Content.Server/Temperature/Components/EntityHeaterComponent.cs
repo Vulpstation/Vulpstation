@@ -12,6 +12,7 @@ public sealed partial class EntityHeaterComponent : Component
     /// <summary>
     /// Power used when heating at the high setting.
     /// Low and medium are 33% and 66% respectively.
+    /// Vulpstation - if 0, can heat even when unpowered.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Power = 2400f;

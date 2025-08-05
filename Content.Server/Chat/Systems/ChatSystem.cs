@@ -761,7 +761,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (SubtleOOCRespectsLOS && !data.InLOS)
                 continue; // Floofstation: some things dont go through walls (but they go through windows!)
 
-            _chatManager.ChatMessageToOne(ChatChannel.Emotes, action, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(ChatChannel.Subtle, action, wrappedMessage, source, false, session.Channel);
         }
 
         if (!hideLog)

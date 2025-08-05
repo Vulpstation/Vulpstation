@@ -96,6 +96,10 @@ public sealed partial class AnomalySystem
         var targetCoords = xform.Coordinates;
         var gridBounds = gridComp.LocalAABB.Scale(_configuration.GetCVar(CCVars.AnomalyGenerationGridBoundsScale));
 
+        // Vulpstation - if grid bounds are zero, enlarge them artificially
+        if (gridBounds.Size == Vector2.Zero)
+            gridBounds = new Box2(new Vector2(-50, -50), new Vector2(50, 50));
+
         for (var i = 0; i < 25; i++)
         {
             var randomX = Random.Next((int) gridBounds.Left, (int) gridBounds.Right);

@@ -2,12 +2,12 @@
   id: CrateFoodPizza
   parent: CratePlastic
   name: emergency pizza delivery
-  description: Help do your part to end station hunger by distributing pizza to underfunded departments! Includes 4 pizzas.
+  description: Help do your part to end station hunger by distributing pizza to underfunded departments! Includes 2 pizzas.
   components:
   - type: StorageFill
     contents:
     - id: FoodBoxPizzaFilled
-      amount: 4
+      amount: 2 # Vulpstation - nerfed
     - id: KnifePlastic
     - id: LidSalami
       prob: 0.01
@@ -16,14 +16,14 @@
   id: CrateFoodPizzaLarge
   parent: CratePlastic
   name: disaster pizza delivery
-  description: In the ultimate event that all else has failed, Find comfort in that more pizza solves everything. Includes 16 pizzas.
+  description: In the ultimate event that all else has failed, Find comfort in that more pizza solves everything. Includes 5 pizzas.
   components:
   - type: StorageFill
     contents:
     - id: FoodBoxPizzaFilled
-      amount: 16
+      amount: 5 # Vulpstation - nerfed
     - id: KnifePlastic
-      amount: 4
+      amount: 2 # Vulpstation - nerfed
     - id: LidSalami
       prob: 0.04
 

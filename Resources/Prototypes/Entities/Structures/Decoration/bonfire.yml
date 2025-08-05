@@ -37,6 +37,34 @@
   - type: Tag
     tags:
       - NoPaint
+  - type: Fixtures # Vulpstation
+    fixtures:
+      fix1: # For collisions
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+      fixHeater: # For ItemPlacer
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.35,0.35,0.35"
+        hard: false
+        layer:
+        - Impassable
+  - type: Physics
+    bodyType: Static
+  - type: PlaceableSurface # Vulpstation
+  - type: ItemPlacer # Vulpstation
+    maxEntities: 4
+    whitelist:
+      components:
+      - Temperature
+  - type: IntrinsicEntityHeater # Vulpstation
 
 - type: entity
   id: Bonfire

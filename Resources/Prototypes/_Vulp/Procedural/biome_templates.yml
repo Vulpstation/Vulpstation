@@ -1,0 +1,6 @@
+- type: biomeMarkerLayer
+  id: CritterSpawnLocations
+  prototype: VentEventSpawnerWeight5
+  radius: 18
+  minGroupSize: 1
+  maxGroupSize: 5

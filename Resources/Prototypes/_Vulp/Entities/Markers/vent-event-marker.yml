@@ -1,0 +1,24 @@
+- type: entity
+  name: Vent events
+  id: VentEventSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: VentCritterSpawnLocation
+
+- type: entity
+  id: VentEventSpawnerWeight3
+  parent: VentEventSpawner
+  components:
+  - type: VentCritterSpawnLocation
+    weight: 3
+
+- type: entity
+  id: VentEventSpawnerWeight5
+  parent: VentEventSpawner
+  components:
+  - type: VentCritterSpawnLocation
+    weight: 5

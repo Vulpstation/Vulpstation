@@ -53,6 +53,16 @@ public partial struct EntitySpawnEntry
     [DataField] public int MaxAmount = 1;
 
     public EntitySpawnEntry() { }
+
+    // Vulpstation
+    public EntitySpawnEntry(EntitySpawnEntry copy)
+    {
+        PrototypeId = copy.PrototypeId;
+        SpawnProbability = copy.SpawnProbability;
+        GroupId = copy.GroupId;
+        Amount = copy.Amount;
+        MaxAmount = copy.MaxAmount;
+    }
 }
 
 public static class EntitySpawnCollection
