@@ -99,6 +99,13 @@ namespace Content.Shared.Mind
         public bool PreventSuicide { get; set; }
 
         /// <summary>
+        ///     Vulpstation - prevents the user from sending OOC messages.
+        /// </summary>
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField("preventOOC")]
+        public bool PreventOOC { get; set; }
+
+        /// <summary>
         ///     The session of the player owning this mind.
         ///     Can be null, in which case the player is currently not logged in.
         /// </summary>
