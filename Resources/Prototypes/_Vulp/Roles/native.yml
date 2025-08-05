@@ -1,5 +1,5 @@
 - type: job
-  id: JobNative
+  id: Native
   name: job-name-native
   description: job-description-native
   playTimeTracker: JobNative
