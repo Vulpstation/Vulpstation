@@ -1,0 +1,35 @@
+- type: job
+  id: JobNative
+  name: job-name-native
+  description: job-description-native
+  playTimeTracker: JobNative
+  startingGear: NativeGear
+  icon: JobIconNative
+  supervisors: job-supervisors-noone
+  access:
+  - Freelancer # for now.
+
+# Passenger gear without the headset, but with a radio, for now. We can see about changing this later.
+- type: startingGear
+  id: NativeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorBlack
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
+    pocket1: RadioHandheld
+  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNative
+  icon:
+    sprite: /Textures/_Vulp/Interface/Misc/job_icons.rsi
+    state: native
+  jobName: job-name-native
+
+- type: playTimeTracker
+  id: JobNative
