@@ -55,6 +55,8 @@ using Timer = Robust.Shared.Timing.Timer;
 // Floof Station - For our own smites
 using Content.Server._Floof.Administration;
 using Content.Server._Floof.Administration.Components;
+using Content.Server.Mind;
+
 
 namespace Content.Server.Administration.Systems;
 
@@ -843,5 +845,26 @@ public sealed partial class AdminVerbSystem
             Impact = LogImpact.Extreme,
         };
         args.Verbs.Add(superBonk);
+
+        // Vulpstation section
+
+        if (_mindSystem.TryGetMind(args.Target, out _, out var mind))
+        {
+            var toggleOOCBan = new Verb
+            {
+                Text = "OOC mute toggle", // This is just here for ordering
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Alerts/Abilities/silenced.png")),
+                Act = () =>
+                {
+                    mind.PreventOOC = !mind.PreventOOC;
+                },
+                Impact = LogImpact.Extreme,
+                Message = mind.PreventOOC ? "Allow OOC" : "Prevent OOC",
+            };
+            args.Verbs.Add(toggleOOCBan);
+        }
+
+        // Vulpstation section end
     }
 }

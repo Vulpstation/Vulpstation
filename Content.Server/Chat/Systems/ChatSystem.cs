@@ -46,6 +46,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Dynamics.Joints;
 using Content.Server.Effects;
 using Content.Server.Hands.Systems;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
 
 
@@ -383,6 +384,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         // It doesn't make any sense for a non-player to send in-game OOC messages, whereas non-players may be sending
         // in-game IC messages.
         if (player?.AttachedEntity is not { Valid: true } entity || source != entity)
+            return;
+
+        // Vulpstation
+        if (player.GetMind() is {} mind && TryComp<MindComponent>(mind, out var mindc) && mindc.PreventOOC)
             return;
 
         message = SanitizeInGameOOCMessage(message);

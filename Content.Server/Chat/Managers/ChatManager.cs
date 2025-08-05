@@ -12,6 +12,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Content.Shared.Players;
 using Content.Shared.Players.RateLimiting;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -206,6 +207,10 @@ namespace Content.Server.Chat.Managers
         public void TrySendOOCMessage(ICommonSession player, string message, OOCChatType type)
         {
             if (HandleRateLimit(player) != RateLimitStatus.Allowed)
+                return;
+
+            // Vulpstation
+            if (player.GetMind() is {} mind && _entityManager.TryGetComponent<MindComponent>(mind, out var mindc) && mindc.PreventOOC)
                 return;
 
             // Check if message exceeds the character limit
