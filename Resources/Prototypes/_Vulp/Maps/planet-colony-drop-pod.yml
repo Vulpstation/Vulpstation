@@ -41,7 +41,7 @@
         - Passenger
         #- Anomaly # Floofstation
         availableJobs:
-          # Anomaly: [ 4, 4 ] # I'm not mapping a dark portal in a teeny tiny shuttle, fuck you
+          Anomaly: [ 2, 2 ]
           #service
           Captain: [ 1, 1 ]
           BlueshieldOfficer: [ 1, 1] #Floof - uncomment once implemented on Floof maps
@@ -60,10 +60,10 @@
           TechnicalAssistant: [ 4, 4 ]
           SeniorEngineer: [ 1, 1 ]
           #justice added by FloofStation
-          ChiefJustice: [ 1, 1 ] #FloofStation
-          Clerk: [ 1, 1 ] #FloofStation
-          Lawyer: [ 2, 2 ] #FloofStation
-          Prosecutor: [ 2, 2 ] #FloofStation
+#          ChiefJustice: [ 1, 1 ] #FloofStation
+#          Clerk: [ 1, 1 ] #FloofStation
+#          Lawyer: [ 2, 2 ] #FloofStation
+#          Prosecutor: [ 2, 2 ] #FloofStation
           #medical
           ChiefMedicalOfficer: [ 1, 1 ]
           Chemist: [ 2, 2 ]
@@ -103,5 +103,6 @@
           Mime: [ 1, 1 ]
           Musician: [ 1, 2 ]
           Passenger: [ -1, -1 ]
+          Native: [ -1, -1 ]
           #silicon
           #StationAi: [ 1, 1 ] - Floof not ready yet

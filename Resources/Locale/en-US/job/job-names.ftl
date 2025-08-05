@@ -38,7 +38,8 @@ job-name-janitor = Janitor
 job-name-chaplain = Chaplain
 job-name-botanist = Botanist
 job-name-bartender = Bartender
-job-name-passenger = Passenger
+# Vulpstation - renamed
+job-name-passenger = Colonist
 job-name-salvagespec = Salvage Specialist
 job-name-station-ai = Station AI
 job-name-qm = Logistics Officer
