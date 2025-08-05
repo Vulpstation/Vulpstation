@@ -236,3 +236,10 @@ Entries:
   id: 24
   time: '2025-08-04T05:24:05.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/45
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: Concrete tiles no longer let weather through
+  id: 25
+  time: '2025-08-05T00:59:48.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/46
