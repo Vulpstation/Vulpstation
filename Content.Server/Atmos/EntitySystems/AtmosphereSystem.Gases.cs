@@ -287,13 +287,17 @@ namespace Content.Server.Atmos.EntitySystems
         public GasCompareResult CompareExchange(GasMixture sample, GasMixture otherSample)
         {
             var moles = 0f;
+            if (sample.Pressure != otherSample.Pressure)
+                return (GasCompareResult) 0; // Who the hell thought returning the gas number from here is a good idea? It's unused.
+
 
             for(var i = 0; i < Atmospherics.TotalNumberOfGases; i++)
             {
                 var gasMoles = sample.Moles[i];
-                var delta = MathF.Abs(gasMoles - otherSample.Moles[i]);
-                if (delta > Atmospherics.MinimumMolesDeltaToMove && (delta > gasMoles * Atmospherics.MinimumAirRatioToMove))
-                    return (GasCompareResult)i; // We can move gases!
+                // Vulpstation - fuck the below, we check if there is any pressure to move first. We don't move moles.
+                // var delta = MathF.Abs(gasMoles - otherSample.Moles[i]);
+                // if (delta > Atmospherics.MinimumMolesDeltaToMove && (delta > gasMoles * Atmospherics.MinimumAirRatioToMove))
+                //     return (GasCompareResult)i; // We can move gases!
                 moles += gasMoles;
             }
 
