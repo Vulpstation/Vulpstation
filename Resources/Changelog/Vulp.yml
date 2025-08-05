@@ -243,3 +243,16 @@ Entries:
   id: 25
   time: '2025-08-05T00:59:48.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/46
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Food is way more expensive to purchase from cargo now. Try growing your
+        own or ask your local botanist!
+    - type: Fix
+      message: Anomalies should now correctly generate planetside.
+    - type: Fix
+      message: You can finally filter out subtle chat messages as intended.
+  id: 26
+  time: '2025-08-05T03:23:44.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/47
