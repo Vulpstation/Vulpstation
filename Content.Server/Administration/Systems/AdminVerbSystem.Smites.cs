@@ -852,7 +852,7 @@ public sealed partial class AdminVerbSystem
         {
             var toggleOOCBan = new Verb
             {
-                Text = mind.PreventOOC ? "Allow OOC" : "Prevent OOC",
+                Text = "OOC mute toggle", // This is just here for ordering
                 Category = VerbCategory.Smite,
                 Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Alerts/Abilities/silenced.png")),
                 Act = () =>
@@ -860,7 +860,7 @@ public sealed partial class AdminVerbSystem
                     mind.PreventOOC = !mind.PreventOOC;
                 },
                 Impact = LogImpact.Extreme,
-                Message = "Shut the fuck up",
+                Message = mind.PreventOOC ? "Allow OOC" : "Prevent OOC",
             };
             args.Verbs.Add(toggleOOCBan);
         }
