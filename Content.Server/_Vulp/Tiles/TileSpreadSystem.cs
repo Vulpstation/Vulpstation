@@ -44,7 +44,21 @@ public sealed class TileSpreadSystem : EntitySystem
             {
                 // don't spread under walls
                 if (_map.GetAnchoredEntities(new(uid, mapGrid), tile.GridIndices).Any(HasComp<AirtightComponent>))
+                {
+                    var tileType = _tileDefs[tile.Tile.TypeId].ID;
+                    var def = tileSpread.Tiles.FirstOrDefault(it => it.ID == tileType);
+                    if (def == null || !def.DieUnderWalls || def.SpreadsTo.Length == 0)
+                        continue;
+
+                    // Revert the tile back to a random base tile
+                    if (!_random.Prob(def.Probability))
+                        continue;
+
+                    var baseTile = _random.Pick(def.SpreadsTo);
+                    _map.SetTile(uid, mapGrid, tile.GridIndices, new(_tileDefs[baseTile].TileId));
+
                     continue;
+                }
 
                 var chosenTile = tileSpread.Tiles
                     .Where(info => info.SpreadsTo.Contains(_tileDefs[tile.Tile.TypeId].ID))
