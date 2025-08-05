@@ -1,0 +1,13 @@
+- type: salvageLoot
+  id: CritterSpawnLocations
+  guaranteed: true
+  loots:
+  - !type:BiomeMarkerLoot
+    proto: CritterSpawnLocations
+
+- type: salvageLoot
+  id: Lizards
+  guaranteed: true
+  loots:
+  - !type:BiomeMarkerLoot
+    proto: Lizards

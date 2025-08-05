@@ -1,20 +1,6 @@
 - type: biomeMarkerLayer
   id: CritterSpawnLocations
-  entityMask:
-    AsteroidRock: VentEventSpawnerWeight3
-    WallRock: VentEventSpawnerWeight3
-    WallRockBasalt: VentEventSpawnerWeight3
-    WallRockChromite: VentEventSpawnerWeight3
-    WallRockSand: VentEventSpawnerWeight3
-    WallRockSnow: VentEventSpawnerWeight3
-  maxCount: 6
-  radius: 16
+  prototype: VentEventSpawnerWeight5
+  radius: 18
   minGroupSize: 1
   maxGroupSize: 5
-
-- type: salvageLoot
-  id: CritterSpawnLocations
-  guaranteed: true
-  loots:
-  - !type:BiomeMarkerLoot
-    proto: CritterSpawnLocations
