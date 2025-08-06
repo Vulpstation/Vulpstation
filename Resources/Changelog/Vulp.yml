@@ -283,3 +283,16 @@ Entries:
   id: 29
   time: '2025-08-05T23:22:30.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/50
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Grass tiles (and other spreading tiles) can now "die" and revert back to
+        dirt when covered by a wall. It takes time, though.
+    - type: Add
+      message: You can now dump liquids into rivers.
+    - type: Tweak
+      message: You can now collect liquid plasma from plasma rivers.
+  id: 30
+  time: '2025-08-06T05:30:24.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/51
