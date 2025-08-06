@@ -49,4 +49,17 @@ public sealed partial class TileSpreadInfo
     /// </summary>
     [DataField]
     public float Probability = 0.01f;
+
+    /// <summary>
+    /// If true, the tiles listed in <see cref="SpreadsTo"/> will revert to <see cref="ID"/> when they are covered by a wall.
+    /// </summary>
+    [DataField]
+    public bool DieUnderWalls = false;
+
+    /// <summary>
+    /// If <see cref="DieUnderWalls"/> is true, this is the probability that a tile will die when a wall is placed over it.
+    /// </summary>
+    [DataField]
+    public float DeathProbability = 0.1f;
+
 }

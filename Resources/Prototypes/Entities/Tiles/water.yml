@@ -20,18 +20,18 @@
   - type: SolutionContainerManager
     solutions:
       pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable. 
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
         reagents:
         - ReagentId: Water
           Quantity: 9999999
-  - type: SolutionRegeneration
-    solution: tank
-    generated:
-      reagents:
-      - ReagentId: Water
-        Quantity: 100
+      drainBuffer: # Vulp
+        maxVol: 9999999
   - type: DrainableSolution
-    solution: pool
+    solution: pool # Vulp
+  - type: DumpableSolution # Vulp
+    solution: drainBuffer
+  - type: Drain # Vulp
+    autoDrain: false # It would be nice, BUT it's a major performance burder. Better make rain erase puddles or something.
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5

@@ -21,6 +21,7 @@
           tiles:
           - id: FloorPlanetGrass
             spreadsTo: [ FloorPlanetDirt ]
+            dieUnderWalls: true
       - type: StationJobs
         overflowJobs:
         - Passenger

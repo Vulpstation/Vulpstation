@@ -116,6 +116,12 @@ namespace Content.Server.Atmos
         public bool MapAtmosphere;
 
         /// <summary>
+        /// Vulpstation change. <seealso cref="ITileDefinition.RegenerateAtmos"/>
+        /// </summary>
+        [ViewVariables]
+        public int RegenerateAtmos;
+
+        /// <summary>
         /// If true, this tile does not actually exist on the grid, it only exists to represent the map's atmosphere for
         /// adjacent grid tiles.
         /// </summary>

@@ -2,6 +2,7 @@
   id: N14FloorWaterDirtyEntity
   name: water
   description: A real thirst quencher.
+  parent: FloorWaterEntity # Vulp
   placement:
     mode: SnapgridCenter
     snap:
@@ -17,15 +18,16 @@
     drawdepth: BelowFloor
     layers:
       - state: shoreline_water
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
-  - type: DrainableSolution
-    solution: pool
+# Vulp - don't uncomment.
+#  - type: SolutionContainerManager
+#    solutions:
+#      pool:
+#        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
+#        reagents:
+#        - ReagentId: Water
+#          Quantity: 9999999
+#  - type: DrainableSolution
+#    solution: pool
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
@@ -148,6 +150,8 @@
         reagents:
         - ReagentId: Water #TODO: Add WaterSalt Reagent.
           Quantity: 9999999
+      drain: # Vulp
+        maxVol: 9999999
 
 - type: entity
   parent: N14FloorWaterSaltDeep

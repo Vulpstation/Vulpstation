@@ -2,6 +2,7 @@
   id: FloorLiquidPlasmaEntity
   name: liquid plasma
   description: Sweet, expensive nectar. Don't consume.
+  parent: FloorWaterEntity # Vulp
   placement:
     mode: SnapgridCenter
     snap:
@@ -55,3 +56,15 @@
   - type: Tag
     tags:
     - HideContextMenu
+  # Vulpstation section
+  - type: SolutionContainerManager
+    solutions:
+      pool:
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
+        reagents:
+        - ReagentId: Plasma
+          Quantity: 9999999
+      drainBuffer: # Vulp - to collect waste
+        maxVol: 9999999
+        reagents: []
+  # Vulpstation section end
