@@ -31,6 +31,7 @@
   - type: DumpableSolution # Vulp
     solution: drainBuffer
   - type: Drain # Vulp
+    autoDrain: false # It would be nice, BUT it's a major performance burder. Better make rain erase puddles or something.
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
