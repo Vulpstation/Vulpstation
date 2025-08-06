@@ -43,7 +43,7 @@ public sealed class TileSpreadSystem : EntitySystem
             foreach (var tile in _map.GetAllTiles(uid, mapGrid))
             {
                 // don't spread under walls
-                if (_map.GetAnchoredEntities(new(uid, mapGrid), tile.GridIndices).Any(HasComp<AirtightComponent>))
+                if (_map.GetAnchoredEntities((uid, mapGrid), tile.GridIndices).Any(HasComp<AirtightComponent>))
                 {
                     var tileType = _tileDefs[tile.Tile.TypeId].ID;
                     var def = tileSpread.Tiles.FirstOrDefault(it => it.ID == tileType);
@@ -56,7 +56,6 @@ public sealed class TileSpreadSystem : EntitySystem
 
                     var baseTile = _random.Pick(def.SpreadsTo);
                     _map.SetTile(uid, mapGrid, tile.GridIndices, new(_tileDefs[baseTile].TileId));
-
                     continue;
                 }
 
