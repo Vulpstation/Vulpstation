@@ -363,11 +363,11 @@ namespace Content.Server.Atmos.EntitySystems
                 if (heatCapacity > Atmospherics.MinimumHeatCapacity)
                 {
                     var atmosHeatCapacity = GetHeatCapacity(mapAtmos.Mixture);
-                    var heat = heatCapacity * tempDiff;
-                    var atmosHeat = atmosHeatCapacity * tempDiff;
+                    var heat = heatCapacity * tile.Air.Temperature;
+                    var atmosHeat = atmosHeatCapacity * mapAtmos.Mixture.Temperature;
                     heatDiff = atmosHeat - heat;
 
-                    tile.Air.Temperature -= heat / heatCapacity * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
+                    tile.Air.Temperature += heatDiff / heatCapacity * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
                     tile.Temperature = tile.TemperatureArchived = tile.Air.Temperature;
                 }
             }
