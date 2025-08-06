@@ -351,6 +351,8 @@ namespace Content.Server.Atmos.EntitySystems
                 mapAtmos.Mixture,
                 true);
 
+            atmosSharer.Temperature = atmosSharer.TemperatureArchived = atmosSharer.Air!.Temperature;
+            tile.TemperatureArchived = tile.Temperature = tile.Air!.Temperature; // For some reason it isn't set by the system
             var pressureDiff = Share(tile, atmosSharer, tile.RegenerateAtmos);
 
             // Slow and gradual temperature change
