@@ -5,9 +5,10 @@
   - !type:BiomeMarkerLoot
     proto: CritterSpawnLocations
 
-- type: salvageLoot
-  id: Lizards
-  guaranteed: true
-  loots:
-  - !type:BiomeMarkerLoot
-    proto: Lizards
+# Causes performance issues, so commenting them out for now. We need to make the biome system archive entities on unloaded chunks.
+#- type: salvageLoot
+#  id: Lizards
+#  guaranteed: true
+#  loots:
+#  - !type:BiomeMarkerLoot
+#    proto: Lizards
