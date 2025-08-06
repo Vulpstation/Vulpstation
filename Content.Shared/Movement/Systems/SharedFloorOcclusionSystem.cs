@@ -1,13 +1,18 @@
 using Content.Shared.Movement.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Timing;
+
 
 namespace Content.Shared.Movement.Systems;
+
 
 /// <summary>
 /// Applies an occlusion shader for any relevant entities.
 /// </summary>
 public abstract class SharedFloorOcclusionSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -17,6 +22,8 @@ public abstract class SharedFloorOcclusionSystem : EntitySystem
 
     private void OnStartCollide(EntityUid uid, FloorOccluderComponent component, ref StartCollideEvent args)
     {
+        if (!_timing.IsFirstTimePredicted) // Vulp
+            return;
         var other = args.OtherEntity;
 
         if (!TryComp<FloorOcclusionComponent>(other, out var occlusion) ||
@@ -31,6 +38,8 @@ public abstract class SharedFloorOcclusionSystem : EntitySystem
 
     private void OnEndCollide(EntityUid uid, FloorOccluderComponent component, ref EndCollideEvent args)
     {
+        if (!_timing.IsFirstTimePredicted) // Vulp
+            return;
         var other = args.OtherEntity;
 
         if (!TryComp<FloorOcclusionComponent>(other, out var occlusion))
