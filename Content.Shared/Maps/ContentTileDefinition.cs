@@ -69,6 +69,14 @@ namespace Content.Shared.Maps
         [DataField("variants")] public byte Variants { get; set; } = 1;
 
         /// <summary>
+        ///     Vulpstation - speed at which this tile regenerates the air of the MapAtmosphere on its tile of the GridAtmosphere.
+        ///     This one is hard to explain, but if it's 0, then the tile doesn't regenerate.
+        ///     The greater the value is compared to 0, the SLOWER it regenerates.
+        ///     A value of 1 means it will regenerate almost instantly. A value of 100 will be quite slow.
+        /// </summary>
+        [DataField] public int RegenerateAtmos { get; set; } = 0;
+
+        /// <summary>
         /// This controls what variants the `variantize` command is allowed to use.
         /// </summary>
         [DataField("placementVariants")] public float[] PlacementVariants { get; set; } = { 1f };

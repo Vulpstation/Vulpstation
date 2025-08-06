@@ -12,6 +12,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Desert
 - type: tile
@@ -32,6 +33,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 - type: tile
   id: FloorLowDesert
@@ -51,6 +53,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Vulp: use indestructible sand on planets
 - type: tile
@@ -78,6 +81,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Grass
 - type: tile
@@ -109,6 +113,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: false # Vulp
+  regenerateAtmos: 8 # Vulp. Grass is a bit better.
 
 # Lava
 - type: tile
@@ -121,6 +126,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Snow
 - type: tile
@@ -156,6 +162,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Ice
 - type: tile
@@ -170,6 +177,7 @@
   mobFrictionNoInput: 0.05
   mobAcceleration: 2
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Dug snow
 - type: tile
@@ -188,5 +196,6 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  regenerateAtmos: 10 # Vulp
 
 # Wasteland

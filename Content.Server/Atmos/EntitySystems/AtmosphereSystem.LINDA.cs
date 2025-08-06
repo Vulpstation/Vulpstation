@@ -1,6 +1,7 @@
 using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
 
@@ -109,6 +110,10 @@ namespace Content.Server.Atmos.EntitySystems
             if(tile.Air!.Temperature > Atmospherics.MinimumTemperatureStartSuperConduction)
                 if (ConsiderSuperconductivity(gridAtmosphere, tile, true))
                     remove = false;
+
+            // Vulpstation - tile atmos regeneration
+            if (!tile.Space && tile.RegenerateAtmos != 0f && RegenerateMapAtmosphere((ent, ent.Comp1, ent.Comp3), tile))
+                remove = false;
 
             if(ExcitedGroups && tile.ExcitedGroup == null && remove)
                 RemoveActiveTile(gridAtmosphere, tile);
@@ -330,6 +335,45 @@ namespace Content.Server.Atmos.EntitySystems
             }
 
             return sharerTemperature;
+        }
+
+        /// <summary>
+        ///     Vulpstation - regenerates map atmosphere on the tile. Returns if there are any changes.
+        /// </summary>
+        public bool RegenerateMapAtmosphere(Entity<GridAtmosphereComponent, MapGridComponent> grid, TileAtmosphere tile)
+        {
+            if (!_mapAtmosQuery.TryComp(grid, out var mapAtmos))
+                return false;
+
+            var atmosSharer = new TileAtmosphere(
+                EntityUid.Invalid,
+                Vector2i.Zero,
+                mapAtmos.Mixture,
+                true);
+
+            atmosSharer.TemperatureArchived = tile.TemperatureArchived; // We don't want Share to change its temperature
+            var pressureDiff = Share(tile, atmosSharer, tile.RegenerateAtmos);
+
+            // Slow and gradual temperature change
+            var tempDiff = mapAtmos.Mixture.Temperature - tile.Air!.Temperature;
+            var heatDiff = 0f;
+            if (MathF.Abs(tempDiff) > Atmospherics.MinimumTemperatureDeltaToConsider)
+            {
+                var heatCapacity = GetHeatCapacity(tile.Air!);
+                if (heatCapacity > Atmospherics.MinimumHeatCapacity)
+                {
+                    var atmosHeatCapacity = GetHeatCapacity(mapAtmos.Mixture);
+                    var heat = heatCapacity * tempDiff;
+                    var atmosHeat = atmosHeatCapacity * tempDiff;
+                    heatDiff = atmosHeat - heat;
+
+                    tile.Air.Temperature -= heat / heatCapacity * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
+                    tile.Temperature = tile.TemperatureArchived = tile.Air.Temperature;
+                }
+            }
+
+            // If there was any differential, make sure to keep processing this tile
+            return pressureDiff > 0f || heatDiff > 0f;
         }
     }
 }

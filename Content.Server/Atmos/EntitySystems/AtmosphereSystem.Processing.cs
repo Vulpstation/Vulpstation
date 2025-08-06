@@ -191,6 +191,10 @@ namespace Content.Server.Atmos.EntitySystems
                 tile.ThermalConductivity = contentDef.ThermalConductivity;
                 tile.HeatCapacity = contentDef.HeatCapacity;
                 tile.NoGridTile = false;
+                // Vulpstation
+                tile.RegenerateAtmos = _tileDefinitionManager.TryGetDefinition(gTile.TypeId, out var def) && def is ContentTileDefinition cdef
+                    ? cdef.RegenerateAtmos
+                    : 0;
             }
             else
             {
