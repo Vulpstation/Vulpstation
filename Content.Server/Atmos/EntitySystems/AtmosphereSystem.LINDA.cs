@@ -351,11 +351,10 @@ namespace Content.Server.Atmos.EntitySystems
                 mapAtmos.Mixture,
                 true);
 
-            atmosSharer.TemperatureArchived = tile.TemperatureArchived; // We don't want Share to change its temperature
             var pressureDiff = Share(tile, atmosSharer, tile.RegenerateAtmos);
 
             // Slow and gradual temperature change
-            var tempDiff = mapAtmos.Mixture.Temperature - tile.Air!.Temperature;
+            var tempDiff = tile.Air!.Temperature - mapAtmos.Mixture.Temperature;
             var heatDiff = 0f;
             if (MathF.Abs(tempDiff) > Atmospherics.MinimumTemperatureDeltaToConsider)
             {
@@ -363,17 +362,15 @@ namespace Content.Server.Atmos.EntitySystems
                 if (heatCapacity > Atmospherics.MinimumHeatCapacity)
                 {
                     var atmosHeatCapacity = GetHeatCapacity(mapAtmos.Mixture);
-                    var heat = heatCapacity * tile.Air.Temperature;
-                    var atmosHeat = atmosHeatCapacity * mapAtmos.Mixture.Temperature;
-                    heatDiff = atmosHeat - heat;
+                    var rate = atmosHeatCapacity / heatCapacity;
 
-                    tile.Air.Temperature += heatDiff / heatCapacity * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
+                    tile.Air.Temperature -= tempDiff * rate * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
                     tile.Temperature = tile.TemperatureArchived = tile.Air.Temperature;
                 }
             }
 
             // If there was any differential, make sure to keep processing this tile
-            return pressureDiff > 0f || heatDiff > 0f;
+            return pressureDiff > 1f || heatDiff > 1f;
         }
     }
 }
