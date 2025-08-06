@@ -296,3 +296,12 @@ Entries:
   id: 30
   time: '2025-08-06T05:30:24.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/51
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Fixed a feedback loop in atmos regeneration that would sometimes lead to
+        the entire planet becoming superheated.
+  id: 31
+  time: '2025-08-06T17:06:47.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/52
