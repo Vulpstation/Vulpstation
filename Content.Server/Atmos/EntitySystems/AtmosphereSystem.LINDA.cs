@@ -34,6 +34,12 @@ namespace Content.Server.Atmos.EntitySystems
                     adjacentTileLength++;
             }
 
+            // Vulpstation - this MUST be run before Share to ensure this gets the latter considers the right TileAtmosphere.Temperature
+            var remove = true;
+            if(tile.Air!.Temperature > Atmospherics.MinimumTemperatureStartSuperConduction)
+                if (ConsiderSuperconductivity(gridAtmosphere, tile, true))
+                    remove = false;
+
             for(var i = 0; i < Atmospherics.Directions; i++)
             {
                 var direction = (AtmosDirection) (1 << i);
@@ -104,12 +110,6 @@ namespace Content.Server.Atmos.EntitySystems
                 React(tile.Air, tile);
 
             InvalidateVisuals(ent, tile);
-
-            var remove = true;
-
-            if(tile.Air!.Temperature > Atmospherics.MinimumTemperatureStartSuperConduction)
-                if (ConsiderSuperconductivity(gridAtmosphere, tile, true))
-                    remove = false;
 
             // Vulpstation - tile atmos regeneration
             if (!tile.Space && tile.RegenerateAtmos != 0f && RegenerateMapAtmosphere((ent, ent.Comp1, ent.Comp3), tile))
@@ -304,6 +304,10 @@ namespace Content.Server.Atmos.EntitySystems
 
                     if (!sharer.Immutable)
                         sharer.Temperature = MathF.Abs(MathF.Max(sharer.Temperature + heat / sharerHeatCapacity, Atmospherics.TCMB));
+
+                    // Vulpstation
+                    tileReceiver.Temperature = receiver.Temperature;
+                    tileSharer.Temperature = sharer.Temperature;
                 }
             }
 
@@ -348,13 +352,12 @@ namespace Content.Server.Atmos.EntitySystems
             var atmosSharer = new TileAtmosphere(
                 EntityUid.Invalid,
                 Vector2i.Zero,
-                mapAtmos.Mixture,
-                true);
+                mapAtmos.Mixture);
 
             var pressureDiff = Share(tile, atmosSharer, tile.RegenerateAtmos);
 
             // Slow and gradual temperature change
-            var tempDiff = tile.Air!.Temperature - mapAtmos.Mixture.Temperature;
+            var tempDiff = tile.Temperature - mapAtmos.Mixture.Temperature;
             var heatDiff = 0f;
             if (MathF.Abs(tempDiff) > Atmospherics.MinimumTemperatureDeltaToConsider)
             {
@@ -364,7 +367,7 @@ namespace Content.Server.Atmos.EntitySystems
                     var atmosHeatCapacity = GetHeatCapacity(mapAtmos.Mixture);
                     var rate = atmosHeatCapacity / heatCapacity;
 
-                    tile.Air.Temperature -= tempDiff * rate * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
+                    tile.Air!.Temperature -= tempDiff * rate * Atmospherics.OpenHeatTransferCoefficient * (1f / tile.RegenerateAtmos);
                     tile.Temperature = tile.TemperatureArchived = tile.Air.Temperature;
                 }
             }
