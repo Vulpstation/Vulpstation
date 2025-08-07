@@ -305,3 +305,16 @@ Entries:
   id: 31
   time: '2025-08-06T17:06:47.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/52
+- author: Mnemotechnician
+  changes:
+    - type: Remove
+      message: >-
+        Pressure-based gas equalization has been reverted, for now. Until I can
+        figure out how to make it better.
+    - type: Fix
+      message: >-
+        Finally fixed a bug that caused odd temperature fluctuations and
+        sometimes heat waves on planet tiles.
+  id: 32
+  time: '2025-08-07T04:37:07.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/54
