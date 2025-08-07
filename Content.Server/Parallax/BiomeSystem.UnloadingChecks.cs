@@ -1,5 +1,6 @@
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Fluids.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Containers;
@@ -12,24 +13,24 @@ public sealed partial class BiomeSystem
 {
     private void InitializeUnloadingChecks()
     {
-        SubscribeLocalEvent<BiomeUnloadingEvent>(BaseUnloadingChecks);
+        SubscribeLocalEvent<MetaDataComponent, BiomeUnloadingEvent>(BaseUnloadingChecks);
         SubscribeLocalEvent<MobStateComponent, BiomeUnloadingEvent>(OnMobUnloading);
         SubscribeLocalEvent<AnchorableComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
+        SubscribeLocalEvent<PuddleComponent, BiomeUnloadingEvent>(OnPuddleUnloading);
     }
 
-    private void BaseUnloadingChecks(EntityUid uid, BiomeUnloadingEvent args)
+    private void BaseUnloadingChecks(Entity<MetaDataComponent> ent, ref BiomeUnloadingEvent args)
     {
-        var savable = true;
-        if (EntityManager.ComponentCount(uid) > 20)
-            savable = false; // Just fuck saving that
-        else if (HasComp<ContainerManagerComponent>(uid))
-            savable = false; // Yeah no that'd require map serilization at least
-        else if (HasComp<ItemSlotsComponent>(uid))
-            savable = false;
+        if (!args.Unload)
+            return;
 
-        args.Unload = args.Unload && savable;
-        // Anchorable entities will be set to have their tile marked as modified below
-        // Unanchored entities and items can be just left on the ground
+        var uid = ent.Owner;
+        if (EntityManager.ComponentCount(uid) > 20)
+            args.Unload = false; // Just fuck saving that
+        else if (HasComp<ContainerManagerComponent>(uid))
+            args.Unload = false; // Yeah no that'd require map serilization at least
+        else if (HasComp<ItemSlotsComponent>(uid))
+            args.Unload = false;
     }
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
@@ -37,14 +38,20 @@ public sealed partial class BiomeSystem
         // Alive mobs just gen unloaded and then brought back
         // Dead mobs are deleted completely
         var isAlive = ent.Comp.CurrentState is MobState.Alive;
-        args.Unload = isAlive;
-        args.Delete = !isAlive;
+        args.Unload &= isAlive;
+        args.Delete |= !isAlive;
     }
 
     private void OnAnchorableUnloading(Entity<AnchorableComponent> ent, ref BiomeUnloadingEvent args)
     {
-        args.Unload = args.IsSameTile && Transform(ent).Anchored;
-        args.MarkTileModified = !args.IsSameTile;
+        args.Unload &= args.IsSameTile && Transform(ent).Anchored;
+        args.MarkTileModified |= !args.IsSameTile;
+    }
+
+    private void OnPuddleUnloading(Entity<PuddleComponent> ent, ref BiomeUnloadingEvent args)
+    {
+        // Fuck puddles, man
+        args.Delete = true;
     }
 }
 
