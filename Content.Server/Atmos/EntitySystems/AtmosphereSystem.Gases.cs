@@ -287,9 +287,6 @@ namespace Content.Server.Atmos.EntitySystems
         public GasCompareResult CompareExchange(GasMixture sample, GasMixture otherSample)
         {
             var moles = 0f;
-            if (Math.Abs(sample.Pressure - otherSample.Pressure) > Atmospherics.MinimumMolesDeltaToMove)
-                return (GasCompareResult) 0; // Who the hell thought returning the gas number from here is a good idea? It's unused.
-
 
             for(var i = 0; i < Atmospherics.TotalNumberOfGases; i++)
             {

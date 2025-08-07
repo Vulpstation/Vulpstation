@@ -38,7 +38,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             tile.MonstermosInfo = new MonstermosInfo();
 
-            var startingPressure = tile.Air.Pressure; // Vulp - use pressure
+            var startingMoles = tile.Air.TotalMoles;
             var runAtmos = false;
 
             // We need to figure if this is necessary
@@ -48,8 +48,8 @@ namespace Content.Server.Atmos.EntitySystems
                 if (!tile.AdjacentBits.IsFlagSet(direction)) continue;
                 var other = tile.AdjacentTiles[i];
                 if (other?.Air == null) continue;
-                var comparisonPressure = other.Air.Pressure; // Vulp - use pressure
-                if (!(MathF.Abs(comparisonPressure - startingPressure) > Atmospherics.MinimumMolesDeltaToMove)) continue;
+                var comparisonMoles = other.Air.TotalMoles;
+                if (!(MathF.Abs(comparisonMoles - startingMoles) > Atmospherics.MinimumMolesDeltaToMove)) continue;
                 runAtmos = true;
                 break;
             }
@@ -62,7 +62,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             var gridAtmosphere = ent.Comp1;
             var queueCycle = ++gridAtmosphere.EqualizationQueueCycleControl;
-            var totalPressure = 0f; // Vulp - use pressure
+            var totalMoles = 0f;
             _equalizeTiles[0] = tile;
             tile.MonstermosInfo.LastQueueCycle = queueCycle;
             var tileCount = 1;
@@ -74,9 +74,9 @@ namespace Content.Server.Atmos.EntitySystems
                 if (i < Atmospherics.MonstermosTileLimit)
                 {
                     // Tiles in the _equalizeTiles array cannot have null air.
-                    var tilePressure = exploring.Air!.Pressure; // Vulp - use pressure
-                    exploring.MonstermosInfo.PressureDelta = tilePressure; // Vulp - use pressure
-                    totalPressure += tilePressure;
+                    var tileMoles = exploring.Air!.TotalMoles;
+                    exploring.MonstermosInfo.MoleDelta = tileMoles;
+                    totalMoles += tileMoles;
                 }
 
                 for (var j = 0; j < Atmospherics.Directions; j++)
@@ -117,7 +117,7 @@ namespace Content.Server.Atmos.EntitySystems
                 tileCount = Atmospherics.MonstermosTileLimit;
             }
 
-            var averagePressure = totalPressure / (tileCount);
+            var averageMoles = totalMoles / (tileCount);
             var giverTilesLength = 0;
             var takerTilesLength = 0;
 
@@ -125,8 +125,8 @@ namespace Content.Server.Atmos.EntitySystems
             {
                 var otherTile = _equalizeTiles[i]!;
                 otherTile.MonstermosInfo.LastCycle = cycleNum;
-                otherTile.MonstermosInfo.PressureDelta -= averagePressure;
-                if (otherTile.MonstermosInfo.PressureDelta > 0)
+                otherTile.MonstermosInfo.MoleDelta -= averageMoles;
+                if (otherTile.MonstermosInfo.MoleDelta > 0)
                 {
                     _equalizeGiverTiles[giverTilesLength++] = otherTile;
                 }
@@ -148,7 +148,7 @@ namespace Content.Server.Atmos.EntitySystems
                 {
                     var otherTile = _equalizeTiles[i]!;
                     otherTile.MonstermosInfo.FastDone = true;
-                    if (!(otherTile.MonstermosInfo.PressureDelta > 0)) continue;
+                    if (!(otherTile.MonstermosInfo.MoleDelta > 0)) continue;
                     var eligibleDirections = AtmosDirection.Invalid;
                     var eligibleDirectionCount = 0;
                     for (var j = 0; j < Atmospherics.Directions; j++)
@@ -169,15 +169,15 @@ namespace Content.Server.Atmos.EntitySystems
                     if (eligibleDirectionCount <= 0)
                         continue; // Oof we've painted ourselves into a corner. Bad luck. Next part will handle this.
 
-                    var pressureToMove = otherTile.MonstermosInfo.PressureDelta / eligibleDirectionCount; // Vulp - use pressure
+                    var molesToMove = otherTile.MonstermosInfo.MoleDelta / eligibleDirectionCount;
                     for (var j = 0; j < Atmospherics.Directions; j++)
                     {
                         var direction = (AtmosDirection) (1 << j);
                         if (!eligibleDirections.IsFlagSet(direction)) continue;
 
-                        AdjustEqMovement(otherTile, direction, pressureToMove); // Vulp - use pressure
-                        otherTile.MonstermosInfo.PressureDelta -= pressureToMove;
-                        otherTile.AdjacentTiles[j]!.MonstermosInfo.PressureDelta += pressureToMove;
+                        AdjustEqMovement(otherTile, direction, molesToMove);
+                        otherTile.MonstermosInfo.MoleDelta -= molesToMove;
+                        otherTile.AdjacentTiles[j]!.MonstermosInfo.MoleDelta += molesToMove;
                     }
                 }
 
@@ -187,7 +187,7 @@ namespace Content.Server.Atmos.EntitySystems
                 for (var i = 0; i < tileCount; i++)
                 {
                     var otherTile = _equalizeTiles[i]!;
-                    if (otherTile.MonstermosInfo.PressureDelta > 0)
+                    if (otherTile.MonstermosInfo.MoleDelta > 0)
                     {
                         _equalizeGiverTiles[giverTilesLength++] = otherTile;
                     }
@@ -213,7 +213,7 @@ namespace Content.Server.Atmos.EntitySystems
                     giver.MonstermosInfo.LastSlowQueueCycle = queueCycleSlow;
                     for (var i = 0; i < queueLength; i++)
                     {
-                        if (giver.MonstermosInfo.PressureDelta <= 0)
+                        if (giver.MonstermosInfo.MoleDelta <= 0)
                             break; // We're done here now. Let's not do more work than needed.
 
                         var otherTile = _equalizeQueue[i];
@@ -223,7 +223,7 @@ namespace Content.Server.Atmos.EntitySystems
                             if (!otherTile.AdjacentBits.IsFlagSet(direction))
                                 continue;
 
-                            if (giver.MonstermosInfo.PressureDelta <= 0)
+                            if (giver.MonstermosInfo.MoleDelta <= 0)
                                 break; // We're done here now. Let's not do more work than needed.
 
                             var otherTile2 = otherTile.AdjacentTiles[k];
@@ -234,23 +234,22 @@ namespace Content.Server.Atmos.EntitySystems
                             otherTile2.MonstermosInfo.LastSlowQueueCycle = queueCycleSlow;
                             otherTile2.MonstermosInfo.CurrentTransferDirection = k.ToOppositeDir();
                             otherTile2.MonstermosInfo.CurrentTransferAmount = 0;
-                            if (otherTile2.MonstermosInfo.PressureDelta < 0)
+                            if (otherTile2.MonstermosInfo.MoleDelta < 0)
                             {
                                 // This tile needs gas. Let's give it to 'em.
-                                // Vulp - use pressure everywhere instead of moles
-                                if (-otherTile2.MonstermosInfo.PressureDelta > giver.MonstermosInfo.PressureDelta)
+                                if (-otherTile2.MonstermosInfo.MoleDelta > giver.MonstermosInfo.MoleDelta)
                                 {
                                     // We don't have enough gas!
-                                    otherTile2.MonstermosInfo.CurrentTransferAmount -= giver.MonstermosInfo.PressureDelta;
-                                    otherTile2.MonstermosInfo.PressureDelta += giver.MonstermosInfo.PressureDelta;
-                                    giver.MonstermosInfo.PressureDelta = 0;
+                                    otherTile2.MonstermosInfo.CurrentTransferAmount -= giver.MonstermosInfo.MoleDelta;
+                                    otherTile2.MonstermosInfo.MoleDelta += giver.MonstermosInfo.MoleDelta;
+                                    giver.MonstermosInfo.MoleDelta = 0;
                                 }
                                 else
                                 {
                                     // We have enough gas.
-                                    otherTile2.MonstermosInfo.CurrentTransferAmount += otherTile2.MonstermosInfo.PressureDelta;
-                                    giver.MonstermosInfo.PressureDelta += otherTile2.MonstermosInfo.PressureDelta;
-                                    otherTile2.MonstermosInfo.PressureDelta = 0;
+                                    otherTile2.MonstermosInfo.CurrentTransferAmount += otherTile2.MonstermosInfo.MoleDelta;
+                                    giver.MonstermosInfo.MoleDelta += otherTile2.MonstermosInfo.MoleDelta;
+                                    otherTile2.MonstermosInfo.MoleDelta = 0;
                                 }
                             }
                         }
@@ -286,7 +285,7 @@ namespace Content.Server.Atmos.EntitySystems
                     taker.MonstermosInfo.LastSlowQueueCycle = queueCycleSlow;
                     for (var i = 0; i < queueLength; i++)
                     {
-                        if (taker.MonstermosInfo.PressureDelta >= 0)
+                        if (taker.MonstermosInfo.MoleDelta >= 0)
                             break; // We're done here now. Let's not do more work than needed.
 
                         var otherTile = _equalizeQueue[i];
@@ -296,7 +295,7 @@ namespace Content.Server.Atmos.EntitySystems
                             if (!otherTile.AdjacentBits.IsFlagSet(direction)) continue;
                             var otherTile2 = otherTile.AdjacentTiles[k];
 
-                            if (taker.MonstermosInfo.PressureDelta >= 0) break; // We're done here now. Let's not do more work than needed.
+                            if (taker.MonstermosInfo.MoleDelta >= 0) break; // We're done here now. Let's not do more work than needed.
                             if (otherTile2 == null || otherTile2.AdjacentBits == 0 || otherTile2.MonstermosInfo.LastQueueCycle != queueCycle) continue;
                             DebugTools.Assert(otherTile2.AdjacentBits.IsFlagSet(direction.GetOpposite()));
                             if (otherTile2.MonstermosInfo.LastSlowQueueCycle == queueCycleSlow) continue;
@@ -305,23 +304,22 @@ namespace Content.Server.Atmos.EntitySystems
                             otherTile2.MonstermosInfo.CurrentTransferDirection = k.ToOppositeDir();
                             otherTile2.MonstermosInfo.CurrentTransferAmount = 0;
 
-                            if (otherTile2.MonstermosInfo.PressureDelta > 0)
+                            if (otherTile2.MonstermosInfo.MoleDelta > 0)
                             {
                                 // This tile has gas we can suck, so let's
-                                // Vulp - use pressure everywhere instead of moles
-                                if (otherTile2.MonstermosInfo.PressureDelta > -taker.MonstermosInfo.PressureDelta)
+                                if (otherTile2.MonstermosInfo.MoleDelta > -taker.MonstermosInfo.MoleDelta)
                                 {
                                     // They have enough gas
-                                    otherTile2.MonstermosInfo.CurrentTransferAmount -= taker.MonstermosInfo.PressureDelta;
-                                    otherTile2.MonstermosInfo.PressureDelta += taker.MonstermosInfo.PressureDelta;
-                                    taker.MonstermosInfo.PressureDelta = 0;
+                                    otherTile2.MonstermosInfo.CurrentTransferAmount -= taker.MonstermosInfo.MoleDelta;
+                                    otherTile2.MonstermosInfo.MoleDelta += taker.MonstermosInfo.MoleDelta;
+                                    taker.MonstermosInfo.MoleDelta = 0;
                                 }
                                 else
                                 {
                                     // They don't have enough gas!
-                                    otherTile2.MonstermosInfo.CurrentTransferAmount += otherTile2.MonstermosInfo.PressureDelta;
-                                    taker.MonstermosInfo.PressureDelta += otherTile2.MonstermosInfo.PressureDelta;
-                                    otherTile2.MonstermosInfo.PressureDelta = 0;
+                                    otherTile2.MonstermosInfo.CurrentTransferAmount += otherTile2.MonstermosInfo.MoleDelta;
+                                    taker.MonstermosInfo.MoleDelta += otherTile2.MonstermosInfo.MoleDelta;
+                                    otherTile2.MonstermosInfo.MoleDelta = 0;
                                 }
                             }
                         }
@@ -645,7 +643,7 @@ namespace Content.Server.Atmos.EntitySystems
                     FinalizeEqNeighbors(ent, tile, transferDirections);
 
                 otherTile.MonstermosInfo[i.ToOppositeDir()] = 0;
-                Merge(otherTile.Air, tile.Air.RemovePressure(amount)); // Vulp - use pressure
+                Merge(otherTile.Air, tile.Air.Remove(amount));
                 InvalidateVisuals(ent, tile);
                 InvalidateVisuals(ent, otherTile);
                 ConsiderPressureDifference(ent, tile, direction, amount);
@@ -666,7 +664,7 @@ namespace Content.Server.Atmos.EntitySystems
             }
         }
 
-        private void AdjustEqMovement(TileAtmosphere tile, AtmosDirection direction, float amount) // Vulp - uses pressure now
+        private void AdjustEqMovement(TileAtmosphere tile, AtmosDirection direction, float amount)
         {
             DebugTools.AssertNotNull(tile);
             DebugTools.Assert(tile.AdjacentBits.IsFlagSet(direction));
@@ -719,7 +717,7 @@ namespace Content.Server.Atmos.EntitySystems
                 if (b == null)
                     return 1;
 
-                return a.MonstermosInfo.PressureDelta.CompareTo(b.MonstermosInfo.PressureDelta);
+                return a.MonstermosInfo.MoleDelta.CompareTo(b.MonstermosInfo.MoleDelta);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Content.Server.Atmos
         public long LastSlowQueueCycle;
 
         [ViewVariables]
-        public float PressureDelta; // Vulpstation - changed to use pressure
+        public float MoleDelta;
 
         [ViewVariables]
         public float TransferDirectionEast;
