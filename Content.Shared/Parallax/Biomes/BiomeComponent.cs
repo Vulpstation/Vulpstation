@@ -62,6 +62,12 @@ public sealed partial class BiomeComponent : Component
     public Dictionary<Vector2i, Dictionary<EntityUid, Vector2i>> LoadedEntities = new();
 
     /// <summary>
+    /// Vulpstation - what entities should spawn at these locations instead of the default? if null, then nothing
+    /// </summary>
+    [DataField]
+    public Dictionary<Vector2i, Dictionary<Vector2i, string?>> RepalcedEntities = new();
+
+    /// <summary>
     /// Currently active chunks
     /// </summary>
     [DataField("loadedChunks")]
