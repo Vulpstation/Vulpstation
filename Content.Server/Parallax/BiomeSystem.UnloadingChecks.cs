@@ -25,12 +25,11 @@ public sealed partial class BiomeSystem
             return;
 
         var uid = ent.Owner;
-        if (EntityManager.ComponentCount(uid) > 20)
-            args.Unload = false; // Just fuck saving that
-        else if (HasComp<ContainerManagerComponent>(uid))
-            args.Unload = false; // Yeah no that'd require map serilization at least
-        else if (HasComp<ItemSlotsComponent>(uid))
+        if (HasComp<ContainerManagerComponent>(uid) || HasComp<ItemSlotsComponent>(uid))
+        {
             args.Unload = false;
+            args.MarkTileModified |= !args.Unload;
+        }
     }
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
@@ -51,6 +50,7 @@ public sealed partial class BiomeSystem
     private void OnPuddleUnloading(Entity<PuddleComponent> ent, ref BiomeUnloadingEvent args)
     {
         // Fuck puddles, man
+        args.Unload = false;
         args.Delete = true;
     }
 }

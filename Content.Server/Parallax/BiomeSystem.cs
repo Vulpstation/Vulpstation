@@ -1011,13 +1011,13 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     ev.IsSameTile = false;
                     RaiseLocalEvent(ent.Value, ref ev);
 
+                    // This is guaranteed to not be a naturally generated entity, so MarkTileModified is ignored unless both delete and unload are false
                     if (ev.Delete || ev.Unload)
                     {
                         replacedEntities[indices] = ev.Delete ? null : MetaData(ent.Value).EntityPrototype?.ID;
                         Del(ent.Value);
                     }
-
-                    if (ev.MarkTileModified)
+                    else if (ev.MarkTileModified)
                     {
                         modified.Add(indices);
                         continue;
