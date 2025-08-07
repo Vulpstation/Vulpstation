@@ -162,14 +162,6 @@ namespace Content.Shared.Atmos
             return RemoveRatio(amount / TotalMoles);
         }
 
-        // Vulpstation
-        public GasMixture RemovePressure(float amount)
-        {
-            // dN = (dP * V) / (R * T)
-            var moles = (amount * Volume) / (Atmospherics.R * Temperature);
-            return Remove(moles);
-        }
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GasMixture RemoveRatio(float ratio)
         {

@@ -232,13 +232,7 @@ public partial class AtmosphereSystem
         if (!_atmosQuery.Resolve(grid, ref grid.Comp, false))
             return TileMixtureEnumerator.Empty;
 
-        // Vulp - why the hell did the original code not do this?!
-        if (grid.Comp.Tiles.TryGetValue(tile, out var atmosTile) && excite)
-            foreach (var exciteTile in atmosTile.AdjacentTiles)
-                if (exciteTile != null)
-                    AddActiveTile(grid.Comp, exciteTile);
-
-        return !grid.Comp.Tiles.TryGetValue(tile, out atmosTile)
+        return !grid.Comp.Tiles.TryGetValue(tile, out var atmosTile)
             ? TileMixtureEnumerator.Empty
             : new(atmosTile.AdjacentTiles);
     }
