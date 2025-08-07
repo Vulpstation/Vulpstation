@@ -22,8 +22,6 @@ public abstract class SharedFloorOcclusionSystem : EntitySystem
 
     private void OnStartCollide(EntityUid uid, FloorOccluderComponent component, ref StartCollideEvent args)
     {
-        if (!_timing.IsFirstTimePredicted) // Vulp
-            return;
         var other = args.OtherEntity;
 
         if (!TryComp<FloorOcclusionComponent>(other, out var occlusion) ||
@@ -38,8 +36,6 @@ public abstract class SharedFloorOcclusionSystem : EntitySystem
 
     private void OnEndCollide(EntityUid uid, FloorOccluderComponent component, ref EndCollideEvent args)
     {
-        if (!_timing.IsFirstTimePredicted) // Vulp
-            return;
         var other = args.OtherEntity;
 
         if (!TryComp<FloorOcclusionComponent>(other, out var occlusion))
