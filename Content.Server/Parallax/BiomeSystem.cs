@@ -12,6 +12,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Decals;
 using Content.Shared.Ghost;
 using Content.Shared.Gravity;
+using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Parallax.Biomes;
@@ -50,6 +51,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDef = default!; // Vulpstation
 
     private EntityQuery<BiomeComponent> _biomeQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
@@ -324,7 +326,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         while (biomes.MoveNext(out var biome))
         {
-            _activeChunks.Add(biome, _tilePool.Get());
+            _activeChunks[biome] = _tilePool.Get(); // Vulpstation - will those *** ever stop using Dictionary.Add?!
             _markerChunks.GetOrNew(biome);
         }
 
@@ -761,6 +763,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         Vector2i chunk,
         int seed)
     {
+        var replacedTiles = component.ReplacedTiles.GetValueOrDefault(chunk);
         component.ModifiedTiles.TryGetValue(chunk, out var modified);
         modified ??= _tilePool.Get();
         _tiles.Clear();
@@ -780,10 +783,16 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 if (_mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef) && !tileRef.Tile.IsEmpty)
                     continue;
 
-                if (!TryGetBiomeTile(indices, component.Layers, seed, grid, out var biomeTile))
+                // Vulpstation - rewritten
+                var biomeTile =
+                    replacedTiles != null && replacedTiles.TryGetValue(indices, out var biomeTile1) ? biomeTile1
+                    : TryGetBiomeTile(indices, component.Layers, seed, grid, out var biomeTile2) ? biomeTile2.Value
+                    : Tile.Empty;
+
+                if (biomeTile.IsEmpty)
                     continue;
 
-                _tiles.Add((indices, biomeTile.Value));
+                _tiles.Add((indices, biomeTile));
             }
         }
 
@@ -791,7 +800,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _tiles.Clear();
 
         // Now do entities
-        var replacedEntities = component.RepalcedEntities.GetValueOrDefault(chunk);
+        var replacedEntities = component.ReplacedEntities.GetValueOrDefault(chunk); // Vulpstation
         var loadedEntities = new Dictionary<EntityUid, Vector2i>();
         component.LoadedEntities.Add(chunk, loadedEntities);
 
@@ -815,10 +824,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     continue;
 
                 // // Don't mess with anything that's potentially anchored.
-                // var anchored = _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, indices);
-                //
-                // if (anchored.MoveNext(out _) || !TryGetEntity(indices, component, grid, out var entPrototype))
-                //     continue;
+                var anchored = _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, indices);
+
+                if (anchored.MoveNext(out _))
+                    continue;
                 // Just track loaded chunks for now.
                 // Vulpstation - rewritten
                 string? entPrototype = null;
@@ -917,7 +926,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         modified ??= new HashSet<Vector2i>();
         // Vulp - instead of marking those tiles as modified and keeping them, just keep note that entities on them don't need to be regenerated
         // We don't pool this one because pretty much every chunk will contain ores that do not need to be replaced
-        var replacedEntities = component.RepalcedEntities.GetOrNew(chunk);
+        var replacedEntities = component.ReplacedEntities.GetOrNew(chunk);
+        var replacedTiles = component.ReplacedTiles.GetOrNew(chunk);
+        replacedEntities.Clear();
+        replacedTiles.Clear();
 
         // Delete decals
         foreach (var (dec, indices) in component.LoadedDecals[chunk])
@@ -936,8 +948,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         // This is because if we want to save the map (e.g. persistent server) it makes the file much smaller
         // and also if the map is enormous will make stuff like physics broadphase much faster
         var xformQuery = GetEntityQuery<TransformComponent>();
-        var ev = new BiomeUnloadingEvent(); // Vulpstation
-
         foreach (var (ent, tile) in component.LoadedEntities[chunk])
         {
             if (Deleted(ent) || !xformQuery.TryGetComponent(ent, out var xform))
@@ -949,29 +959,17 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             // It's moved
             var entTile = _mapSystem.LocalToTile(gridUid, grid, xform.Coordinates);
 
-            // if (!xform.Anchored /**|| entTile != tile*/)
-            // {
-            //     missingEntities.Add(tile);
-            //     continue;
-            // }
-
-            // Vulpstation - this is very expensive and, in most cases, unnecessary.
-            // if (!EntityManager.IsDefault(ent))
-            // {
-            //     modified.Add(tile);
-            //     continue;
-            // }
-
             // Vulpstation - instead, we raise an event.
+            var ev = new BiomeUnloadingEvent();
             RaiseLocalEvent(ent, ref ev);
-            ev.IsSameTile = tile == entTile;
 
-            if (ev.Delete)
-                replacedEntities[tile] = null;
             if (ev.MarkTileModified)
                 modified.Add(tile);
             if (ev.Unload || ev.Delete)
+            {
+                replacedEntities[tile] = ev.Delete ? null : MetaData(ent).EntityPrototype?.ID;
                 Del(ent);
+            }
         }
 
         // Unset tiles (if the data is custom)
@@ -988,6 +986,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         atmosChunk.Clear();
         // Vulpstation section end
 
+        var chunkTiles = new int[ChunkSize * ChunkSize];
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
@@ -995,6 +994,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 var indices = new Vector2i(x + chunk.X, y + chunk.Y);
 
                 // Vulpstation - serialize atmos first. This does not care if the tile itself was modified, only the atmos.
+                // We don't want to serialize default map atmos because that can change e.g. with the weatheraaa
                 if (defaultMix != null
                     && _atmos.GetTileMixture((gridUid, atmos, null), (gridUid, mapAtmos), indices) is { } currentMix
                     && !defaultMix.ApproximatelyEqual(currentMix))
@@ -1006,9 +1006,11 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 // Don't mess with anything that's potentially anchored.
                 var anchored = grid.GetAnchoredEntitiesEnumerator(indices);
                 // Vulpstation - if this is default, just let it be. Otherwise raise an event.
-                if (anchored.MoveNext(out var ent) && !component.LoadedEntities[chunk].ContainsKey(ent.Value))
+                if (anchored.MoveNext(out var ent)
+                    && !component.LoadedEntities[chunk].ContainsKey(ent.Value)
+                    && !replacedEntities.ContainsKey(indices))
                 {
-                    ev.IsSameTile = false;
+                    var ev = new BiomeUnloadingEvent(false);
                     RaiseLocalEvent(ent.Value, ref ev);
 
                     // This is guaranteed to not be a naturally generated entity, so MarkTileModified is ignored unless both delete and unload are false
@@ -1019,22 +1021,24 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     }
                     else if (ev.MarkTileModified)
                     {
+                        replacedEntities.Remove(indices); // Just in case there's e.g. a puddle under an APC that's on a rock, so we don't accidentally remove the rock
                         modified.Add(indices);
                         continue;
                     }
                 }
-                // if (anchored.MoveNext(out var ent))
-                // {
-                //     modified.Add(indices);
-                //     continue;
-                // }
 
-                // If it's default data unload the tile.
-                if (!TryGetBiomeTile(indices, component.Layers, seed, null, out var biomeTile) ||
-                    _mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef) && tileRef.Tile != biomeTile.Value)
+                // Vulpstation - don't mark the tile as modified, we don't want to have atmos and tilespread process it.
+                if (_mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef)
+                    && (!TryGetBiomeTile(indices, component.Layers, seed, null, out var biomeTile) || biomeTile.Value != tileRef.Tile))
                 {
-                    modified.Add(indices);
-                    continue;
+                    // To do: maybe introduce a special field for this? Idfk. We need a way to distinguish planet tiles and this works.
+                    if (((ContentTileDefinition) _tileDef[tileRef.Tile.TypeId]).RegenerateAtmos != 0)
+                        replacedTiles[indices] = tileRef.Tile; // This is a planet tile, don't preserve it. Any atmos on it will slowly return to normal anyway.
+                    else
+                    {
+                        modified.Add(indices); // This is a man-made tile, do preserve it, because it can contain atmos.
+                        continue;
+                    }
                 }
 
                 tiles.Add((indices, Tile.Empty));
@@ -1063,7 +1067,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         }
         // Vulpstation
         if (replacedEntities.Count == 0)
-            component.RepalcedEntities.Remove(chunk);
+            component.ReplacedEntities.Remove(chunk);
+        if (replacedTiles.Count == 0)
+            component.ReplacedTiles.Remove(chunk);
     }
 
     #endregion

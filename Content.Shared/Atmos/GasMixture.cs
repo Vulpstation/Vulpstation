@@ -319,7 +319,7 @@ namespace Content.Shared.Atmos
 
             for (var i = 0; i < Atmospherics.AdjustedNumberOfGases; i++)
             {
-                if (Math.Abs(Moles[i] - other.Moles[i]) > 0.5f)
+                if (Math.Abs(Moles[i] - other.Moles[i]) > 2f)
                     return false;
             }
 

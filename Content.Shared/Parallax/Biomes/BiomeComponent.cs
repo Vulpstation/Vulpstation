@@ -2,6 +2,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Parallax.Biomes.Layers;
 using Content.Shared.Parallax.Biomes.Markers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Noise;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -65,7 +66,13 @@ public sealed partial class BiomeComponent : Component
     /// Vulpstation - what entities should spawn at these locations instead of the default? if null, then nothing
     /// </summary>
     [DataField]
-    public Dictionary<Vector2i, Dictionary<Vector2i, string?>> RepalcedEntities = new();
+    public Dictionary<Vector2i, Dictionary<Vector2i, string?>> ReplacedEntities = new();
+
+    /// <summary>
+    /// Vulpstation - what tiles in this chunk are different from the default.
+    /// </summary>
+    [DataField]
+    public Dictionary<Vector2i, Dictionary<Vector2i, Tile>> ReplacedTiles = new();
 
     /// <summary>
     /// Currently active chunks
