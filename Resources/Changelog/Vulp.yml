@@ -318,3 +318,34 @@ Entries:
   id: 32
   time: '2025-08-07T04:37:07.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/54
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Entities should no longer get stuck in the "in-water" state after
+        touching a river tile.
+    - type: Fix
+      message: >-
+        Stock trading and automatic AA cabinet unlocking should work as expected
+        now.
+    - type: Tweak
+      message: >-
+        During chunk unloading, significantly more entities will be temporarily
+        deleted. This should improve server performance. This includes NPCs -
+        they won't be able to just wander off into the void and then appear
+        inside a wall anymore!
+    - type: Fix
+      message: >-
+        Admin ghosts and centcom officials now have access to the spare ID
+        cabinet.
+    - type: Tweak
+      message: >-
+        All command roles now have roundstart Orders access. No need to break
+        into the spare ID cabinet for it.
+    - type: Tweak
+      message: >-
+        The secret gamemode can no longer roll survival. However, there's now a
+        separate gamemode that can roll it and more.
+  id: 33
+  time: '2025-08-09T10:05:01.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/53
