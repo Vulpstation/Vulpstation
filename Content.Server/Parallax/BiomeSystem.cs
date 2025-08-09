@@ -927,8 +927,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         // We don't pool this one because pretty much every chunk will contain ores that do not need to be replaced
         var replacedEntities = component.ReplacedEntities.GetOrNew(chunk);
         var replacedTiles = component.ReplacedTiles.GetOrNew(chunk);
-        replacedEntities.Clear();
-        replacedTiles.Clear();
+        replacedTiles.Clear(); // Do NOT clear replacedEntities, it's a persistent dict
 
         // Delete decals
         foreach (var (dec, indices) in component.LoadedDecals[chunk])
