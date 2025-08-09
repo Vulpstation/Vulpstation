@@ -45,6 +45,8 @@
     - NuclearOperative
     - SyndicateAgent
     - CentralCommand
+    - DV-SpareSafe
+    - Freelancer
   - type: UserInterface
     interfaces:
       enum.SolarControlConsoleUiKey.Key:
