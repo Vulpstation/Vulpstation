@@ -158,6 +158,13 @@ public sealed partial class NPCSteeringSystem
             }
         }
 
+        // Vulpstation - if target is null, just don't do shit. This keeps throwing errors.
+        if (!targetCoordinates.IsValid(EntityManager))
+        {
+            steering.Status = SteeringStatus.NoPath;
+            return false;
+        }
+
         // Check if mapids match.
         var targetMap = targetCoordinates.ToMap(EntityManager, _transform);
         var ourMap = ourCoordinates.ToMap(EntityManager, _transform);
