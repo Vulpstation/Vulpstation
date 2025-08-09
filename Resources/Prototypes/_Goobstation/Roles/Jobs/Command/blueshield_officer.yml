@@ -32,6 +32,7 @@
   - Command
   - CentralCommand
   - BlueshieldOfficer
+  - Orders # Vulpstation
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
