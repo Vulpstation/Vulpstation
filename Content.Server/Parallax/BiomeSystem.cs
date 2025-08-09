@@ -802,7 +802,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         // Now do entities
         var replacedEntities = component.ReplacedEntities.GetValueOrDefault(chunk); // Vulpstation
         var loadedEntities = new Dictionary<EntityUid, Vector2i>();
-        component.LoadedEntities.Add(chunk, loadedEntities);
+        component.LoadedEntities[chunk] = loadedEntities;
 
         var oldChunkAtmos = component.ModifiedAtmos.GetValueOrDefault(chunk); // Vulpstation
         var gridAtmos = _gridAtmosQuery.CompOrNull(gridUid); // Vulpstation
@@ -819,7 +819,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 else if (gridAtmos != null && defaultMix != null)
                     _atmos.GetOrNewTile(gridUid, gridAtmos, indices)?.Air?.CopyFrom(defaultMix);
 
-                // Vulpstation - don't, just don't do any of that.
                 if (modified.Contains(indices))
                     continue;
 
@@ -960,7 +959,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             var entTile = _mapSystem.LocalToTile(gridUid, grid, xform.Coordinates);
 
             // Vulpstation - instead, we raise an event.
-            var ev = new BiomeUnloadingEvent();
+            var ev = new BiomeUnloadingEvent(entTile == tile);
             RaiseLocalEvent(ent, ref ev);
 
             if (ev.MarkTileModified)
@@ -986,7 +985,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         atmosChunk.Clear();
         // Vulpstation section end
 
-        var chunkTiles = new int[ChunkSize * ChunkSize];
         for (var x = 0; x < ChunkSize; x++)
         {
             for (var y = 0; y < ChunkSize; y++)
@@ -1005,29 +1003,41 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
                 // Don't mess with anything that's potentially anchored.
                 var anchored = grid.GetAnchoredEntitiesEnumerator(indices);
-                // Vulpstation - if this is default, just let it be. Otherwise raise an event.
-                if (anchored.MoveNext(out var ent)
-                    && !component.LoadedEntities[chunk].ContainsKey(ent.Value)
-                    && !replacedEntities.ContainsKey(indices))
+                var anyReplacements = replacedEntities.TryGetValue(indices, out var oldReplaced) && oldReplaced != null;
+                var replacedEntity = EntityUid.Invalid;
+
+                // Vulpstation - we can only unload 1 entity. More is not supported & is very dangerous.
+                while (anchored.MoveNext(out var ent))
                 {
+                    if (component.LoadedEntities[chunk].ContainsKey(ent.Value))
+                        continue;
+
                     var ev = new BiomeUnloadingEvent(false);
                     RaiseLocalEvent(ent.Value, ref ev);
 
-                    // This is guaranteed to not be a naturally generated entity, so MarkTileModified is ignored unless both delete and unload are false
-                    if (ev.Delete || ev.Unload)
+                    // This is guaranteed to not be a naturally generated entity, so we don't have to mark deletions
+                    if (ev.Delete)
+                        QueueDel(ent.Value);
+                    else if (ev.Unload)
                     {
-                        replacedEntities[indices] = ev.Delete ? null : MetaData(ent.Value).EntityPrototype?.ID;
-                        Del(ent.Value);
+                        if (anyReplacements)
+                        {
+                            // Alas, more than one entity is being replaced here. We can't do anything about it.
+                            modified.Add(indices);
+                            continue;
+                        }
+
+                        anyReplacements = true;
+                        replacedEntity = ent.Value;
                     }
                     else if (ev.MarkTileModified)
-                    {
-                        replacedEntities.Remove(indices); // Just in case there's e.g. a puddle under an APC that's on a rock, so we don't accidentally remove the rock
                         modified.Add(indices);
-                        continue;
-                    }
                 }
 
-                // Vulpstation - don't mark the tile as modified, we don't want to have atmos and tilespread process it.
+                if (modified.Contains(indices))
+                    continue;
+
+                // Vulpstation - don't mark the tile as modified unless necessary, we don't want to have atmos and tilespread process it.
                 if (_mapSystem.TryGetTileRef(gridUid, grid, indices, out var tileRef)
                     && (!TryGetBiomeTile(indices, component.Layers, seed, null, out var biomeTile) || biomeTile.Value != tileRef.Tile))
                 {
@@ -1039,6 +1049,13 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                         modified.Add(indices); // This is a man-made tile, do preserve it, because it can contain atmos.
                         continue;
                     }
+                }
+
+                // Now that we made sure only 1 entity is being replaced and the tile is not kept, we can delete it.
+                if (replacedEntity != EntityUid.Invalid)
+                {
+                    replacedEntities[indices] = MetaData(replacedEntity).EntityPrototype?.ID;
+                    Del(replacedEntity);
                 }
 
                 tiles.Add((indices, Tile.Empty));
