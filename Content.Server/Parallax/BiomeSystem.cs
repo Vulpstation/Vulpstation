@@ -52,6 +52,8 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!; // Vulpstation
+    [Dependency] private readonly EntityLookupSystem _lookup = default!; // Vulpstation
+    [Dependency] private readonly MetaDataSystem _meta = default!; // Vulpstation
 
     private EntityQuery<BiomeComponent> _biomeQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
@@ -59,6 +61,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     private EntityQuery<GhostComponent> _ghostQuery; // Vulpstation
     private EntityQuery<GridAtmosphereComponent> _gridAtmosQuery; // Vulpstation
     private EntityQuery<MapAtmosphereComponent> _mapAtmosQuery; // Vulpstation
+    private EntityQuery<MetaDataComponent> _metaQuery; // Vulpstation
 
     private readonly HashSet<EntityUid> _handledEntities = new();
     private const float DefaultLoadRange = 16f;
@@ -95,6 +98,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         _ghostQuery = GetEntityQuery<GhostComponent>(); // Vulpstation
         _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>(); // Vulpstation
         _gridAtmosQuery = GetEntityQuery<GridAtmosphereComponent>(); // Vulpstation
+        _metaQuery = GetEntityQuery<MetaDataComponent>(); // Vulpstation
         SubscribeLocalEvent<BiomeComponent, MapInitEvent>(OnBiomeMapInit);
         SubscribeLocalEvent<FTLStartedEvent>(OnFTLStarted);
         SubscribeLocalEvent<ShuttleFlattenEvent>(OnShuttleFlatten);
@@ -822,12 +826,12 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 if (modified.Contains(indices))
                     continue;
 
-                // // Don't mess with anything that's potentially anchored.
+                // Don't mess with anything that's potentially anchored.
                 var anchored = _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, indices);
 
                 if (anchored.MoveNext(out _))
                     continue;
-                // Just track loaded chunks for now.
+
                 // Vulpstation - rewritten
                 string? entPrototype = null;
                 if (replacedEntities != null && replacedEntities.TryGetValue(indices, out var replaced))
@@ -851,6 +855,17 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 loadedEntities.Add(ent, indices);
             }
         }
+
+        // Vulpstation - unpause anything that has been paused
+        var pausedEntities = component.PausedEntities.GetValueOrDefault(chunk);
+        if (pausedEntities != null)
+            foreach (var ent in pausedEntities)
+            {
+                if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta))
+                    continue;
+
+                _meta.SetEntityPaused(ent, false, meta);
+            }
 
         // Decals
         var loadedDecals = new Dictionary<uint, Vector2i>();
@@ -966,7 +981,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             if (ev.Unload || ev.Delete)
             {
                 replacedEntities[tile] = ev.Delete ? null : MetaData(ent).EntityPrototype?.ID;
-                Del(ent);
+                QueueDel(ent);
             }
         }
 
@@ -1059,6 +1074,23 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
                 tiles.Add((indices, Tile.Empty));
             }
+        }
+
+        // Vulpstation - pause anything that is left behind. Chunk coords are represented by the bottom left corner.
+        var pausedEntities = component.PausedEntities.GetOrNew(chunk);
+        var chunkBounds = new Box2(chunk.X, chunk.Y, chunk.X + ChunkSize, chunk.Y + ChunkSize);
+        foreach (var ent in _lookup.GetEntitiesIntersecting(gridUid, chunkBounds, LookupFlags.All))
+        {
+            // My current theory is that the method above return EUID 0 for queuedly-deleted entities
+            if (ent is not { Valid: true })
+                continue;
+
+            // TODO hardcoding the check for ghosts is suboptimal
+            if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta) || Paused(ent, meta) || _ghostQuery.HasComp(ent))
+                continue;
+
+            pausedEntities.Add(ent);
+            _meta.SetEntityPaused(ent, true, meta);
         }
 
         grid.SetTiles(tiles);

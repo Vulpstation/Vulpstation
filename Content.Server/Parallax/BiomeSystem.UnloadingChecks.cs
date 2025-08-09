@@ -19,9 +19,16 @@ public sealed partial class BiomeSystem
         SubscribeLocalEvent<MobStateComponent, BiomeUnloadingEvent>(OnMobUnloading);
         SubscribeLocalEvent<AnchorableComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
         SubscribeLocalEvent<PuddleComponent, BiomeUnloadingEvent>(OnPuddleUnloading);
-        // Note: non-anchored entities are not currently eligible for unloading, so we don't need to worry about them
-        // Put new subscriptions ABOVE this line. Base unloading checks should always be last as they are the fallback scenario.
-        SubscribeLocalEvent<MetaDataComponent, BiomeUnloadingEvent>(BaseUnloadingChecks);
+        // Base checks must always come last, so we enforce ordering like this
+        // I could just broadcast the event and subscribe to the broadcast version here, but I'm afraid that can cause performance issues
+        EntityManager.EventBus.SubscribeLocalEvent<MetaDataComponent, BiomeUnloadingEvent>(
+            BaseUnloadingChecks, typeof(FakeEntitySubscriber), after: [typeof(BiomeSystem)]);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        EntityManager.EventBus.UnsubscribeLocalEvent<MetaDataComponent, BiomeUnloadingEvent>();
     }
 
     private void BaseUnloadingChecks(Entity<MetaDataComponent> ent, ref BiomeUnloadingEvent args)
@@ -48,6 +55,7 @@ public sealed partial class BiomeSystem
         var isAlive = ent.Comp.CurrentState is MobState.Alive;
         args.Unload &= isAlive;
         args.Delete |= !isAlive;
+        args.MarkTileModified = false;
         args.Handled = true;
     }
 
@@ -64,6 +72,8 @@ public sealed partial class BiomeSystem
         args.Delete = true;
         args.Handled = true;
     }
+
+    private sealed class FakeEntitySubscriber : IEntityEventSubscriber;
 }
 
 // Vulpstation

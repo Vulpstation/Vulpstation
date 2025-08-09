@@ -69,6 +69,12 @@ public sealed partial class BiomeComponent : Component
     public Dictionary<Vector2i, Dictionary<Vector2i, string?>> ReplacedEntities = new();
 
     /// <summary>
+    /// Vulpstation - all entities that couldn't be unloaded but were paused instead.
+    /// </summary>
+    [DataField]
+    public Dictionary<Vector2i, HashSet<EntityUid>> PausedEntities = new();
+
+    /// <summary>
     /// Vulpstation - what tiles in this chunk are different from the default.
     /// </summary>
     [DataField]
