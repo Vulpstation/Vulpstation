@@ -85,6 +85,8 @@ public sealed class StandingStateSystem : EntitySystem
                 _physics.SetCollisionMask(uid, key, fixture, fixture.CollisionMask & ~StandingCollisionLayer, manager: fixtureComponent);
             }
 
+        _movement.RefreshMovementSpeedModifiers(uid); // Vulpstation - moved this up because it's just necessary to invoke.
+
         // check if component was just added or streamed to client
         // if true, no need to play sound - mob was down before player could seen that
         if (standingState.LifeStage <= ComponentLifeStage.Starting)
@@ -92,8 +94,6 @@ public sealed class StandingStateSystem : EntitySystem
 
         if (playSound)
             _audio.PlayPredicted(standingState.DownSound, uid, null);
-
-        _movement.RefreshMovementSpeedModifiers(uid);
 
         Climb(uid);
 

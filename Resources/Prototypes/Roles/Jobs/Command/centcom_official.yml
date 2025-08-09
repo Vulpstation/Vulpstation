@@ -12,6 +12,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - DV-SpareSafe
 
 - type: startingGear
   id: CentcomGear

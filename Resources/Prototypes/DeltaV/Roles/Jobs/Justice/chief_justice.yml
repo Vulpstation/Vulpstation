@@ -29,6 +29,7 @@
   - Security
   - Maintenance
   - External
+  - Orders # Vulpstation
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

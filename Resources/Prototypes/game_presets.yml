@@ -91,6 +91,15 @@
   rules:
     - Secret
 
+# Vulpstation
+- type: gamePreset
+  id: SecretHellish
+  name: secret-hellish-title
+  showInVote: true
+  description: secret-hellish-description
+  rules:
+    - SecretHellish
+
 - type: gamePreset
   id: SecretExtended #For Admin Use: Runs Extended but shows "Secret" in lobby.
   alias:

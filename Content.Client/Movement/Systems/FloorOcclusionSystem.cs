@@ -30,8 +30,10 @@ public sealed class FloorOcclusionSystem : SharedFloorOcclusionSystem
 
     protected override void SetEnabled(EntityUid uid, FloorOcclusionComponent component, bool enabled)
     {
-        if (component.Enabled == enabled)
-            return;
+        // Vulpstation - don't do this. Client has prediction and it can interfere.
+        // E.g. if the server sets this field to false, the client might not remove the shader
+        // if (component.Enabled == enabled)
+        //     return;
 
         base.SetEnabled(uid, component, enabled);
 

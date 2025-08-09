@@ -23,6 +23,7 @@
   - ChiefEngineer
   - Atmospherics
   - Cryogenics
+  - Orders # Vulpstation
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

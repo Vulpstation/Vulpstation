@@ -227,6 +227,15 @@
   components:
   - type: SecretRule
 
+# Vulpstation
+- type: entity
+  id: SecretHellish
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SecretRule
+    pool: SecretHellish
+
 - type: entity
   id: Zombie
   parent: BaseGameRule
@@ -307,7 +316,7 @@
     startingSlope: -1
     downwardsLimit: -0.4
     upwardsLimit: 0.3
-    
+
 # variation passes
 - type: entity
   id: BasicRoundstartVariation

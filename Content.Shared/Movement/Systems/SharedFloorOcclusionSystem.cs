@@ -1,13 +1,18 @@
 using Content.Shared.Movement.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Timing;
+
 
 namespace Content.Shared.Movement.Systems;
+
 
 /// <summary>
 /// Applies an occlusion shader for any relevant entities.
 /// </summary>
 public abstract class SharedFloorOcclusionSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+
     public override void Initialize()
     {
         base.Initialize();

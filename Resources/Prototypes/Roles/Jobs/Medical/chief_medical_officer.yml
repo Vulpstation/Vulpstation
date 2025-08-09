@@ -26,6 +26,7 @@
   - External # DeltaV - Paramedics need this access
   - Psychologist # DeltaV - Add Psychologist access
   - Cryogenics
+  - Orders # Vulpstation
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

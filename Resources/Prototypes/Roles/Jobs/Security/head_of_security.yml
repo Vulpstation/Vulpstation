@@ -28,6 +28,7 @@
   - Detective
   - Corpsman # DeltaV - added Corpsman access
   - Cryogenics
+  - Orders # Vulpstation
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

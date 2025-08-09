@@ -331,11 +331,16 @@ public abstract class SharedBiomeSystem : EntitySystem
 
     private FastNoiseLite GetNoise(FastNoiseLite seedNoise, int seed)
     {
-        var noiseCopy = new FastNoiseLite();
-        _serManager.CopyTo(seedNoise, ref noiseCopy, notNullableOverride: true);
-        noiseCopy.SetSeed(noiseCopy.GetSeed() + seed);
-        // Ensure re-calculate is run.
-        noiseCopy.SetFractalOctaves(noiseCopy.GetFractalOctaves());
-        return noiseCopy;
+        // var noiseCopy = new FastNoiseLite();
+        // _serManager.CopyTo(seedNoise, ref noiseCopy, notNullableOverride: true);
+        // noiseCopy.SetSeed(noiseCopy.GetSeed() + seed);
+        // // Ensure re-calculate is run.
+        // noiseCopy.SetFractalOctaves(noiseCopy.GetFractalOctaves());
+        // return noiseCopy;
+
+        // Vulpstation - what the FUCK is the above?!
+        seedNoise.SetSeed(seed);
+        seedNoise.SetFractalOctaves(seedNoise.GetFractalOctaves());
+        return seedNoise;
     }
 }
