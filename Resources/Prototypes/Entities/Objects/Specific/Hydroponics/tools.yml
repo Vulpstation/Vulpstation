@@ -148,7 +148,7 @@
 
 - type: entity
   name: spade
-  parent: BaseItem
+  parent: Shovel # Vulpstation - a spade is a small shovel
   id: HydroponicsToolSpade
   description: A small tool for digging and moving dirt.
   components:

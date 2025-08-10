@@ -1,0 +1,48 @@
+- type: latheRecipe
+  id: HydroponicsToolMiniHoe
+  result: HydroponicsToolMiniHoe
+  completetime: 3
+  materials:
+    Steel: 450
+    WoodPlank: 300
+
+- type: latheRecipe
+  id: HydroponicsToolClippers
+  result: HydroponicsToolClippers
+  completetime: 3
+  materials:
+    Steel: 350
+    WoodPlank: 100
+
+- type: latheRecipe
+  id: HydroponicsToolScythe
+  result: HydroponicsToolScythe
+  completetime: 3
+  materials:
+    Steel: 450
+    WoodPlank: 300
+
+- type: latheRecipe
+  id: HydroponicsToolHatchet
+  result: HydroponicsToolHatchet
+  completetime: 3
+  materials:
+    Steel: 550
+    WoodPlank: 300
+
+- type: latheRecipe
+  id: HydroponicsToolSpade
+  result: HydroponicsToolSpade
+  completetime: 3
+  materials:
+    Steel: 450
+    WoodPlank: 300
+
+- type: latheRecipe
+  id: PlantBag
+  result: PlantBag
+  completetime: 5
+  materials:
+    Steel: 200
+    Cloth: 500
+
