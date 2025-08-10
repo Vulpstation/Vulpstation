@@ -1,8 +1,10 @@
+using Content.Server.Ghost.Roles.Components;
 using Content.Server.NodeContainer;
 using Content.Server.Storage.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -17,7 +19,7 @@ public sealed partial class BiomeSystem
     private void InitializeUnloadingChecks()
     {
         SubscribeLocalEvent<MobStateComponent, BiomeUnloadingEvent>(OnMobUnloading);
-        SubscribeLocalEvent<AnchorableComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
+        SubscribeLocalEvent<TransformComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
         SubscribeLocalEvent<PuddleComponent, BiomeUnloadingEvent>(OnPuddleUnloading);
         // Base checks must always come last, so we enforce ordering like this
         // I could just broadcast the event and subscribe to the broadcast version here, but I'm afraid that can cause performance issues
@@ -50,19 +52,32 @@ public sealed partial class BiomeSystem
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
     {
+        var mayBePlayer =
+            TryComp<MindContainerComponent>(ent, out var mindCont) && mindCont.HasMind
+            || HasComp<HumanoidAppearanceComponent>(ent)
+            || HasComp<GhostRoleComponent>(ent);
+
         // Alive mobs just get unloaded and then brought back
-        // Dead mobs are deleted completely
+        // Dead mobs are deleted completely if they're not a player
         var isAlive = ent.Comp.CurrentState is MobState.Alive;
         args.Unload &= isAlive;
-        args.Delete |= !isAlive;
+        args.Delete |= !isAlive && !mayBePlayer;
         args.MarkTileModified = false;
         args.Handled = true;
     }
 
-    private void OnAnchorableUnloading(Entity<AnchorableComponent> ent, ref BiomeUnloadingEvent args)
+    private void OnAnchorableUnloading(Entity<TransformComponent> ent, ref BiomeUnloadingEvent args)
     {
-        args.Unload &= args.IsSameTile && Transform(ent).Anchored;
-        args.MarkTileModified |= !args.IsSameTile;
+        if (!ent.Comp.Anchored)
+        {
+            // This means this is an attempt to pause this entity. Allow it.
+            args.Unload = true;
+            return;
+        }
+
+        // This is an anchored entity, only unload it if it's intrinsic to the biome
+        args.Unload &= args.IsBiomeIntrinsic;
+        args.MarkTileModified |= !args.IsBiomeIntrinsic;
     }
 
     private void OnPuddleUnloading(Entity<PuddleComponent> ent, ref BiomeUnloadingEvent args)
@@ -102,10 +117,10 @@ public struct BiomeUnloadingEvent
 
     public bool Handled = true;
 
-    public readonly bool IsSameTile;
+    public readonly bool IsBiomeIntrinsic;
 
-    public BiomeUnloadingEvent(bool isSameTile)
+    public BiomeUnloadingEvent(bool isBiomeIntrinsic)
     {
-        IsSameTile = isSameTile;
+        IsBiomeIntrinsic = isBiomeIntrinsic;
     }
 }

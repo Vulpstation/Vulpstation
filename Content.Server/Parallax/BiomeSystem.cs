@@ -1102,8 +1102,8 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             var ev = new BiomeUnloadingEvent(false);
             RaiseLocalEvent(ent, ref ev);
 
-            // We don't care about MarkTileModified here, leave that to anchored entities (handled above).
-            if (!ev.Unload || ev.MarkTileModified)
+            // UNLESS the system wants us to unload the entity, don't pause it
+            if (!ev.Unload || ev.MarkTileModified || ev.Delete)
             {
                 if (ev.Delete)
                     QueueDel(ent);
