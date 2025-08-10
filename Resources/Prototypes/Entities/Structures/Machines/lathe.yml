@@ -211,6 +211,7 @@
       - HydroponicsToolHatchet
       - HydroponicsToolSpade
       - PlantBag
+      - PortableGeneratorJrPacmanMachineCircuitboard
       # Vulpstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:
@@ -501,8 +502,11 @@
     - DeepFryerMachineCircuitboard #Nyano - Summary: adds deep fryer circuit board
     - SpaceHeaterMachineCircuitBoard
     - StationAnchorCircuitboard
-    - FaxMachineCircuitboard # Vulp
-    - HolopadMachineCircuitboard # Vulp
+    # Vulpstation section
+    - FaxMachineCircuitboard
+    - HolopadMachineCircuitboard
+    - PortableGeneratorJrPacmanMachineCircuitboard
+    # Vulpstation section end
     - CutterMachineCircuitboard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
@@ -552,7 +556,7 @@
       - HamtrPeripheralsElectronics
       - PortableGeneratorPacmanMachineCircuitboard
       - PortableGeneratorSuperPacmanMachineCircuitboard
-      - PortableGeneratorJrPacmanMachineCircuitboard
+#      - PortableGeneratorJrPacmanMachineCircuitboard # Vulpstation - this is roundstart
       - WallmountGeneratorElectronics
       - WallmountGeneratorAPUElectronics
       - WallmountSubstationElectronics
