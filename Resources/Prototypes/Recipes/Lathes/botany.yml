@@ -5,7 +5,7 @@
   completetime: 3
   materials:
     Steel: 450
-    WoodPlank: 300
+    Wood: 300
 
 - type: latheRecipe
   id: HydroponicsToolScythe
@@ -13,7 +13,7 @@
   completetime: 3
   materials:
     Steel: 450
-    WoodPlank: 300
+    Wood: 300
 
 - type: latheRecipe
   id: HydroponicsToolHatchet
@@ -21,7 +21,7 @@
   completetime: 3
   materials:
     Steel: 550
-    WoodPlank: 300
+    Wood: 300
 
 - type: latheRecipe
   id: HydroponicsToolClippers
@@ -29,7 +29,7 @@
   completetime: 3
   materials:
     Steel: 350
-    WoodPlank: 100
+    Wood: 100
 
 - type: latheRecipe
   id: HydroponicsToolSpade
@@ -37,5 +37,5 @@
   completetime: 3
   materials:
     Steel: 450
-    WoodPlank: 300
+    Wood: 300
 
