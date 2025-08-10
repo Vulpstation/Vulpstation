@@ -83,9 +83,8 @@ public sealed class TraitSystem : EntitySystem
 
         if (pointsTotal < 0 || traitSelections < 0)
         {
+            // Don't let em spawn
             args.Handled = true;
-            if (_players.LobbyEnabled)
-                _players.Respawn(args.Player);
         }
     }
 
@@ -138,30 +137,6 @@ public sealed class TraitSystem : EntitySystem
     }
 
     /// <summary>
-    ///     On a non-cheating client, it's not possible to save a character with a negative number of traits. This can however
-    ///     trigger incorrectly if a character was saved, and then at a later point in time an admin changes the traits Cvars to reduce the points.
-    ///     Or if the points costs of traits is increased.
-    /// </summary>
-    private void PunishCheater(EntityUid uid)
-    {
-        _adminLog.Add(LogType.AdminMessage, LogImpact.High,
-            $"{ToPrettyString(uid):entity} attempted to spawn with an invalid trait list. This might be a mistake, or they might be cheating");
-
-        if (!_configuration.GetCVar(CCVars.TraitsPunishCheaters)
-            || !_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
-            return;
-
-        // Vulpstation
-        _chatManager.SendAdminAlert($"Player {ToPrettyString(uid):entity} spawned with an invalid trait list and got erased.");
-
-        // For maximum comedic effect, this is plenty of time for the cheater to get on station and start interacting with people.
-        // Vulpstation - no
-        var timeToDestroy = 1f;
-
-        Timer.Spawn(TimeSpan.FromSeconds(timeToDestroy), () => VaporizeCheater(targetPlayer));
-    }
-
-    /// <summary>
     ///     https://www.youtube.com/watch?v=X2QMN0a_TrA
     /// </summary>
     private void VaporizeCheater (Robust.Shared.Player.ICommonSession targetPlayer)
@@ -176,9 +151,5 @@ public sealed class TraitSystem : EntitySystem
             EntityUid.Invalid,
             false,
             targetPlayer.Channel);
-
-        // Vulpstation - make sure the ghost can return to lobby by settings their death time
-        if (TryComp<GhostComponent>(targetPlayer.AttachedEntity, out var ghost))
-            _ghosts.SetTimeOfDeath(targetPlayer.AttachedEntity.Value, TimeSpan.Zero, ghost);
     }
 }
