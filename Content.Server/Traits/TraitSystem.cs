@@ -85,6 +85,19 @@ public sealed class TraitSystem : EntitySystem
         {
             // Don't let em spawn
             args.Handled = true;
+
+            var feedbackMessage =
+                $"[font size=24][color=#ff0000]You have tried to spawn with an illegal trait point total: {pointsTotal} points, {traitSelections} slots." +
+                $"If this was a result of malicious bug abuse, you should go read the rules." +
+                $"Otherwise, feel free to fix your trait selections and try again. This incident will be reported.[/color][/font]";
+
+            _chatManager.ChatMessageToOne(
+                ChatChannel.OOC,
+                feedbackMessage,
+                feedbackMessage,
+                EntityUid.Invalid,
+                false,
+                args.Player.Channel);
         }
     }
 
@@ -134,22 +147,5 @@ public sealed class TraitSystem : EntitySystem
     {
         foreach (var function in traitPrototype.Functions)
             function.OnPlayerSpawn(uid, _componentFactory, EntityManager, _serialization);
-    }
-
-    /// <summary>
-    ///     https://www.youtube.com/watch?v=X2QMN0a_TrA
-    /// </summary>
-    private void VaporizeCheater (Robust.Shared.Player.ICommonSession targetPlayer)
-    {
-        _adminSystem.Erase(targetPlayer);
-
-        var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of malicious bug abuse, you should go read the rules. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections. This incident will be reported."}[/color][/font]";
-        _chatManager.ChatMessageToOne(
-            ChatChannel.Emotes,
-            feedbackMessage,
-            feedbackMessage,
-            EntityUid.Invalid,
-            false,
-            targetPlayer.Channel);
     }
 }
