@@ -1089,6 +1089,17 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta) || Paused(ent, meta) || _ghostQuery.HasComp(ent))
                 continue;
 
+            var ev = new BiomeUnloadingEvent(false);
+            RaiseLocalEvent(ent, ref ev);
+
+            // We don't care about MarkTileModified here, leave that to anchored entities (handled above).
+            if (!ev.Unload)
+            {
+                if (ev.Delete)
+                    QueueDel(ent);
+                continue;
+            }
+
             pausedEntities.Add(ent);
             _meta.SetEntityPaused(ent, true, meta);
         }
