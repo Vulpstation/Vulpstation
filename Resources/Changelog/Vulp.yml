@@ -349,3 +349,36 @@ Entries:
   id: 33
   time: '2025-08-09T10:05:01.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/53
+- author: Mnemotechnician
+  changes:
+    - type: Remove
+      message: >-
+        The listening post will no longer attempt to spawn on the planetary
+        surface.
+    - type: Add
+      message: >-
+        You can now craft hydroponic tools, jrpacman boards, and solar
+        assemblies at the autolathe.
+    - type: Add
+      message: You can now build floor drains.
+    - type: Tweak
+      message: >-
+        Solar panels now need less free space around them, and their output
+        scales down based on how far away the obstructing entities are (instead
+        of dropping to 0 whenever there's an obstruction) and the brightness of
+        the day/night cycle.
+    - type: Tweak
+      message: >-
+        Vent critters now have planet-specific announcements, and they cannot
+        spawn within a certain radius around the drop pod.
+    - type: Fix
+      message: >-
+        You can no longer spawn with a negative trait point total. You will stay
+        in lobby if you try to.
+    - type: Fix
+      message: >-
+        Entities that are not eligible for unloading (e.g. power generators)
+        will no longer stop working on unloaded chunks.
+  id: 34
+  time: '2025-08-10T07:33:13.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/55
