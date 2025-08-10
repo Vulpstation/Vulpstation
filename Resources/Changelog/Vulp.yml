@@ -382,3 +382,16 @@ Entries:
   id: 34
   time: '2025-08-10T07:33:13.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/55
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Biome unloading should no longer unload wires and other anchored
+        man-made entities. This was never intentional.
+    - type: Fix
+      message: Dead players should no longer have their bodies unloaded, either.
+    - type: Fix
+      message: Subtles should now correctly display over the speaker's head.
+  id: 35
+  time: '2025-08-10T17:33:26.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/56
