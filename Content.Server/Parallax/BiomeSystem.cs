@@ -1113,16 +1113,17 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             //         continue;
             // }
 
-            var ev = new BiomeUnloadingEvent(false);
+            var ev = new BiomePauseEvent();
             RaiseLocalEvent(ent, ref ev);
 
             // UNLESS the system wants us to unload the entity, don't pause it
-            if (!ev.Unload || ev.MarkTileModified || ev.Action == BiomeUnloadingEvent.EntAction.Delete)
+            if (ev.Delete)
             {
-                if (ev.Action == BiomeUnloadingEvent.EntAction.Delete)
-                    QueueDel(ent);
+                QueueDel(ent);
                 continue;
             }
+            if (!ev.DoPause)
+                continue;
 
             pausedEntities.Add(ent);
             _meta.SetEntityPaused(ent, true, meta);

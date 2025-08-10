@@ -19,12 +19,15 @@ public sealed partial class BiomeSystem
     private void InitializeUnloadingChecks()
     {
         SubscribeLocalEvent<MobStateComponent, BiomeUnloadingEvent>(OnMobUnloading);
+        SubscribeLocalEvent<MobStateComponent, BiomePauseEvent>(OnMobPause);
         SubscribeLocalEvent<TransformComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
         SubscribeLocalEvent<PuddleComponent, BiomeUnloadingEvent>(OnPuddleUnloading);
         // Base checks must always come last, so we enforce ordering like this
         // I could just broadcast the event and subscribe to the broadcast version here, but I'm afraid that can cause performance issues
         EntityManager.EventBus.SubscribeLocalEvent<MetaDataComponent, BiomeUnloadingEvent>(
             BaseUnloadingChecks, typeof(FakeEntitySubscriber), after: [typeof(BiomeSystem)]);
+        EntityManager.EventBus.SubscribeLocalEvent<MetaDataComponent, BiomePauseEvent>(
+            BasePauseChecks, typeof(FakeEntitySubscriber), after: [typeof(BiomeSystem)]);
     }
 
     public override void Shutdown()
@@ -39,46 +42,48 @@ public sealed partial class BiomeSystem
         if (!args.Unload || args.Handled)
             return;
 
-        var uid = ent.Owner;
-        if ((HasComp<ContainerManagerComponent>(uid))
-            || HasComp<ItemSlotsComponent>(uid)
-            || HasComp<EntityStorageComponent>(uid)
-            || HasComp<NodeContainerComponent>(uid)) // May be a part of a network (power, atmos) or something like AME
-        {
-            args.Unload = false;
-            args.MarkTileModified = true;
-        }
+        if (!IsStateful(ent.Owner)) // May be a part of a network (power, atmos) or something like AME
+            return;
+
+        args.Unload = false;
+        args.MarkTileModified = true;
+    }
+
+    private void BasePauseChecks(Entity<MetaDataComponent> ent, ref BiomePauseEvent args)
+    {
+        if (args.Handled || !args.DoPause || !IsStateful(ent.Owner)) // May be a part of a network (power, atmos) or something like AME
+            return;
+
+        args.DoPause = false;
     }
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
     {
         args.Handled = true;
-        if (args.IsBiomeIntrinsic)
-        {
-            args.Unload = false; // Don't try to unload mobs, just pause them in the next phase
-            args.Action = BiomeUnloadingEvent.EntAction.Ignore;
-            return;
-        }
+        args.Unload = false;
+        args.Action = BiomeUnloadingEvent.EntAction.Ignore;
+    }
 
+    private void OnMobPause(Entity<MobStateComponent> ent, ref BiomePauseEvent args)
+    {
+        var isAlive = ent.Comp.CurrentState is MobState.Alive;
         var mayBePlayer =
-            TryComp<MindContainerComponent>(ent, out var mindCont) && mindCont.HasMind
+            TryComp<MindContainerComponent>(ent, out var mindCont) && mindCont.OriginalMind is not null
             || HasComp<HumanoidAppearanceComponent>(ent)
             || HasComp<GhostRoleComponent>(ent);
 
-        // Alive mobs just get unloaded and then brought back
         // Dead mobs are deleted completely if they're not a player
-        var isAlive = ent.Comp.CurrentState is MobState.Alive;
-        args.Unload &= isAlive;
-        args.MarkTileModified = false;
-        args.Action = isAlive || mayBePlayer ? BiomeUnloadingEvent.EntAction.None : BiomeUnloadingEvent.EntAction.Delete;
+        args.Delete = !isAlive && !mayBePlayer;
+        args.Handled = true;
     }
 
     private void OnAnchorableUnloading(Entity<TransformComponent> ent, ref BiomeUnloadingEvent args)
     {
-        if (!ent.Comp.Anchored)
+        if (!ent.Comp.Anchored && args.IsBiomeIntrinsic)
         {
-            // This means this is an attempt to pause this entity. Allow it.
-            args.Unload = true;
+            // An anchored entity got unanchored, forget it
+            args.Unload = false;
+            args.Action = BiomeUnloadingEvent.EntAction.Ignore;
             return;
         }
 
@@ -94,6 +99,12 @@ public sealed partial class BiomeSystem
         args.Action = BiomeUnloadingEvent.EntAction.Delete;
         args.Handled = true;
     }
+
+    private bool IsStateful(EntityUid uid) =>
+        (HasComp<ContainerManagerComponent>(uid))
+        || HasComp<ItemSlotsComponent>(uid)
+        || HasComp<EntityStorageComponent>(uid)
+        || HasComp<NodeContainerComponent>(uid);
 
     private sealed class FakeEntitySubscriber : IEntityEventSubscriber;
 }
@@ -139,4 +150,18 @@ public struct BiomeUnloadingEvent
         /// Forget the entity, but don't delete. Only has special effect when unloading native entities. This will override the unload option.
         Ignore
     }
+}
+
+/// <summary>
+///     Raised on an entity during chunk unloading to determine if the entity should be paused.
+///     If this event is raised, it's guaranteed that the entity is ineligible for unloading.
+/// </summary>
+[ByRefEvent]
+public struct BiomePauseEvent
+{
+    public bool DoPause = true, Delete = false;
+
+    public bool Handled = false;
+
+    public BiomePauseEvent() {}
 }
