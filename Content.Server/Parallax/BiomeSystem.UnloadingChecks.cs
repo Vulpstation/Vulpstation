@@ -56,6 +56,7 @@ public sealed partial class BiomeSystem
         if (args.IsBiomeIntrinsic)
         {
             args.Unload = false; // Don't try to unload mobs, just pause them in the next phase
+            args.Action = BiomeUnloadingEvent.EntAction.Ignore;
             return;
         }
 
@@ -68,8 +69,8 @@ public sealed partial class BiomeSystem
         // Dead mobs are deleted completely if they're not a player
         var isAlive = ent.Comp.CurrentState is MobState.Alive;
         args.Unload &= isAlive;
-        args.Delete |= !isAlive && !mayBePlayer;
         args.MarkTileModified = false;
+        args.Action = isAlive || mayBePlayer ? BiomeUnloadingEvent.EntAction.None : BiomeUnloadingEvent.EntAction.Delete;
     }
 
     private void OnAnchorableUnloading(Entity<TransformComponent> ent, ref BiomeUnloadingEvent args)
@@ -90,7 +91,7 @@ public sealed partial class BiomeSystem
     {
         // Fuck puddles, man
         args.Unload = false;
-        args.Delete = true;
+        args.Action = BiomeUnloadingEvent.EntAction.Delete;
         args.Handled = true;
     }
 
@@ -111,9 +112,9 @@ public struct BiomeUnloadingEvent
     public bool Unload = true;
 
     /// <summary>
-    ///     If true, the entity should be deleted and forgotten about.
+    ///     What action to take regardless of whether we are unloading or marking as modified.
     /// </summary>
-    public bool Delete = false;
+    public EntAction Action = EntAction.None;
 
     /// <summary>
     ///     If true, the tile this entity was spawned from should be marked as modified.
@@ -128,5 +129,14 @@ public struct BiomeUnloadingEvent
     public BiomeUnloadingEvent(bool isBiomeIntrinsic)
     {
         IsBiomeIntrinsic = isBiomeIntrinsic;
+    }
+
+    public enum EntAction
+    {
+        None,
+        /// Delete the entity and forget it. This may override the unload option.
+        Delete,
+        /// Forget the entity, but don't delete. Only has special effect when unloading native entities. This will override the unload option.
+        Ignore
     }
 }

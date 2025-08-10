@@ -857,7 +857,8 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 var ent = Spawn(entPrototype, _mapSystem.GridTileToLocal(gridUid, grid, indices));
 
                 // At least for now unless we do lookups or smth, only work with anchoring.
-                if (_xformQuery.TryGetComponent(ent, out var xform) && !xform.Anchored)
+                // Vulpstation - only anchor if it is anchorable
+                if (_xformQuery.TryGetComponent(ent, out var xform) && !xform.Anchored && HasComp<AnchorableComponent>(ent))
                 {
                     _transform.AnchorEntity(ent, xform, gridUid, grid, indices);
                 }
@@ -986,13 +987,17 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             var ev = new BiomeUnloadingEvent(true);
             RaiseLocalEvent(ent, ref ev);
 
+            replacedEntities[tile] = ev.Action switch
+            {
+                BiomeUnloadingEvent.EntAction.Ignore => (null, true),
+                BiomeUnloadingEvent.EntAction.Delete => (null, true),
+                _ => (MetaData(ent).EntityPrototype?.ID, true)
+            };
+
             if (ev.MarkTileModified)
                 modified.Add(tile);
-            if (ev.Unload || ev.Delete)
-            {
-                replacedEntities[tile] = (ev.Delete ? null : MetaData(ent).EntityPrototype?.ID, true);
+            if (ev.Unload || ev.Action == BiomeUnloadingEvent.EntAction.Delete)
                 QueueDel(ent);
-            }
         }
 
         // Unset tiles (if the data is custom)
@@ -1040,7 +1045,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     RaiseLocalEvent(ent.Value, ref ev);
 
                     // This is guaranteed to not be a naturally generated entity, so we don't have to mark deletions
-                    if (ev.Delete)
+                    if (ev.Action == BiomeUnloadingEvent.EntAction.Delete)
                         QueueDel(ent.Value);
                     else if (ev.Unload)
                     {
@@ -1112,9 +1117,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             RaiseLocalEvent(ent, ref ev);
 
             // UNLESS the system wants us to unload the entity, don't pause it
-            if (!ev.Unload || ev.MarkTileModified || ev.Delete)
+            if (!ev.Unload || ev.MarkTileModified || ev.Action == BiomeUnloadingEvent.EntAction.Delete)
             {
-                if (ev.Delete)
+                if (ev.Action == BiomeUnloadingEvent.EntAction.Delete)
                     QueueDel(ent);
                 continue;
             }
