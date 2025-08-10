@@ -1,0 +1,15 @@
+{
+   "version":1,
+   "size":{
+      "x":32,
+      "y":32
+   },
+   "license":"CC-BY-SA-3.0",
+   "copyright":"Created by EmoGarbage, modified to be an intermediate (in-construction) version by Floofstation",
+   "states":[
+      {
+         "name":"in_construction",
+         "directions": 4
+      }
+   ]
+}

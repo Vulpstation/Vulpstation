@@ -1,9 +1,11 @@
 using System.Linq;
 using Content.Server.Power.Components;
 using Content.Server.Solar.Components;
+using Content.Shared._NC14.DayNightCycle;
 using Content.Shared.GameTicking;
 using Content.Shared.Physics;
 using JetBrains.Annotations;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
@@ -38,7 +40,7 @@ namespace Content.Server.Solar.EntitySystems
         /// The distance before the sun is considered to have been 'visible anyway'.
         /// This value, like the occlusion semantics, is borrowed from all the other SS13 stations with solars.
         /// </summary>
-        public float SunOcclusionCheckDistance = 20;
+        public float SunOcclusionCheckDistance = 10;
 
         /// <summary>
         /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
@@ -111,6 +113,10 @@ namespace Content.Server.Solar.EntitySystems
                 var query = EntityQueryEnumerator<SolarPanelComponent, TransformComponent>();
                 while (query.MoveNext(out var uid, out var panel, out var xform))
                 {
+                    // Vulpstation - don't update unanchored panels
+                    if (!xform.Anchored)
+                        continue;
+
                     TotalPanelPower += panel.MaxSupply * panel.Coverage;
                     xform.WorldRotation = TargetPanelRotation;
                     _updateQueue.Enqueue((uid, panel));
@@ -158,9 +164,20 @@ namespace Content.Server.Solar.EntitySystems
                     xform.MapID,
                     ray,
                     SunOcclusionCheckDistance,
-                    e => !xform.Anchored || e == entity);
-                if (rayCastResults.Any())
-                    coverage = 0;
+                    e => !xform.Anchored || e == entity || !HasComp<OccluderComponent>(e)); // Vulpstation - only count occluders
+
+                // Vulpstation - don't just zero out the coverage
+                if (rayCastResults.FirstOrDefault() is { HitEntity.Valid: true } result)
+                    coverage *= result.Distance / SunOcclusionCheckDistance;
+            }
+
+            // Vulpstation - if there's a day-night cycle, adjust the results
+            if (xform.MapUid is {} map && TryComp<DayNightCycleComponent>(map, out var cycle) && cycle.MaxBrightness > 0f)
+            {
+                // The square root is to allow even maps with e.g. 0.1 max lighting to have some coverage
+                var upwardsLightRatio = cycle.CurrentBrightness / cycle.MaxBrightness * MathF.Sqrt(cycle.MaxBrightness);
+                // Even when fully blocked, we want the solars to produce something if there's upwards light
+                coverage = upwardsLightRatio * coverage * 0.8f + upwardsLightRatio * 0.2f;
             }
 
             // Total coverage calculated; apply it to the panel.

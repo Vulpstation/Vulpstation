@@ -1,39 +1,41 @@
+# Vulpstation - updated all of these
 - type: latheRecipe
-  id: MiniHoe
+  id: HydroponicsToolMiniHoe
   result: HydroponicsToolMiniHoe
-  completetime: 2
+  completetime: 3
   materials:
-    Steel: 200
-    Plastic: 100
+    Steel: 450
+    Wood: 300
 
 - type: latheRecipe
   id: HydroponicsToolScythe
   result: HydroponicsToolScythe
-  completetime: 2
+  completetime: 3
   materials:
-    Steel: 300
-    Plastic: 200
+    Steel: 450
+    Wood: 300
 
 - type: latheRecipe
   id: HydroponicsToolHatchet
   result: HydroponicsToolHatchet
-  completetime: 2
+  completetime: 3
   materials:
-    Steel: 200
-    Plastic: 100
+    Steel: 550
+    Wood: 300
 
 - type: latheRecipe
-  id: Spade
-  result: HydroponicsToolSpade
-  completetime: 2
-  materials:
-    Steel: 200
-    Plastic: 100
-    
-- type: latheRecipe
-  id: Clippers
+  id: HydroponicsToolClippers
   result: HydroponicsToolClippers
-  completetime: 2
+  completetime: 3
   materials:
-    Steel: 200
-    Plastic: 100
+    Steel: 350
+    Wood: 100
+
+- type: latheRecipe
+  id: HydroponicsToolSpade
+  result: HydroponicsToolSpade
+  completetime: 3
+  materials:
+    Steel: 450
+    Wood: 300
+

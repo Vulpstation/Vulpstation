@@ -1,12 +1,12 @@
 - type: construction
-  name: Rock
-  id: Rock
-  graph: Rock
+  name: Andesite
+  id: Andesite
+  graph: Andesite
   startNode: start
-  targetNode: rock
-  category: construction-category-misc
-  description: A rock, for decoration!
-  icon: { sprite: Structures/Walls/rock.rsi, state: rock }
+  targetNode: andesite
+  category: construction-category-structures
+  description: A wall of andesite for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_andesite }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -15,14 +15,14 @@
   - !type:TileNotBlocked
 
 - type: constructionGraph
-  id: Rock
+  id: Andesite
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: rock
+    - to: andesite
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -30,8 +30,8 @@
         amount: 10
         doAfter: 5
 
-  - node: rock
-    entity: WallRock
+  - node: andesite
+    entity: WallRockAndesite
     edges:
     - to: start
       completed:

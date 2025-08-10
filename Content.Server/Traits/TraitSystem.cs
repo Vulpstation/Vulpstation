@@ -3,11 +3,13 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
+using Content.Server.Ghost;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Database;
+using Content.Shared.Ghost;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
@@ -35,20 +37,73 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly GameTicker _players = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnBeforeSpawn); // Vulpstation - moved the anticheat to before spawn
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+    }
+
+    // Vulpstation
+    private void OnBeforeSpawn(PlayerBeforeSpawnEvent args)
+    {
+        var pointsTotal = _configuration.GetCVar(CCVars.GameTraitsDefaultPoints);
+        var traitSelections = _configuration.GetCVar(CCVars.GameTraitsMax);
+
+        if (args.JobId is not null && !_prototype.TryIndex<JobPrototype>(args.JobId, out var jobPrototype)
+            && jobPrototype is not null && !jobPrototype.ApplyTraits)
+            return;
+
+        // We are kinda doing double work here, but I guess it's cheaper than spawning the character in and then erasing it
+        var sortedTraits = new List<TraitPrototype>();
+        foreach (var traitId in args.Profile.TraitPreferences)
+            if (_prototype.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
+                sortedTraits.Add(traitPrototype);
+        sortedTraits.Sort();
+
+
+        foreach (var traitPrototype in sortedTraits) // Floof - changed to use the sorted list
+        {
+            // Moved converting to prototypes to above loop in order to sort before applying them. End Floof modifications.
+            if (!_characterRequirements.CheckRequirementsValid(
+                traitPrototype.Requirements,
+                _prototype.Index<JobPrototype>(args.JobId ?? _prototype.EnumeratePrototypes<JobPrototype>().First().ID),
+                args.Profile, _playTimeTracking.GetTrackerTimes(args.Player), args.Player.ContentData()?.Whitelisted ?? false, traitPrototype,
+                EntityManager, _prototype, _configuration,
+                out _))
+                continue;
+
+            // To check for cheaters. :FaridaBirb.png:
+            pointsTotal += traitPrototype.Points;
+            --traitSelections;
+        }
+
+        if (pointsTotal < 0 || traitSelections < 0)
+        {
+            // Don't let em spawn
+            args.Handled = true;
+
+            var feedbackMessage =
+                $"[font size=24][color=#ff0000]You have tried to spawn with an illegal trait point total: {pointsTotal} points, {traitSelections} slots." +
+                $"If this was a result of malicious bug abuse, you should go read the rules." +
+                $"Otherwise, feel free to fix your trait selections and try again. This incident will be reported.[/color][/font]";
+
+            _chatManager.ChatMessageToOne(
+                ChatChannel.OOC,
+                feedbackMessage,
+                feedbackMessage,
+                EntityUid.Invalid,
+                false,
+                args.Player.Channel);
+        }
     }
 
     // When the player is spawned in, add all trait components selected during character creation
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
-        var pointsTotal = _configuration.GetCVar(CCVars.GameTraitsDefaultPoints);
-        var traitSelections = _configuration.GetCVar(CCVars.GameTraitsMax);
-
         if (args.JobId is not null && !_prototype.TryIndex<JobPrototype>(args.JobId, out var jobPrototype)
             && jobPrototype is not null && !jobPrototype.ApplyTraits)
             return;
@@ -63,7 +118,7 @@ public sealed class TraitSystem : EntitySystem
             else
             {
                 DebugTools.Assert($"No trait found with ID {traitId}!");
-                return;
+                // return; // Vulpstation - don't return here
             }
         }
 
@@ -81,15 +136,8 @@ public sealed class TraitSystem : EntitySystem
                 out _))
                 continue;
 
-            // To check for cheaters. :FaridaBirb.png:
-            pointsTotal += traitPrototype.Points;
-            --traitSelections;
-
             AddTrait(args.Mob, traitPrototype);
         }
-
-        if (pointsTotal < 0 || traitSelections < 0)
-            PunishCheater(args.Mob);
     }
 
     /// <summary>
@@ -99,42 +147,5 @@ public sealed class TraitSystem : EntitySystem
     {
         foreach (var function in traitPrototype.Functions)
             function.OnPlayerSpawn(uid, _componentFactory, EntityManager, _serialization);
-    }
-
-    /// <summary>
-    ///     On a non-cheating client, it's not possible to save a character with a negative number of traits. This can however
-    ///     trigger incorrectly if a character was saved, and then at a later point in time an admin changes the traits Cvars to reduce the points.
-    ///     Or if the points costs of traits is increased.
-    /// </summary>
-    private void PunishCheater(EntityUid uid)
-    {
-        _adminLog.Add(LogType.AdminMessage, LogImpact.High,
-            $"{ToPrettyString(uid):entity} attempted to spawn with an invalid trait list. This might be a mistake, or they might be cheating");
-
-        if (!_configuration.GetCVar(CCVars.TraitsPunishCheaters)
-            || !_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
-            return;
-
-        // For maximum comedic effect, this is plenty of time for the cheater to get on station and start interacting with people.
-        var timeToDestroy = _random.NextFloat(120, 360);
-
-        Timer.Spawn(TimeSpan.FromSeconds(timeToDestroy), () => VaporizeCheater(targetPlayer));
-    }
-
-    /// <summary>
-    ///     https://www.youtube.com/watch?v=X2QMN0a_TrA
-    /// </summary>
-    private void VaporizeCheater (Robust.Shared.Player.ICommonSession targetPlayer)
-    {
-        _adminSystem.Erase(targetPlayer);
-
-        var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of cheats, then your nonexistence is a skill issue. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections."}[/color][/font]";
-        _chatManager.ChatMessageToOne(
-            ChatChannel.Emotes,
-            feedbackMessage,
-            feedbackMessage,
-            EntityUid.Invalid,
-            false,
-            targetPlayer.Channel);
     }
 }

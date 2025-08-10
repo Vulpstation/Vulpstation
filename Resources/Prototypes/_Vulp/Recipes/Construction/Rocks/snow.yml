@@ -4,7 +4,7 @@
   graph: Snow
   startNode: start
   targetNode: snow
-  category: construction-category-misc
+  category: construction-category-structures
   description: A wall of snow for decoration!
   icon: { sprite: Structures/Walls/rock.rsi, state: rock_snow }
   objectType: Structure

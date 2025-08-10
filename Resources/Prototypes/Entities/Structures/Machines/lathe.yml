@@ -203,7 +203,17 @@
       - LeashBasic # FloofStation
       - ClothingEyesHypnoVisor # FloofStation
       - ToolRadioHandheld # Floofstation
-      - Shovel # Vulpstation
+      # Vulpstation section
+      - Shovel
+      - HydroponicsToolMiniHoe
+      - HydroponicsToolClippers
+      - HydroponicsToolScythe
+      - HydroponicsToolHatchet
+      - HydroponicsToolSpade
+      - PlantBag
+      - PortableGeneratorJrPacmanMachineCircuitboard
+      - SolarAssemblyFlatpack
+      # Vulpstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:
     - BoxLethalshot
@@ -493,8 +503,11 @@
     - DeepFryerMachineCircuitboard #Nyano - Summary: adds deep fryer circuit board
     - SpaceHeaterMachineCircuitBoard
     - StationAnchorCircuitboard
-    - FaxMachineCircuitboard # Vulp
-    - HolopadMachineCircuitboard # Vulp
+    # Vulpstation section
+    - FaxMachineCircuitboard
+    - HolopadMachineCircuitboard
+    - PortableGeneratorJrPacmanMachineCircuitboard
+    # Vulpstation section end
     - CutterMachineCircuitboard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
@@ -544,7 +557,7 @@
       - HamtrPeripheralsElectronics
       - PortableGeneratorPacmanMachineCircuitboard
       - PortableGeneratorSuperPacmanMachineCircuitboard
-      - PortableGeneratorJrPacmanMachineCircuitboard
+#      - PortableGeneratorJrPacmanMachineCircuitboard # Vulpstation - this is roundstart
       - WallmountGeneratorElectronics
       - WallmountGeneratorAPUElectronics
       - WallmountSubstationElectronics

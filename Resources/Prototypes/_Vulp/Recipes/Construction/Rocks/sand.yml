@@ -1,12 +1,12 @@
 - type: construction
-  name: Sandstone
-  id: Sandstone
-  graph: Sandstone
+  name: Sand
+  id: Sand
+  graph: Sand
   startNode: start
-  targetNode: sandstone
-  category: construction-category-misc
-  description: A wall of sandstone for decoration!
-  icon: { sprite: Structures/Walls/sandstone.rsi, state: full }
+  targetNode: sand
+  category: construction-category-structures
+  description: A wall of sand for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_sand }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -15,14 +15,14 @@
   - !type:TileNotBlocked
 
 - type: constructionGraph
-  id: Sandstone
+  id: Sand
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: sandstone
+    - to: sand
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -30,8 +30,8 @@
         amount: 10
         doAfter: 5
 
-  - node: sandstone
-    entity: WallSandstone
+  - node: sand
+    entity: WallRockSand
     edges:
     - to: start
       completed:

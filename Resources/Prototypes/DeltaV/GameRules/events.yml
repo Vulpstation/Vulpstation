@@ -150,15 +150,16 @@
       params: {volume: 0.5}
 
 
-- type: entity
-  id: PirateRadioSpawn
-  parent: BaseGameRule
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: StationEvent
-    weight: 7.5
-    minimumPlayers: 10
-    maxOccurrences: 1
-    duration: 1
-  - type: PirateRadioSpawnRule
-    debrisCount: 6
+# Vulpstation - this doesn't work on planets. Plus it lags the server.
+#- type: entity
+#  id: PirateRadioSpawn
+#  parent: BaseGameRule
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: StationEvent
+#    weight: 7.5
+#    minimumPlayers: 10
+#    maxOccurrences: 1
+#    duration: 1
+#  - type: PirateRadioSpawnRule
+#    debrisCount: 6

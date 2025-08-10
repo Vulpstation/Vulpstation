@@ -62,8 +62,8 @@
   components:
   - type: StationEvent
     weight: 2
-    reoccurrenceDelay: 5
-    earliestStart: 1
+    reoccurrenceDelay: 180 # Vulpstation - this is terrible
+    earliestStart: 60
     duration: 1
   - type: BluespaceLockerRule
 

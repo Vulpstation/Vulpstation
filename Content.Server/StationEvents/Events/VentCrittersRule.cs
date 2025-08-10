@@ -85,6 +85,20 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     private bool CheckSpawnValid(EntityUid ventUid, TransformComponent xform)
     {
         var mapPos = _xforms.ToMapCoordinates(xform.Coordinates);
+
+        // Check vent event-free zones
+        var query = EntityQueryEnumerator<VentEventFreeZoneComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var zone, out var zoneXform))
+        {
+            if (!zone.Enabled || zoneXform.MapID != mapPos.MapId)
+                continue;
+
+            var otherMapPos = _xforms.ToMapCoordinates(zoneXform.Coordinates, false);
+            if ((mapPos.Position - otherMapPos.Position).LengthSquared() < zone.Radius * zone.Radius)
+                return false;
+        }
+
+        // Make sure there's at least one player nearby
         foreach (var session in _playerManager.Sessions)
         {
             if (session.AttachedEntity is not { Valid: true } player || HasComp<GhostComponent>(player))

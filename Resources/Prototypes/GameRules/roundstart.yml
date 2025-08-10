@@ -300,7 +300,7 @@
   components:
   - type: OscillatingStationEventScheduler
     minChaos: 0.8
-    maxChaos: 14
+    maxChaos: 8
     startingSlope: 0.2
     downwardsLimit: -0.35
     upwardsLimit: 0.4
@@ -312,7 +312,7 @@
   components:
   - type: OscillatingStationEventScheduler
     minChaos: 0.8
-    maxChaos: 8
+    maxChaos: 6
     startingSlope: -1
     downwardsLimit: -0.4
     upwardsLimit: 0.3

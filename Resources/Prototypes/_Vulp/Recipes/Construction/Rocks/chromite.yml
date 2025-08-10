@@ -1,12 +1,12 @@
 - type: construction
-  name: Sand
-  id: Sand
-  graph: Sand
+  name: Chromite
+  id: Chromite
+  graph: Chromite
   startNode: start
-  targetNode: sand
-  category: construction-category-misc
-  description: A wall of sand for decoration!
-  icon: { sprite: Structures/Walls/rock.rsi, state: rock_sand }
+  targetNode: chromite
+  category: construction-category-structures
+  description: A wall of chromite for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_chromite }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -15,14 +15,14 @@
   - !type:TileNotBlocked
 
 - type: constructionGraph
-  id: Sand
+  id: Chromite
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: sand
+    - to: chromite
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -30,8 +30,8 @@
         amount: 10
         doAfter: 5
 
-  - node: sand
-    entity: WallRockSand
+  - node: chromite
+    entity: WallRockChromite
     edges:
     - to: start
       completed:

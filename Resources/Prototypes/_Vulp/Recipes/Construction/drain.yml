@@ -1,0 +1,84 @@
+- type: construction
+  name: floor drain
+  id: FloorDrain
+  graph: FloorDrain
+  startNode: start
+  targetNode: drain
+  category: construction-category-utilities
+  description: "A floor drain. No one knows how it works."
+  icon:
+    sprite: Objects/Specific/Janitorial/drain.rsi
+    state: icon
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: FloorDrain
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: intermediate
+      steps:
+      - material: Steel
+        amount: 15
+        doAfter: 5
+
+  - node: intermediate
+    entity: FloorDrainConstruction
+    edges:
+    - to: start
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 15
+      - !type:DeleteEntity { }
+      steps:
+      - tool: Screwing
+        doAfter: 3
+
+    - to: drain
+      steps:
+      - tag: Bucket
+        icon:
+          sprite: Objects/Tools/bucket.rsi
+          state: icon
+        name: bucket
+      - tag: Bucket
+        icon:
+          sprite: Objects/Tools/bucket.rsi
+          state: icon
+        name: bucket
+      - tag: Pipe
+        icon:
+          sprite: Structures/Piping/Atmospherics/pipe.rsi
+          state: pipeStraight
+        name: pipe
+      - material: Steel
+        amount: 4
+      - material: MetalRod
+        amount: 4
+      - tool: Welding
+
+  - node: drain
+    entity: FloorDrain
+    edges:
+    - to: intermediate
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 4
+      - !type:GivePrototype
+        prototype: PartRodMetal1
+        amount: 4
+      - !type:GivePrototype
+        prototype: GasPipeStraight
+      - !type:GivePrototype
+        prototype: Bucket
+        amount: 2
+      - !type:DeleteEntity { }
+      steps:
+      - tool: Screwing
+      - tool: Welding
+        doAfter: 5
