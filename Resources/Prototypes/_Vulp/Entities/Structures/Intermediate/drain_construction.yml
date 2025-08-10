@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseStructureDynamic
+  id: FloorDrainConstruction
+  name: unfinished drain
+  description: Where do all the liquids go?
+  components:
+  - type: Sprite
+    sprite: _Vulp/Objects/Structures/Intermediate/drain.rsi
+    state: in_construction
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        hard: false
+  - type: Construction
+    graph: FloorDrain
+    node: intermediate
