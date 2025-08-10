@@ -3,11 +3,13 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
+using Content.Server.Ghost;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Database;
+using Content.Shared.Ghost;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
@@ -35,20 +37,61 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly GameTicker _players = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnBeforeSpawn); // Vulpstation - moved the anticheat to before spawn
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+    }
+
+    // Vulpstation
+    private void OnBeforeSpawn(PlayerBeforeSpawnEvent args)
+    {
+        var pointsTotal = _configuration.GetCVar(CCVars.GameTraitsDefaultPoints);
+        var traitSelections = _configuration.GetCVar(CCVars.GameTraitsMax);
+
+        if (args.JobId is not null && !_prototype.TryIndex<JobPrototype>(args.JobId, out var jobPrototype)
+            && jobPrototype is not null && !jobPrototype.ApplyTraits)
+            return;
+
+        // We are kinda doing double work here, but I guess it's cheaper than spawning the character in and then erasing it
+        var sortedTraits = new List<TraitPrototype>();
+        foreach (var traitId in args.Profile.TraitPreferences)
+            if (_prototype.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
+                sortedTraits.Add(traitPrototype);
+        sortedTraits.Sort();
+
+
+        foreach (var traitPrototype in sortedTraits) // Floof - changed to use the sorted list
+        {
+            // Moved converting to prototypes to above loop in order to sort before applying them. End Floof modifications.
+            if (!_characterRequirements.CheckRequirementsValid(
+                traitPrototype.Requirements,
+                _prototype.Index<JobPrototype>(args.JobId ?? _prototype.EnumeratePrototypes<JobPrototype>().First().ID),
+                args.Profile, _playTimeTracking.GetTrackerTimes(args.Player), args.Player.ContentData()?.Whitelisted ?? false, traitPrototype,
+                EntityManager, _prototype, _configuration,
+                out _))
+                continue;
+
+            // To check for cheaters. :FaridaBirb.png:
+            pointsTotal += traitPrototype.Points;
+            --traitSelections;
+        }
+
+        if (pointsTotal < 0 || traitSelections < 0)
+        {
+            args.Handled = true;
+            if (_players.LobbyEnabled)
+                _players.Respawn(args.Player);
+        }
     }
 
     // When the player is spawned in, add all trait components selected during character creation
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
-        var pointsTotal = _configuration.GetCVar(CCVars.GameTraitsDefaultPoints);
-        var traitSelections = _configuration.GetCVar(CCVars.GameTraitsMax);
-
         if (args.JobId is not null && !_prototype.TryIndex<JobPrototype>(args.JobId, out var jobPrototype)
             && jobPrototype is not null && !jobPrototype.ApplyTraits)
             return;
@@ -63,7 +106,7 @@ public sealed class TraitSystem : EntitySystem
             else
             {
                 DebugTools.Assert($"No trait found with ID {traitId}!");
-                return;
+                // return; // Vulpstation - don't return here
             }
         }
 
@@ -81,15 +124,8 @@ public sealed class TraitSystem : EntitySystem
                 out _))
                 continue;
 
-            // To check for cheaters. :FaridaBirb.png:
-            pointsTotal += traitPrototype.Points;
-            --traitSelections;
-
             AddTrait(args.Mob, traitPrototype);
         }
-
-        if (pointsTotal < 0 || traitSelections < 0)
-            PunishCheater(args.Mob);
     }
 
     /// <summary>
@@ -115,8 +151,12 @@ public sealed class TraitSystem : EntitySystem
             || !_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
             return;
 
+        // Vulpstation
+        _chatManager.SendAdminAlert($"Player {ToPrettyString(uid):entity} spawned with an invalid trait list and got erased.");
+
         // For maximum comedic effect, this is plenty of time for the cheater to get on station and start interacting with people.
-        var timeToDestroy = _random.NextFloat(120, 360);
+        // Vulpstation - no
+        var timeToDestroy = 1f;
 
         Timer.Spawn(TimeSpan.FromSeconds(timeToDestroy), () => VaporizeCheater(targetPlayer));
     }
@@ -128,7 +168,7 @@ public sealed class TraitSystem : EntitySystem
     {
         _adminSystem.Erase(targetPlayer);
 
-        var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of cheats, then your nonexistence is a skill issue. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections."}[/color][/font]";
+        var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of malicious bug abuse, you should go read the rules. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections. This incident will be reported."}[/color][/font]";
         _chatManager.ChatMessageToOne(
             ChatChannel.Emotes,
             feedbackMessage,
@@ -136,5 +176,9 @@ public sealed class TraitSystem : EntitySystem
             EntityUid.Invalid,
             false,
             targetPlayer.Channel);
+
+        // Vulpstation - make sure the ghost can return to lobby by settings their death time
+        if (TryComp<GhostComponent>(targetPlayer.AttachedEntity, out var ghost))
+            _ghosts.SetTimeOfDeath(targetPlayer.AttachedEntity.Value, TimeSpan.Zero, ghost);
     }
 }
