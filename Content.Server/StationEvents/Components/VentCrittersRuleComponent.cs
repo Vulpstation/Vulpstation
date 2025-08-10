@@ -46,3 +46,14 @@ public sealed partial class VentCrittersRuleComponent : Component
 
     // Floof section end
 }
+
+// Vulpstation - prevents vent critters from spawning nearby
+[RegisterComponent]
+public sealed partial class VentEventFreeZoneComponent : Component
+{
+    [DataField]
+    public bool Enabled = true;
+
+    [DataField]
+    public float Radius = 20f;
+}

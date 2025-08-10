@@ -22,6 +22,8 @@
           - id: FloorPlanetGrass
             spreadsTo: [ FloorPlanetDirt ]
             dieUnderWalls: true
+        - type: VentEventFreeZone
+          radius: 20
       - type: StationJobs
         overflowJobs:
         - Passenger
