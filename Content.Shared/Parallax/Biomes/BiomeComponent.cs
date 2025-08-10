@@ -63,10 +63,10 @@ public sealed partial class BiomeComponent : Component
     public Dictionary<Vector2i, Dictionary<EntityUid, Vector2i>> LoadedEntities = new();
 
     /// <summary>
-    /// Vulpstation - what entities should spawn at these locations instead of the default? if null, then nothing
+    /// Vulpstation - what entities should spawn at these locations instead of the default? if null, then nothing.
     /// </summary>
     [DataField]
-    public Dictionary<Vector2i, Dictionary<Vector2i, string?>> ReplacedEntities = new();
+    public Dictionary<Vector2i, Dictionary<Vector2i, (string? prototype, bool isNative)>> ReplacedEntities = new();
 
     /// <summary>
     /// Vulpstation - all entities that couldn't be unloaded but were paused instead.
