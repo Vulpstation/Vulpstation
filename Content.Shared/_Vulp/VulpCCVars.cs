@@ -19,4 +19,11 @@ public sealed class VulpCCVars
     /// </summary>
     public static readonly CVarDef<float> EvacVoteDuration =
         CVarDef.Create("shuttle.emergency_vote_duration", 120f, CVar.SERVER);
+
+    /// <summary>
+    ///     The size of the box around a player to check for biome chunks to load.
+    ///     Generally you want this to be at least as high as the pvs range.
+    /// </summary>
+    public static readonly CVarDef<float> BiomeLoadingRange =
+        CVarDef.Create("net.biome_loading_range", 25f, CVar.SERVER);
 }

@@ -8,6 +8,7 @@ using Content.Server.Decals;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
+using Content.Shared._Vulp;
 using Content.Shared.Atmos;
 using Content.Shared.Construction.Components;
 using Content.Shared.Decals;
@@ -103,7 +104,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         SubscribeLocalEvent<BiomeComponent, MapInitEvent>(OnBiomeMapInit);
         SubscribeLocalEvent<FTLStartedEvent>(OnFTLStarted);
         SubscribeLocalEvent<ShuttleFlattenEvent>(OnShuttleFlatten);
-        Subs.CVar(_configManager, CVars.NetMaxUpdateRange, SetLoadRange, true);
+        Subs.CVar(_configManager, VulpCCVars.BiomeLoadingRange, SetLoadRange, true);
         InitializeCommands();
         InitializeUnloadingChecks(); // Vulpstation
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(ProtoReload);
@@ -129,7 +130,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
     {
         // Round it up
         _loadRange = MathF.Ceiling(obj / ChunkSize) * ChunkSize;
-        _loadArea = new Box2(-_loadRange, -_loadRange, _loadRange, _loadRange);
+        _loadArea = Box2.CentredAroundZero(Vector2.Create(_loadRange)); // Vulpstation - fix ugly math that doubled the size of the box
     }
 
     private void OnBiomeMapInit(EntityUid uid, BiomeComponent component, MapInitEvent args)
@@ -744,11 +745,15 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 // If it is a ghost role then purge it
                 // TODO: This is *kind* of a bandaid but natural mobs spawns needs a lot more work.
                 // Ideally we'd just have ghost role and non-ghost role variants for some stuff.
-                var uid = EntityManager.CreateEntityUninitialized(prototype, _mapSystem.GridTileToLocal(gridUid, grid, node));
-                RemComp<GhostTakeoverAvailableComponent>(uid);
-                RemComp<GhostRoleComponent>(uid);
-                EntityManager.InitializeAndStartEntity(uid);
-                modified.Add(node);
+                // var uid = EntityManager.CreateEntityUninitialized(prototype, _mapSystem.GridTileToLocal(gridUid, grid, node));
+                // RemComp<GhostTakeoverAvailableComponent>(uid);
+                // RemComp<GhostRoleComponent>(uid);
+                // EntityManager.InitializeAndStartEntity(uid);
+                // modified.Add(node);
+
+                // Vulpstation - don't do any of the above bullshit, just save the entity for later
+                var chunkIdx = (node / (float) ChunkSize).Floored() * ChunkSize;
+                component.ReplacedEntities.GetOrNew(chunkIdx)[node] = (prototype, true);
             }
         }
 
@@ -806,7 +811,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         // Now do entities
         var replacedEntities = component.ReplacedEntities.GetValueOrDefault(chunk); // Vulpstation
-        var loadedEntities = new Dictionary<EntityUid, Vector2i>();
+        var loadedEntities = component.LoadedEntities.GetOrNew(chunk); // Vulpstation - GetOrNew instead of making a new one each time
         component.LoadedEntities[chunk] = loadedEntities;
 
         var oldChunkAtmos = component.ModifiedAtmos.GetValueOrDefault(chunk); // Vulpstation
@@ -835,12 +840,14 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
                 // Vulpstation - rewritten
                 string? entPrototype = null;
+                bool isNative = true;
                 if (replacedEntities != null && replacedEntities.TryGetValue(indices, out var replaced))
                 {
-                    if (replaced == null)
+                    if (replaced.prototype == null)
                         continue; // The entity was deleted or forgotten.
 
-                    entPrototype = replaced;
+                    isNative = replaced.isNative; // This is NOT the originally generated entity
+                    entPrototype = replaced.prototype;
                 }
                 else if (!TryGetEntity(indices, component, grid, out entPrototype))
                     continue;
@@ -853,7 +860,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     _transform.AnchorEntity(ent, xform, gridUid, grid, indices);
                 }
 
-                loadedEntities.Add(ent, indices);
+                // Even if we don't save the entity, it will still be picked up later during anchored entity unloading/pausing
+                // It just will undergo less permissive checks
+                if (isNative)
+                    loadedEntities.Add(ent, indices);
             }
         }
 
@@ -966,22 +976,19 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             if (Deleted(ent) || !xformQuery.TryGetComponent(ent, out var xform))
             {
-                replacedEntities[tile] = null;
+                replacedEntities[tile] = (null, true);
                 continue;
             }
 
-            // It's moved
-            var entTile = _mapSystem.LocalToTile(gridUid, grid, xform.Coordinates);
-
-            // Vulpstation - instead, we raise an event.
-            var ev = new BiomeUnloadingEvent(entTile == tile);
+            // Vulpstation - instead, we raise an event. Also, we assume anything in here is native.
+            var ev = new BiomeUnloadingEvent(true);
             RaiseLocalEvent(ent, ref ev);
 
             if (ev.MarkTileModified)
                 modified.Add(tile);
             if (ev.Unload || ev.Delete)
             {
-                replacedEntities[tile] = ev.Delete ? null : MetaData(ent).EntityPrototype?.ID;
+                replacedEntities[tile] = (ev.Delete ? null : MetaData(ent).EntityPrototype?.ID, true);
                 QueueDel(ent);
             }
         }
@@ -1018,7 +1025,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
                 // Don't mess with anything that's potentially anchored.
                 var anchored = grid.GetAnchoredEntitiesEnumerator(indices);
-                var anyReplacements = replacedEntities.TryGetValue(indices, out var oldReplaced) && oldReplaced != null;
+                var anyReplacements = replacedEntities.TryGetValue(indices, out var oldReplaced) && oldReplaced.prototype != null;
                 var replacedEntity = EntityUid.Invalid;
 
                 // Vulpstation - we can only unload 1 entity. More is not supported & is very dangerous.
@@ -1069,7 +1076,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 // Now that we made sure only 1 entity is being replaced and the tile is not kept, we can delete it.
                 if (replacedEntity != EntityUid.Invalid)
                 {
-                    replacedEntities[indices] = MetaData(replacedEntity).EntityPrototype?.ID;
+                    replacedEntities[indices] = (MetaData(replacedEntity).EntityPrototype?.ID, false);
                     Del(replacedEntity);
                 }
 

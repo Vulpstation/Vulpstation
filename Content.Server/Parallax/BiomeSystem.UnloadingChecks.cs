@@ -52,6 +52,9 @@ public sealed partial class BiomeSystem
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
     {
+        if (args.IsBiomeIntrinsic)
+            return; // Don't try to unload mobs, just pause them in the next phase
+
         var mayBePlayer =
             TryComp<MindContainerComponent>(ent, out var mindCont) && mindCont.HasMind
             || HasComp<HumanoidAppearanceComponent>(ent)
@@ -76,12 +79,8 @@ public sealed partial class BiomeSystem
         }
 
         // This is an anchored entity, only unload it if it's intrinsic to the biome
-        if (HasComp<AnchorableComponent>(ent))
-        {
-            args.Unload &= args.IsBiomeIntrinsic;
-            args.MarkTileModified |= !args.IsBiomeIntrinsic;
-        }
-        // Otherwise should be good to unload, base checks should catch if it's an airlock or something
+        args.Unload &= args.IsBiomeIntrinsic;
+        args.MarkTileModified |= !args.IsBiomeIntrinsic;
     }
 
     private void OnPuddleUnloading(Entity<PuddleComponent> ent, ref BiomeUnloadingEvent args)
