@@ -1,12 +1,12 @@
 - type: construction
-  name: Basalt
-  id: Basalt
-  graph: Basalt
+  name: Sandstone
+  id: Sandstone
+  graph: Sandstone
   startNode: start
-  targetNode: basalt
-  category: construction-category-misc
-  description: A wall of basalt for decoration!
-  icon: { sprite: Structures/Walls/rock.rsi, state: rock_wall }
+  targetNode: sandstone
+  category: construction-category-structures
+  description: A wall of sandstone for decoration!
+  icon: { sprite: Structures/Walls/sandstone.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -15,14 +15,14 @@
   - !type:TileNotBlocked
 
 - type: constructionGraph
-  id: Basalt
+  id: Sandstone
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: basalt
+    - to: sandstone
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -30,8 +30,8 @@
         amount: 10
         doAfter: 5
 
-  - node: basalt
-    entity: WallRockBasalt
+  - node: sandstone
+    entity: WallSandstone
     edges:
     - to: start
       completed:

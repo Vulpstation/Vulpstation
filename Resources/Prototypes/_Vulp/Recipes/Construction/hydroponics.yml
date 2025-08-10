@@ -12,3 +12,28 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+
+- type: constructionGraph
+  id: Soil
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: soil
+      steps:
+      - material: Dirt
+        amount: 3
+        doAfter: 2
+
+  - node: soil
+    entity: hydroponicsSoilEmpty
+    edges:
+    - to: start
+      completed:
+      - !type:GivePrototype
+        prototype: Dirt
+        amount: 3
+      - !type:DeleteEntity { }
+      steps:
+      - tool: Digging
+        doAfter: 4

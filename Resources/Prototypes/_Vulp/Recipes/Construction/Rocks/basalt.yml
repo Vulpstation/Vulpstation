@@ -1,12 +1,12 @@
 - type: construction
-  name: Chromite
-  id: Chromite
-  graph: Chromite
+  name: Basalt
+  id: Basalt
+  graph: Basalt
   startNode: start
-  targetNode: chromite
-  category: construction-category-misc
-  description: A wall of chromite for decoration!
-  icon: { sprite: Structures/Walls/rock.rsi, state: rock_chromite }
+  targetNode: basalt
+  category: construction-category-structures
+  description: A wall of basalt for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_wall }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -15,14 +15,14 @@
   - !type:TileNotBlocked
 
 - type: constructionGraph
-  id: Chromite
+  id: Basalt
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: chromite
+    - to: basalt
       completed:
       - !type:SnapToGrid { }
       steps:
@@ -30,8 +30,8 @@
         amount: 10
         doAfter: 5
 
-  - node: chromite
-    entity: WallRockChromite
+  - node: basalt
+    entity: WallRockBasalt
     edges:
     - to: start
       completed:

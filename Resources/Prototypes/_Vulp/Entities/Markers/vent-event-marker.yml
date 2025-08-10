@@ -2,16 +2,18 @@
   name: Vent events
   id: VentEventSpawner
   parent: MarkerBase
+  suffix: 1x
   components:
   - type: Sprite
     layers:
-    - state: green
+    - state: red
     - state: ai
   - type: VentCritterSpawnLocation
 
 - type: entity
   id: VentEventSpawnerWeight3
   parent: VentEventSpawner
+  suffix: 3x
   components:
   - type: VentCritterSpawnLocation
     weight: 3
@@ -19,6 +21,7 @@
 - type: entity
   id: VentEventSpawnerWeight5
   parent: VentEventSpawner
+  suffix: 5x
   components:
   - type: VentCritterSpawnLocation
     weight: 5
