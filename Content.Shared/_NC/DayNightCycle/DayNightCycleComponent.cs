@@ -36,6 +36,10 @@ namespace Content.Shared._NC14.DayNightCycle
         [ViewVariables(VVAccess.ReadWrite)]
         [AutoNetworkedField]
         public float CurrentCycleTime { get; set; }
+
+        // Vulpstation - used for solar panels
+        [DataField]
+        public float MaxBrightness, CurrentBrightness;
     }
 
     [DataDefinition, NetSerializable, Serializable]

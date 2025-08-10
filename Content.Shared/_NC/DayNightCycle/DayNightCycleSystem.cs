@@ -84,6 +84,11 @@ namespace Content.Shared._NC14.DayNightCycle
                 Dirty(uid.Value, mapLight);
                 Dirty(uid.Value, dayNight);
             }
+
+            // Vulpstation
+            if (dayNight.MaxBrightness == default)
+                dayNight.MaxBrightness = dayNight.TimeEntries.Max(entry => Brightness(Color.FromHex(entry.ColorHex)));
+            dayNight.CurrentBrightness = Brightness(color);
         }
 
         private Color GetInterpolatedColor(DayNightCycleComponent component)
@@ -118,5 +123,8 @@ namespace Content.Shared._NC14.DayNightCycle
 
             return new Color(r, g, b);
         }
+
+        // Vulpstation
+        private static float Brightness(Color color) => (color.R * 0.299f + color.G * 0.587f + color.B * 0.114f) * color.A;
     }
 }

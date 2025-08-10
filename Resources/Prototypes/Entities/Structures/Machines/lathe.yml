@@ -204,7 +204,7 @@
       - ClothingEyesHypnoVisor # FloofStation
       - ToolRadioHandheld # Floofstation
       # Vulpstation section
-      - Shovel # Vulpstation
+      - Shovel
       - HydroponicsToolMiniHoe
       - HydroponicsToolClippers
       - HydroponicsToolScythe
@@ -212,6 +212,7 @@
       - HydroponicsToolSpade
       - PlantBag
       - PortableGeneratorJrPacmanMachineCircuitboard
+      - SolarAssemblyFlatpack
       # Vulpstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:
