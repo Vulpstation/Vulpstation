@@ -1,5 +1,5 @@
 - type: entity
-  name: Vent events
+  name: vent events
   id: VentEventSpawner
   parent: MarkerBase
   suffix: 1x
@@ -25,3 +25,17 @@
   components:
   - type: VentCritterSpawnLocation
     weight: 5
+
+- type: entity
+  name: no vent events
+  id: VentEventFreeZone
+  description: vent critters won't spawn in a 20m radius around this marker.
+  suffix: 20m
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: VentEventFreeZone
+    radius: 20
