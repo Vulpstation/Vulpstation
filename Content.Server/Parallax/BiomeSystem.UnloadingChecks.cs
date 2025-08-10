@@ -76,8 +76,12 @@ public sealed partial class BiomeSystem
         }
 
         // This is an anchored entity, only unload it if it's intrinsic to the biome
-        args.Unload &= args.IsBiomeIntrinsic;
-        args.MarkTileModified |= !args.IsBiomeIntrinsic;
+        if (HasComp<AnchorableComponent>(ent))
+        {
+            args.Unload &= args.IsBiomeIntrinsic;
+            args.MarkTileModified |= !args.IsBiomeIntrinsic;
+        }
+        // Otherwise should be good to unload, base checks should catch if it's an airlock or something
     }
 
     private void OnPuddleUnloading(Entity<PuddleComponent> ent, ref BiomeUnloadingEvent args)
