@@ -52,8 +52,12 @@ public sealed partial class BiomeSystem
 
     private void OnMobUnloading(Entity<MobStateComponent> ent, ref BiomeUnloadingEvent args)
     {
+        args.Handled = true;
         if (args.IsBiomeIntrinsic)
-            return; // Don't try to unload mobs, just pause them in the next phase
+        {
+            args.Unload = false; // Don't try to unload mobs, just pause them in the next phase
+            return;
+        }
 
         var mayBePlayer =
             TryComp<MindContainerComponent>(ent, out var mindCont) && mindCont.HasMind
@@ -66,7 +70,6 @@ public sealed partial class BiomeSystem
         args.Unload &= isAlive;
         args.Delete |= !isAlive && !mayBePlayer;
         args.MarkTileModified = false;
-        args.Handled = true;
     }
 
     private void OnAnchorableUnloading(Entity<TransformComponent> ent, ref BiomeUnloadingEvent args)
