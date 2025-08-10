@@ -9,6 +9,7 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Atmos;
+using Content.Shared.Construction.Components;
 using Content.Shared.Decals;
 using Content.Shared.Ghost;
 using Content.Shared.Gravity;
@@ -1089,11 +1090,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta) || Paused(ent, meta) || _ghostQuery.HasComp(ent))
                 continue;
 
+            // TODO this is terrible - test if storing a HashSet of modified entities is better
+            // var xform = Transform(ent);
+            // if (xform.Anchored)
+            // {
+            //     var tilePos = _mapSystem.LocalToTile(gridUid, grid, xform.Coordinates);
+            //     if (replacedEntities.ContainsKey(tilePos) || modified.Contains(tilePos))
+            //         continue;
+            // }
+
             var ev = new BiomeUnloadingEvent(false);
             RaiseLocalEvent(ent, ref ev);
 
             // We don't care about MarkTileModified here, leave that to anchored entities (handled above).
-            if (!ev.Unload)
+            if (!ev.Unload || ev.MarkTileModified)
             {
                 if (ev.Delete)
                     QueueDel(ent);
