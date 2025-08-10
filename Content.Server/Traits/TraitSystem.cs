@@ -38,6 +38,7 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly GameTicker _players = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     public override void Initialize()
     {
@@ -87,7 +88,7 @@ public sealed class TraitSystem : EntitySystem
             args.Handled = true;
 
             var feedbackMessage =
-                $"[font size=24][color=#ff0000]You have tried to spawn with an illegal trait point total: {pointsTotal} points, {traitSelections} slots." +
+                $"[font size=18][color=#ff0000]You have tried to spawn with an illegal trait point total: {pointsTotal} points, {traitSelections} slots." +
                 $"If this was a result of malicious bug abuse, you should go read the rules." +
                 $"Otherwise, feel free to fix your trait selections and try again. This incident will be reported.[/color][/font]";
 
@@ -98,6 +99,9 @@ public sealed class TraitSystem : EntitySystem
                 EntityUid.Invalid,
                 false,
                 args.Player.Channel);
+
+            if (_gameTicker.LobbyEnabled)
+                _gameTicker.Respawn(args.Player);
         }
     }
 
