@@ -41,8 +41,20 @@
     - to: drain
       steps:
       - tag: Bucket
+        icon:
+          sprite: Objects/Tools/bucket.rsi
+          state: icon
+        name: bucket
       - tag: Bucket
+        icon:
+          sprite: Objects/Tools/bucket.rsi
+          state: icon
+        name: bucket
       - tag: Pipe
+        icon:
+          sprite: Structures/Piping/Atmospherics/pipe.rsi
+          state: pipeStraight
+        name: pipe
       - material: Steel
         amount: 4
       - material: MetalRod
