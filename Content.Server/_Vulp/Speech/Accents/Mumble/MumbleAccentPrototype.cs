@@ -19,6 +19,12 @@ public sealed class MumbleAccentPrototype : IPrototype
     public List<Dictionary<string, string>> Replacements = default!;
 
     /// <summary>
+    ///     If there's no replacement for a sequence, this is the chance to duplicate or drop the said character.
+    /// </summary>
+    [DataField]
+    public float DoubleChance = 0f, DropChance = 0f;
+
+    /// <summary>
     ///     How many db to add to the volume of emote sounds.
     /// </summary>
     [DataField]

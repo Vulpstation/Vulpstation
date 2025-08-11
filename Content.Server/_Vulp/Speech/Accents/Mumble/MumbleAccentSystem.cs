@@ -1,6 +1,7 @@
 using System.Text;
 using Content.Server.Chat.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 
 namespace Content.Server._Vulp.Speech.Accents.Mumble;
@@ -10,6 +11,7 @@ public sealed class MumbleAccentSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -54,7 +56,15 @@ public sealed class MumbleAccentSystem : EntitySystem
             }
 
             // No replacement, use the original character
-            result.Append(args.Message[i]);
+            var c = args.Message[i];
+            var isLetter = char.IsLetter(c);
+            if (isLetter && _random.Prob(accent.DropChance))
+                continue;
+
+            result.Append(c);
+            if (isLetter && _random.Prob(accent.DoubleChance))
+                result.Append(c);
+
             i++;
         }
 
