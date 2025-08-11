@@ -1,0 +1,9 @@
+- type: entity
+  parent: CryogenicSleepUnit
+  id: CryogenicSleepUnitSpawnerNative
+  suffix: Spawner, Native
+  components:
+  - type: ContainerSpawnPoint
+    containerId: storage
+    spawnType: Job
+    job: Native
