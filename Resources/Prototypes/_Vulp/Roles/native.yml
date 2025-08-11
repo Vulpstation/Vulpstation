@@ -4,6 +4,7 @@
   description: job-description-native
   playTimeTracker: JobNative
   startingGear: NativeGear
+  alwaysUseSpawner: true
   icon: JobIconNative
   supervisors: job-supervisors-noone
   access:

@@ -91,6 +91,20 @@ public sealed class ContainerSpawnPointSystem : EntitySystem
             args.Station);
 
         _random.Shuffle(possibleContainers);
+        // Vulpstation - sort the spawners so that job-specific spawners are preferred
+        possibleContainers.Sort(
+            (a, b) =>
+            {
+                if (a.Comp1.Job == b.Comp1.Job)
+                    return 0;
+                if (a.Comp1.Job == null)
+                    return 1;
+                if (b.Comp1.Job == null)
+                    return -1;
+
+                return 0;
+            });
+
         foreach (var (uid, spawnPoint, manager, xform) in possibleContainers)
         {
             if (!_container.TryGetContainer(uid, spawnPoint.ContainerId, out var container, manager))

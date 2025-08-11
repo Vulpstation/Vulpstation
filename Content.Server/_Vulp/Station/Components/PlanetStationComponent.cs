@@ -22,10 +22,16 @@ public sealed partial class PlanetStationComponent : Component
     public bool SpawnLoot = true;
 
     /// Components to add to the map post-planetization.
+    /// TODO: see if adding [AlwaysPushInheritance] allows to offload some components to parent prototypes
     [DataField(required: true)]
     public ComponentRegistry Components = default!;
 
+    /// If true, the station grid will be irreversibly merged into the planet upon spawning.
+    /// This is incompatible with FTL.
+    [DataField]
+    public bool MergeIntoPlanet = false;
+
     /// Time range between the spawn of the station and its arrival on the planet, in seconds. If null, skips FTL.
     [DataField]
-    public MinMax? FtlTime = null; // new(60, 90); // TODO: broken - doesn't allow ContainerFills to run properly (only happens in prod, can't debug)
+    public MinMax? FtlTime = null;
 }

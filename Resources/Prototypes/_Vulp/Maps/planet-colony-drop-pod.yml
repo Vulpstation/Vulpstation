@@ -5,7 +5,7 @@
   minPlayers: 0
   stations:
     colony-drop-pod:
-      stationProto: PlanetStation
+      stationProto: PlanetStationBase
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Colony Drop Pod'
@@ -14,6 +14,7 @@
           prefixCreator: 'NVS'
       - type: PlanetStation
         biome: Continental
+        mergeIntoPlanet: true
         components:
         - type: DayNightCycle
           timeEntries:
