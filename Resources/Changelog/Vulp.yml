@@ -395,3 +395,18 @@ Entries:
   id: 35
   time: '2025-08-10T17:33:26.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/56
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        The colony drop pod has been improved, most importantly it now contains
+        a defib, fire extinguishers, more lights, a medical techfab...
+    - type: Tweak
+      message: >-
+        The colony drop pod will now become part of the planet grid at round
+        start, which means it can be easily be modified by players. However,
+        players should be very careful when using the shipyard console as the
+        incoming shuttle CAN flatten it now.
+  id: 36
+  time: '2025-08-11T10:31:57.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/57
