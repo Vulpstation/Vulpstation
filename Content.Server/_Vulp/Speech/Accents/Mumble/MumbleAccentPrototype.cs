@@ -1,0 +1,38 @@
+using Robust.Shared.Prototypes;
+
+
+namespace Content.Server._Vulp.Speech.Accents.Mumble;
+
+
+[Prototype("mumbleAccent")]
+public sealed class MumbleAccentPrototype : IPrototype
+{
+    [IdDataField]
+    public string ID { get; } = default!;
+
+    /// <summary>
+    ///     A list where the nth entry contains replacements for char sequences that are exactly n characters long.
+    ///     E.g. the 1st entry must contain replacements like "a" -> "foo". The 2nd is like "ab" -> "bar". The 3rd is "abc" -> "baz". And so on.
+    ///     This is done to achieve roughly O(1) lookup time instead of O(n), where n is the number of replacements.
+    /// </summary>
+    [DataField(required: true)]
+    public List<Dictionary<string, string>> Replacements = default!;
+
+    /// <summary>
+    ///     How many db to add to the volume of emote sounds.
+    /// </summary>
+    [DataField]
+    public float EmoteVolume = 0f;
+
+
+    [NonSerialized, Access(typeof(MumbleAccentSystem), Other = AccessPermissions.Read)]
+    public bool Initialized = false;
+
+    /// <summary>
+    ///     Initialized on demand by the system, this provides a lookup for each replacement in <see cref="Replacements"/>.
+    /// </summary>
+    [NonSerialized, Access(typeof(MumbleAccentSystem), Other = AccessPermissions.None)]
+    public List<Dictionary<string, string>.AlternateLookup<ReadOnlyMemory<char>>>? Lookups = null;
+
+    public int MaxCharacterLength => Replacements.Count;
+}

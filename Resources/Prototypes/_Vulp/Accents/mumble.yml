@@ -1,0 +1,40 @@
+- type: mumbleAccent
+  id: BasicMuzzle
+  emoteVolume: -20
+  replacements:
+  # Length 1
+  - s: sh
+    z: zh
+    r: w
+    l: w
+    v: f
+    p: h
+    b: f
+    t: d
+    k: g
+    g: ng
+    d: n
+    f: h
+    h: hh
+    a: uh
+    e: eh
+    i: eh
+    o: u
+    u: uh
+  # Length 2
+  - th: mm
+    ch: mm
+    sh: mm
+    oo: oh
+    on: oh
+    no: nu
+    pl: mn
+    hi: ha
+    ae: eh
+    me: ee
+  # Length 3
+  - sch: mm
+    yes: ehh
+    the: eh
+    too: oh
+    you: hu
