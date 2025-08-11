@@ -317,6 +317,10 @@ public sealed partial class DockingSystem
            // If it's a map check no hard collidable anchored entities overlap
            if (isMap)
            {
+               // Vulpstation - just flatten whatever is there. The problem is planet grids often contain a lot of hard entities,
+               // and if there's no valid spawns, the shuttle is just gonna FTL to (0, 0) and flatten everything there anyway.
+               // A better solution is to cancel FTL if there's no valid docks, but that's for later.
+               return true;
                foreach (var tile in grid.GetLocalTilesIntersecting(aabb))
                {
                    var anchoredEnumerator = grid.GetAnchoredEntitiesEnumerator(tile.GridIndices);
