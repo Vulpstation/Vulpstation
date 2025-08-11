@@ -5,7 +5,7 @@
   minPlayers: 0
   stations:
     bouba:
-      stationProto: PlanetStation
+      stationProto: PlanetStationBase
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Landing Shuttle'
