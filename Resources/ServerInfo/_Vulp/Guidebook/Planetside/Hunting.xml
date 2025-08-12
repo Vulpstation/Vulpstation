@@ -1,0 +1,28 @@
+<Document>
+
+  # Hunting
+
+  There are some animals scattered in the wild. You can hunt them for food.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="MobLizard" Caption="Lizard"/>
+    <GuideEntityEmbed Entity="FoodMeatLizard" Caption="Lizard meat"/>
+  </Box>
+
+  Additionally, during certain events (typically announced on radio by central command), certain hostile and non-hostile
+  mobs may appear on the planet.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="MobMouse" Caption="A mouse"/>
+    <GuideEntityEmbed Entity="MobGiantSpider" Caption="A tarantula"/>
+  </Box>
+
+  You can use a bonfire to cook meat, similarly to an electric grill.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="BonfireLit" Caption="Lit bonfire"/>
+    <GuideEntityEmbed Entity="FoodMeatLizardCooked" Caption="Cooked lizard meat"/>
+  </Box>
+
+  ## This article is a stub, you can help by expanding it.
+</Document>

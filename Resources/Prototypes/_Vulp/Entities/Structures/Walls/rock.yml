@@ -1,0 +1,62 @@
+- type: entity
+  id: WallRockConstructible
+  parent: WallRock
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Rock
+    node: rock
+
+- type: entity
+  id: WallRockBasaltConstructible
+  parent: WallRockBasalt
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Basalt
+    node: basalt
+
+- type: entity
+  id: WallRockSnowConstructible
+  parent: WallRockSnow
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Snow
+    node: snow
+
+- type: entity
+  id: WallRockSandConstructible
+  parent: WallRockSand
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Sand
+    node: sand
+
+- type: entity
+  id: WallSandstoneConstructible
+  parent: WallSandstone
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Sandstone
+    node: sandstone
+
+- type: entity
+  id: WallRockChromiteConstructible
+  parent: WallRockChromite
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Chromite
+    node: chromite
+
+- type: entity
+  id: WallRockAndesiteConstructible
+  parent: WallRockAndesite
+  suffix: Constructible
+  components:
+  - type: Construction # Vulpstation
+    graph: Andesite
+    node: andesite

@@ -517,6 +517,8 @@
     layerStates:
       - bananium
       - bananium_1
+  - type: StackDecay # Vulpstation - bananium half-decays in 47 minutes
+    halfLifeTime: 2585
   - type: RadiationSource #Delta V - Adds radiation
     intensity: 0.1
   - type: FlavorProfile

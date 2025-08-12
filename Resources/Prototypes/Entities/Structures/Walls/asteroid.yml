@@ -475,9 +475,6 @@
           state: rock_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_west
-    - type: Construction # Vulpstation
-      graph: Rock
-      node: rock
 
 # Ore veins
 - type: entity
@@ -789,9 +786,6 @@
           state: rock_wall_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_wall_west
-    - type: Construction # Vulpstation
-      graph: Basalt
-      node: basalt
 
 - type: entity
   id: WallRockBasaltCoal
@@ -1101,9 +1095,6 @@
           state: rock_snow_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_snow_west
-    - type: Construction # Vulpstation
-      graph: Snow
-      node: snow
 
 - type: entity
   id: WallRockSnowCoal
@@ -1413,9 +1404,6 @@
           state: rock_sand_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_sand_west
-    - type: Construction # Vulpstation
-      graph: Sand
-      node: sand
 
 - type: entity
   id: WallRockSandCoal
@@ -1724,9 +1712,6 @@
           state: rock_chromite_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_chromite_west
-    - type: Construction # Vulpstation
-      graph: Chromite
-      node: chromite
 
 - type: entity
   id: WallRockChromiteCoal
@@ -2036,9 +2021,6 @@
           state: rock_andesite_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_andesite_west
-    - type: Construction # Vulpstation
-      graph: Andesite
-      node: andesite
 
 - type: entity
   id: WallRockAndesiteCoal

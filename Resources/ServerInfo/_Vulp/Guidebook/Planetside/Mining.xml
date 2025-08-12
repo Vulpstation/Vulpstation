@@ -1,0 +1,36 @@
+<Document>
+
+  # Mining
+
+  You know the drill. Get it? No? Okay, moving on.
+
+  Mining is the process of extracting raw resources from the planet's surface.
+  It is a job that requires a lot of effort and time.
+
+  ## Mining tools
+
+  You can craft a pickaxe in the autolathe, but it's a pretty crude and hard to use tool.
+  Most rocks won't survive two hits from it, but some more stiff rocks and ores might take more.
+
+  The ore processor can then be used to process raw ores into refined materials, such as steel, glass, gold, and more.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="Pickaxe" Caption="Pickaxe"/>
+    <GuideEntityEmbed Entity="OreProcessor" Caption="Ore processor"/>
+    <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
+  </Box>
+
+  If your colony has a working epistemics/science department, they will be able to unlock the salvage technology,
+  which will provide you access to improved tools and machines for mining. Most of them are craftable in the protolathe,
+  which the epistemics/science department can give you access to.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="MiningDrill" Caption="Mining drill"/>
+    <GuideEntityEmbed Entity="MiningDrillDiamond" Caption="Diamond mining drill"/>
+  </Box>
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="OreProcessorIndustrial" Caption="Industrial ore processor"/>
+    <GuideEntityEmbed Entity="Protolathe" Caption="Protolathe"/>
+  </Box>
+
+</Document>

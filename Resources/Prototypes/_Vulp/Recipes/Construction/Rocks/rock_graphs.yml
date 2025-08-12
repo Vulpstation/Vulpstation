@@ -1,0 +1,208 @@
+- type: constructionGraph
+  id: Andesite
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: andesite
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: andesite
+    entity: WallRockAndesiteConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Basalt
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: basalt
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: basalt
+    entity: WallRockBasaltConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Chromite
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: chromite
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: chromite
+    entity: WallRockChromiteConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Rock
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: rock
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: rock
+    entity: WallRockConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Sand
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: sand
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: sand
+    entity: WallRockSandConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Sandstone
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: sandstone
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: sandstone
+    entity: WallSandstoneConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+
+- type: constructionGraph
+  id: Snow
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: snow
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 5
+  - node: snow
+    entity: WallRockSnowConstructible
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 10
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2

@@ -1,0 +1,88 @@
+<Document>
+
+  # Planetside Communication
+
+  In space station 14, communication is a key. Planet-side colonies are not an exception to this:
+  you must have a way to communicate with your fellow colonists in order to cooperate, get help in case of emergencies, and coordinate your actions.
+
+  At the beginning of the round you won't have many communication mediums available to you, but there are a few key ones:
+
+  ## Handheld radios
+
+  Crafted in an autolathe, bought from a salvage vendor, or received for being a native, this device allows you to chat with your fellow colonists.
+  In order to hear what other people are saying, you need to turn the radio on (hold it in your hand and press Z). If you say something while near it,
+  the radio will relay your message to every other active radio.
+
+  In a future update you will be able to tune your radio to particular frequencies and mute the microphone without muting the radio itself.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="RadioHandheld" Caption="Handheld radio"/>
+    <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
+    <GuideEntityEmbed Entity="Intercom" Caption="Intercom"/>
+  </Box>
+
+  ## Faxes and holopads
+
+  While those can sound like old-fashioned communication devices, they are actually quite useful.
+
+  In order to build them, you need to first use the circuit imprinter to print a circuitboard for them
+  (perhaps you'll want to ask your local science/epistemics department for help with that).
+
+  A fax machine allows you to send paper messages to other fax machines. You can change the name of your fax by using a screwdriver on it.
+  If you don't have a paper, don't worry - the "print paper" and "copy" buttons let you print as much paper as you wish!
+
+  A holopad allows you to call other holopads and perform a kind of video call with people on the other side.
+  Similarly to fax machines, you can change a holopad's name by labelling it with a hand labeller.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="FaxMachineConstructible" Caption="Fax machine"/>
+    <GuideEntityEmbed Entity="Holopad" Caption="Holopad"/>
+  </Box>
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="FaxMachineCircuitboard" Caption="Fax machine board"/>
+    <GuideEntityEmbed Entity="HolopadMachineCircuitboard" Caption="Holopad board"/>
+    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
+  </Box>
+
+  ## Headsets
+
+  Ah, good old radio. What a shame the planet doesn't have a telecommunication server!
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="TelecomServer" Caption="Telecommunication server"/>
+    <GuideEntityEmbed Entity="TelecomServerCircuitboard" Caption="Its circuitboard"/>
+    <GuideEntityEmbed Entity="ClothingHeadsetGrey" Caption="Headset"/>
+  </Box>
+
+  In order to have a functioning radio in the vicinity of your colony, you will need to build a telecommunication server.
+  That will require you to set up an epistemics (science) department and research the A/V communication technology.
+  After that you will be able to print its circuitboard in the circuit imprinter and build a telecommunication server machine.
+  Once that is done, you will just need to fill the server with whatever encryption keys your heart desires
+  (in most cases you'll want at least the common encryption key).
+
+  ## PDA messaging
+
+  This one requires a telecommunication server. Open your PDA and navigate to the "programs" tab.
+  There you can find the NanoChat program, which allows you to send messages to other players on the same planet.
+
+  In order to message someone, you need to add them as a contact, or have them message you. To do this, press the "+" button in the top right corner,
+  type in their NanoChat ID (you will have to ask the person you want to message for it, and you can find yours next to the "+" button).
+  Then you will be able to message that person and have them message you back.
+
+  <Box Orientation="Vertical">
+    <GuideEntityEmbed Entity="PassengerPDA" Caption="Your PDA"/>
+    <GuideEntityEmbed Entity="NanoChatCartridge" Caption="Cartridge used to install NanoChat. You probably don't need it"/>
+  </Box>
+
+  # Orientation
+
+  Craftable in the autolathe, the station map will display the rough layout of the surface.
+  Having a handheld station map on your person is pretty useful. Just remember to charge it!
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="HandheldStationMapEmpty" Caption="Station map"/>
+    <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
+  </Box>
+
+</Document>

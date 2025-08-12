@@ -1,0 +1,135 @@
+<Document>
+
+  # Electricity
+
+  There a few ways to generate power on the planet, such as:
+
+  ## Portable generators
+
+  JrPacman is the most basic portable generator. It uses welding fuel and generates low-voltage electricity, up to 8kw,
+  perfect for powering your small hut. You can use the autolathe to make a board for it, and then build it like any other machine.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="PortableGeneratorJrPacman" Caption="JRPacman"/>
+    <GuideEntityEmbed Entity="PortableGeneratorJrPacmanMachineCircuitboard" Caption="JR Pacman board"/>
+    <GuideEntityEmbed Entity="WeldingFuelTankFull" Caption="Welding fuel tank"/>
+    <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
+  </Box>
+
+  Pacman is a more advanced version, capable of generating up to 30 kw in medium or high voltage.
+  It uses solid plasma as fuel, and is way more effecient is high-voltage mode.
+
+  The board for it can be crafted in the circuit imprinter. You will need epistemics/science to research the power generation
+  technology in order to get access to it. The good news is, your starting structure should already have one pre-built!
+
+  In order to convert the MV/HV electricity in LV, you will need an APC and/or a substation. See below.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="PortableGeneratorPacman" Caption="Pacman"/>
+    <GuideEntityEmbed Entity="PortableGeneratorPacmanMachineCircuitboard" Caption="Pacman board"/>
+    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
+  </Box>
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SheetPlasma1" Caption="Sheet of solid plasma"/>
+    <GuideEntityEmbed Entity="PlasmaOre1" Caption="Plasma ore"/>
+  </Box>
+
+  SuperPacman is a more advanced version, capable of generating up to 50kw in high voltage, and using uranium as its fuel.
+  Don't worry though, it's not radioactive.
+
+  It has the same research requirements as Pacman.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="PortableGeneratorSuperPacman" Caption="Super Pacman"/>
+    <GuideEntityEmbed Entity="PortableGeneratorSuperPacmanMachineCircuitboard" Caption="Super Pacman board"/>
+  </Box>
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="UraniumOre1" Caption="Uranium ore"/>
+    <GuideEntityEmbed Entity="SheetUranium1" Caption="Sheet of uranium"/>
+    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
+  </Box>
+
+  ## Solars
+
+  While not the most powerful source of energy, solars can still be quite useful.
+  They produce less power if there is any solid obstruction in the direction they are facing (such as walls, trees, etc),
+  so make sure to clear the surrounding area.
+
+  Building a solar array requires 3 key components:
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SolarPanel" Caption="Solar panel"/>
+  </Box>
+
+  Solar panels. Many of them. An array of 12 can produce up to 8 kw of power during daytime, however, the exact power output depends
+  on many factors, such as how precisely they follow the sun direction, how much lighting the planet offers, and more.
+
+  You can build one by crafting a solar assembly in the autolathe and then adding glass to it.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SolarTracker" Caption="Solar tracker"/>
+    <GuideEntityEmbed Entity="SolarTrackerElectronics" Caption="Solar tracker electronics"/>
+  </Box>
+
+  At least one connected solar tracker. It will track the sun and allow you to adjust the orientation of the panels to face it.
+
+  You can build one by crafting a solar assembly and a solar tracker electronics in the autolathe and combining them together.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="ComputerSolarControl" Caption="Solar control computer"/>
+    <GuideEntityEmbed Entity="SolarControlComputerCircuitboard" Caption="Solar control computer board"/>
+  </Box>
+
+  A solar control computer. You will need to install it and configure it to track the sun.
+  The speed at which the sun rotates varies across rounds, but is usually close to 6°/minute.
+
+  # Power conversion
+
+  There are 3 power types in SS14: low voltage (LV), medium voltage (MV), and high voltage (HV).
+
+  - LV is used for most machines and computers, lightbulbs and doors, and more.
+  - MV is used to power certain machines such as emitters and particle accelerators, but is mostly just an intermediate step.
+  - HV is used to store power in the SMES, and is also an intermediate step.
+
+  ## HV to MV
+
+  You can convert HV to MV using a substation. Its electronics can be printed in the autolathe and it can be built like any other machine.
+
+  Connected an HV cable from your generators or SMES to the substation, and an LV cable from the substation to APCs or other machines.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SubstationBasic" Caption="Substation"/>
+    <GuideEntityEmbed Entity="SubstationMachineCircuitboard" Caption="Substation electronics"/>
+  </Box>
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SubstationWallBasic" Caption="Wallmount substation"/>
+    <GuideEntityEmbed Entity="WallmountSubstationElectronics" Caption="Wallmount substation electronics"/>
+  </Box>
+
+  ## MV to LV
+
+  You can convert MV to LV using an APC. Its electronics can be printed in the autolathe and it can be built using the crafting menu.
+
+  An APC can be toggled off and on by anyone with engineering access (or a screwdriver and a crowbar) if maintenance is required.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="APCBasic" Caption="APC"/>
+    <GuideEntityEmbed Entity="APCElectronics" Caption="APC electronics"/>
+  </Box>
+
+  # Power storage
+
+  You can store power in the SMES - a large battery. Building one is not necessary, but it is good to have if your power generator
+  is expected to fluctuate. A good SMES can power a small colony for at least 20-30 minutes without any power production.
+
+  In order to build one, you will need to print SMES electronics in the autolathe, and then build it like any other machine.
+  Make sure to place a cable terminal (craftable using some wires) in front of the SMES, with red wires pointing towards it.
+  Connect the cable terminal to your power generators, and the SMES to your main power grid. Voila, you have a power bank!
+
+  You can later upgrade the SMES with better batteries or capacitors to store even more power or output it faster.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SMESBasic" Caption="SMES"/>
+    <GuideEntityEmbed Entity="SMESMachineCircuitboard" Caption="SMES board"/>
+  </Box>
+</Document>

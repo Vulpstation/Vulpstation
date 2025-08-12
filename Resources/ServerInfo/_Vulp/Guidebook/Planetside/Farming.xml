@@ -1,0 +1,34 @@
+<Document>
+
+  # Farming
+
+  You can use the shovel to dig up planet tiles. For example, digging up grass leaves a dirt tile beneath and yield you a grass tile.
+  You can then shovel the dirt to get dirt items, which can be used to craft soil pots.
+
+  The collected grass can then be used as compost in the soil pots.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="Shovel" Caption="Shovel"/>
+    <GuideEntityEmbed Entity="FloorTileItemDirt" Caption="Dirt"/>
+    <GuideEntityEmbed Entity="FloorTileItemGrass" Caption="Grass"/>
+    <GuideEntityEmbed Entity="hydroponicsSoil" Caption="Soil"/>
+  </Box>
+
+  Shovels, just like other hydroponic tools, can be crafted in the autolathe.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="Shovel" Caption="Shovel"/>
+    <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
+  </Box>
+
+  You can use any liquid container such as a bucket to collect water from rivers.
+  Rivers can also be used to dispose of any unwanted chemicals.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="Bucket" Caption="A bucket, craftable in the autolathe"/>
+    <GuideEntityEmbed Entity="FloorWaterEntity" Caption="A river"/>
+  </Box>
+
+  ## This article is a stub, you can help by expanding it
+
+</Document>

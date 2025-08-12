@@ -213,6 +213,8 @@
       - PlantBag
       - PortableGeneratorJrPacmanMachineCircuitboard
       - SolarAssemblyFlatpack
+      - SolarControlComputerCircuitboard
+      - SolarTrackerElectronics
       # Vulpstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:

@@ -1,0 +1,47 @@
+- type: guideEntry
+  id: 1PlanetSideSurvival # The 1 is for sorting
+  name: Planetside survival
+  text: /ServerInfo/_Vulp/Guidebook/Planetside.xml
+  children:
+  - PlanetCommunication
+  - PlanetMining
+  - PlanetBuilding
+  - PlanetFarming
+  - PlanetHunting
+  - PlanetElectricity
+  - PlanetThreats
+
+- type: guideEntry
+  id: PlanetCommunication
+  name: Communication
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Communication.xml
+
+- type: guideEntry
+  id: PlanetMining
+  name: Mining
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Mining.xml
+
+- type: guideEntry
+  id: PlanetBuilding
+  name: Building
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Building.xml
+
+- type: guideEntry
+  id: PlanetFarming
+  name: Farming
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Farming.xml
+
+- type: guideEntry
+  id: PlanetHunting
+  name: Hunting
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Hunting.xml
+
+- type: guideEntry
+  id: PlanetElectricity
+  name: Electricity
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Electricity.xml
+
+- type: guideEntry
+  id: PlanetThreats
+  name: Threats
+  text: /ServerInfo/_Vulp/Guidebook/Planetside/Threats.xml
