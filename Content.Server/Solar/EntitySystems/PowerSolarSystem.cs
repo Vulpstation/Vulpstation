@@ -40,7 +40,7 @@ namespace Content.Server.Solar.EntitySystems
         /// The distance before the sun is considered to have been 'visible anyway'.
         /// This value, like the occlusion semantics, is borrowed from all the other SS13 stations with solars.
         /// </summary>
-        public float SunOcclusionCheckDistance = 10;
+        public float SunOcclusionCheckDistance = 7;
 
         /// <summary>
         /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
