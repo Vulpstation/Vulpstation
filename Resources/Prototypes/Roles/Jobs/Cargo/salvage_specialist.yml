@@ -12,6 +12,7 @@
   - Salvage
   - Maintenance
   - External
+  - Orders # Vulpstation
 
 - type: startingGear
   id: SalvageSpecialistGear
