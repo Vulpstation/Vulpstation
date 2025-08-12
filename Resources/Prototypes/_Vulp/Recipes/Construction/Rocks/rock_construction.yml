@@ -1,0 +1,111 @@
+- type: construction
+  name: andesite wall
+  id: Andesite
+  graph: Andesite
+  startNode: start
+  targetNode: andesite
+  category: construction-category-structures
+  description: A wall of andesite for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_andesite }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: basalt wall
+  id: Basalt
+  graph: Basalt
+  startNode: start
+  targetNode: basalt
+  category: construction-category-structures
+  description: A wall of basalt for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_wall }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: chromite wall
+  id: Chromite
+  graph: Chromite
+  startNode: start
+  targetNode: chromite
+  category: construction-category-structures
+  description: A wall of chromite for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_chromite }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: rock wall
+  id: Rock
+  graph: Rock
+  startNode: start
+  targetNode: rock
+  category: construction-category-structures
+  description: A rock, for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: sand wall
+  id: Sand
+  graph: Sand
+  startNode: start
+  targetNode: sand
+  category: construction-category-structures
+  description: A wall of sand for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_sand }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: sandstone wall
+  id: Sandstone
+  graph: Sandstone
+  startNode: start
+  targetNode: sandstone
+  category: construction-category-structures
+  description: A wall of sandstone for decoration!
+  icon: { sprite: Structures/Walls/sandstone.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: snow wall
+  id: Snow
+  graph: Snow
+  startNode: start
+  targetNode: snow
+  category: construction-category-structures
+  description: A wall of snow for decoration!
+  icon: { sprite: Structures/Walls/rock.rsi, state: rock_snow }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
