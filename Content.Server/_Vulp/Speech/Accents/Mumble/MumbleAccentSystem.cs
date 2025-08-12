@@ -1,5 +1,7 @@
 using System.Text;
 using Content.Server.Chat.Systems;
+using Content.Server.Language;
+using Content.Shared.Language.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -22,6 +24,7 @@ public sealed class MumbleAccentSystem : EntitySystem
 
     private void OnTransformSpeech(TransformSpeechEvent args)
     {
+        // Note to self: TransformSpeechEvent is not raised if the language doesn't require speech
         if (!TryComp<MumbleAccentComponent>(args.Sender, out var accent))
             return;
 
