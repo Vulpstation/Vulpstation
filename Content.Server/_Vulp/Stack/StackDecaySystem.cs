@@ -13,8 +13,19 @@ public sealed class StackDecaySystem : EntitySystem
 
     public override void Initialize()
     {
+        SubscribeLocalEvent<StackDecayComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StackDecayComponent, StackSplitEvent>(OnStackSplit);
         SubscribeLocalEvent<StackDecayComponent, StackCountChangedEvent>(OnStackCountChange);
+    }
+
+    private void OnMapInit(Entity<StackDecayComponent> ent, ref MapInitEvent args)
+    {
+        if (!TryComp<StackComponent>(ent, out var stack))
+            return;
+
+        ent.Comp.LastTickCount = stack.Count;
+        ent.Comp.LastTickTime = _timing.CurTime;
+        ent.Comp.NextUpdate = _timing.CurTime + ent.Comp.UpdateInterval;
     }
 
     private void OnStackCountChange(Entity<StackDecayComponent> ent, ref StackCountChangedEvent args)
