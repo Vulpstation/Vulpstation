@@ -415,3 +415,29 @@ Entries:
   id: 37
   time: '2025-08-12T03:06:45.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/59
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Cargo technicians and salvage specialists now have round-start Orders
+        access.
+    - type: Fix
+      message: >-
+        You can no longer deconstruct natural rocks for 10 pieces of steel,
+        while manually built decorative rocks can still be deconstructed.
+    - type: Add
+      message: >-
+        Refined bananium now has a half-life of 57 minutes. This means that
+        after 57 minutes, only half of the bananium will remain, unless it is
+        stored in a lathe.
+    - type: Tweak
+      message: >-
+        Solar trackers and solar control computers are now available round-start
+        in the autolathe.
+    - type: Add
+      message: >-
+        Vulpstation now has its own survival guide in the guidebook, explaining
+        the basics of building, farming, hunting, setting up power, and more.
+  id: 38
+  time: '2025-08-12T12:05:29.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/60
