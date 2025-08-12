@@ -1,7 +1,7 @@
 using Robust.Shared.Prototypes;
 
 
-namespace Content.Server._Vulp.Speech.Accents.Mumble;
+namespace Content.Shared._Vulp.Speech.Accents.Mumble;
 
 
 [Prototype("mumbleAccent")]
@@ -31,13 +31,16 @@ public sealed class MumbleAccentPrototype : IPrototype
     public float EmoteVolume = 0f;
 
 
-    [NonSerialized, Access(typeof(MumbleAccentSystem), Other = AccessPermissions.Read)]
+    /// <summary>
+    ///     Whether this accent has been initialized. Do not modify directly, call MumbleAccentSystem.InitializePrototype!
+    /// </summary>
+    [NonSerialized]
     public bool Initialized = false;
 
     /// <summary>
     ///     Initialized on demand by the system, this provides a lookup for each replacement in <see cref="Replacements"/>.
     /// </summary>
-    [NonSerialized, Access(typeof(MumbleAccentSystem), Other = AccessPermissions.None)]
+    [NonSerialized]
     public List<Dictionary<string, string>.AlternateLookup<ReadOnlyMemory<char>>>? Lookups = null;
 
     public int MaxCharacterLength => Replacements.Count;
