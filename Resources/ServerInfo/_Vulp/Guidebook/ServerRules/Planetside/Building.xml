@@ -1,0 +1,53 @@
+<Document>
+
+  # Building
+
+  Building houses is essential for survival. Not only do they protect you from potentially dangerous atmospheric fluctuations,
+  such as gusts of wind, rains, gas clouds, or perhaps temperature fluctuations and attacks from the wild animals on the planet,
+  but they can also serve as a place to securely store items and resources.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="WallSolid" Caption="Solid wall, made from 4 sheets of steel."/>
+    <GuideEntityEmbed Entity="N14WallWoodLog" Caption="A wooden log wall, perfect for cabins."/>
+    <GuideEntityEmbed Entity="N14DoorWoodRoom" Caption="Wooden door, made from some wooden planks."/>
+  </Box>
+
+  # Security
+
+  Additionally, you can use a multitool on a door electronics to change its access requirements (currently you have to use the right click menu for this).
+  Using this board while constructing a powered airlock creates an airlock with the same access requirements.
+  This is useful to create a secure door that can only be opened by a specific group of people, such as security or science personnel.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="AirlockServiceLocked" Caption="Airlock."/>
+    <GuideEntityEmbed Entity="AirlockServiceGlassLocked" Caption="Glass airlock."/>
+    <GuideEntityEmbed Entity="Windoor" Caption="Windoor."/>
+    <GuideEntityEmbed Entity="DoorElectronics" Caption="Door electronics for an airlock or windoor."/>
+  </Box>
+
+  The access configurator can also be used to change the access restrictions of any locked airlock, door, machine, or computer.
+  You can buy it from the EngiVend machine, which in turn can be bought from the cargo ordering console.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="AccessConfigurator" Caption="Access configurator."/>
+    <GuideEntityEmbed Entity="VendingMachineEngivend" Caption="Vending machine that sells access configurators."/>
+  </Box>
+
+  # Other craftables
+
+  In addition to what you can build in base SS14, Vulpstation offers a wider variety of craftable structures and items, for example:
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="FloorDrain" Caption="Floor drain"/>
+    <GuideEntityEmbed Entity="BenchSofaCorpMiddle" Caption="Sofa"/>
+    <GuideEntityEmbed Entity="Fireplace" Caption="Fireplace"/>
+    <GuideEntityEmbed Entity="N14CrateFreezer" Caption="Freezer"/>
+  </Box>
+
+  Check out the crafting menu for more info!
+
+  # Tips
+
+  While holding a stack of steel, glass, and certain other materials in your hand, you can press Z to open the quick crafting menu.
+  It can help you quickly craft certain commonly used things, such as machine/computer frames, pipes, pumps, disposals, walls, windows, and more.
+</Document>

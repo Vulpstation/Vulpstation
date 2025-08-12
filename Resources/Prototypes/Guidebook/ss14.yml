@@ -4,6 +4,7 @@
   text: "/ServerInfo/Guidebook/SpaceStation14.xml"
   children:
 #  - SpaceLaw # Floof - needs admin discussion. See README.md in the relevant directories.
+  - PlanetSideSurvival
   - Controls
   - Jobs
   - Survival
