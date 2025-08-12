@@ -39,14 +39,20 @@
     <GuideEntityEmbed Entity="Holopad" Caption="Holopad"/>
   </Box>
 
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="FaxMachineCircuitboard" Caption="Fax machine board"/>
+    <GuideEntityEmbed Entity="HolopadMachineCircuitboard" Caption="Holopad board"/>
+    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
+  </Box>
+
   ## Headsets
 
   Ah, good old radio. What a shame the planet doesn't have a telecommunication server!
 
   <Box Orientation="Horizontal">
-    <GuideEntityEmbed Entity="TelecomServer" Caption="Telecommunication server."/>
-    <GuideEntityEmbed Entity="TelecomServerCircuitboard" Caption="Its circuitboard."/>
-    <GuideEntityEmbed Entity="ClothingHeadsetGrey" Caption="Headset."/>
+    <GuideEntityEmbed Entity="TelecomServer" Caption="Telecommunication server"/>
+    <GuideEntityEmbed Entity="TelecomServerCircuitboard" Caption="Its circuitboard"/>
+    <GuideEntityEmbed Entity="ClothingHeadsetGrey" Caption="Headset"/>
   </Box>
 
   In order to have a functioning radio in the vicinity of your colony, you will need to build a telecommunication server.
@@ -64,9 +70,9 @@
   type in their NanoChat ID (you will have to ask the person you want to message for it, and you can find yours next to the "+" button).
   Then you will be able to message that person and have them message you back.
 
-  <Box Orientation="Horizontal">
+  <Box Orientation="Vertical">
     <GuideEntityEmbed Entity="PassengerPDA" Caption="Your PDA"/>
-    <GuideEntityEmbed Entity="NanoChatCartridge" Caption="Cartridge used to install NanoChat. You probably don't need it."/>
+    <GuideEntityEmbed Entity="NanoChatCartridge" Caption="Cartridge used to install NanoChat. You probably don't need it"/>
   </Box>
 
   # Orientation
@@ -75,7 +81,7 @@
   Having a handheld station map on your person is pretty useful. Just remember to charge it!
 
   <Box Orientation="Horizontal">
-    <GuideEntityEmbed Entity="HandheldStationMapEmpty" Caption="Handheld station map"/>
+    <GuideEntityEmbed Entity="HandheldStationMapEmpty" Caption="Station map"/>
     <GuideEntityEmbed Entity="Autolathe" Caption="Autolathe"/>
   </Box>
 

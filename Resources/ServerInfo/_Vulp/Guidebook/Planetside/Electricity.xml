@@ -27,9 +27,11 @@
   <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="PortableGeneratorPacman" Caption="Pacman"/>
     <GuideEntityEmbed Entity="PortableGeneratorPacmanMachineCircuitboard" Caption="Pacman board"/>
+    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
+  </Box>
+  <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="SheetPlasma1" Caption="Sheet of solid plasma"/>
     <GuideEntityEmbed Entity="PlasmaOre1" Caption="Plasma ore"/>
-    <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
   </Box>
 
   SuperPacman is a more advanced version, capable of generating up to 50kw in high voltage, and using uranium as its fuel.
@@ -40,6 +42,8 @@
   <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="PortableGeneratorSuperPacman" Caption="Super Pacman"/>
     <GuideEntityEmbed Entity="PortableGeneratorSuperPacmanMachineCircuitboard" Caption="Super Pacman board"/>
+  </Box>
+  <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="UraniumOre1" Caption="Uranium ore"/>
     <GuideEntityEmbed Entity="SheetUranium1" Caption="Sheet of uranium"/>
     <GuideEntityEmbed Entity="CircuitImprinter" Caption="Circuit imprinter"/>
@@ -96,6 +100,8 @@
   <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="SubstationBasic" Caption="Substation"/>
     <GuideEntityEmbed Entity="SubstationMachineCircuitboard" Caption="Substation electronics"/>
+  </Box>
+  <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="SubstationWallBasic" Caption="Wallmount substation"/>
     <GuideEntityEmbed Entity="WallmountSubstationElectronics" Caption="Wallmount substation electronics"/>
   </Box>

@@ -7,7 +7,6 @@
   <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="MobLizard" Caption="Lizard"/>
     <GuideEntityEmbed Entity="FoodMeatLizard" Caption="Lizard meat"/>
-    <GuideEntityEmbed Entity="FloorTileItemStone" Caption="Stone"/>
   </Box>
 
   Additionally, during certain events (typically announced on radio by central command), certain hostile and non-hostile

@@ -7,9 +7,9 @@
   but they can also serve as a place to securely store items and resources.
 
   <Box Orientation="Horizontal">
-    <GuideEntityEmbed Entity="WallSolid" Caption="Solid wall, made from 4 sheets of steel."/>
-    <GuideEntityEmbed Entity="N14WallWoodLog" Caption="A wooden log wall, perfect for cabins."/>
-    <GuideEntityEmbed Entity="N14DoorWoodRoom" Caption="Wooden door, made from some wooden planks."/>
+    <GuideEntityEmbed Entity="WallSolid" Caption="Solid wall"/>
+    <GuideEntityEmbed Entity="N14WallWoodLog" Caption="Wooden log wall"/>
+    <GuideEntityEmbed Entity="N14DoorWoodRoom" Caption="Wooden door"/>
   </Box>
 
   # Security
@@ -19,18 +19,18 @@
   This is useful to create a secure door that can only be opened by a specific group of people, such as security or science personnel.
 
   <Box Orientation="Horizontal">
-    <GuideEntityEmbed Entity="AirlockServiceLocked" Caption="Airlock."/>
-    <GuideEntityEmbed Entity="AirlockServiceGlassLocked" Caption="Glass airlock."/>
-    <GuideEntityEmbed Entity="Windoor" Caption="Windoor."/>
-    <GuideEntityEmbed Entity="DoorElectronics" Caption="Door electronics for an airlock or windoor."/>
+    <GuideEntityEmbed Entity="AirlockServiceLocked" Caption="Airlock"/>
+    <GuideEntityEmbed Entity="AirlockServiceGlassLocked" Caption="Glass airlock"/>
+    <GuideEntityEmbed Entity="Windoor" Caption="Windoor"/>
+    <GuideEntityEmbed Entity="DoorElectronics" Caption="Door electronics for them"/>
   </Box>
 
   The access configurator can also be used to change the access restrictions of any locked airlock, door, machine, or computer.
   You can buy it from the EngiVend machine, which in turn can be bought from the cargo ordering console.
 
   <Box Orientation="Horizontal">
-    <GuideEntityEmbed Entity="AccessConfigurator" Caption="Access configurator."/>
-    <GuideEntityEmbed Entity="VendingMachineEngivend" Caption="Vending machine that sells access configurators."/>
+    <GuideEntityEmbed Entity="AccessConfigurator" Caption="Access configurator"/>
+    <GuideEntityEmbed Entity="VendingMachineEngivend" Caption="EngiVend sells them"/>
   </Box>
 
   # Other craftables

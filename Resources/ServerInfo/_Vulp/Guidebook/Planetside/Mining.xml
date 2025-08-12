@@ -27,6 +27,8 @@
   <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="MiningDrill" Caption="Mining drill"/>
     <GuideEntityEmbed Entity="MiningDrillDiamond" Caption="Diamond mining drill"/>
+  </Box>
+  <Box Orientation="Horizontal">
     <GuideEntityEmbed Entity="OreProcessorIndustrial" Caption="Industrial ore processor"/>
     <GuideEntityEmbed Entity="Protolathe" Caption="Protolathe"/>
   </Box>
