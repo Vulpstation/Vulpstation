@@ -72,8 +72,8 @@
   - PortableGeneratorSuperPacmanMachineCircuitboard
 #  - PortableGeneratorJrPacmanMachineCircuitboard # Vulpstation - this is roundstart
   - PowerComputerCircuitboard #the actual solar panel itself should be in here
-  - SolarControlComputerCircuitboard
-  - SolarTrackerElectronics
+#  - SolarControlComputerCircuitboard # Vulpstation - this is roundstart
+#  - SolarTrackerElectronics
   - EmitterCircuitboard
 
 - type: technology
