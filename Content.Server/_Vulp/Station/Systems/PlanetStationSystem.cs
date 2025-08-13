@@ -17,6 +17,7 @@ using Content.Shared.Procedural.Loot;
 using Robust.Server.GameObjects;
 using Robust.Server.Physics;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -30,7 +31,6 @@ public sealed partial class PlanetStationSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly GridFixtureSystem _gridFixtures = default!;
     [Dependency] private readonly TransformSystem _xforms = default!;
@@ -69,7 +69,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
             DoFtl(stationGrid.Value, mapUid, ftlTime);
 
         // add all the components
-        _entityManager.AddComponents(mapUid, stationEnt.Comp.Components);
+        EntityManager.AddComponents(mapUid, stationEnt.Comp.Components);
 
         if (!stationEnt.Comp.SpawnLoot)
             return;
@@ -116,6 +116,9 @@ public sealed partial class PlanetStationSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    ///     Tries to merge source into target.
+    /// </summary>
     public void MergeGrids(EntityUid target, EntityUid source)
     {
         // GridFixtureSystem fails to transfer unanchored entities
@@ -129,6 +132,10 @@ public sealed partial class PlanetStationSystem : EntitySystem
             if (xform.GridUid != source || xform.ParentUid != source || xform.Anchored || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
                 continue;
 
+            // ???
+            if (HasComp<MapGridComponent>(uid))
+                continue;
+
             var (position, rotation) = _xforms.GetWorldPositionRotation(xform);
             _xforms.DetachEntity(uid, xform);
             detachedEntities.Add((uid, position, rotation));
@@ -138,12 +145,8 @@ public sealed partial class PlanetStationSystem : EntitySystem
 
         foreach (var entity in detachedEntities)
         {
-            // Yea man, I dunno why, but some entities may lack a transform
-            if (!EntityManager.TransformQuery.TryComp(entity.uid, out var xform))
-                continue;
-
             _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
         }
     }
 

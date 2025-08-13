@@ -27,14 +27,12 @@ namespace Content.Server._Vulp.Station.Systems;
 
 public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly GridFixtureSystem _gridFixtures = default!;
     [Dependency] private readonly TransformSystem _xforms = default!;
     [Dependency] private readonly PlanetStationSystem _planetStation = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
 
     public override void Initialize()
     {
@@ -50,7 +48,12 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
         if (!Exists(mainGrid))
         {
             Log.Error("No planet grid found for planetary station grid load.");
-            return;
+
+            if (!Exists(mainGrid = stationData.Grids.FirstOrDefault()))
+            {
+                Log.Error("...and no other grids exist. Aborting grid load.");
+                return;
+            }
         }
 
         try
@@ -61,24 +64,36 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
                     stationEnt.Comp.Grids.Select(it => it.Distance).ToArray(),
                     stationEnt.Comp.MinDistance));
 
-            var mapId = Transform(mainGrid).MapID;
-            foreach (var (grid, pos) in spawns)
+            foreach (var (definition, pos) in spawns)
             {
-                var opts = new MapLoadOptions { Offset = pos };
-                if (!_loader.TryLoad(mapId, grid.Path.CanonPath, out var roots, opts))
-                    Log.Warning($"Failed to load grid {grid.Path}");
+                Log.Info($"Loading grid {definition.Path} at {pos}");
 
-                if (!grid.MergeIntoPlanet || roots == null)
+                // MapLoader is absolutely dumb and WILL return ALL entities on the map after loading something, even if the said entities were already there
+                _mapSystem.CreateMap(out var tmpMapId, false);
+                var opts = new MapLoadOptions
+                {
+                    Offset = pos,
+                    Rotation = _random.Next(0, 3) * Angle.FromDegrees(90)
+                };
+                if (!_loader.TryLoad(tmpMapId, definition.Path.CanonPath, out var roots, opts))
+                {
+                    Log.Warning($"Failed to load grid {definition.Path}");
+                    // Who thought it's a good idea to put CreateMap in the map system, but DeleteMap in the map manager?!
+                    _mapManager.DeleteMap(tmpMapId);
                     continue;
+                }
 
-                // Current issue: this throws because entities have no transform comps
                 foreach (var root in roots)
                 {
-                    if (!HasComp<MapGridComponent>(root))
+                    _xforms.SetParent(root, mainGrid);
+
+                    if (!HasComp<MapGridComponent>(root) || !definition.MergeIntoPlanet)
                         continue;
 
-                    _planetStation.MergeGrids(root, mainGrid);
+                    _planetStation.MergeGrids(mainGrid, root);
                 }
+
+                _mapManager.DeleteMap(tmpMapId);
             }
         }
         catch (Exception e)
