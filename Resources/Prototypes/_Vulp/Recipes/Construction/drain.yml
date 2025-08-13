@@ -60,6 +60,7 @@
       - material: MetalRod
         amount: 4
       - tool: Welding
+        doAfter: 5
 
   - node: drain
     entity: FloorDrain
