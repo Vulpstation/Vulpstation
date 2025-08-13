@@ -116,7 +116,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
         }
     }
 
-    private void MergeGrids(EntityUid target, EntityUid source)
+    public void MergeGrids(EntityUid target, EntityUid source)
     {
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
@@ -138,8 +138,12 @@ public sealed partial class PlanetStationSystem : EntitySystem
 
         foreach (var entity in detachedEntities)
         {
+            // Yea man, I dunno why, but some entities may lack a transform
+            if (!EntityManager.TransformQuery.TryComp(entity.uid, out var xform))
+                continue;
+
             _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
         }
     }
 

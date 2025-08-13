@@ -1,0 +1,12 @@
+- type: entity
+  id: BaseStationPlanetaryGrids
+  abstract: true
+  components:
+  - type: StationLoadPlanetaryGrids
+    minDistance: 30
+    grids:
+    - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
+      distance:
+        min: 30
+        max: 80
+
