@@ -45,8 +45,12 @@
       - BorgModuleSecurity
     hasMindState: quadspritel
     noMindState: quadspriter
+  - type: Access
+    enabled: false
+    groups:
+    - AllAccessSecurityBorg
   - type: AccessReader
-    access: [["Security"], ["Armory"], ["Command"]]
+    access: [["Armory"], ["Command"]] # Only command and the warden can unlock it, not other borgs
   - type: BorgTransponder
     sprite:
       sprite: _Floof/Mobs/Silicon/quad.rsi
