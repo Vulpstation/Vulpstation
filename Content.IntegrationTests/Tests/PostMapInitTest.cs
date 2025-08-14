@@ -44,6 +44,12 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] GameMaps =
         {
+            "Dev",
+            "TestTeg",
+            "CentComm",
+            "MeteorArena",
+            "NukieOutpost",
+            "Core",
             "PlanetContinentalBoubaLandingShuttle", // Vulp
             "PlanetContinentalColonyDropPod", // Vulp
             "PlanetContinentalOaksteadVillage", // Vulp

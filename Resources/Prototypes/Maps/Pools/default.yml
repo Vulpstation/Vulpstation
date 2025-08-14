@@ -1,23 +1,24 @@
-- type: gameMapPool
-  id: DefaultMapPool
-  maps:
-  - Arena
-  - Asterisk
-  - Core
-  - Edge
-  - Glacier
-  - Hammurabi
-  - Lighthouse
-  - Pebble
-  - Saltern
-  - Shoukou
-  - Submarine
-  - Tortuga
-  - TheHive
-  #- Gax # Floof - Remvoe Gax due to mapping issues, power, access, etc.
-  - Rad
-  - Meta
-  - Kettle # Floof
-  - Fland # Floof
-  - Train # Floof
-  - Amber # Floof
+# Vulpstation - no, we don't want this pool, and its existence causes test fails (because the test wants to test it)
+#- type: gameMapPool
+#  id: DefaultMapPool
+#  maps:
+#  - Arena
+#  - Asterisk
+#  - Core
+#  - Edge
+#  - Glacier
+#  - Hammurabi
+#  - Lighthouse
+#  - Pebble
+#  - Saltern
+#  - Shoukou
+#  - Submarine
+#  - Tortuga
+#  - TheHive
+#  #- Gax # Floof - Remvoe Gax due to mapping issues, power, access, etc.
+#  - Rad
+#  - Meta
+#  - Kettle # Floof
+#  - Fland # Floof
+#  - Train # Floof
+#  - Amber # Floof

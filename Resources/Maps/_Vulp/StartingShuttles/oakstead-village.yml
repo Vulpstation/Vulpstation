@@ -4185,11 +4185,6 @@ entities:
       bodyStatus: InAir
       angularDamping: 0
       linearDamping: 0
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 9839.36
-      thrownTime: 9839.36
-      thrower: invalid
 - proto: PortableGeneratorPacmanMachineCircuitboard
   entities:
   - uid: 541
