@@ -6,6 +6,8 @@
   name: bar sign
   description: Bar! Get drunk here.
   components:
+  - type: Transform # Vulpstation
+    anchored: true
   - type: Sprite
     sprite: _Nuclear14/Structures/Wallmounts/signs_32x32.rsi
     state: bar

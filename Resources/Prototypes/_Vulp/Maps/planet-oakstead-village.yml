@@ -1,0 +1,107 @@
+- type: gameMap
+  id: PlanetContinentalOaksteadVillage
+  mapName: 'Planet (Continental, Oakstead Village)'
+  mapPath: /Maps/_Vulp/StartingShuttles/oakstead-village.yml
+  minPlayers: 0
+  stations:
+    oakstead-village:
+      stationProto: PlanetStationBase
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Oakstead'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: 'NVS'
+      - type: PlanetStation
+        biome: Continental
+        mergeIntoPlanet: true
+        components:
+        - type: DayNightCycle
+          timeEntries:
+          - { time: 0.0, colorHex: '#000000' }
+          - { time: 0.04, colorHex: '#010010' }
+          - { time: 0.08, colorHex: '#06043A' }
+          - { time: 0.17, colorHex: '#2A1E5C' }
+          - { time: 0.25, colorHex: '#3B256B' }
+          - { time: 0.33, colorHex: '#4A2F7A' }
+          - { time: 0.42, colorHex: '#3C3C7E' }
+          - { time: 0.50, colorHex: '#4B4B9C' }
+          - { time: 0.58, colorHex: '#3A3A7A' }
+          - { time: 0.66, colorHex: '#2C255C' }
+          - { time: 0.75, colorHex: '#1F1440' }
+          - { time: 0.83, colorHex: '#0A042A' }
+          - { time: 0.92, colorHex: '#040010' }
+          - { time: 1.00, colorHex: '#000000' }
+        - type: TradeStation
+        - type: TileSpread
+          tiles:
+          - id: FloorPlanetGrass
+            spreadsTo: [ FloorPlanetDirt ]
+            dieUnderWalls: true
+        - type: VentEventFreeZone
+          radius: 10 # Just a tiny one because there are houses that provide natural protection
+      - type: StationJobs
+        overflowJobs:
+        - Passenger
+        #- Anomaly # Floofstation
+        availableJobs:
+          Anomaly: [ 3, 3 ]
+          #service
+          Captain: [ 1, 1 ]
+          BlueshieldOfficer: [ 1, 1] #Floof - uncomment once implemented on Floof maps
+          #NanotrasenRepresentative: [ 1, 1 ] Floof - uncomment once implemented on Floof maps
+          AdministrativeAssistant: [ 1, 1 ] #Floof - uncomment once implemented on Floof maps
+          HeadOfPersonnel: [ 1, 1 ]
+          Bartender: [ 1, 2 ]
+          Botanist: [ 1, 3 ]
+          Chef: [ 1, 2 ]
+          Janitor: [ 1, 2 ]
+          ServiceWorker: [ 2, 4 ]
+          #engineering
+          ChiefEngineer: [ 1, 1 ]
+          AtmosphericTechnician: [ 2, 2 ]
+          StationEngineer: [ 4, 4 ]
+          TechnicalAssistant: [ 4, 4 ]
+          SeniorEngineer: [ 1, 1 ]
+          #medical
+          ChiefMedicalOfficer: [ 1, 1 ]
+          Chemist: [ 2, 2 ]
+          MedicalDoctor: [ 2, 2 ]
+          MedicalIntern: [ 2, 2 ]
+          Paramedic: [ 2, 2 ]
+          MedicalBorg: [ 2, 2 ]
+          SeniorPhysician: [ 1, 1 ]
+          #science
+          ResearchDirector: [ 1, 1 ]
+          Chaplain: [ 1, 1 ]
+          ForensicMantis: [ 1, 1 ]
+          Scientist: [ 2, 2 ]
+          ResearchAssistant: [ 2, 2 ]
+          Borg: [ 2, 2 ]
+          Roboticist: [ 1, 2 ]
+          Librarian: [ 1, 1 ]
+          SeniorResearcher: [ 1, 1 ]
+          #security
+          HeadOfSecurity: [ 1, 1 ]
+          Warden: [ 1, 1 ]
+          Detective: [ 1, 1 ]
+          SecurityOfficer: [ 3, 3 ]
+          SecurityCadet: [ 1, 1 ]
+          Prisoner: [ 1, 3 ]
+          PrisonGuard: [ 1, 1 ]
+          SeniorOfficer: [ 1, 1 ]
+          Brigmedic: [ 1, 1 ]
+          #supply
+          Quartermaster: [ 1, 1 ]
+          InventorySpecialist: [ 1, 1 ]
+          SalvageSpecialist: [ 3, 3 ]
+          CargoTechnician: [ 2, 2 ]
+          MailCarrier: [ 2, 2 ]
+          #civillian
+          Clown: [ 1, 1 ]
+          Mime: [ 1, 1 ]
+          Musician: [ 1, 2 ]
+          Passenger: [ -1, -1 ]
+          Native: [ -1, -1 ]
+          #silicon
+          #StationAi: [ 1, 1 ] - Floof not ready yet

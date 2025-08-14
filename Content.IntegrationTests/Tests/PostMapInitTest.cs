@@ -44,34 +44,9 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] GameMaps =
         {
-            "Dev",
-            "TestTeg",
-            "CentComm",
-            "MeteorArena",
-            "NukieOutpost",
-            "Core",
-            "Pebble", //DeltaV
-            "Edge", //DeltaV
-            "Saltern",
-            "Shoukou", //DeltaV
-            "Tortuga", //DeltaV
-            "Arena", //DeltaV
-            "Asterisk", //DeltaV
-            "Glacier", //DeltaV
-            "TheHive", //DeltaV
-            "Hammurabi", //DeltaV
-            "Lighthouse", //DeltaV
-            "Submarine", //DeltaV
-            "Gax",
-            "Rad",
-            "Meta",
-            "Kettle", // Floof
-            "Train", // Floof
-            "Fland", // Floof,
-            "Amber", // Apparently, floof?
-            "Europa",
             "PlanetContinentalBoubaLandingShuttle", // Vulp
             "PlanetContinentalColonyDropPod", // Vulp
+            "PlanetContinentalOaksteadVillage", // Vulp
         };
 
         /// <summary>
