@@ -459,3 +459,19 @@ Entries:
   id: 40
   time: '2025-08-14T11:01:51.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/62
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Added a new starting map: Oakstead Village, giving the players
+        round-start access to most basic necessities and featuring a few
+        pre-made houses.
+    - type: Fix
+      message: N14 wooden and log walls are now properly deconstructible.
+    - type: Fix
+      message: >-
+        N14 floors will no longer yield an unremovable wasteland floor when
+        pried with a crowbar.
+  id: 41
+  time: '2025-08-14T15:43:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/63
