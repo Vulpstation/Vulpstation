@@ -17,6 +17,7 @@ using Content.Shared.Procedural.Loot;
 using Robust.Server.GameObjects;
 using Robust.Server.Physics;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -30,7 +31,6 @@ public sealed partial class PlanetStationSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly GridFixtureSystem _gridFixtures = default!;
     [Dependency] private readonly TransformSystem _xforms = default!;
@@ -69,7 +69,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
             DoFtl(stationGrid.Value, mapUid, ftlTime);
 
         // add all the components
-        _entityManager.AddComponents(mapUid, stationEnt.Comp.Components);
+        EntityManager.AddComponents(mapUid, stationEnt.Comp.Components);
 
         if (!stationEnt.Comp.SpawnLoot)
             return;
@@ -116,7 +116,10 @@ public sealed partial class PlanetStationSystem : EntitySystem
         }
     }
 
-    private void MergeGrids(EntityUid target, EntityUid source)
+    /// <summary>
+    ///     Tries to merge source into target.
+    /// </summary>
+    public void MergeGrids(EntityUid target, EntityUid source)
     {
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
@@ -127,6 +130,10 @@ public sealed partial class PlanetStationSystem : EntitySystem
             // Only entities on this grid that are directly parented to it (not in containers)
             // Also ignore anchored entities because those will be processed by the grid fixture system
             if (xform.GridUid != source || xform.ParentUid != source || xform.Anchored || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
+                continue;
+
+            // ???
+            if (HasComp<MapGridComponent>(uid))
                 continue;
 
             var (position, rotation) = _xforms.GetWorldPositionRotation(xform);

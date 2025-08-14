@@ -16,6 +16,7 @@
   - BaseStationTheDark
   - BaseStationCaptainState # DeltaV
   - BaseStationStockMarket # DeltaV
+  - BaseStationPlanetaryGrids
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
