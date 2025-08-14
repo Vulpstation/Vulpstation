@@ -475,3 +475,10 @@ Entries:
   id: 41
   time: '2025-08-14T15:43:15.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/63
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: Fixed a few issues with the new village map.
+  id: 42
+  time: '2025-08-14T21:49:29.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/64
