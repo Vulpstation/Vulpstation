@@ -5,6 +5,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Transform # Vulpstation
+    anchored: true
   - type: WallMount
     arc: 360
   - type: Clickable
