@@ -5,5 +5,5 @@
   components:
   - type: ContainerSpawnPoint
     containerId: storage
-    spawnType: Job
+    spawnType: Unset
     job: Native
