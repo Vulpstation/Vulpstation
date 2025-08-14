@@ -11,12 +11,12 @@ on:
 jobs:
   build:
     if: github.actor != 'PJBot' && github.event.pull_request.draft == false && github.actor != 'DeltaV-Bot' && github.actor != 'SimpleStation14' && github.actor != 'Floof-Station-Bot'
+    timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-
     runs-on: ${{ matrix.os }}
-
     steps:
     - name: Checkout Master
       uses: actions/checkout@v3.6.0
