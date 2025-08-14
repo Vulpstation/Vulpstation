@@ -1,10 +1,10 @@
 # Vulpstation - no, we don't want this pool, and its existence causes test fails (because the test wants to test it)
-#- type: gameMapPool
-#  id: DefaultMapPool
-#  maps:
+- type: gameMapPool
+  id: DefaultMapPool
+  maps:
 #  - Arena
 #  - Asterisk
-#  - Core
+  - Core
 #  - Edge
 #  - Glacier
 #  - Hammurabi
