@@ -29,6 +29,23 @@
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 3
 
+# Vulpstation
+- type: explosion
+  id: SeismicCharge
+  damagePerIntensity:
+    types:
+      Heat: 3
+      Blunt: 3
+      Piercing: 3
+      Structural: 25 # At 10 intensity (the limit), 250 structural
+  tileBreakChance: [ 0, 0.5, 1 ]
+  tileBreakIntensity: [ 0, 5, 10 ]
+  tileBreakRerollReduction: 20
+  intensityPerState: 5
+  lightColor: Purple
+  texturePath: /Textures/Effects/fire.rsi
+  fireStates: 3
+
 - type: explosion
   id: MicroBomb
   damagePerIntensity:

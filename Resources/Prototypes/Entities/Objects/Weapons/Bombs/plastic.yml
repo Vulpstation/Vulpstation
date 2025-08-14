@@ -100,10 +100,10 @@
     ports:
     - Trigger
   - type: Explosive
-    explosionType: Cryo
-    totalIntensity: 120
+    explosionType: SeismicCharge
+    totalIntensity: 200
     intensitySlope: 2
-    maxIntensity: 30
+    maxIntensity: 10
     canCreateVacuum: false
   - type: ExplodeOnTrigger
 
