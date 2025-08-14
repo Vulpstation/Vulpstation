@@ -30,7 +30,7 @@
       - MobCat
     chance: 1
     rarePrototypes:
-      - MobGorilla
+      # - MobGorilla # Vulpstation - no.
       - MobKangaroo
       - MobBoxingKangaroo
       - MobGoose
