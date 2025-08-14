@@ -307,9 +307,14 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
             var protoMan = server.ResolveDependency<IPrototypeManager>();
 
-            var gameMaps = protoMan.EnumeratePrototypes<GameMapPrototype>()
-                .Where(x => !pair.IsTestPrototype(x))
-                .Select(x => x.ID)
+            // var gameMaps = protoMan.EnumeratePrototypes<GameMapPrototype>()
+            //     .Where(x => !pair.IsTestPrototype(x))
+            //     .Select(x => x.ID)
+            //     .ToHashSet();
+            // Vulpstation
+            var gameMaps = protoMan.EnumeratePrototypes<GameMapPoolPrototype>()
+                .SelectMany(it => it.Maps)
+                .Where(x => protoMan.TryIndex<GameMapPrototype>(x, out var map) && !pair.IsTestPrototype(map))
                 .ToHashSet();
 
             Assert.That(gameMaps.Remove(PoolManager.TestMap));
