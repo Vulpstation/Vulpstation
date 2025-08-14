@@ -441,3 +441,12 @@ Entries:
   id: 38
   time: '2025-08-12T12:05:29.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/60
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Certain grids can now spawn around the main outpost at round start now.
+        The first one is the native outpost, courtesy by @chaosbunny1630.
+  id: 39
+  time: '2025-08-14T04:30:58.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/61
