@@ -450,3 +450,12 @@ Entries:
   id: 39
   time: '2025-08-14T04:30:58.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/61
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Seismic charges should now be more effective at clearing rocks (and
+        other structures!)
+  id: 40
+  time: '2025-08-14T11:01:51.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/62
