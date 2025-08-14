@@ -139,6 +139,7 @@
     price: 50
   - type: Transform
     noRot: false
+    anchored: true # Vulpstation
   - type: Sprite
     drawdepth: WallMountedItems
     noRot: false
