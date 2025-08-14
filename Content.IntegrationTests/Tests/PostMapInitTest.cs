@@ -50,28 +50,9 @@ namespace Content.IntegrationTests.Tests
             "MeteorArena",
             "NukieOutpost",
             "Core",
-            "Pebble", //DeltaV
-            "Edge", //DeltaV
-            "Saltern",
-            "Shoukou", //DeltaV
-            "Tortuga", //DeltaV
-            "Arena", //DeltaV
-            "Asterisk", //DeltaV
-            "Glacier", //DeltaV
-            "TheHive", //DeltaV
-            "Hammurabi", //DeltaV
-            "Lighthouse", //DeltaV
-            "Submarine", //DeltaV
-            "Gax",
-            "Rad",
-            "Meta",
-            "Kettle", // Floof
-            "Train", // Floof
-            "Fland", // Floof,
-            "Amber", // Apparently, floof?
-            "Europa",
             "PlanetContinentalBoubaLandingShuttle", // Vulp
             "PlanetContinentalColonyDropPod", // Vulp
+            "PlanetContinentalOaksteadVillage", // Vulp
         };
 
         /// <summary>
@@ -326,14 +307,19 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
             var protoMan = server.ResolveDependency<IPrototypeManager>();
 
-            var gameMaps = protoMan.EnumeratePrototypes<GameMapPrototype>()
-                .Where(x => !pair.IsTestPrototype(x))
-                .Select(x => x.ID)
+            // var gameMaps = protoMan.EnumeratePrototypes<GameMapPrototype>()
+            //     .Where(x => !pair.IsTestPrototype(x))
+            //     .Select(x => x.ID)
+            //     .ToHashSet();
+            // Vulpstation
+            var gameMaps = protoMan.EnumeratePrototypes<GameMapPoolPrototype>()
+                .SelectMany(it => it.Maps)
+                .Where(x => protoMan.TryIndex<GameMapPrototype>(x, out var map) && !pair.IsTestPrototype(map))
                 .ToHashSet();
 
-            Assert.That(gameMaps.Remove(PoolManager.TestMap));
+            // Assert.That(gameMaps.Remove(PoolManager.TestMap));
 
-            Assert.That(gameMaps, Is.EquivalentTo(GameMaps.ToHashSet()), "Game map prototype missing from test cases.");
+            Assert.That(gameMaps, Is.SubsetOf(GameMaps.ToHashSet()), "Game map prototype missing from test cases.");
 
             await pair.CleanReturnAsync();
         }

@@ -57,7 +57,8 @@
           completed:
             - !type:GivePrototype
               prototype: MaterialWoodPlank1
-              amount: 1
+              amount: 2
+            - !type:DeleteEntity
           steps:
             - tool: Prying
               doAfter: 10
@@ -69,7 +70,8 @@
           completed:
             - !type:GivePrototype
               prototype: MaterialWoodPlank1
-              amount: 1
+              amount: 2
+            - !type:DeleteEntity
           steps:
             - tool: Prying
               doAfter: 10
