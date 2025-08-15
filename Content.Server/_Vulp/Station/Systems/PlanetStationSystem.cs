@@ -148,12 +148,16 @@ public sealed partial class PlanetStationSystem : EntitySystem
             detachedEntities.Add((uid, position, rotation));
         }
 
+        var offset = _xforms.GetWorldPosition(target) - _xforms.GetWorldPosition(source);
+        // All entities on the source grid are going to be offset from the target grid by this value
+        var misalign = new Vector2(offset.X % 1f, offset.Y % 1f);
+
         _gridFixtures.Merge(target, source, Transform(source).LocalMatrix);
 
         foreach (var entity in detachedEntities)
         {
             _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos - misalign, entity.worldRot);
         }
     }
 
