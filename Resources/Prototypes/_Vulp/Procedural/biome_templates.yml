@@ -1,13 +1,13 @@
 - type: biomeMarkerLayer
   id: CritterSpawnLocations
   prototype: VentEventSpawnerWeight5
-  radius: 18
+  radius: 16
   minGroupSize: 1
   maxGroupSize: 5
 
 - type: biomeMarkerLayer
   id: MiscAnimals
   prototype: PlanetAnimalSpawner
-  radius: 9
+  radius: 20
   minGroupSize: 1
   maxGroupSize: 1
