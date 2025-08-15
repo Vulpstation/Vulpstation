@@ -33,9 +33,10 @@ public sealed class ContainerSpawnPointSystem : EntitySystem
         JobPrototype? jobProto = null;
 
         // If it's just a spawn pref check if it's for cryo (silly).
-        if (args.HumanoidCharacterProfile?.SpawnPriority != SpawnPriorityPreference.Cryosleep &&
-            (!_proto.TryIndex(args.Job?.Prototype, out jobProto) || jobProto.JobEntity == null))
-            return;
+        // Vulpstation - no. Who though it's a good idea to split those into two systems and yet not have them communicate?
+        // if (args.HumanoidCharacterProfile?.SpawnPriority != SpawnPriorityPreference.Cryosleep &&
+        //     (!_proto.TryIndex(args.Job?.Prototype, out jobProto) || jobProto.JobEntity == null))
+        //     return;
 
         if (jobProto == null && !_proto.TryIndex(args.Job?.Prototype, out jobProto))
             return;
