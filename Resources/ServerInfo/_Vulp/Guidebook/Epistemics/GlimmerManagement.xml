@@ -29,6 +29,7 @@
 
 
   [head=1]Dangers[/head]
+
   Starting with the basics of why you would want to manage glimmer in the first place.
   If it gets too high, some undesirable things will start to happen,
   and some of those things may even cause a further increase in the glimmer level, causing a destructive cascade.
@@ -49,12 +50,14 @@
   and must be avoided at all costs.
 
   [head=1]Benefits[/head]
+
   What is less obvious is that those who have a connection with the noosphere are more likely to gain psionic powers the higher the noospheric pressure is.
   Noospheric discharges can stun psionics, but will also clear their mental blocks and allow them to gain new psionic powers.
 
   Oracle will also provide more generous gifts for fulfilling its orders when glimmer levels are high.
 
   [head=1]Raising Glimmer[/head]
+
   Glimmer can be raised in a number of ways:
 
   Firstly, the most common is the use of psionic powers.
@@ -79,6 +82,7 @@
   </Box>
 
   [head=1]Lowering Glimmer[/head]
+
   There are 4 ways to lower glimmer, the most common is with time.
   Noospheric pressure slowly but constantly loosens over time, so halting all noospheric activity will generally lower the glimmer level.
 
@@ -96,14 +100,18 @@
 
   The recipe for synthesizing normality is as follows:
 
-  <Box Orientation="Vertical">
-    <GuideEntityEmbed Entity="LargeBeaker" Caption="Take a beaker"/>
-    <Label Text="Add 5 units of ectoplasm"/>
-    <Label Text="Add 5 units of ash"/>
-    <Label Text="Add 5 units of red blood"/>
-    <Label Text="Add 5 units of water"/>
-    <Label Text="Add 5 units of liquid plasma as a catalyst"/>
-    <GuideEntityEmbed Entity="LargeBeaker" Captain="Heat to 200°C"/>
+  <Box Orientation="Horizontal">
+    <Box Orientation="Vertical">
+      <GuideEntityEmbed Entity="LargeBeaker" Caption="Take a beaker"/>
+      <GuideEntityEmbed Entity="ChemistryHotplate" Caption="Heat to 200°C"/>
+    </Box>
+    <Box Orientation="Vertical">
+      - Add 5 units of ectoplasm
+      - Add 5 units of ash
+      - Add 5 units of red blood
+      - Add 5 units of water
+      - Add 5 units of liquid plasma as a catalyst
+    </Box>
   </Box>
 
   Finally, In dire circumstances, when glimmer levels are extremely high, and you need to buy time, you can sacrifice a psionic on the altar.
