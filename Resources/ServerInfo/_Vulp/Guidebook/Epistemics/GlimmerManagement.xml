@@ -1,0 +1,120 @@
+<Document>
+
+  [head=1]Glimmer Management[/head]
+
+  Glimmer in Space Station 14 represents the amount of noospheric pressure in the world.
+  Unlike regular pressure however, the glimmer field is pretty uniform throughout the universe,
+  such that glimmer fluctuations on one planet or station may affect the entire solar system.
+
+  Most outside of the Epistemics department will not be tasked with helping manage glimmer,
+  however, it can pay to know a thing or two about glimmer if you are a psionic.
+
+  The most obvious way to measure glimmer is to ask Sophia (the glimmer scribe), which can typically be found within or near
+  the Epistemics department.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SophicScribe" Caption="Sofia"/>
+  </Box>
+
+  This statue will send alerts to the Epistemics department on the current glimmer status,
+  but anyone may walk up to it and interact with it for a current status update.
+
+  Epistemics PDAs also contain a pre-installed app that can be used to see the current glimmer level and the glimmer chart.
+  You may be able to ask your fellow epistemics members to measure it.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="SciencePDA" Caption="Epistemics PDA"/>
+    <GuideEntityEmbed Entity="GlimmerMonitorCartridge" Caption="Glimmer Monitor Cartridge"/>
+  </Box>
+
+
+  [head=1]Dangers[/head]
+  Starting with the basics of why you would want to manage glimmer in the first place.
+  If it gets too high, some undesirable things will start to happen,
+  and some of those things may even cause a further increase in the glimmer level, causing a destructive cascade.
+
+  Examples include both passive entities like anomalies being generated and certain hostile entities appearing around the station.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="MobGlimmerMite" Caption="Glimmer mite"/>
+    <GuideEntityEmbed Entity="MobGlimmerWisp" Caption="Glimmer wisp"/>
+    <GuideEntityEmbed Entity="MobRevenant" Caption="Revenant"/>
+  </Box>
+
+  In order to avoid the most destructive of these things, glimmer should generally be kept under 450 milipsi,
+  and if glimmer reaches 1000 milipsi (1 psi), a noospheric collapse may occur, erasing the bonds between souls and vessels,
+  and the border between reality and imagination.
+
+  This can lead to a variety of negative consequences ranging from a mass mindswap to complete destruction of reality,
+  and must be avoided at all costs.
+
+  [head=1]Benefits[/head]
+  What is less obvious is that those who have a connection with the noosphere are more likely to gain psionic powers the higher the noospheric pressure is.
+  Noospheric discharges can stun psionics, but will also clear their mental blocks and allow them to gain new psionic powers.
+
+  Oracle will also provide more generous gifts for fulfilling its orders when glimmer levels are high.
+
+  [head=1]Raising Glimmer[/head]
+  Glimmer can be raised in a number of ways:
+
+  Firstly, the most common is the use of psionic powers.
+  Each psionic user has their own amplification and dampening, which determine the force and control they have over their powers.
+  The higher their amplification is, the more powerful are the effects their powers have on the world, but also the more glimmer their usage produces.
+  Having more psionic powers generally leads to a higher amplification. Therefore, rogue psionics can be a big threat.
+
+  Secondly, Anomalies and certain other psionic entities, such as glimmer mites, generate a constant stream of glimmer for as long as they are active.
+  If glimmer levels are getting high, it may be desirable to get rid of those.
+
+  Thirdly, Extracting research from artifacts increases glimmer, so it's recommended to ensure that xenoarchelogy is on pause when glimmer is too high.
+  The standard rate is 1 milipsi of glimmer for each 1 kilopoint of research.
+
+  Finally, an active Glimmer Prober generates glimmer constantly in exchange for research points,
+  these expensive objects can be used to generate passive income but should be watched carefully.
+  If glimmer level exceeds 500 milipsi, they will start powering themselves with the noospheric energy and become impossible to turn off,
+  leading to a dangerous cascade.
+
+  <Box Orientation="Horizontal">
+    <GuideEntityEmbed Entity="GlimmerProber" Caption="Prober"/>
+    <GuideEntityEmbed Entity="AnomalyBluespace" Caption="Anomaly"/>
+  </Box>
+
+  [head=1]Lowering Glimmer[/head]
+  There are 4 ways to lower glimmer, the most common is with time.
+  Noospheric pressure slowly but constantly loosens over time, so halting all noospheric activity will generally lower the glimmer level.
+
+  The second is by waiting for a noospheric discharge or another noospheric event to occur.
+  During those discharges, some of the excess noospheric pressure manifests into a physical entity or energy burst.
+  For example, it can create glimmer mites, a revenant, a wisp; perhaps duplicate an existing glimmer prober or cause one to explode.
+  All of those effects simultaneously lower the glimmer level.
+
+  The most proactive way is by creating a glimmer drain, which uses power to stabilize the noosphere.
+  In order to create it, you will need to insert 5 normality crystals into the glimmer prober frame.
+
+  There are a few ways to acquire normality: oracle can give it as a reward for fulfilling an order,
+  you can find it in the form of raw normality ore on the planet surface, or you can use chemistry to synthesize it.
+  The latter requires ectoplasm, which can be found inside glimmer mites, revenants, and wisps (you will need to grind those).
+
+  The recipe for synthesizing normality is as follows:
+
+  <Box Orientation="Vertical">
+    <GuideEntityEmbed Entity="LargeBeaker" Caption="Take a beaker"/>
+    <Label Text="Add 5 units of ectoplasm"/>
+    <Label Text="Add 5 units of ash"/>
+    <Label Text="Add 5 units of red blood"/>
+    <Label Text="Add 5 units of water"/>
+    <Label Text="Add 5 units of liquid plasma as a catalyst"/>
+    <GuideEntityEmbed Entity="LargeBeaker" Captain="Heat to 200°C"/>
+  </Box>
+
+  Finally, In dire circumstances, when glimmer levels are extremely high, and you need to buy time, you can sacrifice a psionic on the altar.
+  This is done by placing someone on the altar and sacrificing them using a sharp object (use the right click menu for this).
+  In most cases, this will be considered a murder, so make sure to negotiate it with the command staff first.
+
+  (OOC note: unless you are an antag, OOC consent of the sacrificed person - whether explicit or implicit - is required)
+
+  <Box Orientation="Vertical">
+    <GuideEntityEmbed Entity="AltarFangs" Caption="Altar"/>
+    <GuideEntityEmbed Entity="KitchenKnife" Caption="Sharp object"/>
+  </Box>
+
+</Document>
