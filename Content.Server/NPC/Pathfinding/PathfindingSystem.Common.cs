@@ -45,7 +45,7 @@ public sealed partial class PathfindingSystem
 
         // TODO
         if ((end.Data.Flags & PathfindingBreadcrumbFlag.Space) != 0x0 &&
-            (!TryComp<GravityComponent>(end.GraphUid, out var gravity) || !gravity.Enabled))
+            /*(!TryComp<GravityComponent>(end.GraphUid, out var gravity) || !gravity.Enabled)*/ true) // Vulpstation - don't pathfind into space
         {
             return 0f;
         }
