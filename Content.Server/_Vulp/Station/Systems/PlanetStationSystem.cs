@@ -121,6 +121,13 @@ public sealed partial class PlanetStationSystem : EntitySystem
     /// </summary>
     public void MergeGrids(EntityUid target, EntityUid source)
     {
+        var original = _xforms.GetWorldPositionRotation(Transform(source));
+        // Round position and rotation
+        _xforms.SetWorldPositionRotation(
+            source,
+            original.WorldPosition.Rounded(),
+            original.WorldRotation.GetCardinalDir().ToAngle());
+
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
         var query = AllEntityQuery<TransformComponent>();
@@ -141,16 +148,12 @@ public sealed partial class PlanetStationSystem : EntitySystem
             detachedEntities.Add((uid, position, rotation));
         }
 
-        var offset = _xforms.GetWorldPosition(target) - _xforms.GetWorldPosition(source);
-        // All entities on the source grid are going to be offset from the target grid by this value
-        var misalign = new Vector2(offset.X % 1f, offset.Y % 1f);
-
         _gridFixtures.Merge(target, source, Transform(source).LocalMatrix);
 
         foreach (var entity in detachedEntities)
         {
             _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos - misalign, entity.worldRot);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
         }
     }
 
