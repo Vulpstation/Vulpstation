@@ -681,17 +681,31 @@
   targetDepth: 9 # Floof - Make it so they can actually occur
   effectHint: artifact-effect-hint-destruction
   components:
-  - type: SpawnArtifact
-    maxSpawns: 1
-    spawns:
-    - id: Singularity
+# Vulpstation - no, just explode instead
+#  - type: SpawnArtifact
+#    maxSpawns: 1
+#    spawns:
+#    - id: Singularity
+  - type: Explosive
+    deleteAfterExplosion: false
+    explosionType: Default
+    totalIntensity: 1000
+    intensitySlope: 2
+    maxIntensity: 10
 
 - type: artifactEffect
   id: EffectTesla
   targetDepth: 9 # Floof - Make it so they can actually occur
   effectHint: artifact-effect-hint-destruction
   components:
-  - type: SpawnArtifact
-    maxSpawns: 1
-    spawns:
-    - id: TeslaEnergyBall
+  # Vulpstation - no, just explode instead
+#  - type: SpawnArtifact
+#    maxSpawns: 1
+#    spawns:
+#    - id: TeslaEnergyBall
+  - type: Explosive
+    deleteAfterExplosion: false
+    explosionType: Cryo
+    totalIntensity: 500 # Cryo explosion has way more damage per intensity, primarily structural
+    intensitySlope: 2
+    maxIntensity: 10
