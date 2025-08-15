@@ -4,3 +4,10 @@
   radius: 18
   minGroupSize: 1
   maxGroupSize: 5
+
+- type: biomeMarkerLayer
+  id: MiscAnimals
+  prototype: PlanetAnimalSpawner
+  radius: 9
+  minGroupSize: 1
+  maxGroupSize: 1

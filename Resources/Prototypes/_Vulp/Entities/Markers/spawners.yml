@@ -1,0 +1,98 @@
+- type: entity
+  name: Random Animal Spawner
+  id: PlanetAnimalSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Mobs/Animals/chicken.rsi
+      state: icon-1
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: PlanetAnimalTable
+      prob: 0.6
+
+- type: entityTable
+  id: PlanetAnimalTable
+  table: !type:GroupSelector
+    children:
+    # Chickens
+    - !type:GroupSelector
+      weight: 2
+      rolls: !type:RangeNumberSelector
+        range: 2, 4
+      children:
+      - id: MobChicken
+      - id: MobChicken1
+      - id: MobChicken2
+    # Ducks
+    - !type:GroupSelector
+      weight: 0.8
+      rolls: !type:RangeNumberSelector
+        range: 2, 4
+      children:
+      - id: MobDuckMallard
+      - id: MobDuckWhite
+      - id: MobDuckBrown
+    # Cows
+    - id: MobCow
+      rolls: !type:RangeNumberSelector
+        range: 1, 2
+      weight: 0.4
+    # Goat
+    - id: MobGoat
+      weight: 0.2
+    # Pig
+    - id: MobPig
+      weight: 0.9
+    # Misc
+    - id: MobMonkey
+      weight: 0.2
+    - id: MobParrot
+      weight: 0.05
+    - id: MobPenguin
+      weight: 0.001
+    - !type:GroupSelector
+      weight: 0.05
+      children:
+      - id: MobPossum
+      - id: MobPossumOld
+    - id: MobRaccoon
+      weight: 0.05
+    # Fox
+    - !type:GroupSelector
+      weight: 0.1 # Foxxo <3
+      rolls: !type:RangeNumberSelector
+        range: 1, 2
+      children:
+      - id: MobFox
+        weight: 5
+      - id: MobArcticFox
+    # Cat
+    - id: MobCat
+      rolls: !type:RangeNumberSelector
+        range: 1, 2
+      weight: 0.05
+    # Dangerous
+    - !type:GroupSelector
+      weight: 0.05
+      children:
+      # Spider nest
+      - !type:AllSelector
+        children:
+        - id: MobGiantSpiderAngry
+          amount: !type:ConstantNumberSelector { value: 2 }
+        - id: WebNest
+      # Xeno hive
+      - !type:AllSelector
+        weight: 0.5
+        children:
+        - id: MobXenoQueen
+        - id: MobXenoDefender
+          rolls: !type:RangeNumberSelector
+            range: 0, 2
+        - id: MobXenoRavager
+          rolls: !type:RangeNumberSelector
+            range: 2, 3
+

@@ -12,3 +12,10 @@
   loots:
   - !type:BiomeMarkerLoot
     proto: Lizards
+
+- type: salvageLoot
+  id: MiscAnimals
+  guaranteed: true
+  loots:
+  - !type:BiomeMarkerLoot
+    proto: MiscAnimals
