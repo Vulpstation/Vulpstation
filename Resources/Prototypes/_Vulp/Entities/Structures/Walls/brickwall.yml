@@ -95,14 +95,14 @@
         doAfter: 3
 
 - type: constructionGraph
-  id: BrickWallAlt
+  id: BrickWallGray
   start: start
   graph:
   - node: start
     actions:
     - !type:DestroyEntity { }
     edges:
-    - to: brickwallalt
+    - to: brickwallgray
       completed:
       - !type:SnapToGrid { }
       steps:
