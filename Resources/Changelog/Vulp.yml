@@ -482,3 +482,28 @@ Entries:
   id: 42
   time: '2025-08-14T21:49:29.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/64
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        More random animals can now spawn in packs around the planet. This
+        includes some dangerous ones!
+    - type: Add
+      message: Added a guidebook entry on glimmer management, thanks to Bandw2.
+    - type: Add
+      message: >-
+        Users whose ss14 accounts are younger than 14 days can no longer join
+        the server.
+    - type: Fix
+      message: >-
+        All players should now default to spawning in cryo, regardless of their
+        preferences.
+    - type: Tweak
+      message: >-
+        Station-wide destruction artifacts no longer spawn a singulo or tesla,
+        but instead create an extremely powerful explosion.
+    - type: Tweak
+      message: Solars now produce about 1.7 times more power.
+  id: 43
+  time: '2025-08-16T04:37:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/65
