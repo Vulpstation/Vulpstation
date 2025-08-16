@@ -4,7 +4,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
-    weight: 10
+    weight: 0.5
     startDelay: 10
     reoccurrenceDelay: 120
     duration: 120
