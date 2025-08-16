@@ -9,6 +9,18 @@ namespace Content.Shared._Vulp;
 public sealed class VulpCCVars
 {
     /// <summary>
+    ///     The minimum age below which connections will be denied. Less or equal to 0 to disable.
+    /// </summary>
+    public static readonly CVarDef<int> MinimumAccountAgeDays =
+        CVarDef.Create("admin.minimum_account_age_days", 14, CVar.SERVER);
+
+    /// <summary>
+    ///     Whether to enable account age checks for local players.
+    /// </summary>
+    public static readonly CVarDef<bool> CheckLocalhostAccountAge =
+        CVarDef.Create("admin.minimum_account_age_check_localhost", false, CVar.SERVER);
+
+    /// <summary>
     ///     Whether to start a public vote before automatically sending the emergency shuttle.
     /// </summary>
     public static readonly CVarDef<bool> DoEvacVotes =

@@ -466,7 +466,7 @@ namespace Content.Server.Administration.Managers
             }
         }
 
-        private static bool IsLocal(ICommonSession player)
+        public static bool IsLocal(ICommonSession player) // Vulp - made public
         {
             var ep = player.Channel.RemoteEndPoint;
             var addr = ep.Address;
