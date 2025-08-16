@@ -77,7 +77,7 @@
         doAfter: 3
 
   - node: brickwallalt
-    entity: N14WallBrickSlantedAlt
+    entity: N14WallBrickAltSlanted
     edges:
     - to: start
       completed:
@@ -123,7 +123,7 @@
         doAfter: 3
 
   - node: brickwallgray
-    entity: N14WallBrickSlantedGray
+    entity: N14WallBrickGraySlanted
     edges:
     - to: start
       completed:
@@ -215,7 +215,7 @@
         doAfter: 3
 
   - node: brickwalltallalt
-    entity: N14WallBrickTallAlt
+    entity: N14WallBrickAltTall
     edges:
     - to: start
       completed:
@@ -261,7 +261,7 @@
         doAfter: 3
 
   - node: brickwalltallgray
-    entity: N14WallBrickTallGray
+    entity: N14WallBrickGrayTall
     edges:
     - to: start
       completed:
