@@ -6,7 +6,7 @@
   targetNode: brickwall
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brick.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -38,7 +38,7 @@
   targetNode: brickwallalt
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brickalt.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -70,29 +70,13 @@
   targetNode: brickwallgray
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brickgray.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickgray.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
-
-- type: constructionGraph
-  id: BrickWallGray
-  start: start
-  graph:
-  - node: start
-    actions:
-    - !type:DestroyEntity { }
-    edges:
-    - to: brickwallgray
-      completed:
-      - !type:SnapToGrid { }
-      steps:
-      - material: Steel
-        amount: 5
-        doAfter: 3
 
 - type: constructionGraph
   id: BrickWallGray
@@ -118,7 +102,7 @@
   targetNode: brickwalltall
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brick.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brick.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -150,7 +134,7 @@
   targetNode: brickwalltallalt
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brickalt.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brickalt.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -182,7 +166,7 @@
   targetNode: brickwalltallgray
   category: construction-category-misc
   description: A vertical tan house window for decoration!
-  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brickgray.rsi, state: full }
+  icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brickgray.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
