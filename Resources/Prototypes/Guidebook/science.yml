@@ -12,6 +12,7 @@
   - ReverseEngineering
   - GlimmerCreatures
   - TraversalDistorter
+  - GlimmerManagement # Vulpstation
 
 - type: guideEntry
   id: Technologies
@@ -82,3 +83,9 @@
   id: GlimmerCreatures
   name: guide-entry-glimmer-creatures
   text: /ServerInfo/Guidebook/DeltaV/Epistemics/GlimmerCreatures.xml
+
+# Vulpstation
+- type: guideEntry
+  id: GlimmerManagement
+  name: guide-entry-glimmer-management
+  text: /ServerInfo/_Vulp/Guidebook/Epistemics/GlimmerManagement.xml

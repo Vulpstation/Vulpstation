@@ -61,6 +61,7 @@
     supplyRampTolerance: 1000
     supplyRampRate: 1000
   - type: SolarPanel
+    maxSupply: 1200 # Vulpstation - buffed compared to default 750 watts
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic

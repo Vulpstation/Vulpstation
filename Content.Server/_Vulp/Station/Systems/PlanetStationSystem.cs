@@ -121,6 +121,13 @@ public sealed partial class PlanetStationSystem : EntitySystem
     /// </summary>
     public void MergeGrids(EntityUid target, EntityUid source)
     {
+        var original = _xforms.GetWorldPositionRotation(Transform(source));
+        // Round position and rotation
+        _xforms.SetWorldPositionRotation(
+            source,
+            original.WorldPosition.Rounded(),
+            original.WorldRotation.GetCardinalDir().ToAngle());
+
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
         var query = AllEntityQuery<TransformComponent>();
