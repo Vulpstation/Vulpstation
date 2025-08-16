@@ -1,0 +1,207 @@
+﻿- type: construction
+  name: "Brick Wall"
+  id: BrickWall
+  graph: BrickWall
+  startNode: start
+  targetNode: brickwall
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brick.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWall
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwall
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: construction
+  name: "Brick Wall Dark"
+  id: BrickWallAlt
+  graph: BrickWallAlt
+  startNode: start
+  targetNode: brickwallalt
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brickalt.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWallAlt
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwallalt
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: construction
+  name: "Brick Wall Gray"
+  id: BrickWallGray
+  graph: BrickWallGray
+  startNode: start
+  targetNode: brickwallgray
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\slanted\brickgray.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWallGray
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwallgray
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: constructionGraph
+  id: BrickWallAlt
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwallalt
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: construction
+  name: "Brick Wall Tall"
+  id: BrickWallTall
+  graph: BrickWallTall
+  startNode: start
+  targetNode: brickwalltall
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brick.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWallTall
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwalltall
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: construction
+  name: "Brick Wall Tall"
+  id: BrickWallTallAlt
+  graph: BrickWallTallAlt
+  startNode: start
+  targetNode: brickwalltallalt
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brickalt.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWallTallAlt
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwalltallalt
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+- type: construction
+  name: "Brick Wall Tall Gray"
+  id: BrickWallTallGray
+  graph: BrickWallTallGray
+  startNode: start
+  targetNode: brickwalltallgray
+  category: construction-category-misc
+  description: A vertical tan house window for decoration!
+  icon: { sprite: _Nuclear14\Structures\Walls\ms13\tall\brickgray.rsi, state: full }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BrickWallTallGray
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: brickwalltallgray
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 3
