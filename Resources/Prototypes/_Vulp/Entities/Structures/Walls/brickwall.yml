@@ -5,7 +5,7 @@
   startNode: start
   targetNode: brickwall
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
@@ -51,7 +51,7 @@
   startNode: start
   targetNode: brickwallalt
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard dark brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
@@ -97,7 +97,7 @@
   startNode: start
   targetNode: brickwallgray
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard gray brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickgray.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
@@ -143,7 +143,7 @@
   startNode: start
   targetNode: brickwalltall
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard tall brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brick.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
@@ -189,7 +189,7 @@
   startNode: start
   targetNode: brickwalltallalt
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard tall dark brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brickalt.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
@@ -235,7 +235,7 @@
   startNode: start
   targetNode: brickwalltallgray
   category: construction-category-misc
-  description: A vertical tan house window for decoration!
+  description: A standard tall gray brick wall for decoration.
   icon: { sprite: _Nuclear14/Structures/Walls/ms13/tall/brickgray.rsi, state: full }
   objectType: Structure
   placementMode: SnapgridCenter
