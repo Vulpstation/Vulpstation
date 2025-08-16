@@ -30,6 +30,20 @@
         amount: 5
         doAfter: 3
 
+  - node: brickwall
+    entity: N14WallBrickSlanted
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
 - type: construction
   name: "Brick Wall Dark"
   id: BrickWallAlt
@@ -61,6 +75,20 @@
       - material: Steel
         amount: 5
         doAfter: 3
+
+  - node: brickwallalt
+    entity: N14WallBrickSlantedAlt
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
 
 - type: construction
   name: "Brick Wall Gray"
@@ -94,6 +122,20 @@
         amount: 5
         doAfter: 3
 
+  - node: brickwallgray
+    entity: N14WallBrickSlantedGray
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
 - type: construction
   name: "Brick Wall Tall"
   id: BrickWallTall
@@ -125,6 +167,20 @@
       - material: Steel
         amount: 5
         doAfter: 3
+
+  - node: brickwalltall
+    entity: N14WallBrickTall
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
 
 - type: construction
   name: "Brick Wall Tall"
@@ -158,6 +214,20 @@
         amount: 5
         doAfter: 3
 
+  - node: brickwalltallalt
+    entity: N14WallBrickTallAlt
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
 - type: construction
   name: "Brick Wall Tall Gray"
   id: BrickWallTallGray
@@ -189,3 +259,17 @@
       - material: Steel
         amount: 5
         doAfter: 3
+
+  - node: brickwalltallgray
+    entity: N14WallBrickTallGray
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
