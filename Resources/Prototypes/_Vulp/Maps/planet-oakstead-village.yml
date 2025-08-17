@@ -40,6 +40,8 @@
             dieUnderWalls: true
         - type: VentEventFreeZone
           radius: 10 # Just a tiny one because there are houses that provide natural protection
+        - type: RestrictedRange
+          range: 256
       - type: StationJobs
         overflowJobs:
         - Passenger
