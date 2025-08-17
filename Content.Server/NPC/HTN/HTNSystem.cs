@@ -10,8 +10,10 @@ using Content.Shared.Administration;
 using Content.Shared.Mobs;
 using Content.Shared.NPC;
 using JetBrains.Annotations;
+using Robust.Shared.Collections;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Server.NPC.HTN;
@@ -22,6 +24,7 @@ public sealed class HTNSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
     [Dependency] private readonly NPCUtilitySystem _utility = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // Vulpstation
 
     private readonly JobQueue _planQueue = new(0.004);
 
@@ -145,9 +148,33 @@ public sealed class HTNSystem : EntitySystem
     public void UpdateNPC(ref int count, int maxUpdates, float frameTime)
     {
         _planQueue.Process();
+        // Vulpstation - collect NPCs first and THEN select a random subset of them to avoid leaving out NPCs with higher entity uids
         var query = EntityQueryEnumerator<ActiveNPCComponent, HTNComponent>();
+        var entities = new ValueList<(EntityUid, ActiveNPCComponent, HTNComponent)>();
+        while (query.MoveNext(out var uid, out var c1, out var c2))
+        {
+            if (IsPaused(uid))
+                continue;
 
-        while(query.MoveNext(out var uid, out _, out var comp))
+            entities.Add((uid, c1, c2));
+        }
+
+        ValueList<(EntityUid, ActiveNPCComponent, HTNComponent)> chosen;
+        if (entities.Count <= maxUpdates)
+            chosen = entities;
+        else
+        {
+            chosen = new(maxUpdates);
+            for (var i = 0; i < maxUpdates; i++)
+            {
+                var index = _random.Next(0, entities.Count);
+                chosen.Add(entities[index]);
+                entities.RemoveSwap(index);
+            }
+        }
+        // Vulpstation section end
+
+        foreach (var (uid, _, comp) in chosen) // Vulpstation change
         {
             // If we're over our max count or it's not MapInit then ignore the NPC.
             if (count >= maxUpdates)
