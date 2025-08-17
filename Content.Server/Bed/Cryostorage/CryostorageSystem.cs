@@ -341,6 +341,9 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
             if (Timing.CurTime < containedComp.GracePeriodEndTime)
                 continue;
 
+            // Vulpstation - just in case this is the cause of lag
+            containedComp.GracePeriodEndTime = Timing.CurTime + TimeSpan.FromSeconds(30);
+
             Mind.TryGetMind(uid, out _, out var mindComp);
             var id = mindComp?.UserId ?? containedComp.UserId;
             HandleEnterCryostorage((uid, containedComp), id);
