@@ -1,6 +1,6 @@
 - type: gameMapPool
   id: PlanetPool
   maps:
-  - PlanetContinentalBoubaLandingShuttle
+#  - PlanetContinentalBoubaLandingShuttle
   - PlanetContinentalColonyDropPod
   - PlanetContinentalOaksteadVillage
