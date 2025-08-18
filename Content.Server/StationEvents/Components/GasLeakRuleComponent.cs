@@ -11,8 +11,8 @@ public sealed partial class GasLeakRuleComponent : Component
     {
         Gas.Ammonia,
         Gas.Plasma,
-        Gas.Tritium,
-        Gas.Frezon,
+        // Gas.Tritium,
+        // Gas.Frezon,
         Gas.WaterVapor, // the fog
     };
 
@@ -41,7 +41,7 @@ public sealed partial class GasLeakRuleComponent : Component
     /// </summary>
     public int MaximumMolesPerSecond = 200;
 
-    public int MinimumGas = 1000;
-    public int MaximumGas = 4000;
+    public int MinimumGas = 10000;
+    public int MaximumGas = 40000;
     public float SparkChance = 0.05f;
 }

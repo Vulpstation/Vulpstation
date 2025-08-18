@@ -31,6 +31,17 @@
       min:  40
       max:  60
 
+# Vulpstation
+- type: entity
+  id: NothingHappens
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    weight: 5
+    startAnnouncement: false
+    endAnnouncement: false
+
 - type: entity
   id: AnomalySpawn
   parent: BaseStationEventLongDelay

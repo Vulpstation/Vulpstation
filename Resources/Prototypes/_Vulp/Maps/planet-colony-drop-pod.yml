@@ -40,6 +40,8 @@
             dieUnderWalls: true
         - type: VentEventFreeZone
           radius: 20
+        - type: RestrictedRange
+          range: 256
       - type: StationJobs
         overflowJobs:
         - Passenger

@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Numerics;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Station.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Salvage;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
@@ -105,8 +107,17 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 
         var found = false;
         var aabb = gridComp.LocalAABB;
+        // Vulpstation - fallback for planet grids
+        if (aabb.Size == Vector2.Zero)
+        {
+            if (TryComp<RestrictedRangeComponent>(targetGrid, out var range))
+                aabb = Box2.CentredAroundZero(Vector2.Create(range.Range * 2));
+            else
+                aabb = Box2.CentredAroundZero(Vector2.Create(100));
+        }
 
-        for (var i = 0; i < 10; i++)
+        // Vulpstation - increased attempt count due to the potential to land on an unloaded chunk
+        for (var i = 0; i < 400; i++)
         {
             var randomX = RobustRandom.Next((int) aabb.Left, (int) aabb.Right);
             var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
