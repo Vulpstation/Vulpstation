@@ -256,7 +256,7 @@ namespace Content.IntegrationTests.Tests
                             jobs.Remove(jobId);
                     }
 
-                    // Vulpstation - fuck you, this was never necessary
+                    // Vulpstation - this was never necessary
                     // Assert.That(jobs, Is.Empty, $"There is no spawnpoints for {string.Join(", ", jobs)} on {mapProto}.");
                 }
 
