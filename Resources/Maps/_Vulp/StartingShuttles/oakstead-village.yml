@@ -4265,17 +4265,6 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
-- proto: PortalShadowkin
-  entities:
-  - uid: 745
-    components:
-    - type: Transform
-      pos: -9.5,-22.5
-      parent: 1
-    - type: LinkedEntity
-      linkedEntities:
-      - invalid
-      - invalid
 - proto: PosterLegitPeriodicTable
   entities:
   - uid: 748
@@ -4642,22 +4631,6 @@ entities:
     - type: Transform
       pos: -16.5,-5.5
       parent: 1
-- proto: ShadowKudzuWeak
-  entities:
-  - uid: 752
-    components:
-    - type: Transform
-      anchored: False
-      pos: -10,-23
-      parent: 1
-    - type: Physics
-      bodyType: Dynamic
-    - type: Fixtures
-      fixtures: {}
-    missingComponents:
-    - Occluder
-    - ActiveEdgeSpreader
-    - EdgeSpreader
 - proto: SheetGlass10
   entities:
   - uid: 136
