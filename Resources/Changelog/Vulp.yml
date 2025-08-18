@@ -516,3 +516,23 @@ Entries:
   id: 44
   time: '2025-08-16T22:25:21.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/66
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        There is now a 256m range restriction on planets. Ahelp if you need that
+        range increased.
+    - type: Fix
+      message: >-
+        Random artifact, gas leak, and random variation (random trash and
+        puddles) events should now correctly work planetside instead of spawning
+        everything at (0, 0)
+    - type: Tweak
+      message: >-
+        The gas leak event can no longer create tritium or frezon, but in turn
+        lasts a lot longer.
+    - type: Fix
+      message: NPCs should no longer stop moving when the NPC update limit is reached.
+  id: 45
+  time: '2025-08-18T00:54:53.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/67
