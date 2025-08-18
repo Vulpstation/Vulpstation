@@ -536,3 +536,13 @@ Entries:
   id: 45
   time: '2025-08-18T00:54:53.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/67
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Merged some upstream changes. See the floofstation changelog for more
+        details. Most notably, radios now function similarly to intercoms: you
+        can toggle their mic and their speaker.
+  id: 46
+  time: '2025-08-18T16:08:40.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/68
