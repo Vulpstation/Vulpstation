@@ -37,7 +37,7 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
-  - type: GameRule
+  - type: StationEvent
     weight: 5
     startAnnouncement: false
     endAnnouncement: false
