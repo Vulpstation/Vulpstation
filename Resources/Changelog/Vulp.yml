@@ -546,3 +546,12 @@ Entries:
   id: 46
   time: '2025-08-18T16:08:40.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/68
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        The shadekin portal will now generate naturally as a structure 50-100m
+        away from the main base.
+  id: 47
+  time: '2025-08-18T18:22:19.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/69
