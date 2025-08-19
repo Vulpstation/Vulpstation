@@ -1,26 +1,35 @@
+# For small planetary maps (less than 30m in radius)
 - type: entity
-  id: PlanetStationBase
-  parent:
-  - BaseStation
-  - BaseStationNews
-  - BaseStationCargo
-  - BaseStationJobsSpawning
-  - BaseStationRecords
-  - BaseStationCentcomm
-  - BaseStationAlertLevels
-  - BaseStationSiliconLawCrewsimov
-  - BaseStationNanotrasen
-  - BaseStationMail
-  - BaseStationAllEventsEligible
-  - BaseStationExpeditions
-  - BaseStationTheDark
-  - BaseStationCaptainState # DeltaV
-  - BaseStationStockMarket # DeltaV
-  - BaseStationPlanetaryGrids
+  id: PlanetStationSmall
+  parent: PlanetStationBase
   categories: [ HideSpawnMenu ]
   components:
-  - type: Transform
-  - type: StationEventEligible
-  - type: Gravity # just so we don't have to map grav gens
-    inherent: true
-    enabled: true
+  - type: StationLoadPlanetaryGrids
+    minDistance: 30
+    grids:
+    - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
+      distance:
+        min: 30
+        max: 80
+    - path: /Maps/_Vulp/Structures/shadekin-portal.yml
+      distance:
+        min: 60
+        max: 100
+
+# For medium planetary maps (less than 60m in radius)
+- type: entity
+  id: PlanetStationMedium
+  parent: PlanetStationBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationLoadPlanetaryGrids
+    minDistance: 40 # Note: this is the minimum distance between ALL grids AND the center of the map
+    grids:
+    - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
+      distance:
+        min: 60
+        max: 110
+    - path: /Maps/_Vulp/Structures/shadekin-portal.yml
+      distance:
+        min: 90
+        max: 110

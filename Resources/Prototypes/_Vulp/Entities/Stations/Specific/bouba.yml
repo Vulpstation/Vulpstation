@@ -1,0 +1,8 @@
+- type: entity
+  id: PlanetStationSpecificBouba
+  parent: PlanetStationSmall
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PlanetStation
+    mergeIntoPlanet: false
+    components: [] # Components to add to the planet grid, will be merged with parent

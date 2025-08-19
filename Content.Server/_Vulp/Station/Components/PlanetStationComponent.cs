@@ -21,9 +21,7 @@ public sealed partial class PlanetStationComponent : Component
     [DataField]
     public bool SpawnLoot = true;
 
-    /// Components to add to the map post-planetization.
-    /// TODO: see if adding [AlwaysPushInheritance] allows to offload some components to parent prototypes
-    [DataField(required: true)]
+    [DataField(required: true), AlwaysPushInheritance]
     public ComponentRegistry Components = default!;
 
     /// If true, the station grid will be irreversibly merged into the planet upon spawning.

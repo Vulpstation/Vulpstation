@@ -1,0 +1,9 @@
+- type: entity
+  id: PlanetStationSpecificTradePost
+  parent: PlanetStationSmall
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PlanetStation
+    components:
+    - type: RestrictedRange
+      range: 300 # A bit higher than others

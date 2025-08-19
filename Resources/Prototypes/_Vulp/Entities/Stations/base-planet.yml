@@ -1,16 +1,56 @@
 - type: entity
-  id: BaseStationPlanetaryGrids
+  id: PlanetStationBase
+  parent:
+  - BaseStation
+  - BaseStationNews
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationCentcomm
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationNanotrasen
+  - BaseStationMail
+  - BaseStationAllEventsEligible
+  - BaseStationExpeditions
+  - BaseStationTheDark
+  - BaseStationCaptainState # DeltaV
+  - BaseStationStockMarket # DeltaV
   abstract: true
   components:
-  - type: StationLoadPlanetaryGrids
-    minDistance: 30
-    grids:
-    - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
-      distance:
-        min: 30
-        max: 80
-    - path: /Maps/_Vulp/Structures/shadekin-portal.yml
-      distance:
-        min: 60
-        max: 100
+  - type: Transform
+  - type: StationEventEligible
+  - type: Gravity # just so we don't have to map grav gens
+    inherent: true
+    enabled: true
+  - type: PlanetStation
+    biome: Continental
+    mergeIntoPlanet: true
+    components:
+    - type: DayNightCycle
+      timeEntries:
+      - { time: 0.0, colorHex: '#000000' }
+      - { time: 0.04, colorHex: '#010010' }
+      - { time: 0.08, colorHex: '#06043A' }
+      - { time: 0.17, colorHex: '#2A1E5C' }
+      - { time: 0.25, colorHex: '#3B256B' }
+      - { time: 0.33, colorHex: '#4A2F7A' }
+      - { time: 0.42, colorHex: '#3C3C7E' }
+      - { time: 0.50, colorHex: '#4B4B9C' }
+      - { time: 0.58, colorHex: '#3A3A7A' }
+      - { time: 0.66, colorHex: '#2C255C' }
+      - { time: 0.75, colorHex: '#1F1440' }
+      - { time: 0.83, colorHex: '#0A042A' }
+      - { time: 0.92, colorHex: '#040010' }
+      - { time: 1.00, colorHex: '#000000' }
+    - type: TradeStation
+    - type: TileSpread
+      tiles:
+      - id: FloorPlanetGrass
+        spreadsTo: [ FloorPlanetDirt ]
+        dieUnderWalls: true
+    - type: RestrictedRange
+      range: 256
+    - type: VentEventFreeZone
+      radius: 20
 
