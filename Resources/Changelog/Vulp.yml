@@ -555,3 +555,12 @@ Entries:
   id: 47
   time: '2025-08-18T18:22:19.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/69
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Fixed the bug where trait balance validation would count traits that are
+        meant to occupy 0 slots as occupying 1 slot.
+  id: 48
+  time: '2025-08-19T11:58:17.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/70
