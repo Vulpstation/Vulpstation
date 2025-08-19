@@ -127,7 +127,7 @@
   suffix: Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+    access: [["Cargo"], ["Orders"]] # Vulpstation - added orders so command can enter
 
 # Engineering
 - type: entity
@@ -260,7 +260,7 @@
   components:
   - type: AccessReader
     access: [["Medical"]]
-    
+
 - type: entity # Floofstation - this should be an upstream fix so I'm not putting this in Floof namespace, but EE scares me.
   parent: DoorElectronics
   id: DoorElectronicsParamedic

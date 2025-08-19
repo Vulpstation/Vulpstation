@@ -5,25 +5,13 @@
   minPlayers: 0
   stations:
     bouba:
-      stationProto: PlanetStationBase
+      stationProto: PlanetStationSpecificBouba
       components:
       - type: StationNameSetup
         mapNameTemplate: 'Landing Shuttle'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: 'VLP'
-      - type: PlanetStation
-        biome: Continental
-        components:
-        - type: DayNightCycle
-        - type: TradeStation
-        - type: TileSpread
-          tiles:
-          - id: FloorPlanetGrass
-            spreadsTo: [ FloorPlanetDirt ]
-            dieUnderWalls: true
-        - type: VentEventFreeZone
-          radius: 20
       - type: StationJobs
         overflowJobs:
         - Passenger
