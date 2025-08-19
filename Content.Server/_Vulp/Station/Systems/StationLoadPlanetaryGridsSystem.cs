@@ -98,7 +98,7 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
         }
         catch (Exception e)
         {
-            Log.Error("Failed to load planetary grids", e);
+            Log.Error($"Failed to load planetary grids: {e.Message}");
         }
     }
 
