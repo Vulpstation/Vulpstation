@@ -575,3 +575,17 @@ Entries:
   id: 49
   time: '2025-08-19T16:49:07.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/72
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Added a new starting map - Tradepost. This one requires at least 6
+        online people to vote for and heavily relies on the presence of command
+        or cargo+engi members.
+    - type: Tweak
+      message: >-
+        Command members (and anyone else with orders access) can now access
+        locked cargo doors.
+  id: 50
+  time: '2025-08-19T17:41:57.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/71
