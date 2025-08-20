@@ -53,6 +53,7 @@ namespace Content.IntegrationTests.Tests
             "PlanetContinentalBoubaLandingShuttle", // Vulp
             "PlanetContinentalColonyDropPod", // Vulp
             "PlanetContinentalOaksteadVillage", // Vulp
+            "PlanetContinentalTradepost", // Vulp
         };
 
         /// <summary>
