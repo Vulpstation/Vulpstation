@@ -589,3 +589,12 @@ Entries:
   id: 50
   time: '2025-08-19T17:41:57.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/71
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        Tradepost now includes some round-start mining tools, and its solar
+        panel array is not located further north.
+  id: 51
+  time: '2025-08-20T22:03:06.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/73
