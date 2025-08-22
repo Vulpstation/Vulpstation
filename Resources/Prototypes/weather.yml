@@ -63,7 +63,7 @@
     collection: Rain
     params:
       loop: true
-      volume: -6
+      volume: -8
 
 - type: soundCollection
   id: Rain
@@ -135,4 +135,4 @@
     path: /Audio/Effects/Weather/rain_heavy.ogg
     params:
       loop: true
-      volume: -15 # Vulpstation - quiet
+      volume: -5

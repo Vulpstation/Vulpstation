@@ -43,6 +43,8 @@
       - { time: 0.83, colorHex: '#0A042A' }
       - { time: 0.92, colorHex: '#040010' }
       - { time: 1.00, colorHex: '#000000' }
+    - type: WeatherCycle
+      prototype: Tropical
     - type: TradeStation
     - type: TileSpread
       tiles:
