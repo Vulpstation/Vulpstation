@@ -598,3 +598,20 @@ Entries:
   id: 51
   time: '2025-08-20T22:03:06.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/73
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        There is now a weather cycle on planets. Make sure to wear a coat when
+        it snows! Or internals if there's an ashfall...
+    - type: Add
+      message: >-
+        Rainy weather can now clean puddles, and certain weathers can now add
+        reagents to open liquid containers. Put that potassium bucket away!
+    - type: Fix
+      message: >-
+        The weather volume should now properly and automatically adjust based on
+        how many weathered tiles there are around the player.
+  id: 52
+  time: '2025-08-22T20:58:45.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/74
