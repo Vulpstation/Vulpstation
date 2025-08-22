@@ -29,6 +29,6 @@ public sealed partial class WeatherCycleComponent : Component
     public float TimeScale = 1f;
 
     // Accessibility
-    [ViewVariables, UsedImplicitly]
+    [ViewVariables(VVAccess.ReadWrite), UsedImplicitly]
     private string _prototypeVV { get => Prototype; set => Prototype = value; }
 }
