@@ -600,8 +600,8 @@
   id: IonStorm
   components:
   - type: StationEvent
-    weight: 8
-    reoccurrenceDelay: 20
+    weight: 2 # Vulpstation
+    reoccurrenceDelay: 60 # Vulpstation
     duration: 1
   - type: IonStormRule
 
