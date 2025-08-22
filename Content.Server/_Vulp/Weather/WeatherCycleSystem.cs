@@ -70,10 +70,10 @@ public sealed class WeatherCycleSystem : EntitySystem
         if (!_protoMan.TryIndex(ent.Comp1.Prototype, out var proto))
             return;
 
-        if (ent.Comp1.CurrentState == null)
+        if (ent.Comp1.CurrentState is not {} current)
         {
             if (proto.Weathers.Count >= 1)
-                SetState(ent, proto.Weathers.Values.MaxBy(it => it.Weight));
+                SetState(ent, proto.Weathers.Values.MaxBy(it => it.Weight)!);
             return;
         }
 
@@ -83,23 +83,19 @@ public sealed class WeatherCycleSystem : EntitySystem
             return;
         }
 
-        var current = ent.Comp1.CurrentState;
-        if (current == null)
+        // If the current weather has fully started, begin executing its update functions
+        if (current.Proto != null
+            && (!ent.Comp2.Weather.TryGetValue(current.Proto.Value, out var data) || data.State != WeatherState.Running))
             return;
 
-        // If the current weather has fully started, begin executing its update functions
-        var currentProto = current.Value.Proto;
-        if (currentProto != null && ent.Comp2.Weather.TryGetValue(currentProto.Value, out var data) && data.State == WeatherState.Running)
-        {
-            var updateTimeSeconds = (float) elapsedTime.TotalSeconds;
-            foreach (var func in current.Value.OnUpdate)
-                func.Invoke(EntityManager, (ent.Owner, ent.Comp2), updateTimeSeconds);
-        }
+        var updateTimeSeconds = (float) elapsedTime.TotalSeconds;
+        foreach (var func in current.OnUpdate)
+            func.Invoke(EntityManager, (ent.Owner, ent.Comp2), updateTimeSeconds);
     }
 
     public void AdvanceState(Entity<WeatherCycleComponent, WeatherComponent> ent, WeatherCyclePrototype cycle)
     {
-        if (ent.Comp1.CurrentState is not { } current)
+        if (ent.Comp1.CurrentState is not { } current || cycle.Weathers.Count < 1)
             return;
 
         var newId = current.Transitions is not null
@@ -109,14 +105,14 @@ public sealed class WeatherCycleSystem : EntitySystem
         if (!cycle.Weathers.TryGetValue(newId, out var newState))
         {
             Log.Error($"Encountered invalid weather state reference: {newId} in weather cycle {cycle.ID}.");
-            newState = cycle.Weathers.Values.MaxBy(it => it.Weight);
+            newState = cycle.Weathers.Values.MaxBy(it => it.Weight)!;
         }
 
         ent.Comp1.Prototype = cycle.ID; // Just in case adminbus changed it
         SetState(ent, newState);
     }
 
-    private void SetState(Entity<WeatherCycleComponent, WeatherComponent> ent, WeatherCycleData state)
+    public void SetState(Entity<WeatherCycleComponent, WeatherComponent> ent, WeatherCycleData state)
     {
         ent.Comp1.NextWeather = _timing.CurTime + TimeSpan.FromMinutes(state.DurationMinutes.Next(_random) * ent.Comp1.TimeScale);
         ent.Comp1.CurrentState = state;

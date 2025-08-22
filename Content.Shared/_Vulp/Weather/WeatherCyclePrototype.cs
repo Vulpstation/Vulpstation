@@ -20,8 +20,8 @@ public sealed partial class WeatherCyclePrototype : IPrototype
     public Dictionary<string, WeatherCycleData> Weathers = new();
 }
 
-[DataDefinition]
-public partial struct WeatherCycleData
+[DataDefinition, Serializable]
+public sealed partial class WeatherCycleData
 {
     [DataField(required: true)]
     public ProtoId<WeatherPrototype>? Proto;
