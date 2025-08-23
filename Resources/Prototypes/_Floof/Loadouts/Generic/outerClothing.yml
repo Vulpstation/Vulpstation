@@ -121,6 +121,16 @@
     group: LoadoutOuter
 
 - type: loadout
+  id: LoadoutOuterJamrockBlazer
+  category: Outer
+  cost: 1
+  items:
+  - ClothingOuterCoatJacketJamrock
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: LoadoutOuter
+
+- type: loadout
   id: LoadoutOuterBomberPunkRed
   category: Outer
   cost: 1
