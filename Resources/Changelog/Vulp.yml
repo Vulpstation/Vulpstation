@@ -615,3 +615,12 @@ Entries:
   id: 52
   time: '2025-08-22T20:58:45.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/74
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        A few more existing coats (acid raincoats and letterman jackets) are now
+        available in the loadouts.
+  id: 53
+  time: '2025-08-23T22:29:04.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/75
