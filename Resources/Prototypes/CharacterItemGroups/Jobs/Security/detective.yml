@@ -67,8 +67,6 @@
       id: LoadoutClothingOuterCoatDetective
     - type: loadout
       id: LoadoutOuterVestDetective
-    - type: loadout
-      id: LoadoutOuterJamrockBlazer # Floof
 
 #- type: characterItemGroup
 #  id: LoadoutDetectiveShoes
