@@ -633,3 +633,10 @@ Entries:
   id: 54
   time: '2025-08-25T00:00:30.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/76
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: You can no longer abuse hard grabs in order to instagib people.
+  id: 55
+  time: '2025-08-25T04:22:06.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/77
