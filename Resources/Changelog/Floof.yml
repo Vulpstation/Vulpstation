@@ -7579,3 +7579,12 @@ Entries:
   id: 798
   time: '2025-08-24T20:01:50.0000000+00:00'
   url: https://github.com/Floof-Station/Floof-Station/pull/1349
+- author: M3739
+  changes:
+    - type: Fix
+      message: >-
+        Hard grab throws will now fail if your character isn't strong enough to
+        do so.
+  id: 799
+  time: '2025-08-25T02:50:15.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1350
