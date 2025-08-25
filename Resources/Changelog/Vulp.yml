@@ -624,3 +624,12 @@ Entries:
   id: 53
   time: '2025-08-23T22:29:04.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/75
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Merged some upstream changes, see the floofstation changelog tab for
+        more details.
+  id: 54
+  time: '2025-08-25T00:00:30.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/76
