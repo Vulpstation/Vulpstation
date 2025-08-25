@@ -640,3 +640,10 @@ Entries:
   id: 55
   time: '2025-08-25T04:22:06.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/77
+- author: Dunrab
+  changes:
+    - type: Tweak
+      message: Tweaked Centcomm to allow for more silly events.
+  id: 56
+  time: '2025-08-25T18:39:17.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/78
