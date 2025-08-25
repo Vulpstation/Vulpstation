@@ -788,6 +788,8 @@
     - MothroachCube
     - MouseCube
     - CockroachCube
+    - PigCube # Floofstation
+    - ChickenCube # Floofstation
   - type: EmagLatheRecipes
     emagStaticRecipes:
     - AbominationCube
@@ -1996,6 +1998,9 @@
       - PlushieGrumpyQuartermaster
       - PlushieHardcoreDj
       - PlushieHos
+      - PlushieSillyResomi
+      - PlushieRatLogisticsOfficer
+      - PlushieBunnyChiefMedicalOfficer
       - PlushieAvianMysta
       #Floof Plushies - End
   - type: EmagLatheRecipes

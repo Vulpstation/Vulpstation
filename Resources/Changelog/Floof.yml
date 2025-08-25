@@ -7431,3 +7431,151 @@ Entries:
   id: 781
   time: '2025-08-18T04:12:16.0000000+00:00'
   url: https://github.com/Floof-Station/Floof-Station/pull/1326
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: Atmos Firesuit and the regular Firesuit has Pockets now
+  id: 782
+  time: '2025-08-18T22:08:11.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1325
+- author: KyuPolaris
+  changes:
+    - type: Add
+      message: Added horny rodentia (Rodentia now can have horn markings)
+  id: 783
+  time: '2025-08-18T23:44:35.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1331
+- author: EinsteinEngines
+  changes: []
+  id: 784
+  time: '2025-08-19T00:25:34.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1324
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Clothing received via loadouts will now correctly have the owner's
+        fingerprints.
+  id: 785
+  time: '2025-08-20T18:15:52.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1332
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        NPCs will now retaliate when attacked even if the attacker belongs to a
+        faction they are friendly to. This means that animal friend trait users
+        can ***no longer*** safely kill vent critters (though they can still
+        move them to a spot where they won't hurt anyone).
+  id: 786
+  time: '2025-08-23T00:38:53.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1336
+- author: ashkitten
+  changes:
+    - type: Add
+      message: >-
+        Add Bilingual, Trilingual, and Quadrilingual traits, allowing you to
+        take more languages than ever before at the cost of your precious
+        points.
+    - type: Tweak
+      message: >-
+        Revert basic language allotment to one, effectively increasing the cost
+        of taking two basic languages by one point.
+  id: 787
+  time: '2025-08-23T00:42:29.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1318
+- author: Raikyr0
+  changes:
+    - type: Add
+      message: Added larger storage canisters.
+  id: 788
+  time: '2025-08-23T00:45:11.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1302
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Added a set of commands to help add bodies (and hands!) to non-mob
+        entities. See `list addbody` or Floof-Station#1278 for more info.
+  id: 789
+  time: '2025-08-23T01:52:01.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1278
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: Cheesed to Eat you, Rodentia can now eat chocolate.
+  id: 790
+  time: '2025-08-23T04:27:50.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1258
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: Tweaked wires to build almost instantly
+    - type: Tweak
+      message: Re-enabled Water Vapor Canisters from Logistics
+    - type: Fix
+      message: Pigs give bacon now. Weird they didn't before.
+    - type: Add
+      message: Added Pig and Chicken Cubes.
+  id: 791
+  time: '2025-08-23T04:28:27.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1261
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: The Golden Cup can now be used to chug alcohol better.
+  id: 792
+  time: '2025-08-23T23:17:09.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1343
+- author: Einstein Engines
+  changes:
+    - type: Add
+      message: >-
+        You can now grab people by attempting to pull them while harm intent is
+        active.
+    - type: Add
+      message: Martial arts styles has been added. Try to remember the basics of CQC.
+  id: 793
+  time: '2025-08-23T23:19:31.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1328
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        A few more existing coats (acid raincoats and letterman jackets) are now
+        available in the loadouts.
+  id: 794
+  time: '2025-08-23T23:37:13.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1344
+- author: friendofbugs
+  changes:
+    - type: Add
+      message: Added a Silly Resomi Plush
+    - type: Fix
+      message: >-
+        The Rat Logistics Officer and Bunny CMO plushies will now appear in
+        prize counter as intended
+  id: 795
+  time: '2025-08-24T00:08:49.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1309
+- author: Forzii
+  changes:
+    - type: Tweak
+      message: Added coos to Resomi.
+  id: 796
+  time: '2025-08-24T04:07:56.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1334
+- author: ItsDzordz
+  changes:
+    - type: Tweak
+      message: added justice department slots to maps that were missing it
+  id: 797
+  time: '2025-08-24T17:55:17.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1347
+- author: M3739
+  changes:
+    - type: Tweak
+      message: The disclaimer has been updated to mention the 'day of danger'.
+  id: 798
+  time: '2025-08-24T20:01:50.0000000+00:00'
+  url: https://github.com/Floof-Station/Floof-Station/pull/1349
