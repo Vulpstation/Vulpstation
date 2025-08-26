@@ -3,7 +3,7 @@ using Robust.Shared.Toolshed;
 
 namespace Content.Server.Administration.Toolshed;
 
-[ToolshedCommand, AnyCommand]
+[ToolshedCommand, AdminCommand(AdminFlags.Admin)] // Vulp - admin flags to fix the issue with toolshed commands not being invocable by anyone
 public sealed class MarkedCommand : ToolshedCommand
 {
     [CommandImplementation]
