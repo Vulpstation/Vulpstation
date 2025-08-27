@@ -24,11 +24,13 @@
     contents:
     - id: Flash
     - id: ClothingEyesGlassesMedSec
-    - id: PinpointerNuclear
     - id: ClothingHandsGlovesCombat
-    - id: WeaponLeverChester
+    - id: ClothingBeltSheath
+    - id: BlueshieldSabre
+    - id: ClothingBlueshieldArmoredJacket
+    - id: ClothingBlueshieldArmourVest
+    - id: ClothingHeadHatBeretNavy
     - id: WeaponEnergyRevolver
-    - id: BlueshieldAmmunitionBoxFilled
 
 - type: entity
   id: LockerMagistrateFilled

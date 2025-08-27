@@ -1,0 +1,5 @@
+#Modular file for handling all Vulpstation Tags.
+#If you add a new item, component, ecetera that relies upon tagging, please modularise your tags to this file for ease of access, tracking, and merge conflict resolution.
+
+- type: Tag
+  id: BlueshieldSabre

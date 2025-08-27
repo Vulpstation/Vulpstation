@@ -540,12 +540,14 @@
         whitelist:
           tags:
           - CaptainSabre
+          - BlueshieldSabre #VulpEdit: Adds the ability for these to hold the Blueshield Sabre. Entirely temporary, to be replaced.
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
         whitelist:
           tags:
           - CaptainSabre
+          - BlueshieldSabre #VulpEdit: Adds the ability for these to hold the Blueshield Sabre. Entirely temporary, to be replaced.
   - type: Appearance
 
 # Belts without visualizers
