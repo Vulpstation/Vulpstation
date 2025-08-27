@@ -858,7 +858,7 @@
   - type: Butcherable
     spawned:
     - id: FoodMeat
-      amount: 5
+      amount: 8
   - type: Grammar
     attributes:
       gender: female # Here because of UdderComponent
@@ -3566,7 +3566,7 @@
         Base: dead
   - type: Butcherable
     spawned:
-    - id: FoodMeat
+    - id: FoodMeatBacon
       amount: 6
   - type: Grammar
     attributes:

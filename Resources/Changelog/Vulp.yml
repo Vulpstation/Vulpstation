@@ -615,3 +615,35 @@ Entries:
   id: 52
   time: '2025-08-22T20:58:45.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/74
+- author: Mnemotechnician
+  changes:
+    - type: Tweak
+      message: >-
+        A few more existing coats (acid raincoats and letterman jackets) are now
+        available in the loadouts.
+  id: 53
+  time: '2025-08-23T22:29:04.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/75
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Merged some upstream changes, see the floofstation changelog tab for
+        more details.
+  id: 54
+  time: '2025-08-25T00:00:30.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/76
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: You can no longer abuse hard grabs in order to instagib people.
+  id: 55
+  time: '2025-08-25T04:22:06.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/77
+- author: Dunrab
+  changes:
+    - type: Tweak
+      message: Tweaked Centcomm to allow for more silly events.
+  id: 56
+  time: '2025-08-25T18:39:17.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/78

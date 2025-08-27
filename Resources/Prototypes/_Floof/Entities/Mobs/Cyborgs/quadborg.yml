@@ -80,7 +80,7 @@
 
 - type: entity
   id: BorgChassisQuadCC
-  parent: BorgChassisQuad
+  parent: BorgChassisQuadSec
   components:
   - type: Sprite
     sprite: _Floof/Mobs/Silicon/quad.rsi

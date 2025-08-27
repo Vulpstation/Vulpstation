@@ -2,3 +2,6 @@ The files below are licensed under Creative Commons Attribution-NonCommercial-Sh
 source/EE_banner.svg
 source/EE_logo-dark.svg
 source/EE_logo-light.svg
+splashlogo.png
+
+logo.png and `source/vulpstation new logo` were made by plazmaspirit for Vulpstation.
