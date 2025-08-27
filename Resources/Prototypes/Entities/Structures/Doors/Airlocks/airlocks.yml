@@ -128,6 +128,8 @@
     sprite: Structures/Doors/Airlocks/Standard/mining.rsi
   - type: Wires
     layoutId: AirlockCargo
+  - type: Construction # Vulpstation
+    node: mining
 
 - type: entity
   parent: AirlockCommand # if you get centcom door somehow it counts as command, also inherit panel
@@ -144,6 +146,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
+  - type: Construction # Vulpstation
+    node: hatch
 
 - type: entity
   parent: Airlock
@@ -272,6 +276,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/mining.rsi
+  - type: Construction # Vulpstation
+    node: miningGlass
 
 - type: entity
   parent: AirlockCommandGlass # see standard
