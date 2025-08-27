@@ -647,3 +647,18 @@ Entries:
   id: 56
   time: '2025-08-25T18:39:17.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/78
+- author: Vizoplez
+  changes:
+    - type: Add
+      message: >-
+        Added a Blueshield Sabre. Currently the captain's sabre sheath can be
+        used to hold.
+    - type: Fix
+      message: The Blueshield Locker now starts with blueshield officer armor.
+    - type: Remove
+      message: >-
+        Chester & Chester Ammo have been removed from the Blueshield Locker.
+        (You can still fax centcomm to ask for it)
+  id: 57
+  time: '2025-08-27T23:24:50.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/79
