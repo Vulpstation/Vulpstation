@@ -675,3 +675,16 @@ Entries:
   id: 58
   time: '2025-08-28T01:13:16.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/81
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Mining airlocks, airtight hatches, and mining walls can now be
+        constructed via the construction menu.
+    - type: Fix
+      message: >-
+        You can now correctly build diagonal walls - the game won't force them
+        to the south rotation.
+  id: 59
+  time: '2025-08-28T01:17:29.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/80
