@@ -662,3 +662,16 @@ Entries:
   id: 57
   time: '2025-08-27T23:24:50.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/79
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Players will now be notified when certain unclear weathers (such as
+        ashfalls, or cold air) are happening.
+    - type: Fix
+      message: >-
+        The length of a weather is no longer constrained to a whole number of
+        minutes (ashfalls will now last 30-70 seconds instead of exactly 60)
+  id: 58
+  time: '2025-08-28T01:13:16.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/81
