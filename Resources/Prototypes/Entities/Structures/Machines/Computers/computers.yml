@@ -1030,6 +1030,7 @@
   - type: Anchorable
     flags:
     - Anchorable
+    - Unanchorable # Vulpstation - let them move it!
   - type: CargoPalletConsole
   - type: ActivatableUI
     key: enum.CargoPalletConsoleUiKey.Sale
