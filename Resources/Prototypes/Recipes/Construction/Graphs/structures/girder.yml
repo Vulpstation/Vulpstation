@@ -366,6 +366,36 @@
             - tool: Cutting
               doAfter: 2
 
+      # Vulpstation section
+        - to: miningWall
+          completed:
+          - !type:SnapToGrid
+            southRotation: true
+          conditions:
+          - !type:EntityAnchored { }
+          steps:
+          - tool: Welding # Strong wall
+            doAfter: 2
+          - material: MetalRod
+            amount: 4
+            doAfter: 1
+
+        - to: diagonalMiningWall
+          completed:
+          - !type:SnapToGrid
+            southRotation: false
+          conditions:
+          - !type:EntityAnchored { }
+          steps:
+          - tool: Screwing # Just to distinguish from the normal one
+            doAfter: 1
+          - tool: Welding # Strong wall
+            doAfter: 2
+          - material: MetalRod
+            amount: 4
+            doAfter: 1
+      # Vulpstation section end
+
     - node: reinforcedWall
       entity: WallReinforced
       edges:
@@ -559,3 +589,33 @@
           steps:
             - tool: Welding
               doAfter: 5
+
+    # Vulpstation section
+    - node: miningWall
+      entity: WallMining
+      edges:
+        - to: reinforcedGirder
+          completed:
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 4
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 2
+
+    - node: diagonalMiningWall
+      entity: WallMiningDiagonal
+      edges:
+        - to: reinforcedGirder
+          completed:
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 4
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 2
+  # Vulpstation section end
