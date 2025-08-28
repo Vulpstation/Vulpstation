@@ -1,0 +1,17 @@
+- type: construction
+  name: mining window
+  id: MiningWindow
+  graph: Window
+  startNode: start
+  targetNode: window
+  category: construction-category-structures
+  description: A nicely looking window. Slightly more sturdy than a reinforced window.
+  icon:
+    sprite: Structures/Windows/mining.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
