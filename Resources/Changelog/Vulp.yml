@@ -688,3 +688,19 @@ Entries:
   id: 59
   time: '2025-08-28T01:17:29.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/80
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        Added a new starting map - Mining Bunker. It is meant for mid-pop (14
+        players and more) and features a pretty large starting complex, but at
+        the same time, it has a much harsher weather climate than other maps,
+        with frequent rains, snowfalls, and occasional radioactive and ashen
+        fallouts. Wear internals to protect yourself from those!
+    - type: Fix
+      message: >-
+        The cargo sale computer now has a unique circuit board and can safely be
+        moved and deconstructed.
+  id: 60
+  time: '2025-08-28T06:43:27.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/82
