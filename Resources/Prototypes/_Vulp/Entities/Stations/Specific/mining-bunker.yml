@@ -1,5 +1,5 @@
 - type: entity
-  id: PlanetStationSpecificTradePost
+  id: PlanetStationSpecificMiningBunker
   parent: PlanetStationMedium
   categories: [ HideSpawnMenu ]
   components:
@@ -7,3 +7,7 @@
     components:
     - type: RestrictedRange
       range: 300 # A bit higher than others
+    - type: VentEventFreeZone
+      radius: 25
+    - type: WeatherCycle
+      prototype: Harsh
