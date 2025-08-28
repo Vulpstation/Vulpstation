@@ -488,7 +488,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 4
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 5
