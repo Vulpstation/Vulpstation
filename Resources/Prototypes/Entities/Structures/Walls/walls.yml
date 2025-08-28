@@ -760,7 +760,7 @@
   - type: Physics
     bodyType: Static
   - type: Reflect
-    reflectProb: 1
+    reflectProb: 0.3 # Vulpstation - who the fuck gave it a 100% reflect prob?
   - type: Pullable
   - type: Airtight
     noAirWhenFullyAirBlocked: false
@@ -898,6 +898,8 @@
   - type: IconSmooth
     key: walls
     base: solid
+  - type: Reflect # Vulpstation - funny
+    reflectProb: 0.3 # Watch your aim
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -1111,6 +1113,9 @@
   - type: IconSmooth
     key: walls
     base: mining
+  - type: Construction # Vulpstation
+    graph: Girder
+    node: miningWall
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -1133,6 +1138,9 @@
   - type: Icon
     sprite: Structures/Walls/mining_diagonal.rsi
     state: state0
+  - type: Construction # Vulpstation
+    graph: Girder
+    node: diagonalMiningWall
 
 
 # Vault Walls

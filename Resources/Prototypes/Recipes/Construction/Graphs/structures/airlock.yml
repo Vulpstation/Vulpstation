@@ -77,6 +77,26 @@
       - material: ReinforcedGlass
         amount: 1
         doAfter: 2
+    # Vulpstation section
+    - to: hatch
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: MetalRod
+        amount: 4
+        doAfter: 2
+      - tool: Welding
+        doAfter: 3
+    - to: mining
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+      - tool: Welding
+        doAfter: 3
+    # Vulpstation section end
     - to: wired
       conditions:
       - !type:EntityAnchored {}
@@ -100,6 +120,17 @@
         doAfter: 2
       - tool: Screwing
         doAfter: 2.5
+    # Vulpstation section end
+    - to: miningGlass
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+      - tool: Welding
+        doAfter: 3
+    # Vulpstation section end
     - to: wired
       conditions:
       - !type:EntityAnchored {}
@@ -421,3 +452,64 @@
       - tool: Welding
         doAfter: 15
 
+  # Vulpstation section
+  - node: hatch
+    entity: AirlockHatch
+    doNotReplaceInheritingEntities: true
+    edges:
+    - to: electronics
+      conditions:
+      - !type:EntityAnchored {}
+      - !type:DoorWelded {}
+      - !type:DoorBolted
+        value: false
+      - !type:WirePanel {}
+      - !type:AllWiresCut
+      completed:
+      - !type:SpawnPrototype
+        prototype: PartRodMetal1
+        amount: 4
+      steps:
+      - tool: Prying
+        doAfter: 5
+
+  - node: mining
+    entity: AirlockMining
+    doNotReplaceInheritingEntities: true
+    edges:
+    - to: electronics
+      conditions:
+      - !type:EntityAnchored {}
+      - !type:DoorWelded {}
+      - !type:DoorBolted
+        value: false
+      - !type:WirePanel {}
+      - !type:AllWiresCut
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 5
+
+  - node: miningGlass
+    entity: AirlockMiningGlass
+    doNotReplaceInheritingEntities: true
+    edges:
+    - to: glassElectronics
+      conditions:
+      - !type:EntityAnchored {}
+      - !type:DoorWelded {}
+      - !type:DoorBolted
+        value: false
+      - !type:WirePanel {}
+      - !type:AllWiresCut
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 5
+  # Vulpstation section end
