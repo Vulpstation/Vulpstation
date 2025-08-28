@@ -9,7 +9,7 @@
     grids:
     - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
       distance:
-        min: 30
+        min: 35
         max: 80
     - path: /Maps/_Vulp/Structures/shadekin-portal.yml
       distance:
