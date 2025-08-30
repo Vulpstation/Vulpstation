@@ -3,7 +3,7 @@
   id: MiningWindow
   graph: Window
   startNode: start
-  targetNode: window
+  targetNode: miningWindow
   category: construction-category-structures
   description: A nicely looking window. Slightly more sturdy than a reinforced window.
   icon:
