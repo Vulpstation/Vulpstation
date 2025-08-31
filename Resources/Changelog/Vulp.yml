@@ -704,3 +704,10 @@ Entries:
   id: 60
   time: '2025-08-28T06:43:27.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/82
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added collars for each command role.
+  id: 61
+  time: '2025-08-31T16:39:21.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/83
