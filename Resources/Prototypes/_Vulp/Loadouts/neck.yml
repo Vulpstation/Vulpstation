@@ -1,0 +1,71 @@
+﻿# Collars
+- type: loadout
+  id: LoadoutCommandHopCollar
+  category: JobsCommand
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - HeadOfPersonnel
+  items:
+  - ClothingNeckCollarHop
+
+# Collars
+- type: loadout
+  id: LoadoutCommandHosCollar
+  category: JobsSecurityHeadOfSecurity
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - HeadOfSecurity
+  items:
+  - ClothingNeckCollarHos
+
+# Collars
+- type: loadout
+  id: LoadoutCommandCmoCollar
+  category: JobsMedicalChiefMedicalOfficer
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - ChiefMedicalOfficer
+  items:
+  - ClothingNeckCollarCmo
+
+# Collars
+- type: loadout
+  id: LoadoutCommandCeCollar
+  category: JobsEngineeringChiefEngineer
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - ChiefEngineer
+  items:
+  - ClothingNeckCollarCe
+
+# Collars
+- type: loadout
+  id: LoadoutCommandMysCollar
+  category: JobsEpistemicsMystagogue
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - ResearchDirector
+  items:
+  - ClothingNeckCollarMys
+
+# Collars
+- type: loadout
+  id: LoadoutCommandLoCollar
+  category: JobsCommandCaptain
+  cost: 1
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - Quartermaster
+  items:
+  - ClothingNeckCollarLo
