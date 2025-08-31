@@ -1,0 +1,69 @@
+﻿# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarHop
+  result: ClothingNeckCollarHop
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarHos
+  result: ClothingNeckCollarHos
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarCmo
+  result: ClothingNeckCollarCmo
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarCe
+  result: ClothingNeckCollarCe
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarMys
+  result: ClothingNeckCollarMys
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarLo
+  result: ClothingNeckCollarLo
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
+
+# Vulpstation - Collars
+- type: latheRecipe
+  id: ClothingNeckCollarColonyCmd
+  result: ClothingNeckCollarColonyCmd
+  category: ClothingCommand # vulp - add uniform printer clothing categories
+  completetime: 2
+  materials:
+    Cloth: 100
+    Durathread: 50
