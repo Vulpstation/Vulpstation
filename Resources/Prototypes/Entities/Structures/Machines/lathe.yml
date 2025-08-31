@@ -1707,6 +1707,15 @@
       - ClothingUniformChefThong
       - ClothingUniformNudityPermit
       # Floofstation section end
+      # Vulpstation section start
+      - ClothingNeckCollarHop
+      - ClothingNeckCollarHos
+      - ClothingNeckCollarCmo
+      - ClothingNeckCollarCe
+      - ClothingNeckCollarMys
+      - ClothingNeckCollarLo
+      - ClothingNeckCollarColonyCmd
+      # Vulpstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - ClothingHeadHatCentcomcap
