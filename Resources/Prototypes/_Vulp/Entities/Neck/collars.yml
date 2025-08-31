@@ -1,0 +1,87 @@
+﻿- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarHop
+  name: head of personal collar
+  description: The Head of Personnel's Collar, a thin red stripe runs along the centre with a small piece of bright red ruby in the middle of the silver and gold tag, shimmering in the light, the inside of the collar is lined with high quality felt, soft to the touch to be sure its comfortable for the wearer while they're hunched over their desk with a head buried in paperwork
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_hop.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_hop.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarHos
+  name: head of security collar
+  description: A collar worn by the Head of Security, it has a crimson line running along the centre as a reminder of all the "syndies"(perfectly innocent crew members) they've slain, the inside lined with high quality felt so that at least some of their outfit can have a level of comfort.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_hos.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_hos.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarCmo
+  name: chief medical officer collar
+  description: The Chief Medical Officer's collar, the collar has a shiny blue stripe going along the centre and a tag made of strong borosilicate glass with a plus carved in the centre, the inside is lined with a comfortable felt to make sure its as comfortable as possible, even after having to treat that one crew member for alcohol poisoning for the 30th time.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_cmo.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_cmo.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarCe
+  name: chief engineer collar
+  description: A collar belonging to the Chief Engineer, a bright orange collar with a line of bluespace crystal running along the centre of it, the inside lined with a soft felt to keep from chafing the wearers neck even while they're crawling through tight spaces to fix the interns faulty wiring.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_ce.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_ce.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarMys
+  name: mystagogue collar
+  description: A collar sometimes seen around the neck of the mystagogue or their most valuable assistant, there's a gentle line of plasma crystal going along the centre of the collar along with a deep purple plasma crystal engraved with gold as the tag. the inside of the collar is lines with a soft high quality felt as to ensure the wearers comfort while they perform their experiments.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_mys.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_mys.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarLo
+  name: logistics officers collar
+  description: A collar given out to some of the most high ranking officers in NanoTrasen Central Command. it is emerald green in colour with a shiny stripe of gold going along the centre of it and a green C engraved in the centre of the golden tag, the inside of the collar is lined with some of the most high quality felt in the sector making this one of the most comfortable collars out there to wear and you should surely try it on if ever given the chance.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_lo.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_lo.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarColonyCmd
+  name: commanding officers collar
+  description: A collar specially made for the Commanding Officer in charge of the Colony or whoever they wish to make their pet, it has a line of gold running along the centre and the inside is lined with the highest quality felt in the sector to provide premium comfort to the wearer.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_cmd.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_cmd.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCollarCentcommDirector
+  name: centom director collar
+  description: A collar given out to some of the most high ranking officers in NanoTrasen Central Command. it is emerald green in colour with a shiny stripe of gold going along the centre of it and a green C engraved in the centre of the golden tag, the inside of the collar is lined with some of the most high quality felt in the sector making this one of the most comfortable collars out there to wear and you should surely try it on if ever given the chance.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Clothing/Neck/collar_ccd.rsi
+  - type: Clothing
+    sprite: _Vulp/Clothing/Neck/collar_ccd.rsi
