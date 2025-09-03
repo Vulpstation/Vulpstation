@@ -44,6 +44,8 @@
           False: { state: sleeper_0 }
   - type: FTLExclusion # Vulpstation - prevent pro gamers from flattening anything important
     range: 50
+  - type: VentEventFreeZone # Vulpstation - self explanatory
+    radius: 10
 
 # This one handles all spawns, latejoin and roundstart.
 - type: entity
