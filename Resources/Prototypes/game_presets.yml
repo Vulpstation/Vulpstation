@@ -140,7 +140,7 @@
   rules:
     - Traitor
     - SubGamemodesRule
-    - BasicStationEventScheduler
+    - IrregularExtendedStationEventScheduler # Vulpstation
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -166,7 +166,7 @@
   rules:
     - Nukeops
     - SubGamemodesRule
-    - BasicStationEventScheduler
+    - IrregularExtendedStationEventScheduler # Vulpstation
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -181,7 +181,7 @@
   rules:
     - Revolutionary
     - SubGamemodesRule
-    - BasicStationEventScheduler
+    - IrregularExtendedStationEventScheduler # Vulpstation
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -197,5 +197,5 @@
   showInVote: false
   rules:
   - Zombie
-  - BasicStationEventScheduler
+  - IrregularExtendedStationEventScheduler # Vulpstation
   - BasicRoundstartVariation
