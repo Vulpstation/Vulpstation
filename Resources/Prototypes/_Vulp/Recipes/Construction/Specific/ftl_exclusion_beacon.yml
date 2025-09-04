@@ -51,6 +51,10 @@
         doAfter: 2
       - tag: SmallAIChip
         doAfter: 1
+        name: a super-compact AI chip
+        icon:
+          sprite: Objects/Misc/potatoai_chip.rsi
+          state: icon
       - tool: Welding
         doAfter: 3
 
