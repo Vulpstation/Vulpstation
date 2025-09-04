@@ -1,20 +1,20 @@
 - type: construction
-  name: floor drain
-  id: FloorDrain
-  graph: FloorDrain
+  name: FTL exclusion beacon
+  id: FTLExclusionBeacon
+  graph: FTLExclusionBeacon
   startNode: start
-  targetNode: drain
+  targetNode: beacon
   category: construction-category-utilities
-  description: "A floor drain. No one knows how it works."
+  description: A beacon that prevents shuttles from FTLing and landing within a 35m radius. Does not prevent take-off. Must-have in far away houses.
   icon:
-    sprite: Objects/Specific/Janitorial/drain.rsi
+    sprite: _Vulp/Objects/Structures/Devices/ftl_exclusion_beacon.rsi
     state: icon
   objectType: Structure
   placementMode: SnapgridCenter
-  canBuildInImpassable: true
+  canBuildInImpassable: false
 
 - type: constructionGraph
-  id: FloorDrain
+  id: FTLExclusionBeacon
   start: start
   graph:
   - node: start
@@ -22,62 +22,55 @@
     - to: intermediate
       steps:
       - material: Steel
-        amount: 15
+        amount: 5
         doAfter: 5
 
   - node: intermediate
-    entity: FloorDrainConstruction
+    entity: FTLExclusionBeaconUnfinished
     edges:
     - to: start
       completed:
       - !type:GivePrototype
         prototype: SheetSteel1
-        amount: 15
+        amount: 5
       - !type:DeleteEntity { }
       steps:
       - tool: Screwing
         doAfter: 3
-
-    - to: drain
+    - to: beacon
       steps:
-      - tag: Bucket
-        icon:
-          sprite: Objects/Tools/bucket.rsi
-          state: icon
-        name: bucket
-      - tag: Bucket
-        icon:
-          sprite: Objects/Tools/bucket.rsi
-          state: icon
-        name: bucket
-      - tag: Pipe
-        icon:
-          sprite: Structures/Piping/Atmospherics/pipe.rsi
-          state: pipeStraight
-        name: pipe
-      - material: Steel
-        amount: 4
+      - tool: Welding
+        doAfter: 3
       - material: MetalRod
         amount: 4
+        doAfter: 1
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 2
+      - tag: SmallAIChip
+        doAfter: 1
+        name: a super-compact AI chip
+        icon:
+          sprite: Objects/Misc/potatoai_chip.rsi
+          state: icon
       - tool: Welding
-        doAfter: 5
+        doAfter: 3
 
-  - node: drain
-    entity: FloorDrain
+  - node: beacon
+    entity: FTLExclusionBeacon
     edges:
     - to: intermediate
       completed:
       - !type:GivePrototype
         prototype: SheetSteel1
-        amount: 4
+        amount: 2
       - !type:GivePrototype
         prototype: PartRodMetal1
         amount: 4
       - !type:GivePrototype
-        prototype: GasPipeStraight
-      - !type:GivePrototype
-        prototype: Bucket
-        amount: 2
+        prototype: PotatoAIChip
       steps:
       - tool: Screwing
         doAfter: 2
