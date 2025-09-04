@@ -78,8 +78,8 @@
       - !type:GivePrototype
         prototype: Bucket
         amount: 2
-      - !type:DeleteEntity { }
       steps:
       - tool: Screwing
+        doAfter: 2
       - tool: Welding
         doAfter: 5
