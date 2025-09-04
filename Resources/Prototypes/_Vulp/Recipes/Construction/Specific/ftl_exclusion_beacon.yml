@@ -1,0 +1,74 @@
+- type: construction
+  name: FTL exclusion beacon
+  id: FTLExclusionBeacon
+  graph: FTLExclusionBeacon
+  startNode: start
+  targetNode: beacon
+  category: construction-category-utilities
+  description: A beacon that prevents shuttles from FTLing and landing within a 35m radius. Does not prevent take-off. Must-have in far away houses.
+  icon:
+    sprite: _Vulp/Objects/Structures/Devices/ftl_exclusion_beacon.rsi
+    state: icon
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
+- type: constructionGraph
+  id: FTLExclusionBeacon
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: intermediate
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+
+  - node: intermediate
+    entity: FTLExclusionBeaconUnfinished
+    edges:
+    - to: start
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:DeleteEntity { }
+      steps:
+      - tool: Screwing
+        doAfter: 3
+    - to: beacon
+      steps:
+      - tool: Welding
+        doAfter: 3
+      - material: MetalRod
+        amount: 4
+        doAfter: 1
+      - material: Steel
+        amount: 2
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 2
+      - tag: SmallAIChip
+        doAfter: 1
+      - tool: Welding
+        doAfter: 3
+
+  - node: beacon
+    entity: FTLExclusionBeacon
+    edges:
+    - to: intermediate
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:GivePrototype
+        prototype: PartRodMetal1
+        amount: 4
+      - !type:GivePrototype
+        prototype: SmallAIChip
+      steps:
+      - tool: Screwing
+        doAfter: 2
+      - tool: Welding
+        doAfter: 5

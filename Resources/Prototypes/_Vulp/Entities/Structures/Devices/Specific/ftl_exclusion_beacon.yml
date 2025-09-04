@@ -1,0 +1,49 @@
+- type: entity
+  parent: BaseStructure
+  id: FTLExclusionBeaconBase
+  abstract: true
+  name: FTL exclusion beacon
+  description: A beacon that prevents shuttles from FTLing and landing within a 35m radius. Does not prevent take-off.
+  components:
+  - type: Sprite
+    sprite: _Vulp/Objects/Structures/Devices/ftl_exclusion_beacon.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Anchorable
+  - type: Construction
+    graph: FTLExclusionBeacon
+
+- type: entity
+  parent: FTLExclusionBeaconBase
+  id: FTLExclusionBeacon
+  name: FTL exclusion beacon
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: unshaded
+      shader: unshaded
+  - type: FTLExclusion
+    range: 35
+  - type: Construction
+    node: beacon
+
+- type: entity
+  parent: FTLExclusionBeaconBase
+  id: FTLExclusionBeaconUnfinished
+  description: An unfinished FTL exclusion beacon
+  components:
+  - type: Sprite
+    state: unfinished
+  - type: Construction
+    node: intermediate
