@@ -1,7 +1,7 @@
 ﻿# Collars
 - type: loadout
   id: LoadoutCommandHopCollar
-  category: JobsCommand
+  category: JobsCommandHeadOfPersonnel
   cost: 1
   requirements:
   - !type:CharacterJobRequirement
