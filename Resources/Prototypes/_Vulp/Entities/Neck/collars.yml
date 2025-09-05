@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: ClothingNeckBase
   id: ClothingNeckCollarHop
-  name: head of personal collar
+  name: head of personnel collar
   description: The Head of Personnel's Collar, a thin red stripe runs along the centre with a small piece of bright red ruby in the middle of the silver and gold tag, shimmering in the light, the inside of the collar is lined with high quality felt, soft to the touch to be sure its comfortable for the wearer while they're hunched over their desk with a head buried in paperwork
   components:
   - type: Sprite
