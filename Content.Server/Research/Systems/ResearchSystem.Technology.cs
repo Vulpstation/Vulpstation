@@ -21,6 +21,7 @@ public sealed partial class ResearchSystem
         primaryDb.SupportedDisciplines = otherDb.SupportedDisciplines;
         primaryDb.UnlockedTechnologies = otherDb.UnlockedTechnologies;
         primaryDb.UnlockedRecipes = otherDb.UnlockedRecipes;
+        primaryDb.SoftCapMultiplier = otherDb.SoftCapMultiplier; // Floofstation - why was this missing?!
 
         Dirty(primaryUid, primaryDb);
 
