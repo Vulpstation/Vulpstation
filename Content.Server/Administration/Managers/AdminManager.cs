@@ -494,6 +494,11 @@ namespace Content.Server.Administration.Managers
                 return true;
             }
 
+            // Vulpstation - maybe a fix for player:list not working
+            if (command.Cmd.Name.Contains(':')
+                && _toolshedCommandPermissions.AdminCommands.TryGetValue(command.Cmd.Name.Substring(0, command.Cmd.Name.IndexOf(':')), out flags))
+                return true;
+
             flags = null;
             return false;
         }
