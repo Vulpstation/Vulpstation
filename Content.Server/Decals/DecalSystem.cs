@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -367,6 +368,23 @@ namespace Content.Server.Decals
 
             return decalIds;
         }
+
+        // Vulpstation section
+        public IEnumerable<(Vector2i, Decal)> GetAllDecals(EntityUid gridUid, DecalGridComponent? component = null)
+        {
+            var chunkCollection = ChunkCollection(gridUid, component);
+            if (chunkCollection == null)
+                yield break;
+
+            foreach (var (chunkIdx, decalChunk) in chunkCollection)
+            {
+                foreach (var (id, decal) in decalChunk.Decals)
+                {
+                    yield return (chunkIdx, decal);
+                }
+            }
+        }
+        // Vulpstation section end
 
         /// <summary>
         ///     Changes a decals position. Note this will actually result in a new decal being created, possibly on a new grid or chunk.
