@@ -1,15 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Content.Server._Vulp.Station.Components;
 using Content.Server.Atmos.Components;
 using Content.Server.Parallax;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
-using Content.Shared._NC14.DayNightCycle;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Parallax.Biomes;
@@ -17,7 +13,6 @@ using Content.Shared.Procedural.Loot;
 using Robust.Server.GameObjects;
 using Robust.Server.Physics;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -75,6 +70,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
             return;
 
         // copypasted from PlanetCommand. go ahead sue me
+        // TODO make sure this isn't called if there are multiple planetstations on the same map
         foreach (var loot in _proto.EnumeratePrototypes<SalvageLootPrototype>())
         {
             if (!loot.Guaranteed)
@@ -113,47 +109,6 @@ public sealed partial class PlanetStationSystem : EntitySystem
                 Log.Error("FTL time is set, but merge into planet is enabled. This is not possible, skipping map merge.");
             else
                 MergeGrids(mapUid, stationGrid.Value);
-        }
-    }
-
-    /// <summary>
-    ///     Tries to merge source into target.
-    /// </summary>
-    public void MergeGrids(EntityUid target, EntityUid source)
-    {
-        var original = _xforms.GetWorldPositionRotation(Transform(source));
-        // Round position and rotation
-        _xforms.SetWorldPositionRotation(
-            source,
-            original.WorldPosition.Rounded(),
-            original.WorldRotation.GetCardinalDir().ToAngle());
-
-        // GridFixtureSystem fails to transfer unanchored entities
-        // Faster to do an all-entity query rather than use entity lookup
-        var query = AllEntityQuery<TransformComponent>();
-        var detachedEntities = new List<(EntityUid uid, Vector2 worldPos, Angle worldRot)>();
-        while (query.MoveNext(out var uid, out var xform))
-        {
-            // Only entities on this grid that are directly parented to it (not in containers)
-            // Also ignore anchored entities because those will be processed by the grid fixture system
-            if (xform.GridUid != source || xform.ParentUid != source || xform.Anchored || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
-                continue;
-
-            // ???
-            if (HasComp<MapGridComponent>(uid))
-                continue;
-
-            var (position, rotation) = _xforms.GetWorldPositionRotation(xform);
-            _xforms.DetachEntity(uid, xform);
-            detachedEntities.Add((uid, position, rotation));
-        }
-
-        _gridFixtures.Merge(target, source, Transform(source).LocalMatrix);
-
-        foreach (var entity in detachedEntities)
-        {
-            _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
         }
     }
 
