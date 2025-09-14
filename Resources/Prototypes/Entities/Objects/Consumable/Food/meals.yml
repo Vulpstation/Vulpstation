@@ -334,7 +334,7 @@
   description: BBQ ribs, slathered in a healthy coating of BBQ sauce. The least vegan thing to ever exist.
   components:
   - type: Food
-    trash: 
+    trash:
     - FoodKebabSkewer
   - type: FlavorProfile
     flavors:
@@ -389,7 +389,7 @@
   name: cheese omelette
   parent: FoodMealBase
   id: FoodMealOmelette
-  description: Cheesy.
+  description: Mmm, cheesy. And eggy.
   components:
   - type: FlavorProfile
     flavors:
@@ -400,10 +400,10 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 10
+        maxVol: 15
         reagents:
         - ReagentId: Nutriment
-          Quantity: 9
+          Quantity: 15
   - type: Tag
     tags:
     - Meat
@@ -597,7 +597,7 @@
   description: Buttery.
   components:
   - type: Food
-    trash: 
+    trash:
     - FoodPlate
   - type: FlavorProfile
     flavors:
