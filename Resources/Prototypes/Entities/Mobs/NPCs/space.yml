@@ -384,6 +384,7 @@
   name: snail
   description: Revolting unless you're french.
   components:
+  - type: Vore
   - type: Body
     prototype: Mouse
   - type: GhostRole
@@ -512,7 +513,7 @@
         visualType: Large
         messages: [ "snail-hurt-by-salt-popup" ]
         probability: 0.66
-    
+
 - type: entity
   parent: MobSnail
   id: MobSnailInstantDeath
@@ -561,6 +562,7 @@
   id: MobSnailMoth
   name: Snoth
   components:
+  - type: Vore
   - type: Body
     prototype: Mothroach
   - type: GhostRole
