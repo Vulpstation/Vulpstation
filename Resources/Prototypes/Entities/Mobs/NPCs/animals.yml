@@ -337,7 +337,7 @@
   id: MobCockroach
   description: This station is just crawling with bugs.
   components:
-  - type: Vore
+  - type: Vore # Vulpstation
   - type: Sprite
     drawdepth: SmallMobs
     sprite: Mobs/Animals/cockroach.rsi
@@ -468,7 +468,6 @@
   id: MobMothroach
   description: This is the adorable by-product of multiple attempts at genetically mixing mothpeople with cockroaches.
   components:
-  - type: Vore
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
@@ -1923,7 +1922,7 @@
   id: MobLizard
   description: A harmless dragon.
   components:
-  - type: Vore
+  - type: Vore # Vulpstation
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3

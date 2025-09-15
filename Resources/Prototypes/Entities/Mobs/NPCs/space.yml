@@ -384,7 +384,7 @@
   name: snail
   description: Revolting unless you're french.
   components:
-  - type: Vore
+  - type: Vore # Vulpstation
   - type: Body
     prototype: Mouse
   - type: GhostRole
@@ -562,7 +562,6 @@
   id: MobSnailMoth
   name: Snoth
   components:
-  - type: Vore
   - type: Body
     prototype: Mothroach
   - type: GhostRole
