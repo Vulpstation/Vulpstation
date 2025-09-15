@@ -28,7 +28,7 @@ namespace Content.Client.UserInterface.Systems.WhitelistWindow.Controls
 
             WhitelistApplyButton.OnPressed += _ =>
             {
-                _uri.OpenUri("https://discord.gg/ZZYNpq5KBJ"); // Floof discord link
+                _uri.OpenUri("https://discord.gg/M7sRnrNwPp"); // vulp discord link
             };
         }
 

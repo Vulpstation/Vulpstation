@@ -769,3 +769,33 @@ Entries:
   id: 66
   time: '2025-09-13T17:09:53.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/90
+- author: Dunrab
+  changes:
+    - type: Fix
+      message: LO's collar will no longer show up in the Captains loadout.
+  id: 67
+  time: '2025-09-15T01:38:03.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/93
+- author: Snowcat
+  changes:
+    - type: Add
+      message: added omelette recipe
+  id: 68
+  time: '2025-09-15T03:38:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/91
+- author: Dunrab
+  changes:
+    - type: Fix
+      message: Whitelist preparations.
+  id: 69
+  time: '2025-09-15T03:39:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/94
+- author: Snowcat
+  changes:
+    - type: Tweak
+      message: >-
+        Added the vore component to various small critters (lizard, snoth,
+        snail, mothroach, cockroach)
+  id: 70
+  time: '2025-09-15T03:52:31.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/92
