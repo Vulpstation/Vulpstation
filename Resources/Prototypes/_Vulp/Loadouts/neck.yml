@@ -61,7 +61,7 @@
 # Collars
 - type: loadout
   id: LoadoutCommandLoCollar
-  category: JobsCommandCaptain
+  category: JobsLogisticsLogisticsOfficer
   cost: 1
   requirements:
   - !type:CharacterJobRequirement
