@@ -776,3 +776,10 @@ Entries:
   id: 67
   time: '2025-09-15T01:38:03.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/93
+- author: Snowcat
+  changes:
+    - type: Add
+      message: added omelette recipe
+  id: 68
+  time: '2025-09-15T03:38:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/91
