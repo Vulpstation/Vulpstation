@@ -1932,13 +1932,3 @@
     FoodCroissantRaw: 1
     FoodButterSlice: 1
     ShardGlass: 1
-
-- type: microwaveMealRecipe
-  id: RecipeOmelette
-  name: omelette recipe
-  result: FoodMealOmelette
-  time: 15
-  solids:
-    FoodEgg: 3
-    FoodButterSlice: 1
-    FoodCheeseSlice: 1
