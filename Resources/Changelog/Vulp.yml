@@ -783,3 +783,10 @@ Entries:
   id: 68
   time: '2025-09-15T03:38:15.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/91
+- author: Dunrab
+  changes:
+    - type: Fix
+      message: Whitelist preparations.
+  id: 69
+  time: '2025-09-15T03:39:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/94
