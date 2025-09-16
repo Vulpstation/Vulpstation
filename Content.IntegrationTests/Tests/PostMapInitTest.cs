@@ -165,12 +165,13 @@ namespace Content.IntegrationTests.Tests
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
             // Vulpstation - move this out of the post call
-            mapSystem.CreateMap(out var mapId);
+            MapId mapId;
             // Vulpstation - create the map separately and give it a few ticks to settle down
             // The planet station trickery does some shit that can make the original impl of this test fail because it tries to delete a reparented entity
             await server.WaitPost(
                 () =>
                 {
+                    mapSystem.CreateMap(out mapId);
                     try
                     {
                         ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), mapId, null);
