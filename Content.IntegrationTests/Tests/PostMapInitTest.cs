@@ -165,7 +165,7 @@ namespace Content.IntegrationTests.Tests
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
             // Vulpstation - move this out of the post call
-            MapId mapId;
+            MapId mapId = MapId.Nullspace;
             // Vulpstation - create the map separately and give it a few ticks to settle down
             // The planet station trickery does some shit that can make the original impl of this test fail because it tries to delete a reparented entity
             await server.WaitPost(
@@ -185,6 +185,8 @@ namespace Content.IntegrationTests.Tests
 
             await server.WaitPost(() =>
             {
+                DebugTools.Assert(mapId != MapId.Nullspace); // Vulpstation
+
                 mapSystem.CreateMap(out var shuttleMap);
                 var largest = 0f;
                 EntityUid? targetGrid = null;
