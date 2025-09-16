@@ -164,18 +164,26 @@ namespace Content.IntegrationTests.Tests
             var cfg = server.ResolveDependency<IConfigurationManager>();
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
+            // Vulpstation - move this out of the post call
+            mapSystem.CreateMap(out var mapId);
+            // Vulpstation - create the map separately and give it a few ticks to settle down
+            // The planet station trickery does some shit that can make the original impl of this test fail because it tries to delete a reparented entity
+            await server.WaitPost(
+                () =>
+                {
+                    try
+                    {
+                        ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), mapId, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Failed to load map {mapProto}", ex);
+                    }
+                });
+            await server.WaitRunTicks(5);
+
             await server.WaitPost(() =>
             {
-                mapSystem.CreateMap(out var mapId);
-                try
-                {
-                    ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), mapId, null);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Failed to load map {mapProto}", ex);
-                }
-
                 mapSystem.CreateMap(out var shuttleMap);
                 var largest = 0f;
                 EntityUid? targetGrid = null;
@@ -183,7 +191,7 @@ namespace Content.IntegrationTests.Tests
 
                 var grids = mapManager.GetAllGrids(mapId).ToList();
                 var gridUids = grids.Select(o => o.Owner).ToList();
-                // Vulp: account for first grid not being station member (planet maps)
+                // Vulp: account for first grid not being a station member (planet maps)
                 targetGrid = gridUids.First(uid => memberQuery.HasComponent(uid));
 
                 foreach (var grid in grids)
