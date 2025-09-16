@@ -1,0 +1,13 @@
+- type: entity
+  id: PlanetStationSpecificAbandoned
+  parent: PlanetStationMedium
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PlanetStation
+    components:
+    - type: RestrictedRange
+      range: 300 # A bit higher than others
+    - type: VentEventFreeZone
+      radius: 25
+    - type: WeatherCycle
+      prototype: Harsh
