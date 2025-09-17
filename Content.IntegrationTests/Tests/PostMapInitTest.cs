@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Content.Server._Vulp.Station.Components;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
 using Content.Server.Shuttles.Components;
@@ -262,13 +263,16 @@ namespace Content.IntegrationTests.Tests
                     // Assert.That(jobs, Is.Empty, $"There is no spawnpoints for {string.Join(", ", jobs)} on {mapProto}.");
                 }
 
+                var isMergedGrid = entManager.TryGetComponent<PlanetStationComponent>(targetGrid!.Value, out var ps) && ps.MergeIntoPlanet; // Vulp
                 try
                 {
                     mapManager.DeleteMap(mapId);
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to delete map {mapProto}", ex);
+                    // Vulpstation - dont throw an exception here if it's a merged grid
+                    if (!isMergedGrid)
+                        throw new Exception($"Failed to delete map {mapProto}", ex);
                 }
             });
             await server.WaitRunTicks(1);
