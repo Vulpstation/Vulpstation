@@ -31,7 +31,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
     [Dependency] private readonly TransformSystem _xforms = default!;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    private bool _allowGridMergeInDebug = false;
+    public bool AllowGridMergeInDebug = false;
 
     public override void Initialize()
     {
@@ -110,7 +110,7 @@ public sealed partial class PlanetStationSystem : EntitySystem
         if (!_allowGridMergeInDebug)
         {
             Log.Warning("SKIPPING GRID MERGING IN DEBUG MODE!");
-            Log.Warning("To override this, do /vvwrite /system/PlanetStation/_allowGridMergeInDebug true");
+            Log.Warning("To override this, do /vvwrite /system/PlanetStation/AllowGridMergeInDebug true");
             stationEnt.Comp.MergeIntoPlanet = false;
         }
         #endif

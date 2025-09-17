@@ -69,7 +69,7 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
                 Log.Info($"Loading grid {definition.Path} at {pos}");
 
                 // MapLoader is absolutely dumb and WILL return ALL entities on the map after loading something, even if the said entities were already there
-                _mapSystem.CreateMap(out var tmpMapId, false);
+                _mapSystem.CreateMap(out var tmpMapId, true); // everything MUST be map-initialized or else grid merging will fuck entity component ownership over
                 var opts = new MapLoadOptions
                 {
                     Offset = pos,
