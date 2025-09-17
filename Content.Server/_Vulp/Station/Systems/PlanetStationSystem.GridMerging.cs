@@ -37,19 +37,12 @@ public sealed partial class PlanetStationSystem
         // Faster to do an all-entity query rather than use entity lookup
         var query = AllEntityQuery<TransformComponent>();
         var detachedEntities = new List<(EntityUid uid, Vector2 worldPos, Angle worldRot)>();
-        var anchoredEntities = new List<EntityUid>();
         while (query.MoveNext(out var uid, out var xform))
         {
             // Only entities on this grid that are directly parented to it (not in containers)
             // Also ignore anchored entities because those will be processed by the grid fixture system
             if (xform.GridUid != source || xform.ParentUid != source || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
                 continue;
-
-            if (xform.Anchored)
-            {
-                anchoredEntities.Add(uid);
-                continue;
-            }
 
             // ???
             if (HasComp<MapGridComponent>(uid))
@@ -78,14 +71,16 @@ public sealed partial class PlanetStationSystem
             _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
         }
 
-        // This is really dumb, but this is a workaround for some weird bug in RT
-        foreach (var entity in anchoredEntities)
+        // This is really dumb, but this is a workaround for some weird bug in RT that gives reanchored entities a tranform with an invalid owner.
+        var targetChildren = Transform(target).ChildEnumerator;
+        while (targetChildren.MoveNext(out var entity))
         {
             var xform = Transform(entity);
             #pragma warning disable CS0618 // Type or member is obsolete
             xform.Owner = entity;
             #pragma warning restore CS0618 // Type or member is obsolete
         }
+        targetChildren.Dispose();
 
         // Copy saved decals
         foreach (var (idx, decal) in savedDecals)
