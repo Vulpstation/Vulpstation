@@ -41,7 +41,7 @@ public sealed partial class PlanetStationSystem
         {
             // Only entities on this grid that are directly parented to it (not in containers)
             // Also ignore anchored entities because those will be processed by the grid fixture system
-            if (xform.GridUid != source || xform.ParentUid != source || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
+            if (xform.GridUid != source || xform.ParentUid != source || xform.Anchored || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
                 continue;
 
             // ???
