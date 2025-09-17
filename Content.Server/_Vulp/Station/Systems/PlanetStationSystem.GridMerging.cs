@@ -63,10 +63,12 @@ public sealed partial class PlanetStationSystem
         _gridFixtures.Merge(target, source, Transform(source).LocalMatrix);
 
         // Move saved entities over
+        var targetXform = Transform(target);
         foreach (var entity in detachedEntities)
         {
-            _xforms.SetParent(entity.uid, target);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
+            var xform = Transform(target);
+            _xforms.SetParent(entity.uid, xform, target, EntityManager.TransformQuery, targetXform);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
         }
 
         // Copy saved decals
