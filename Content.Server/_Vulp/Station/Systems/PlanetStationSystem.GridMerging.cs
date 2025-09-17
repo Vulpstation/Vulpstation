@@ -71,17 +71,6 @@ public sealed partial class PlanetStationSystem
             _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
         }
 
-        // This is really dumb, but this is a workaround for some weird bug in RT that gives reanchored entities a tranform with an invalid owner.
-        var targetChildren = Transform(target).ChildEnumerator;
-        while (targetChildren.MoveNext(out var entity))
-        {
-            var xform = Transform(entity);
-            #pragma warning disable CS0618 // Type or member is obsolete
-            xform.Owner = entity;
-            #pragma warning restore CS0618 // Type or member is obsolete
-        }
-        targetChildren.Dispose();
-
         // Copy saved decals
         foreach (var (idx, decal) in savedDecals)
         {
