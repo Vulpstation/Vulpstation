@@ -30,9 +30,6 @@ public sealed partial class PlanetStationSystem : EntitySystem
     [Dependency] private readonly GridFixtureSystem _gridFixtures = default!;
     [Dependency] private readonly TransformSystem _xforms = default!;
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public bool AllowGridMergeInDebug = false;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -104,16 +101,6 @@ public sealed partial class PlanetStationSystem : EntitySystem
                 }
             }
         }
-
-        #if DEBUG
-        // I have to.
-        if (!_allowGridMergeInDebug)
-        {
-            Log.Warning("SKIPPING GRID MERGING IN DEBUG MODE!");
-            Log.Warning("To override this, do /vvwrite /system/PlanetStation/AllowGridMergeInDebug true");
-            stationEnt.Comp.MergeIntoPlanet = false;
-        }
-        #endif
 
         // Finally, if ftl is disabled...
         if (stationEnt.Comp.MergeIntoPlanet)
