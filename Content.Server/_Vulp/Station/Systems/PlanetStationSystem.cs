@@ -150,12 +150,10 @@ public sealed partial class PlanetStationSystem : EntitySystem
 
         _gridFixtures.Merge(target, source, Transform(source).LocalMatrix);
 
-        var targetXform = Transform(target);
         foreach (var entity in detachedEntities)
         {
-            var xform = Transform(target);
-            _xforms.SetParent(entity.uid, xform, target, EntityManager.TransformQuery, targetXform);
-            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
+            _xforms.SetParent(entity.uid, target);
+            _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot);
         }
     }
 
