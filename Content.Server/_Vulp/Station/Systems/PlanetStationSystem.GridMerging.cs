@@ -35,7 +35,7 @@ public sealed partial class PlanetStationSystem
 
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
-        var query = AllEntityQuery<TransformComponent>();
+        var query = EntityQueryEnumerator<TransformComponent>();
         var detachedEntities = new List<(EntityUid uid, Vector2 worldPos, Angle worldRot)>();
         while (query.MoveNext(out var uid, out var xform))
         {
@@ -66,7 +66,7 @@ public sealed partial class PlanetStationSystem
         var targetXform = Transform(target);
         foreach (var entity in detachedEntities)
         {
-            var xform = Transform(target);
+            var xform = Transform(entity.uid);
             _xforms.SetParent(entity.uid, xform, target, EntityManager.TransformQuery, targetXform);
             _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
         }
