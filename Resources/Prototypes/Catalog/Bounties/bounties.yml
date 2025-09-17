@@ -70,7 +70,7 @@
       - CarrotFries
 
 - type: cargoBounty
-  id: BountyCarp
+  id: BountyCarp # Vulp - seems rarely possible. requires expeditions or certain events i think.
   reward: 12500
   description: bounty-description-carp
   idPrefix: CC
