@@ -120,7 +120,7 @@
       - Crayon
 
 - type: cargoBounty
-  id: BountyCubanCarp
+  id: BountyCubanCarp # Vulp - food recipe that requires carp meat so same issue as other carp bounty
   reward: 16000
   description: bounty-description-cuban-carp
   idPrefix: CC
@@ -179,7 +179,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 1000
+  reward: 2500 # Vulp - kinda annoying to craft (though easy) for such a tiny reward
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -247,7 +247,7 @@
 
 - type: cargoBounty
   id: BountyMonkeyCube
-  reward: 2000
+  reward: 3000 # Vulp - monkey cube crate costs 2k and nobody uses biofabricator
   description: bounty-description-monkey-cube
   idPrefix: CC
   entries:
@@ -264,7 +264,7 @@
   idPrefix: SS13-
   entries:
   - name: bounty-item-mouse
-    amount: 5
+    amount: 5 # Vulp - good luck if theres even a single felinid awake
     whitelist:
       tags:
       - Mouse
@@ -275,7 +275,7 @@
   description: bounty-description-pancake
   entries:
   - name: bounty-item-pancake
-    amount: 13
+    amount: 12 # Vulp - twelve eggs in a carton, one per waffle
     whitelist:
       tags:
       - Pancake
@@ -293,7 +293,7 @@
 
 - type: cargoBounty
   id: BountyPercussion
-  reward: 15000
+  reward: 15000 # Vulp - two percussion crates (5k) for 10k profit?
   description: bounty-description-percussion
   entries:
   - name: bounty-item-percussion
@@ -334,7 +334,7 @@
   description: bounty-description-radio
   entries:
   - name: bounty-item-radio
-    amount: 7
+    amount: 7 # Vulp - usually requires cargo smashing a ptech restock crate and i think that's not good. remove?
     whitelist:
       components:
       - Headset
@@ -424,7 +424,7 @@
 
 - type: cargoBounty
   id: BountyTrash
-  reward: 500
+  reward: 2000 # Vulp - reward colony for cleaning up a bit
   description: bounty-description-trash
   entries:
   - name: bounty-item-trash
@@ -480,7 +480,7 @@
 
 - type: cargoBounty
   id: BountyLabeler
-  reward: 6660
+  reward: 3500 # Vulp - seems high considering 5 plastic cost, compared to other bounties
   description: bounty-description-labeler
   entries:
   - name: bounty-item-labeler
@@ -515,7 +515,7 @@
 
 - type: cargoBounty
   id: BountyLaserGun
-  reward: 28500
+  reward: 28500 # Vulp - secfab prints practice laser rifles without research so maybe too high?
   description: bounty-description-lasergun
   idPrefix: IV
   entries:
@@ -602,12 +602,12 @@
       - Skates
 
 - type: cargoBounty
-  id: BountyBedsheet
+  id: BountyBedsheet # Vulp - this bounty is not possible on some maps and usually skipped. remove or add craft recipe?
   reward: 4100
   description: bounty-description-bedsheet
   entries:
   - name: bounty-item-bedsheet
-    amount: 5
+    amount: 3 # Vulp - i haven't looked but i remember having three bedsheets from medical beds so maybe this is better
     whitelist:
       tags:
       - Bedsheet
@@ -712,7 +712,7 @@
       - Wine
 
 - type: cargoBounty
-  id: BountyCottonBoll
+  id: BountyCottonBoll # Vulp - people struggle with this one apparently. i think its fine
   reward: 8600
   description: bounty-description-cotton-boll
   entries:

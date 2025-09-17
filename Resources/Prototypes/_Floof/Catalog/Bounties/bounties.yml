@@ -14,29 +14,29 @@
 
 - type: cargoBounty
   id: BountyDildo
-  reward: 2500
+  reward: 3500 # Vulp - 500 speso profit after two sextoy crates feels bad
   description: bounty-description-dildo
   entries:
   - name: bounty-item-dildo
-    amount: 8
+    amount: 8 # Vulp - 8 dildos??????
     whitelist:
       tags:
       - Dildo
 
 - type: cargoBounty
   id: BountyFleshlight
-  reward: 2000
+  reward: 3000 # Vulp - just increase the reward instead of reducing the amount needed, maybe?
   description: bounty-description-fleshlight
   entries:
   - name: bounty-item-fleshlight
-    amount: 5
+    amount: 3 # Vulp - reduce to 2 so one sextoy crate is enough, or 3 so one sextoy crate and one extra from a colonist's loadout?
     whitelist:
       tags:
       - Fleshlight
 
 - type: cargoBounty
   id: BountyPaddleWhip
-  reward: 1000
+  reward: 2800
   description: bounty-description-whip
   entries:
   - name: bounty-item-whip
@@ -103,7 +103,7 @@
 - type: cargoBounty
   id: BountyHanal
   reward: 3000
-  description: bounty-description-anal
+  description: bounty-description-anal # Vulp - lol
   entries:
   - name: bounty-item-anal
     amount: 5
@@ -135,7 +135,7 @@
 
 - type: cargoBounty
   id: BountyImplanter
-  reward: 750
+  reward: 2000 # Vulp - this reward is underwhelming even if the bounty is cheap/easy (15 steel 15 glass)
   description: bounty-description-implanter
   entries:
   - name: bounty-item-implanter
@@ -146,11 +146,11 @@
 
 - type: cargoBounty
   id: BountyBloodPacks
-  reward: 1300
+  reward: 2500
   description: bounty-description-bloodpack
   entries:
   - name: bounty-item-bloodpacks
-    amount: 5
+    amount: 5 # Vulp - actually annoying because nobody does the microwave recipe
     whitelist:
       tags:
       - Bloodpack
@@ -169,7 +169,7 @@
 
 - type: cargoBounty
   id: BountySurgeryTools
-  reward: 16000
+  reward: 9000 # Vulp - this one is so easy to do and most medical have surgery duffel in loadout
   description: bounty-description-surgerytools
   entries:
   - name: bounty-item-surgerydrill
