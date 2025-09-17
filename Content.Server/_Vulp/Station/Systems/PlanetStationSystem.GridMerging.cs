@@ -35,14 +35,21 @@ public sealed partial class PlanetStationSystem
 
         // GridFixtureSystem fails to transfer unanchored entities
         // Faster to do an all-entity query rather than use entity lookup
-        var query = EntityQueryEnumerator<TransformComponent>();
+        var query = AllEntityQuery<TransformComponent>();
         var detachedEntities = new List<(EntityUid uid, Vector2 worldPos, Angle worldRot)>();
+        var anchoredEntities = new List<EntityUid>();
         while (query.MoveNext(out var uid, out var xform))
         {
             // Only entities on this grid that are directly parented to it (not in containers)
             // Also ignore anchored entities because those will be processed by the grid fixture system
-            if (xform.GridUid != source || xform.ParentUid != source || xform.Anchored || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
+            if (xform.GridUid != source || xform.ParentUid != source || MetaData(uid).Flags.HasFlag(MetaDataFlags.InContainer))
                 continue;
+
+            if (xform.Anchored)
+            {
+                anchoredEntities.Add(uid);
+                continue;
+            }
 
             // ???
             if (HasComp<MapGridComponent>(uid))
@@ -69,6 +76,15 @@ public sealed partial class PlanetStationSystem
             var xform = Transform(entity.uid);
             _xforms.SetParent(entity.uid, xform, target, EntityManager.TransformQuery, targetXform);
             _xforms.SetWorldPositionRotation(entity.uid, entity.worldPos, entity.worldRot, xform);
+        }
+
+        // This is really dumb, but this is a workaround for some weird bug in RT
+        foreach (var entity in anchoredEntities)
+        {
+            var xform = Transform(entity);
+            #pragma warning disable CS0618 // Type or member is obsolete
+            xform.Owner = entity;
+            #pragma warning restore CS0618 // Type or member is obsolete
         }
 
         // Copy saved decals
