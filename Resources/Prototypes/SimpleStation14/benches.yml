@@ -148,6 +148,9 @@
   components:
   - type: Sprite
     sprite: SimpleStation14/Structures/Furniture/Benches/sofa.rsi
+  - type: Construction # Vulpstation
+    graph: ChairSofaBenchBrown
+    node: chairsofabenchbrown
 
 - type: entity
   id: BenchSofaLeft
@@ -156,6 +159,10 @@
   components:
   - type: Sprite
     state: left
+  - type: Construction # Vulpstation
+    graph: ChairSofaBenchBrownLeft
+    node: chairsofabenchbrownleft
+
 
 - type: entity
   id: BenchSofaRight
@@ -164,6 +171,9 @@
   components:
   - type: Sprite
     state: right
+  - type: Construction # Vulpstation
+    graph: ChairSofaBenchBrownRight
+    node: chairsofabenchbrownright
 
 - type: entity
   name: sofa
@@ -196,6 +206,9 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  - type: Construction # Vulpstation
+    graph: ChairSofaBenchBrownCorner
+    node: chairsofabenchbrowncorner
 
 # Corp sofa
 - type: entity

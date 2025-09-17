@@ -1,0 +1,9 @@
+- type: microwaveMealRecipe
+  id: RecipeOmelette
+  name: omelette recipe
+  result: FoodMealOmelette
+  time: 15
+  solids:
+    FoodEgg: 3
+    FoodButterSlice: 1
+    FoodCheeseSlice: 1

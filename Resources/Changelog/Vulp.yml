@@ -756,3 +756,69 @@ Entries:
   id: 65
   time: '2025-09-07T13:25:08.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/87
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Grids will now have their decals preserved when they are merged into the
+        planet.
+    - type: Add
+      message: >-
+        Added a mergegrid command toolshed for admins to use. Works the same as
+        round-start grid merging.
+  id: 66
+  time: '2025-09-13T17:09:53.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/90
+- author: Dunrab
+  changes:
+    - type: Fix
+      message: LO's collar will no longer show up in the Captains loadout.
+  id: 67
+  time: '2025-09-15T01:38:03.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/93
+- author: Snowcat
+  changes:
+    - type: Add
+      message: added omelette recipe
+  id: 68
+  time: '2025-09-15T03:38:15.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/91
+- author: Dunrab
+  changes:
+    - type: Fix
+      message: Whitelist preparations.
+  id: 69
+  time: '2025-09-15T03:39:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/94
+- author: Snowcat
+  changes:
+    - type: Tweak
+      message: >-
+        Added the vore component to various small critters (lizard, snoth,
+        snail, mothroach, cockroach)
+  id: 70
+  time: '2025-09-15T03:52:31.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/92
+- author: bandw2gs
+  changes:
+    - type: Add
+      message: Added new map "Abandoned Base" to the map pool
+  id: 71
+  time: '2025-09-15T20:10:23.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/89
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Brown sofa can now be made like the gray one.
+  id: 72
+  time: '2025-09-16T22:10:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/96
+- author: Snowcat
+  changes:
+    - type: Fix
+      message: >-
+        Added a change from wizden to fix the uplink implant & briefing for
+        mid-round activated traitors without a PDA
+  id: 73
+  time: '2025-09-16T22:40:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/95
