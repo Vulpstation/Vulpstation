@@ -1,0 +1,12 @@
+#Misc
+
+- type: cargoBounty
+  id: BountyGhostSheet # kinda just to replace the bedsheet bounty if it does get removed
+  reward: 4100
+  description: bounty-description-ghostsheet
+  entries:
+  - name: bounty-item-ghostsheet
+    amount: 3
+    whitelist:
+      tags:
+      - GhostSheet
