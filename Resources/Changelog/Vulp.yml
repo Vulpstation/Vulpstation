@@ -799,3 +799,26 @@ Entries:
   id: 70
   time: '2025-09-15T03:52:31.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/92
+- author: bandw2gs
+  changes:
+    - type: Add
+      message: Added new map "Abandoned Base" to the map pool
+  id: 71
+  time: '2025-09-15T20:10:23.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/89
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Brown sofa can now be made like the gray one.
+  id: 72
+  time: '2025-09-16T22:10:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/96
+- author: Snowcat
+  changes:
+    - type: Fix
+      message: >-
+        Added a change from wizden to fix the uplink implant & briefing for
+        mid-round activated traitors without a PDA
+  id: 73
+  time: '2025-09-16T22:40:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/95
