@@ -510,6 +510,7 @@
     - FaxMachineCircuitboard
     - HolopadMachineCircuitboard
     - PortableGeneratorJrPacmanMachineCircuitboard
+    - BiogeneratorMachineCircuitboard # Vulp - biogenerator already upstream in EE (f53d2f9) but not Floof
     # Vulpstation section end
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
