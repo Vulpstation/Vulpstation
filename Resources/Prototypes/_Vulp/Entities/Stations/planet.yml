@@ -49,8 +49,4 @@
     - path: /Maps/_Vulp/Structures/shadekin-portal.yml
       distance:
         min: 110
-<<<<<<< HEAD
         max: 130
-=======
-        max: 130
->>>>>>> 63397a35f1aa54acd4d9458ff5094fed1ae7bb01
