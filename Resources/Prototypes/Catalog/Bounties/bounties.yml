@@ -69,17 +69,17 @@
       tags:
       - CarrotFries
 
-- type: cargoBounty
-  id: BountyCarp # Vulp - seems rarely possible. requires expeditions or certain events i think.
-  reward: 12500
-  description: bounty-description-carp
-  idPrefix: CC
-  entries:
-  - name: bounty-item-carp
-    amount: 1
-    whitelist:
-      tags:
-      - Carp
+#- type: cargoBounty # Vulp - rarely possible. may reenable if expeditions become a thing
+#  id: BountyCarp
+#  reward: 12500
+#  description: bounty-description-carp
+#  idPrefix: CC
+#  entries:
+#  - name: bounty-item-carp
+#    amount: 1
+#    whitelist:
+#      tags:
+#      - Carp
 
 - type: cargoBounty
   id: BountyClownCostume
@@ -119,17 +119,17 @@
       tags:
       - Crayon
 
-- type: cargoBounty
-  id: BountyCubanCarp # Vulp - food recipe that requires carp meat so same issue as other carp bounty
-  reward: 16000
-  description: bounty-description-cuban-carp
-  idPrefix: CC
-  entries:
-  - name: bounty-item-cuban-carp
-    amount: 1
-    whitelist:
-      tags:
-      - CubanCarp
+#- type: cargoBounty # Vulp - disabled for same reason as other carp bounty
+#  id: BountyCubanCarp
+#  reward: 16000
+#  description: bounty-description-cuban-carp
+#  idPrefix: CC
+#  entries:
+#  - name: bounty-item-cuban-carp
+#    amount: 1
+#    whitelist:
+#      tags:
+#      - CubanCarp
 
 - type: cargoBounty
   id: BountyDonut
@@ -179,7 +179,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 2500 # Vulp - kinda annoying to craft (though easy) for such a tiny reward
+  reward: 2500 # Vulp
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -247,7 +247,7 @@
 
 - type: cargoBounty
   id: BountyMonkeyCube
-  reward: 3000 # Vulp - monkey cube crate costs 2k and nobody uses biofabricator
+  reward: 3000 # Vulp
   description: bounty-description-monkey-cube
   idPrefix: CC
   entries:
@@ -264,7 +264,7 @@
   idPrefix: SS13-
   entries:
   - name: bounty-item-mouse
-    amount: 5 # Vulp - good luck if theres even a single felinid awake
+    amount: 2 # Vulp - reward low enough to dissaude buying mouse crate for it. encourages mousetrap use or something
     whitelist:
       tags:
       - Mouse
@@ -293,7 +293,7 @@
 
 - type: cargoBounty
   id: BountyPercussion
-  reward: 15000 # Vulp - two percussion crates (5k) for 10k profit?
+  reward: 11500 # Vulp - some high profit arbitrage bounties are ok
   description: bounty-description-percussion
   entries:
   - name: bounty-item-percussion
@@ -328,19 +328,19 @@
       tags:
       - PrisonUniform
 
-- type: cargoBounty
-  id: BountyRadio
-  reward: 6500
-  description: bounty-description-radio
-  entries:
-  - name: bounty-item-radio
-    amount: 7 # Vulp - usually requires cargo smashing a ptech restock crate and i think that's not good. remove?
-    whitelist:
-      components:
-      - Headset
-      - RadioMicrophone
-      tags:
-      - Radio
+#- type: cargoBounty # Vulp - might just reduce the reward then make the required quantity one or two. removed for now.
+#  id: BountyRadio # Vulp - no more smashing ptech restocks!!
+#  reward: 6500
+#  description: bounty-description-radio
+#  entries:
+#  - name: bounty-item-radio
+#    amount: 7
+#    whitelist:
+#      components:
+#      - Headset
+#      - RadioMicrophone
+#      tags:
+#      - Radio
 
 - type: cargoBounty
   id: BountyShiv
@@ -389,7 +389,7 @@
 
 - type: cargoBounty
   id: BountySyringe
-  reward: 5000
+  reward: 4000 # Vulp
   description: bounty-description-syringe
   entries:
   - name: bounty-item-syringe
@@ -515,7 +515,7 @@
 
 - type: cargoBounty
   id: BountyLaserGun
-  reward: 28500 # Vulp - secfab prints practice laser rifles without research so maybe too high?
+  reward: 16500 # Vulp - still high reward, requires sec cooperation
   description: bounty-description-lasergun
   idPrefix: IV
   entries:
@@ -601,16 +601,16 @@
       components:
       - Skates
 
-- type: cargoBounty
-  id: BountyBedsheet # Vulp - this bounty is not possible on some maps and usually skipped. remove or add craft recipe?
-  reward: 4100
-  description: bounty-description-bedsheet
-  entries:
-  - name: bounty-item-bedsheet
-    amount: 3 # Vulp - i haven't looked but i remember having three bedsheets from medical beds so maybe this is better
-    whitelist:
-      tags:
-      - Bedsheet
+#- type: cargoBounty
+#  id: BountyBedsheet # Vulp - skipped 99% of the time. replaced with craftable "Ghost sheet" bounty
+#  reward: 4100
+#  description: bounty-description-bedsheet
+#  entries:
+#  - name: bounty-item-bedsheet
+#    amount: 3 # Vulp
+#    whitelist:
+#      tags:
+#      - Bedsheet
 
 - type: cargoBounty
   id: BountyBandana
@@ -692,7 +692,7 @@
 - type: cargoBounty
   id: BountyCardboardBox
   reward: 1500
-  description: bounty-description-cardobard-box
+  description: bounty-description-cardobard-box # nice typo
   entries:
   - name: bounty-item-cardboard-box
     amount: 12
@@ -712,7 +712,7 @@
       - Wine
 
 - type: cargoBounty
-  id: BountyCottonBoll # Vulp - people struggle with this one apparently. i think its fine
+  id: BountyCottonBoll
   reward: 8600
   description: bounty-description-cotton-boll
   entries:
