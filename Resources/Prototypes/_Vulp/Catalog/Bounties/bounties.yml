@@ -1,9 +1,10 @@
 #Misc
 
 - type: cargoBounty
-  id: BountyGhostSheet # kinda just to replace the bedsheet bounty if it does get removed
-  reward: 4100
+  id: BountyGhostSheet
+  reward: 3200 # spoooooky profit margin
   description: bounty-description-ghostsheet
+  idPrefix: CC
   entries:
   - name: bounty-item-ghostsheet
     amount: 3

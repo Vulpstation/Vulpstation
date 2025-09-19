@@ -256,6 +256,9 @@
     whitelist:
       tags:
       - MonkeyCube
+    blacklist:
+      tags:
+        - KoboldCube # Vulp - kobold cube uses monkey cube as parent
 
 - type: cargoBounty
   id: BountyMouse
