@@ -6,3 +6,9 @@ lathe-category-parts = Parts
 lathe-category-robotics = Robotics
 lathe-category-tools = Tools
 lathe-category-weapons = Weapons
+
+# Vulp section start
+lathe-category-food = Food
+lathe-category-chemicals = Chemicals
+lathe-category-materials = Materials
+# Vulp section end
