@@ -831,3 +831,10 @@ Entries:
   id: 74
   time: '2025-09-19T16:12:48.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/101
+- author: Snowcat
+  changes:
+    - type: Add
+      message: The chaplain's familiar, Remilia, can now see in the dark
+  id: 75
+  time: '2025-09-19T16:14:03.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/100
