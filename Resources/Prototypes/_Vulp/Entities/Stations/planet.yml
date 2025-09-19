@@ -33,7 +33,7 @@
       distance:
         min: 90
         max: 110
-# For large planetary maps (greater than 60m in radius)
+# For large planetary maps (greater than 100m in radius)
 - type: entity
   id: PlanetStationLarge
   parent: PlanetStationBase
