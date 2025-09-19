@@ -33,3 +33,20 @@
       distance:
         min: 90
         max: 110
+# For large planetary maps (greater than 60m in radius)
+- type: entity
+  id: PlanetStationLarge
+  parent: PlanetStationBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationLoadPlanetaryGrids
+    minDistance: 60
+    grids:
+    - path: /Maps/_Vulp/Structures/native-outpost-LV-624.yml
+      distance:
+        min: 70
+        max: 120
+    - path: /Maps/_Vulp/Structures/shadekin-portal.yml
+      distance:
+        min: 100
+        max: 120
