@@ -838,3 +838,10 @@ Entries:
   id: 75
   time: '2025-09-19T16:14:03.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/100
+- author: Snowcat
+  changes:
+    - type: Add
+      message: Added the bioGenerator (not bioFabricator) from wizden for botany
+  id: 76
+  time: '2025-09-20T20:18:10.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/99
