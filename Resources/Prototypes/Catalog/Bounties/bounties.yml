@@ -179,7 +179,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 2500 # Vulp
+  reward: 1000
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -252,7 +252,7 @@
   idPrefix: CC
   entries:
   - name: bounty-item-monkey-cube
-    amount: 3
+    amount: 7 # Vulp - avoid arbitrage
     whitelist:
       tags:
       - MonkeyCube
@@ -425,16 +425,16 @@
       tags:
       - Toolbox
 
-- type: cargoBounty
-  id: BountyTrash
-  reward: 2000 # Vulp - reward colony for cleaning up a bit
-  description: bounty-description-trash
-  entries:
-  - name: bounty-item-trash
-    amount: 10
-    whitelist:
-      tags:
-      - Trash
+#- type: cargoBounty # Vulp - just going to remove this one for now
+#  id: BountyTrash
+#  reward: 1000 # Vulp
+#  description: bounty-description-trash
+#  entries:
+#  - name: bounty-item-trash
+#    amount: 10
+#    whitelist:
+#      tags:
+#      - Trash
 
 - type: cargoBounty
   id: BountyAnomalyCore

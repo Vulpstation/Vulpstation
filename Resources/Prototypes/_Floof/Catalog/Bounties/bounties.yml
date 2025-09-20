@@ -40,7 +40,7 @@
   description: bounty-description-whip
   entries:
   - name: bounty-item-whip
-    amount: 3
+    amount: 3 # Vulp
     whitelist:
       tags:
       - Whip
@@ -135,11 +135,11 @@
 
 - type: cargoBounty
   id: BountyImplanter
-  reward: 2000 # Vulp - this reward is underwhelming even if the bounty is cheap/easy (15 steel 15 glass)
+  reward: 2000 # Vulp
   description: bounty-description-implanter
   entries:
   - name: bounty-item-implanter
-    amount: 3
+    amount: 4 # Vulp
     whitelist:
       components:
       - Implanter
@@ -150,7 +150,7 @@
   description: bounty-description-bloodpack
   entries:
   - name: bounty-item-bloodpacks
-    amount: 5 # Vulp - actually annoying because nobody does the microwave recipe
+    amount: 5
     whitelist:
       tags:
       - Bloodpack
