@@ -41,6 +41,8 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
 
     private void OnStationPostInit(Entity<StationLoadPlanetaryGridsComponent> stationEnt, ref StationPostInitEvent args)
     {
+        return; // TESTING ONLY, REMOVE IN PROD
+
         if (!TryComp<StationDataComponent>(stationEnt, out var stationData))
             return;
 
