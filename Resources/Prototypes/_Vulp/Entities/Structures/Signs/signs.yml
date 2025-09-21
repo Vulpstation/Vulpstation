@@ -211,7 +211,7 @@
   targetNode: signopenbig
   category: construction-category-furniture
   description: Open for business come on in!
-  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_64x32.rsi, state: we_are_open }
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_64x32.rsi, state: we_open_open }
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
