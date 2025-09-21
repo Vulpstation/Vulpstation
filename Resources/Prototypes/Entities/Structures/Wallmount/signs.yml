@@ -11,6 +11,9 @@
   - type: Sprite
     sprite: Structures/Wallmounts/signs_32x32.rsi
     state: bar
+  - type: Construction # Vulpstation
+    graph: BarSign
+    node: barsign
 
 - type: entity
   parent: SignBar2
