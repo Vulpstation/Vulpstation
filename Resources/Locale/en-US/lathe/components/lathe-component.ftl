@@ -1,4 +1,6 @@
 lathe-component-upgrade-speed = speed
 lathe-component-upgrade-material-use = material use
 
-lathe-component-output-slot-beaker-name = Beaker slot # Vulp
+# Vulp section start
+lathe-component-output-slot-beaker-name = Beaker slot
+# Vulp section end
