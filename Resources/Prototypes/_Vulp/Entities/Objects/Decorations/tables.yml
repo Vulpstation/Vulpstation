@@ -1,0 +1,183 @@
+﻿- type: construction
+  name: "Wood Table Square"
+  id: WoodTableSquare
+  graph: WoodTableSquare
+  startNode: start
+  targetNode: woodtablesquare
+  category: construction-category-furniture
+  description: A somewhat fancier square wooden table.
+  icon: { sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi, state: table_wood_square }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: WoodTableSquare
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: woodtablesquare
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: WoodPlank
+        amount: 4
+        doAfter: 3
+
+  - node: woodtablesquare
+    entity: N14TableWoodSquare
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+- type: construction
+  name: "Wood Table Round"
+  id: WoodTableRound
+  graph: WoodTableRound
+  startNode: start
+  targetNode: woodtableround
+  category: construction-category-furniture
+  description: A somewhat fancier round wooden table.
+  icon: { sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi, state: table_wood_round }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: WoodTableRound
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: woodtableround
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: WoodPlank
+        amount: 4
+        doAfter: 3
+
+  - node: woodtableround
+    entity: N14TableWoodRound
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+- type: construction
+  name: "Wood Table Low"
+  id: WoodTableLow
+  graph: WoodTableLow
+  startNode: start
+  targetNode: woodtablelow
+  category: construction-category-furniture
+  description: A low wooden table.
+  icon: { sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi, state: table_wood_low }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: WoodTableLow
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: woodtablelow
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: WoodPlank
+        amount: 4
+        doAfter: 3
+
+  - node: woodtablelow
+    entity: N14TableWoodLow
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+
+- type: construction
+  name: "Wood Table Stand"
+  id: WoodTableStand
+  graph: WoodTableStand
+  startNode: start
+  targetNode: woodtablestand
+  category: construction-category-furniture
+  description: A night stand for next to your bed.
+  icon: { sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi, state: table_wood_stand }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: WoodTableStand
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: woodtablestand
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 3
+
+  - node: woodtablestand
+    entity: N14TableWoodLow
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2

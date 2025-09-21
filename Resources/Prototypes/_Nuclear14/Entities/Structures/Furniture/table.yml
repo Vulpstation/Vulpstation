@@ -119,6 +119,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi
     state: table_wood_round
+  - type: Construction # Vulpstation
+    graph: WoodTableRound
+    node: woodtableround
 
 - type: entity
   parent: N14TableDeskSchool
@@ -140,6 +143,9 @@
         - TableMask
         layer:
         - TableLayer
+  - type: Construction # Vulpstation
+    graph: WoodTableSquare
+    node: woodtablesquare
 
 - type: entity
   parent: N14TableWoodSquare
@@ -150,6 +156,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi
     state: table_wood_low
+  - type: Construction # Vulpstation
+    graph: WoodTableLow
+    node: woodtablelow
 
 - type: entity
   parent: N14TableWoodSquare
@@ -158,6 +167,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi
     state: table_wood_stand
+  - type: Construction # Vulpstation
+    graph: WoodTableStand
+    node: woodtablestand
 
 - type: entity
   parent: N14TableWoodSquare
