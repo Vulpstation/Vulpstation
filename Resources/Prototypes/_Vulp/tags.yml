@@ -3,3 +3,9 @@
 
 - type: Tag
   id: BlueshieldSabre
+
+- type: Tag
+  id: GhostSheet
+
+- type: Tag
+  id: KoboldCube

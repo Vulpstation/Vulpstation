@@ -1758,3 +1758,23 @@
     materialRequirements:
       Steel: 2
       Cable: 1
+
+# Vulp - Biogenerator already upstream in EE (f53d2f9) but not Floof
+- type: entity
+  id: BiogeneratorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: biogenerator machine board
+  description: A machine printed circuit board for a biogenerator.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: Biogenerator
+    requirements:
+      MatterBin: 2
+    tagRequirements:
+      GlassBeaker:
+        Amount: 1
+        DefaultPrototype: Beaker
+        ExamineName: Glass Beaker
+

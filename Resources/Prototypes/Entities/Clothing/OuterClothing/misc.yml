@@ -287,6 +287,10 @@
     graph: GhostSheet
     node: ghost_sheet
   - type: IdentityBlocker
+  - type: Tag
+    tags:
+    - GhostSheet # Vulp
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingOuterBase
