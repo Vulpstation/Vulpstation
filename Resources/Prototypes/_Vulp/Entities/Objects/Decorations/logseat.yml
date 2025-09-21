@@ -1,0 +1,45 @@
+﻿- type: construction
+  name: "Log Seat"
+  id: LogSeat
+  graph: LogSeat
+  startNode: start
+  targetNode: logseat
+  category: construction-category-furniture
+  description: A somewhat comfy seat to place near a campfire.
+  icon: { sprite: _Nuclear14/Structures/Decoration/flora.rsi, state: tree_log }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: LogSeat
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: logseat
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: WoodPlank
+        amount: 5
+        doAfter: 5
+
+  - node: logseat
+    entity: N14FloraLog1
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
