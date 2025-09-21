@@ -331,7 +331,7 @@
       completed:
       - !type:SnapToGrid { }
       steps:
-      - material: WoodPlank # the sign sprite uses wood so swaping the steel to wood
+      - material: Steel
         amount: 5
         doAfter: 1
       - material: Cable
