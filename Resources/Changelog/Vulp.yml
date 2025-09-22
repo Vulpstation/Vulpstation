@@ -863,3 +863,10 @@ Entries:
   id: 78
   time: '2025-09-22T01:15:32.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/102
+- author: Snowcat
+  changes:
+    - type: Fix
+      message: Fixed material eject behavior in lathes/flatpacker/etcetera
+  id: 79
+  time: '2025-09-22T21:46:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/108
