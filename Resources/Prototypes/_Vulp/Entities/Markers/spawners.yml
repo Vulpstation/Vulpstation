@@ -1,7 +1,9 @@
+# TODO: when I get to touch this again, make sure to make the base thing 100% and the children 40% and lower
 - type: entity
   name: Random Animal Spawner
   id: PlanetAnimalSpawner
   parent: MarkerBase
+  suffix: 40%
   components:
   - type: Sprite
     layers:
@@ -11,7 +13,17 @@
   - type: EntityTableSpawner
     table: !type:NestedSelector
       tableId: PlanetAnimalTable
-      prob: 0.6
+      prob: 0.4
+
+- type: entity
+  id: PlanetAnimalSpawner100
+  parent: PlanetAnimalSpawner
+  suffix: 100%
+  components:
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: PlanetAnimalTable
+      prob: 1
 
 - type: entityTable
   id: PlanetAnimalTable
