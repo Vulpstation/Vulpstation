@@ -133,6 +133,10 @@
     thresholds:
       0: Alive
       30: Dead
+  - type: NightVision # Vulp - rem deserves to not be in pitch black at night. surely bats can see in the dark. echolocation or something
+    color: "#808080"
+    activateSound: null
+    deactivateSound: null
 
 - type: entity
   name: Cerberus

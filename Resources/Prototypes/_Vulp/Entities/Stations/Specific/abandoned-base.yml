@@ -1,6 +1,6 @@
 - type: entity
   id: PlanetStationSpecificAbandoned
-  parent: PlanetStationMedium
+  parent: PlanetStationLarge
   categories: [ HideSpawnMenu ]
   components:
   - type: PlanetStation

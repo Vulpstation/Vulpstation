@@ -806,3 +806,49 @@ Entries:
   id: 71
   time: '2025-09-15T20:10:23.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/89
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Brown sofa can now be made like the gray one.
+  id: 72
+  time: '2025-09-16T22:10:37.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/96
+- author: Snowcat
+  changes:
+    - type: Fix
+      message: >-
+        Added a change from wizden to fix the uplink implant & briefing for
+        mid-round activated traitors without a PDA
+  id: 73
+  time: '2025-09-16T22:40:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/95
+- author: bandw2gs
+  changes:
+    - type: Tweak
+      message: >-
+        Updated the Abandoned Base map based on community feedback. See PR#101
+        for details.
+  id: 74
+  time: '2025-09-19T16:12:48.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/101
+- author: Snowcat
+  changes:
+    - type: Add
+      message: The chaplain's familiar, Remilia, can now see in the dark
+  id: 75
+  time: '2025-09-19T16:14:03.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/100
+- author: Snowcat
+  changes:
+    - type: Add
+      message: Added the bioGenerator (not bioFabricator) from wizden for botany
+  id: 76
+  time: '2025-09-20T20:18:10.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/99
+- author: Snowcat
+  changes:
+    - type: Tweak
+      message: Adjusted cargo bounty requirements and rewards
+  id: 77
+  time: '2025-09-20T20:29:03.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/98

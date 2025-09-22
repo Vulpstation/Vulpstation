@@ -1,0 +1,197 @@
+﻿#Brown Sofa
+
+ #Middle
+ - type: construction
+   name: "Comfy Sofa Brown"
+   id: ChairSofaBenchBrown
+   graph: ChairSofaBenchBrown
+   startNode: start
+   targetNode: chairsofabenchbrown
+   category: construction-category-furniture
+   description: A comfy sofa of standard design.
+   icon: { sprite: SimpleStation14/Structures/Furniture/Benches/sofa.rsi, state: middle }
+   objectType: Structure
+   placementMode: SnapgridCenter
+   canRotate: true
+   canBuildInImpassable: false
+   conditions:
+   - !type:TileNotBlocked
+
+ - type: constructionGraph
+   id: ChairSofaBenchBrown
+   start: start
+   graph:
+   - node: start
+     actions:
+     - !type:DestroyEntity { }
+     edges:
+     - to: chairsofabenchbrown
+       completed:
+       - !type:SnapToGrid { }
+       steps:
+       - material: Steel
+         amount: 4
+         doAfter: 1
+       - material: Cloth
+         amount: 2
+
+   - node: chairsofabenchbrown
+     entity: BenchSofaMiddle
+     edges:
+     - to: start
+       completed:
+       - !type:SpawnPrototype
+         prototype: SheetSteel1
+         amount: 2
+       steps:
+       - tool: Prying
+         doAfter: 3
+       - tool: Screwing
+         doAfter: 2
+
+# Left End
+ - type: construction
+   name: "Comfy Sofa Brown Left End"
+   id: ChairSofaBenchBrownLeft
+   graph: ChairSofaBenchBrownLeft
+   startNode: start
+   targetNode: chairsofabenchbrownleft
+   category: construction-category-furniture
+   description: A comfy sofa of standard design. The left end!
+   icon: { sprite: SimpleStation14/Structures/Furniture/Benches/sofa.rsi, state: left }
+   objectType: Structure
+   placementMode: SnapgridCenter
+   canRotate: true
+   canBuildInImpassable: false
+   conditions:
+   - !type:TileNotBlocked
+
+ - type: constructionGraph
+   id: ChairSofaBenchBrownLeft
+   start: start
+   graph:
+   - node: start
+     actions:
+     - !type:DestroyEntity { }
+     edges:
+     - to: chairsofabenchbrownleft
+       completed:
+       - !type:SnapToGrid { }
+       steps:
+       - material: Steel
+         amount: 4
+         doAfter: 1
+       - material: Cloth
+         amount: 2
+
+   - node: chairsofabenchbrownleft
+     entity: BenchSofaLeft
+     edges:
+     - to: start
+       completed:
+       - !type:SpawnPrototype
+         prototype: SheetSteel1
+         amount: 2
+       steps:
+       - tool: Prying
+         doAfter: 3
+       - tool: Screwing
+         doAfter: 2
+
+# right end
+ - type: construction
+   name: "Comfy Sofa Brown Right End"
+   id: ChairSofaBenchBrownRight
+   graph: ChairSofaBenchBrownRight
+   startNode: start
+   targetNode: chairsofabenchbrownright
+   category: construction-category-furniture
+   description: A comfy sofa of standard design. The right end!
+   icon: { sprite: SimpleStation14/Structures/Furniture/Benches/sofa.rsi, state: right }
+   objectType: Structure
+   placementMode: SnapgridCenter
+   canRotate: true
+   canBuildInImpassable: false
+   conditions:
+   - !type:TileNotBlocked
+
+ - type: constructionGraph
+   id: ChairSofaBenchBrownRight
+   start: start
+   graph:
+   - node: start
+     actions:
+     - !type:DestroyEntity { }
+     edges:
+     - to: chairsofabenchbrownright
+       completed:
+       - !type:SnapToGrid { }
+       steps:
+       - material: Steel
+         amount: 4
+         doAfter: 1
+       - material: Cloth
+         amount: 2
+
+   - node: chairsofabenchbrownright
+     entity: BenchSofaRight
+     edges:
+     - to: start
+       completed:
+       - !type:SpawnPrototype
+         prototype: SheetSteel1
+         amount: 2
+       steps:
+       - tool: Prying
+         doAfter: 3
+       - tool: Screwing
+         doAfter: 2
+
+# corner
+ - type: construction
+   name: "Comfy Sofa Brown Corner"
+   id: ChairSofaBenchBrownCorner
+   graph: ChairSofaBenchBrownCorner
+   startNode: start
+   targetNode: chairsofabenchbrowncorner
+   category: construction-category-furniture
+   description: A comfy sofa of standard design. The corner piece!
+   icon: { sprite: SimpleStation14/Structures/Furniture/Benches/sofa.rsi, state: corner }
+   objectType: Structure
+   placementMode: SnapgridCenter
+   canRotate: true
+   canBuildInImpassable: false
+   conditions:
+   - !type:TileNotBlocked
+
+ - type: constructionGraph
+   id: ChairSofaBenchBrownCorner
+   start: start
+   graph:
+   - node: start
+     actions:
+     - !type:DestroyEntity { }
+     edges:
+     - to: chairsofabenchbrowncorner
+       completed:
+       - !type:SnapToGrid { }
+       steps:
+       - material: Steel
+         amount: 4
+         doAfter: 1
+       - material: Cloth
+         amount: 2
+
+   - node: chairsofabenchbrowncorner
+     entity: BenchSofaCorner
+     edges:
+     - to: start
+       completed:
+       - !type:SpawnPrototype
+         prototype: SheetSteel1
+         amount: 2
+       steps:
+       - tool: Prying
+         doAfter: 3
+       - tool: Screwing
+         doAfter: 2

@@ -1,0 +1,13 @@
+#Misc
+
+- type: cargoBounty
+  id: BountyGhostSheet
+  reward: 3200 # spoooooky profit margin
+  description: bounty-description-ghostsheet
+  idPrefix: CC
+  entries:
+  - name: bounty-item-ghostsheet
+    amount: 3
+    whitelist:
+      tags:
+      - GhostSheet

@@ -49,6 +49,9 @@
   - type: Sprite
     sprite: Objects/Misc/monkeycube.rsi
     state: box_kobold
+  - type: Tag # Vulp
+    tags:
+    - KoboldCube
 
 - type: entity
   parent: MonkeyCubeBox
@@ -81,6 +84,9 @@
   - type: Sprite
     sprite: Objects/Misc/monkeycube.rsi
     state: wrapper_kobold
+  - type: Tag # Vulp
+    tags:
+    - KoboldCube
 
 - type: entity
   parent: MonkeyCubeBox

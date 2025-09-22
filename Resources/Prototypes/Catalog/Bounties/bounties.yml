@@ -69,17 +69,17 @@
       tags:
       - CarrotFries
 
-- type: cargoBounty
-  id: BountyCarp
-  reward: 12500
-  description: bounty-description-carp
-  idPrefix: CC
-  entries:
-  - name: bounty-item-carp
-    amount: 1
-    whitelist:
-      tags:
-      - Carp
+#- type: cargoBounty # Vulp - rarely possible. may reenable if expeditions become a thing
+#  id: BountyCarp
+#  reward: 12500
+#  description: bounty-description-carp
+#  idPrefix: CC
+#  entries:
+#  - name: bounty-item-carp
+#    amount: 1
+#    whitelist:
+#      tags:
+#      - Carp
 
 - type: cargoBounty
   id: BountyClownCostume
@@ -119,17 +119,17 @@
       tags:
       - Crayon
 
-- type: cargoBounty
-  id: BountyCubanCarp
-  reward: 16000
-  description: bounty-description-cuban-carp
-  idPrefix: CC
-  entries:
-  - name: bounty-item-cuban-carp
-    amount: 1
-    whitelist:
-      tags:
-      - CubanCarp
+#- type: cargoBounty # Vulp - disabled for same reason as other carp bounty
+#  id: BountyCubanCarp
+#  reward: 16000
+#  description: bounty-description-cuban-carp
+#  idPrefix: CC
+#  entries:
+#  - name: bounty-item-cuban-carp
+#    amount: 1
+#    whitelist:
+#      tags:
+#      - CubanCarp
 
 - type: cargoBounty
   id: BountyDonut
@@ -247,15 +247,18 @@
 
 - type: cargoBounty
   id: BountyMonkeyCube
-  reward: 2000
+  reward: 3000 # Vulp
   description: bounty-description-monkey-cube
   idPrefix: CC
   entries:
   - name: bounty-item-monkey-cube
-    amount: 3
+    amount: 7 # Vulp - avoid arbitrage
     whitelist:
       tags:
       - MonkeyCube
+    blacklist:
+      tags:
+        - KoboldCube # Vulp - kobold cube uses monkey cube as parent
 
 - type: cargoBounty
   id: BountyMouse
@@ -264,7 +267,7 @@
   idPrefix: SS13-
   entries:
   - name: bounty-item-mouse
-    amount: 5
+    amount: 2 # Vulp - reward low enough to dissaude buying mouse crate for it. encourages mousetrap use or something
     whitelist:
       tags:
       - Mouse
@@ -275,7 +278,7 @@
   description: bounty-description-pancake
   entries:
   - name: bounty-item-pancake
-    amount: 13
+    amount: 12 # Vulp - twelve eggs in a carton, one per waffle
     whitelist:
       tags:
       - Pancake
@@ -293,7 +296,7 @@
 
 - type: cargoBounty
   id: BountyPercussion
-  reward: 15000
+  reward: 11500 # Vulp - some high profit arbitrage bounties are ok
   description: bounty-description-percussion
   entries:
   - name: bounty-item-percussion
@@ -328,19 +331,19 @@
       tags:
       - PrisonUniform
 
-- type: cargoBounty
-  id: BountyRadio
-  reward: 6500
-  description: bounty-description-radio
-  entries:
-  - name: bounty-item-radio
-    amount: 7
-    whitelist:
-      components:
-      - Headset
-      - RadioMicrophone
-      tags:
-      - Radio
+#- type: cargoBounty # Vulp - might just reduce the reward then make the required quantity one or two. removed for now.
+#  id: BountyRadio # Vulp - no more smashing ptech restocks!!
+#  reward: 6500
+#  description: bounty-description-radio
+#  entries:
+#  - name: bounty-item-radio
+#    amount: 7
+#    whitelist:
+#      components:
+#      - Headset
+#      - RadioMicrophone
+#      tags:
+#      - Radio
 
 - type: cargoBounty
   id: BountyShiv
@@ -389,7 +392,7 @@
 
 - type: cargoBounty
   id: BountySyringe
-  reward: 5000
+  reward: 4000 # Vulp
   description: bounty-description-syringe
   entries:
   - name: bounty-item-syringe
@@ -422,16 +425,16 @@
       tags:
       - Toolbox
 
-- type: cargoBounty
-  id: BountyTrash
-  reward: 500
-  description: bounty-description-trash
-  entries:
-  - name: bounty-item-trash
-    amount: 10
-    whitelist:
-      tags:
-      - Trash
+#- type: cargoBounty # Vulp - just going to remove this one for now
+#  id: BountyTrash
+#  reward: 1000 # Vulp
+#  description: bounty-description-trash
+#  entries:
+#  - name: bounty-item-trash
+#    amount: 10
+#    whitelist:
+#      tags:
+#      - Trash
 
 - type: cargoBounty
   id: BountyAnomalyCore
@@ -480,7 +483,7 @@
 
 - type: cargoBounty
   id: BountyLabeler
-  reward: 6660
+  reward: 3500 # Vulp - seems high considering 5 plastic cost, compared to other bounties
   description: bounty-description-labeler
   entries:
   - name: bounty-item-labeler
@@ -515,7 +518,7 @@
 
 - type: cargoBounty
   id: BountyLaserGun
-  reward: 28500
+  reward: 16500 # Vulp - still high reward, requires sec cooperation
   description: bounty-description-lasergun
   idPrefix: IV
   entries:
@@ -601,16 +604,16 @@
       components:
       - Skates
 
-- type: cargoBounty
-  id: BountyBedsheet
-  reward: 4100
-  description: bounty-description-bedsheet
-  entries:
-  - name: bounty-item-bedsheet
-    amount: 5
-    whitelist:
-      tags:
-      - Bedsheet
+#- type: cargoBounty
+#  id: BountyBedsheet # Vulp - skipped 99% of the time. replaced with craftable "Ghost sheet" bounty
+#  reward: 4100
+#  description: bounty-description-bedsheet
+#  entries:
+#  - name: bounty-item-bedsheet
+#    amount: 3 # Vulp
+#    whitelist:
+#      tags:
+#      - Bedsheet
 
 - type: cargoBounty
   id: BountyBandana
@@ -692,7 +695,7 @@
 - type: cargoBounty
   id: BountyCardboardBox
   reward: 1500
-  description: bounty-description-cardobard-box
+  description: bounty-description-cardobard-box # nice typo
   entries:
   - name: bounty-item-cardboard-box
     amount: 12
