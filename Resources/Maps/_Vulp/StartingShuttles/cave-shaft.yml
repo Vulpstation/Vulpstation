@@ -143,9 +143,10 @@ entities:
           -3,4:
             0: 15
           -2,0:
-            0: 56591
+            0: 55567
+            2: 1024
           -2,1:
-            2: 16
+            3: 16
             0: 64972
           -2,2:
             0: 56572
@@ -197,6 +198,21 @@ entities:
           - 0
           - 0
         - volume: 2500
+          temperature: 293.14975
+          moles:
+          - 21.991163
+          - 73.62259
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
           temperature: 293.1495
           moles:
           - 21.991163
@@ -225,29 +241,37 @@ entities:
       parent: 1
     - type: DeviceList
       devices:
+      - 375
+      - 335
+      - 334
+      - 339
+      - 336
       - 338
       - 340
       - 332
-      - 333
-      - 341
-      - 374
-      - 337
-      - 375
-      - 336
-      - 339
-      - 334
-      - 335
-      - 401
-      - 402
-      - 403
-      - 404
-- proto: AirCanister
-  entities:
-  - uid: 331
+  - uid: 482
     components:
     - type: Transform
-      pos: -2.5,6.5
+      rot: 1.5707963267948966 rad
+      pos: -12.5,-0.5
       parent: 1
+    - type: DeviceList
+      devices:
+      - 403
+      - 404
+      - 402
+      - 401
+      - 341
+      - 333
+  - uid: 483
+    components:
+    - type: Transform
+      pos: -12.5,-1.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 374
+      - 484
 - proto: Airlock
   entities:
   - uid: 227
@@ -1219,19 +1243,41 @@ entities:
   - uid: 428
     components:
     - type: Transform
-      pos: -5.5,2.5
+      pos: -1.4147182,2.4175127
       parent: 1
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      fixedRotation: False
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14673
+        moles:
+        - 1.9122751
+        - 6.401964
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 429
-          - 430
-          - 431
-          - 432
           - 433
+          - 432
+          - 431
+          - 430
+          - 429
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -1580,7 +1626,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
   - uid: 402
     components:
     - type: Transform
@@ -1589,7 +1635,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
   - uid: 403
     components:
     - type: Transform
@@ -1598,7 +1644,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
   - uid: 404
     components:
     - type: Transform
@@ -1607,7 +1653,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
 - proto: FloorDrain
   entities:
   - uid: 305
@@ -1912,12 +1958,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -6.5,2.5
       parent: 1
-  - uid: 370
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.5,2.5
-      parent: 1
   - uid: 379
     components:
     - type: Transform
@@ -2013,6 +2053,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -8.5,10.5
       parent: 1
+  - uid: 486
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,-0.5
+      parent: 1
+  - uid: 487
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,-1.5
+      parent: 1
 - proto: GasPipeTJunction
   entities:
   - uid: 342
@@ -2067,6 +2119,18 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -9.5,8.5
       parent: 1
+  - uid: 478
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,2.5
+      parent: 1
+  - uid: 485
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,-2.5
+      parent: 1
 - proto: GasPort
   entities:
   - uid: 327
@@ -2092,6 +2156,11 @@ entities:
     - type: Transform
       pos: -2.5,6.5
       parent: 1
+  - uid: 477
+    components:
+    - type: Transform
+      pos: -4.5,3.5
+      parent: 1
 - proto: GasPressurePump
   entities:
   - uid: 325
@@ -2105,6 +2174,14 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,2.5
+      parent: 1
+- proto: GasThermoMachineFreezer
+  entities:
+  - uid: 481
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,2.5
       parent: 1
 - proto: GasValve
   entities:
@@ -2150,7 +2227,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
   - uid: 374
     components:
     - type: Transform
@@ -2159,7 +2236,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 483
   - uid: 375
     components:
     - type: Transform
@@ -2188,7 +2265,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 405
+      - 482
   - uid: 335
     components:
     - type: Transform
@@ -2211,9 +2288,6 @@ entities:
     - type: Transform
       pos: -5.5,5.5
       parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 405
   - uid: 338
     components:
     - type: Transform
@@ -2223,6 +2297,15 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 405
+  - uid: 484
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -11.5,-2.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 483
 - proto: GeneratorRTG
   entities:
   - uid: 69
@@ -2235,6 +2318,32 @@ entities:
     - type: Transform
       pos: -1.5,13.5
       parent: 1
+- proto: LargeStorageCanister
+  entities:
+  - uid: 331
+    components:
+    - type: Transform
+      pos: -2.4660907,6.5053606
+      parent: 1
+- proto: LockerAtmosphericsFilledHardsuit
+  entities:
+  - uid: 370
+    components:
+    - type: Transform
+      pos: -1.5488946,6.622254
+      parent: 1
+- proto: LockerEngineerFilledHardsuit
+  entities:
+  - uid: 479
+    components:
+    - type: Transform
+      pos: -1.5287333,8.573439
+      parent: 1
+  - uid: 480
+    components:
+    - type: Transform
+      pos: -1.5400405,7.5985837
+      parent: 1
 - proto: LockerSalvageSpecialistFilledHardsuit
   entities:
   - uid: 465
@@ -2246,6 +2355,13 @@ entities:
     components:
     - type: Transform
       pos: -7.5,3.5
+      parent: 1
+- proto: MailTeleporter
+  entities:
+  - uid: 474
+    components:
+    - type: Transform
+      pos: -12.5,2.5
       parent: 1
 - proto: MaterialWoodPlank
   entities:
@@ -2337,6 +2453,26 @@ entities:
     - type: Transform
       pos: -12.5,-2.5
       parent: 1
+- proto: PortableScrubber
+  entities:
+  - uid: 475
+    components:
+    - type: Transform
+      pos: -3.5,3.5
+      parent: 1
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      fixedRotation: False
+  - uid: 476
+    components:
+    - type: Transform
+      pos: -3.5,4.5
+      parent: 1
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      fixedRotation: False
 - proto: PoweredLightBlueInterior
   entities:
   - uid: 436
