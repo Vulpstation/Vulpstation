@@ -67,7 +67,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
 
         var volume = 0;
 
-        if (material.StackEntity != null) // Vulp - eject behavior no worky without stackEntity defined in the material
+        if (material.StackEntity != null)
         {
             if (!_prototypeManager.Index<EntityPrototype>(material.StackEntity).TryGetComponent<PhysicalCompositionComponent>(out var composition))
                 return;
