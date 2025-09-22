@@ -852,3 +852,21 @@ Entries:
   id: 77
   time: '2025-09-20T20:29:03.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/98
+- author: bandw2gs
+  changes:
+    - type: Tweak
+      message: Chasm trashshoot updated to use a timer system
+    - type: Add
+      message: playing cards to the bar
+    - type: Tweak
+      message: Made some fixes to abandoned base, particularly the bar and decals.
+  id: 78
+  time: '2025-09-22T01:15:32.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/102
+- author: Snowcat
+  changes:
+    - type: Fix
+      message: Fixed material eject behavior in lathes/flatpacker/etcetera
+  id: 79
+  time: '2025-09-22T21:46:46.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/108
