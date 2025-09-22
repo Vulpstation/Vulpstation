@@ -4,3 +4,5 @@ enabled = true
 
 [shuttle]
 auto_call_time = 0
+# Vulpstation - don't preload grids in testing
+preload_grids = false
