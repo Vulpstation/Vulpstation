@@ -34,6 +34,11 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
+    /// <summary>
+    ///     If true, planetary grids will not be loaded. Used in testing.
+    /// </summary>
+    public bool PlanetaryGridsDisabled = false;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<StationLoadPlanetaryGridsComponent, StationPostInitEvent>(OnStationPostInit, after: new[] { typeof(PlanetStationSystem) });
@@ -41,7 +46,7 @@ public sealed class StationLoadPlanetaryGridsSystem : EntitySystem
 
     private void OnStationPostInit(Entity<StationLoadPlanetaryGridsComponent> stationEnt, ref StationPostInitEvent args)
     {
-        if (!TryComp<StationDataComponent>(stationEnt, out var stationData))
+        if (PlanetaryGridsDisabled || !TryComp<StationDataComponent>(stationEnt, out var stationData))
             return;
 
         var mainGrid = stationData.Grids.Where(HasComp<BiomeComponent>).FirstOrDefault();

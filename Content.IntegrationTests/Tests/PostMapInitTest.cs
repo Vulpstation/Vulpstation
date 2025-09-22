@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Content.Server._Vulp.Station.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
 using Content.Server.Shuttles.Components;
@@ -165,6 +166,8 @@ namespace Content.IntegrationTests.Tests
             var cfg = server.ResolveDependency<IConfigurationManager>();
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
+            entManager.System<StationLoadPlanetaryGridsSystem>().PlanetaryGridsDisabled = true; // Vulpstation
+
             await server.WaitPost(() =>
             {
                 mapSystem.CreateMap(out var mapId);
@@ -274,6 +277,7 @@ namespace Content.IntegrationTests.Tests
             });
             await server.WaitRunTicks(1);
 
+            entManager.System<StationLoadPlanetaryGridsSystem>().PlanetaryGridsDisabled = false; // Vulpstation
             await pair.CleanReturnAsync();
         }
 
