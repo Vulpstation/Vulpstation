@@ -8,6 +8,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 
 namespace Content.IntegrationTests.Tests._Vulp;
@@ -35,29 +36,45 @@ public sealed class PlanetaryGridsTest
             .SelectMany(it => it.Comp.Grids.Select(grid => (it.ID, grid)));
 
         var maps = new List<MapId>();
-        foreach (var (protoId, grid) in planetaryGrids)
+        var testedPaths = new HashSet<ResPath>();
+
+        await server.WaitPost(
+        () =>
         {
-            Assert.That(grid.Distance.Min >= 0 && grid.Distance.Max >= 0,
-                $"Station prototype {protoId} specifies grid {grid.Path} with negative distance");
-            Assert.That(grid.Distance.Min <= grid.Distance.Max,
-                $"Station prototype {protoId} specifies grid {grid.Path} with distance min > max");
+            foreach (var (protoId, grid) in planetaryGrids)
+            {
+                Assert.That(
+                    grid.Distance.Min >= 0 && grid.Distance.Max >= 0,
+                    $"Station prototype {protoId} specifies grid {grid.Path} with negative distance");
+                Assert.That(
+                    grid.Distance.Min <= grid.Distance.Max,
+                    $"Station prototype {protoId} specifies grid {grid.Path} with distance min > max");
 
-            mapSystem.CreateMap(out var mapId);
-            var success = mapLoader.TryLoad(mapId, grid.Path.CanonPath, out var roots);
+                if (!testedPaths.Add(grid.Path))
+                    continue;
 
-            Assert.That(success, $"Failed to load grid {grid.Path}");
-            Assert.That(roots != null && roots.Count > 0, $"Grid {grid.Path} did not load any entities");
-            Assert.That(roots!.Any(it => entMan.HasComponent<MapGridComponent>(it)),
-                $"Grid {grid.Path} did not load any grids?");
+                mapSystem.CreateMap(out var mapId);
+                var success = mapLoader.TryLoad(mapId, grid.Path.CanonPath, out var roots);
 
-            maps.Add(mapId);
-        }
+                Assert.That(success, $"Failed to load grid {grid.Path}");
+                Assert.That(roots != null && roots.Count > 0, $"Grid {grid.Path} did not load any entities");
+                Assert.That(
+                    roots!.Any(it => entMan.HasComponent<MapGridComponent>(it)),
+                    $"Grid {grid.Path} did not load any grids?");
+
+                maps.Add(mapId);
+            }
+        });
 
         await server.WaitRunTicks(3);
         await server.WaitIdleAsync();
 
-        foreach (var mapId in maps)
-            mapMan.DeleteMap(mapId);
+        await server.WaitPost(
+        () =>
+        {
+            foreach (var mapId in maps)
+                mapMan.DeleteMap(mapId);
+        });
 
         await pair.CleanReturnAsync();
     }
