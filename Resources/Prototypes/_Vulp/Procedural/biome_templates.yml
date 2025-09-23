@@ -17,7 +17,7 @@
   id: DeepCaves
   layers:
     - !type:BiomeEntityLayer
-      threshold: 0.85
+      threshold: 0.75
       noise:
         seed: 2
         noiseType: OpenSimplex2
@@ -32,7 +32,7 @@
         - CrystalCyan
         - WallRock
     - !type:BiomeEntityLayer
-      threshold: 0.05
+      threshold: 0.1
       noise:
         seed: 1
         noiseType: Perlin
@@ -45,7 +45,7 @@
       entities:
       - WallRock
     - !type:BiomeEntityLayer
-      threshold: -0.5
+      threshold: 0.85
       invert: true
       noise:
         seed: 0
