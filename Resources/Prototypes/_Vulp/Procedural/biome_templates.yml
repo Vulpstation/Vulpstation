@@ -23,7 +23,7 @@
         noiseType: OpenSimplex2
         fractalType: PingPong
       allowedTiles:
-        - FloorCave # Vulp
+        - FloorPlanetCave # Vulp
       entities:
         - CrystalGreen
         - CrystalPink
@@ -41,7 +41,7 @@
         frequency: 0.1
         gain: 0.5
       allowedTiles:
-      - FloorCave # Vulp
+      - FloorPlanetCave # Vulp
       entities:
       - WallRock
     - !type:BiomeEntityLayer
@@ -55,11 +55,11 @@
         frequency: 0.1
         gain: 0.5
       allowedTiles:
-        - FloorCaveDrought # Vulp
+        - FloorPlanetCave # Vulp
       entities:
         - WallRock
     - !type:BiomeDummyLayer
       id: Loot
     - !type:BiomeTileLayer
       threshold: -1.0
-      tile: FloorCave # Vulp
+      tile: FloorPlanetCave # Vulp

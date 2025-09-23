@@ -9,18 +9,6 @@
     - type: DayNightCycle
       timeEntries:
       - { time: 0.0, colorHex: '#080000' }
-      - { time: 0.04, colorHex: '#080000' }
-      - { time: 0.08, colorHex: '#080000' }
-      - { time: 0.17, colorHex: '#080000' }
-      - { time: 0.25, colorHex: '#080000' }
-      - { time: 0.33, colorHex: '#080000' }
-      - { time: 0.42, colorHex: '#080000' }
-      - { time: 0.50, colorHex: '#080000' }
-      - { time: 0.58, colorHex: '#080000' }
-      - { time: 0.66, colorHex: '#080000' }
-      - { time: 0.75, colorHex: '#080000' }
-      - { time: 0.83, colorHex: '#080000' }
-      - { time: 0.92, colorHex: '#080000' }
       - { time: 1.00, colorHex: '#080000' }
     - type: VentEventFreeZone
       radius: 25
