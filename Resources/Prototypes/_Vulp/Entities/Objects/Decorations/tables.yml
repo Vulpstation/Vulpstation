@@ -175,7 +175,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MaterialWoodPlank1
-        amount: 4
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
