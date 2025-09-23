@@ -37,7 +37,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MaterialWoodPlank1
-        amount: 5
+        amount: 4
       steps:
       - tool: Prying
         doAfter: 3
@@ -83,7 +83,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MaterialWoodPlank1
-        amount: 5
+        amount: 4
       steps:
       - tool: Prying
         doAfter: 3
@@ -129,7 +129,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MaterialWoodPlank1
-        amount: 5
+        amount: 4
       steps:
       - tool: Prying
         doAfter: 3
@@ -175,7 +175,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MaterialWoodPlank1
-        amount: 5
+        amount: 4
       steps:
       - tool: Prying
         doAfter: 3
