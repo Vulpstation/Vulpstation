@@ -1,0 +1,24 @@
+# Cave
+- type: tile
+  id: FloorPlanetCave
+  name: tiles-cave-planet-floor
+  sprite: /Textures/Tiles/cave.png
+  variants: 7
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: FloorPlanetCave
+  canShovel: true
+  itemDrop: Dirt
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: false
+  indestructible: true
+  regenerateAtmos: 0 # Vulp
