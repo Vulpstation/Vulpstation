@@ -870,3 +870,10 @@ Entries:
   id: 79
   time: '2025-09-22T21:46:46.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/108
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Added pet rock spawners for mappers.
+  id: 80
+  time: '2025-09-23T01:39:45.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/109
