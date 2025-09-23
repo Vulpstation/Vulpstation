@@ -1,4 +1,5 @@
-﻿- type: construction
+﻿# Tables
+- type: construction
   name: "Wood Table Square"
   id: WoodTableSquare
   graph: WoodTableSquare
