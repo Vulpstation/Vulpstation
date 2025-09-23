@@ -1,0 +1,23 @@
+﻿- type: entity
+  name: Pet Rock Spawner
+  id: SpawnPetRock
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - PetRock
+
+- type: entity
+  name: Pet Rock Roxie Spawner
+  id: SpawnPetRockRoxie
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - PetRockRoxie
