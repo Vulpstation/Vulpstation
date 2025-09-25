@@ -877,3 +877,20 @@ Entries:
   id: 80
   time: '2025-09-23T01:39:45.0000000+00:00'
   url: https://github.com/Vulpstation/Vulpstation/pull/109
+- author: bandw2gs
+  changes:
+    - type: Add
+      message: >-
+        New Map Mining Outpost - Mimics the majority of the map being
+        underground.
+    - type: Add
+      message: >-
+        New planet tile FloorPlanetCave, acts like FloorCave except that it can
+        be used for planetary purposes
+    - type: Add
+      message: >-
+        New Biome Deep Cave. makes a thick area with pockets of unimpeded
+        terrain.
+  id: 81
+  time: '2025-09-25T00:23:07.0000000+00:00'
+  url: https://github.com/Vulpstation/Vulpstation/pull/106
