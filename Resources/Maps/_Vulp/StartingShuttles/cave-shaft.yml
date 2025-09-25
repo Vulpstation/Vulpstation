@@ -3,8 +3,8 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  29: FloorPlanetCave
   38: FloorDarkDiagonalMini
+  29: FloorPlanetCave
   177: FloorSteel
   254: Plating
 entities:
@@ -423,6 +423,13 @@ entities:
     components:
     - type: Transform
       pos: -12.5,14.5
+      parent: 1
+- proto: BorgCharger
+  entities:
+  - uid: 488
+    components:
+    - type: Transform
+      pos: -1.5,9.5
       parent: 1
 - proto: CableApcExtension
   entities:
@@ -1164,6 +1171,26 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -13.5,6.5
       parent: 1
+- proto: ComputerComms
+  entities:
+  - uid: 491
+    components:
+    - type: Transform
+      anchored: False
+      pos: -12.5,3.5
+      parent: 1
+    - type: Physics
+      bodyType: Dynamic
+- proto: ComputerId
+  entities:
+  - uid: 492
+    components:
+    - type: Transform
+      anchored: False
+      pos: -12.5,4.5
+      parent: 1
+    - type: Physics
+      bodyType: Dynamic
 - proto: ComputerPalletConsole
   entities:
   - uid: 321
@@ -2473,6 +2500,13 @@ entities:
       angularDamping: 0
       linearDamping: 0
       fixedRotation: False
+- proto: PowerCellRecharger
+  entities:
+  - uid: 489
+    components:
+    - type: Transform
+      pos: -9.5,12.5
+      parent: 1
 - proto: PoweredLightBlueInterior
   entities:
   - uid: 436
@@ -2832,12 +2866,14 @@ entities:
       parent: 1
 - proto: VendingMachineCigs
   entities:
-  - uid: 472
+  - uid: 493
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,4.5
+      anchored: False
+      pos: -12.5,5.5
       parent: 1
+    - type: Physics
+      bodyType: Dynamic
 - proto: VendingMachineEngivend
   entities:
   - uid: 470
@@ -2853,6 +2889,14 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,5.5
+      parent: 1
+- proto: VendingMachineVendomat
+  entities:
+  - uid: 472
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,4.5
       parent: 1
 - proto: WallMining
   entities:
@@ -3317,6 +3361,14 @@ entities:
     components:
     - type: Transform
       pos: -13.5,4.5
+      parent: 1
+- proto: WallWeaponCapacitorRecharger
+  entities:
+  - uid: 490
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -12.5,0.5
       parent: 1
 - proto: WarpPointCryo
   entities:
