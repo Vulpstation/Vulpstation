@@ -510,6 +510,10 @@
         - Arachnid
         - Arachne
         - IPC
+    - !type:CharacterTraitRequirement # Vulp
+      inverted: true
+      traits:
+      - EggLayer # Vulp - these traits don't work together
   functions:
     - !type:TraitAddComponent
       components:

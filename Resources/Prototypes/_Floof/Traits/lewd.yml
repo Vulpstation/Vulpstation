@@ -82,6 +82,12 @@
       inverted: true
       species:
         - IPC
+        - Arachnid # Vulp
+        - Arachne # Vulp
+    - !type:CharacterTraitRequirement # Vulp
+      inverted: true
+      traits:
+      - Spinarette # Vulp - these traits don't work together
   functions:
     - !type:TraitAddComponent
       components:
