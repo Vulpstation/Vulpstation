@@ -57,6 +57,10 @@
             min: 2
             max: 8
   - type: Pullable
+  - type: Construction # Vulpstation
+    graph: LogSeat
+    node: logseat
+
 
 - type: entity
   parent: N14FloraLogBase
@@ -68,9 +72,6 @@
   - type: Strap
     position: Stand
     buckleOffset: "0,-0.05"
-  - type: Construction # Vulpstation
-    graph: LogSeat
-    node: logseat
 
 - type: entity
   parent: N14FloraLogBase
