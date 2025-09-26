@@ -1,0 +1,412 @@
+﻿#bar sign
+- type: construction
+  name: "Bar Sign"
+  id: BarSign
+  graph: BarSign
+  startNode: start
+  targetNode: barsign
+  category: construction-category-furniture
+  description: Bar! Get drunk here.
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_32x32.rsi, state: bar }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: BarSign
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: barsign
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: barsign
+    entity: SignBar2
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#clinic sign
+- type: construction
+  name: "Clinic Sign"
+  id: ClinicSign
+  graph: ClinicSign
+  startNode: start
+  targetNode: clinicsign
+  category: construction-category-furniture
+  description: A clinic sign. Hopefully they have meds.
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_32x32.rsi, state: clinic }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: ClinicSign
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: clinicsign
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: clinicsign
+    entity: SignClinic
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#open sign
+- type: construction
+  name: "Open Sign"
+  id: OpenSign
+  graph: OpenSign
+  startNode: start
+  targetNode: opensign
+  category: construction-category-furniture
+  description: Open for business. Maybe.
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_32x32.rsi, state: open }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: OpenSign
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: opensign
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: opensign
+    entity: SignOpenOn1
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#open sign 2
+- type: construction
+  name: "Open Sign Slanted"
+  id: OpenSignSlanted
+  graph: OpenSignSlanted
+  startNode: start
+  targetNode: opensignslanted
+  category: construction-category-furniture
+  description: Open for business. Maybe.
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_32x32.rsi, state: open_bar }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: OpenSignSlanted
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: opensignslanted
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: opensignslanted
+    entity: SignOpenOn2
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#we are open sign
+- type: construction
+  name: "We Are Open Sign"
+  id: SignOpenBig
+  graph: SignOpenBig
+  startNode: start
+  targetNode: signopenbig
+  category: construction-category-furniture
+  description: Open for business come on in!
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_64x32.rsi, state: we_open_open }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: SignOpenBig
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: signopenbig
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: signopenbig
+    entity: SignOpenBig
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#hotel sign
+- type: construction
+  name: "Hotel Sign"
+  id: HotelSign
+  graph: HotelSign
+  startNode: start
+  targetNode: hotelsign
+  category: construction-category-furniture
+  description: A sign for a hotel. Get a room!
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_64x32.rsi, state: hotel }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: HotelSign
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: hotelsign
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: hotelsign
+    entity: SignHotel
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
+
+#private property sign
+- type: construction
+  name: "Private Property Sign"
+  id: PrivatePropertySign
+  graph: PrivatePropertySign
+  startNode: start
+  targetNode: privatepropertysign
+  category: construction-category-furniture
+  description: Private property, whatchu want!?
+  icon: { sprite: _Nuclear14/Structures/Wallmounts/signs_64x32.rsi, state: private }
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: true
+
+- type: constructionGraph
+  id: PrivatePropertySign
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity { }
+    edges:
+    - to: privatepropertysign
+      completed:
+      - !type:SnapToGrid { }
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+      - material: Cable
+        amount: 2
+        doAfter: 1
+      - material: Glass
+        amount: 2
+        doAfter: 5
+
+  - node: privatepropertysign
+    entity: SignPrivateProperty
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetGlass1
+        amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      steps:
+      - tool: Prying
+        doAfter: 3
+      - tool: Screwing
+        doAfter: 2
+      - tool: Cutting
+        doAfter: 1
