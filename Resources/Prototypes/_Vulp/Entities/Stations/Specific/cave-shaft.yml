@@ -1,0 +1,16 @@
+- type: entity
+  id: PlanetStationSpecificCaveShaft
+  parent: PlanetStationSmall
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PlanetStation
+    biome: DeepCaves
+    components:
+    - type: DayNightCycle
+      timeEntries:
+      - { time: 0.0, colorHex: '#080000' }
+      - { time: 1.00, colorHex: '#080000' }
+    - type: VentEventFreeZone
+      radius: 25
+    - type: WeatherCycle
+      prototype: Harsh

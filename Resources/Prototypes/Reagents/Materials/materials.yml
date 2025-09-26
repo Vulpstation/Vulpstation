@@ -145,6 +145,7 @@
 
 - type: material
   id: Diamond
+  stackEntity: MaterialDiamond1 # Vulp - so MaterialStorageSystem handles eject behavior properly
   name: materials-diamond
   unit: materials-unit-piece
   icon: { sprite: Objects/Materials/materials.rsi, state: diamond }
