@@ -55,11 +55,47 @@
         frequency: 0.1
         gain: 0.5
       allowedTiles:
-        - FloorPlanetCave # Vulp
+        - FloorSand # Vulp
       entities:
         - WallRock
     - !type:BiomeDummyLayer
       id: Loot
     - !type:BiomeTileLayer
       threshold: -1.0
-      tile: FloorPlanetCave # Vulp
+      tile: FloorPlanetCave # Vulp 
+
+- type: biomeTemplate
+  id: DeepCaveCrags
+  layers:
+    - !type:BiomeMetaLayer
+      template: Lava
+    - !type:BiomeMetaLayer
+      template: DeepCaves
+      threshold: -0.5
+      noise:
+        seed: 0
+        frequency: 0.001
+        noiseType: OpenSimplex2
+        fractalType: FBm
+        octaves: 2
+        lacunarity: 2
+    - !type:BiomeMetaLayer
+      template: Caves
+      threshold: .73
+      noise:
+        seed: 1
+        frequency: 0.003
+        noiseType: OpenSimplex2
+        fractalType: FBm
+        octaves: 2
+        lacunarity: 2
+    - !type:BiomeMetaLayer
+      template: Grasslands
+      threshold: .75
+      noise:
+        seed: 2
+        frequency: 0.003
+        noiseType: OpenSimplex2
+        fractalType: FBm
+        octaves: 2
+        lacunarity: 2

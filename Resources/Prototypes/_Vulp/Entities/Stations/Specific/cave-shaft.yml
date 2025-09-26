@@ -4,7 +4,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: PlanetStation
-    biome: DeepCaves
+    biome: DeepCaveCrags
     components:
     - type: DayNightCycle
       timeEntries:
