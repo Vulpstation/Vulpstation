@@ -102,11 +102,19 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
 
 #open sign
 - type: construction
@@ -153,11 +161,19 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
 
 #open sign 2
 - type: construction
@@ -204,15 +220,23 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
 
 #we are open sign
 - type: construction
-  name: "We Are Open Slign"
+  name: "We Are Open Sign"
   id: SignOpenBig
   graph: SignOpenBig
   startNode: start
@@ -255,11 +279,19 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
 
 #hotel sign
 - type: construction
@@ -306,11 +338,19 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
 
 #private property sign
 - type: construction
@@ -357,8 +397,16 @@
       - !type:SpawnPrototype
         prototype: SheetGlass1
         amount: 2
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
       steps:
       - tool: Prying
         doAfter: 3
       - tool: Screwing
         doAfter: 2
+      - tool: Cutting
+        doAfter: 1
