@@ -11,3 +11,55 @@
   radius: 20
   minGroupSize: 1
   maxGroupSize: 1
+
+# DeepCaves
+- type: biomeTemplate
+  id: DeepCaves
+  layers:
+    - !type:BiomeEntityLayer
+      threshold: 0.75
+      noise:
+        seed: 2
+        noiseType: OpenSimplex2
+        fractalType: PingPong
+      allowedTiles:
+        - FloorPlanetCave # Vulp
+      entities:
+        - CrystalGreen
+        - CrystalPink
+        - CrystalOrange
+        - CrystalBlue
+        - CrystalCyan
+        - WallRock
+    - !type:BiomeEntityLayer
+      threshold: 0.1
+      noise:
+        seed: 1
+        noiseType: Perlin
+        fractalType: Ridged
+        octaves: 1
+        frequency: 0.1
+        gain: 0.5
+      allowedTiles:
+      - FloorPlanetCave # Vulp
+      entities:
+      - WallRock
+    - !type:BiomeEntityLayer
+      threshold: 0.85
+      invert: true
+      noise:
+        seed: 0
+        noiseType: Perlin
+        fractalType: Ridged
+        octaves: 1
+        frequency: 0.1
+        gain: 0.5
+      allowedTiles:
+        - FloorPlanetCave # Vulp
+      entities:
+        - WallRock
+    - !type:BiomeDummyLayer
+      id: Loot
+    - !type:BiomeTileLayer
+      threshold: -1.0
+      tile: FloorPlanetCave # Vulp

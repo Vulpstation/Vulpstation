@@ -51,6 +51,7 @@ namespace Content.IntegrationTests.Tests
             "MeteorArena",
             "NukieOutpost",
             "Core",
+			"PlanetCaveCaveShaft",// Vulp
 			"PlanetContinentalAbandoned",// Vulp
             "PlanetContinentalBoubaLandingShuttle", // Vulp
             "PlanetContinentalColonyDropPod", // Vulp
