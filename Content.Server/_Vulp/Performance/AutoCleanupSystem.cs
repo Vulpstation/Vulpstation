@@ -119,6 +119,7 @@ public sealed class AutoCleanupSystem : EntitySystem
 
     private void UpdatePlayerLocations()
     {
+        _players.Clear();
         void AddRoundEntity(EntityUid ent)
         {
             var xform = Transform(ent);
@@ -128,8 +129,6 @@ public sealed class AutoCleanupSystem : EntitySystem
 
             _players.Add((xform.MapID, _xforms.GetWorldPosition(xform)));
         }
-
-
 
         var ghostQuery = GetEntityQuery<GhostComponent>();
         foreach (var player in Filter.GetAllPlayers(_playerManager))
