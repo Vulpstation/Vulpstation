@@ -14,9 +14,11 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC;
 using Content.Shared.Parallax.Biomes;
+using Content.Shared.Shuttles.Components;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Map;
+using Robust.Shared.Physics;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -179,6 +181,18 @@ public sealed class AutoCleanupSystem : EntitySystem
                 UnCleanupNPC(uid, meta, xform);
             else
                 CleanupNPC(uid, meta, xform);
+        }
+
+        // Pass 2 - remove any NPCs stuck in ftl
+        var query2 = EntityQueryEnumerator<ActiveNPCComponent, TransformComponent>();
+        while (query2.MoveNext(out var uid, out var npc, out var xform))
+        {
+            if (!HasComp<FTLMapComponent>(xform.MapUid))
+                continue;
+
+            // Fuck you
+            QueueDel(uid);
+            _resetNpcs++;
         }
     }
 
