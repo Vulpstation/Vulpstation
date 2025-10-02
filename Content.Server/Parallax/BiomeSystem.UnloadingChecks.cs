@@ -125,7 +125,7 @@ public sealed partial class BiomeSystem
         var intrinsic = EnsureComp<BiomeIntrinsicComponent>(uid);
         intrinsic.Chunk = chunk;
         intrinsic.ChunkIndex = chunkIndex;
-        intrinsic.UnloadTime = TimeSpan.Zero;
+        intrinsic.LastModified = _timing.CurTime;
         intrinsic.OwnerBiome = ownerBiome;
     }
 
@@ -138,7 +138,7 @@ public sealed partial class BiomeSystem
         if (!_intrinsicQuery.TryComp(ent, out var intrinsic))
             return;
 
-        intrinsic.UnloadTime = isPausing ? _timing.CurTime : TimeSpan.Zero;
+        intrinsic.LastModified = _timing.CurTime;
     }
 
     private sealed class FakeEntitySubscriber : IEntityEventSubscriber;
@@ -154,12 +154,6 @@ public sealed partial class BiomeSystem
 
         [DataField]
         public EntityUid OwnerBiome;
-
-        /// <summary>
-        ///     If this entity was unloaded via biome pause, this stores the moment it was paused. Zero if not paused.
-        /// </summary>
-        [DataField]
-        public TimeSpan UnloadTime = TimeSpan.Zero;
 
         /// <summary>
         ///     Set & read by the cleanup system when this mob was last within a player's load radius.

@@ -51,7 +51,9 @@ public sealed class AutoCleanupSystem : EntitySystem
 
     // We keep track of how many things we've deleted so far
     // Once the sum of deletions exceeds 100, send an admin message.
+    [ViewVariables]
     private TimeSpan _lastAnnouncement = TimeSpan.Zero;
+    [ViewVariables]
     private int _deletedGamerules, _resetNpcs, _pausedNpcs, _unpausedNpcs, _pausedCryosleepers;
 
     // Cached locations of players for the last update tick
@@ -101,12 +103,12 @@ public sealed class AutoCleanupSystem : EntitySystem
         if (sum > 100 && dt > AdminAnnounceInterval)
         {
             _lastAnnouncement = _timing.CurTime;
-            _deletedGamerules = _resetNpcs = _pausedNpcs = _unpausedNpcs = _pausedCryosleepers = 0;
-
             _chat.SendAdminAnnouncement(
                 $"Cleanup stats over the last {dt.TotalMinutes:0.0} minutes: {_deletedGamerules} deleted gamerules," +
                 $"{_resetNpcs} reset npcs, {_pausedNpcs} paused npcs, {_unpausedNpcs} unpaused npcs," +
                 $"{_pausedCryosleepers} paused cryosleepers. VV the AutoCleanup system to change the config.");
+
+            _deletedGamerules = _resetNpcs = _pausedNpcs = _unpausedNpcs = _pausedCryosleepers = 0;
         }
     }
 
