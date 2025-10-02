@@ -51,6 +51,9 @@ public sealed class AutoCleanupSystem : EntitySystem
     [ViewVariables(VVAccess.ReadWrite)]
     public bool Enabled = true;
 
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float NpcCleanupMinDistanceFromPlayer = 30f;
+
     // We keep track of how many things we've deleted so far
     // Once the sum of deletions exceeds 100, send an admin message.
     [ViewVariables]
@@ -85,7 +88,7 @@ public sealed class AutoCleanupSystem : EntitySystem
             return;
 
         var curTime = _timing.CurTime;
-        if (curTime - LastUpdate > TimeSpan.FromSeconds(1))
+        if (curTime - LastUpdate > UpdateInterval)
         {
             LastUpdate = curTime;
             Cleanup();
@@ -126,6 +129,8 @@ public sealed class AutoCleanupSystem : EntitySystem
             _players.Add((xform.MapID, _xforms.GetWorldPosition(xform)));
         }
 
+
+
         var ghostQuery = GetEntityQuery<GhostComponent>();
         foreach (var player in Filter.GetAllPlayers(_playerManager))
         {
@@ -143,7 +148,8 @@ public sealed class AutoCleanupSystem : EntitySystem
                     AddRoundEntity(mindComp.OwnedEntity.Value);
                 }
 
-                continue;
+                if (!ghost.CanGhostInteract)
+                    continue;
             }
 
             AddRoundEntity(player.AttachedEntity.Value);
@@ -307,14 +313,14 @@ public sealed class AutoCleanupSystem : EntitySystem
 
     private bool ArePlayersNearby(MapId mapId, Vector2 pos)
     {
-        var minCleanupDistance = 35; // Hardcoded for now, see if we want to make this configurable or a cvar
+        var minCleanupDistance = NpcCleanupMinDistanceFromPlayer;
         var minCleanupDistanceSqr = minCleanupDistance * minCleanupDistance;
         foreach (var player in _players)
         {
             if (player.Item1 != mapId)
                 continue;
 
-            if (Vector2.DistanceSquared(player.Item2, pos) < 100 * 100)
+            if (Vector2.DistanceSquared(player.Item2, pos) < minCleanupDistance)
                 return true;
         }
 

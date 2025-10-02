@@ -160,7 +160,7 @@ namespace Content.Server.Spawners.EntitySystems
             }
         }
 
-        // Vulpstation. This is a hack, I don't want to work around this system. Just transfer BiomeIntrinsic to the spawned entity.
+        // Vulpstation. This is a hack, I don't want to work around this system. Just transfers BiomeIntrinsic to the spawned entity.
         private void CopyBiomeIntrinsicality(Entity<BiomeSystem.BiomeIntrinsicComponent?> spawner, EntityUid spawned, Vector2i offset)
         {
             if (spawner.Comp == null && !Resolve(spawned, ref spawner.Comp, false))
