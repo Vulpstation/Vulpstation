@@ -174,4 +174,4 @@ namespace Content.Server.Spawners.EntitySystems
             intrinsicSpawn.LastModified = biomeIntrinsic.LastModified;
         }
     }
-} // var 8
+}
