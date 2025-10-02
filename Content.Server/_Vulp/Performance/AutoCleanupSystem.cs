@@ -40,7 +40,7 @@ public sealed class AutoCleanupSystem : EntitySystem
     private EntityQuery<BiomeSystem.BiomeIntrinsicComponent> _intrinsicQuery;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan LastUpdate, UpdateInterval = TimeSpan.FromSeconds(20), AdminAnnounceInterval = TimeSpan.FromMinutes(10);
+    public TimeSpan LastUpdate, UpdateInterval = TimeSpan.FromSeconds(10), AdminAnnounceInterval = TimeSpan.FromMinutes(10);
 
     /// <summary>
     ///     NPC inactivity period required to fully unload it (resetting its position to its spawn point)
