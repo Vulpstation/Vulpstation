@@ -34,7 +34,7 @@ public sealed partial class CryostorageComponent : Component
     /// </summary>
     [DataField]
     [AutoNetworkedField]
-    public List<EntityUid> StoredPlayers = new();
+    public HashSet<EntityUid> StoredPlayers = new(); // Vulpstation - change this to a hash set
 
     /// <summary>
     /// Sound that is played when a player is removed by a cryostorage.

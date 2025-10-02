@@ -1,6 +1,8 @@
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.NodeContainer;
+using Content.Server.Psionics.Glimmer;
 using Content.Server.Storage.Components;
+using Content.Shared.Anomaly.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Fluids.Components;
@@ -9,6 +11,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Containers;
+using Robust.Shared.Timing;
 
 
 namespace Content.Server.Parallax;
@@ -16,8 +19,15 @@ namespace Content.Server.Parallax;
 // This file is part of floofstation changes
 public sealed partial class BiomeSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    private EntityQuery<BiomeIntrinsicComponent> _intrinsicQuery;
+
+
     private void InitializeUnloadingChecks()
     {
+        _intrinsicQuery = GetEntityQuery<BiomeIntrinsicComponent>();
+
         SubscribeLocalEvent<MobStateComponent, BiomeUnloadingEvent>(OnMobUnloading);
         SubscribeLocalEvent<MobStateComponent, BiomePauseEvent>(OnMobPause);
         SubscribeLocalEvent<TransformComponent, BiomeUnloadingEvent>(OnAnchorableUnloading);
@@ -104,9 +114,60 @@ public sealed partial class BiomeSystem
         (HasComp<ContainerManagerComponent>(uid))
         || HasComp<ItemSlotsComponent>(uid)
         || HasComp<EntityStorageComponent>(uid)
-        || HasComp<NodeContainerComponent>(uid);
+        || HasComp<NodeContainerComponent>(uid)
+        || HasComp<GlimmerSourceComponent>(uid); // This is a catch-all for anomalies, probers, and the like.
+
+    /// <summary>
+    ///     Called when the biome system spawns a biome intrinsic entity.
+    /// </summary>
+    private void MarkAsBiomeIntrinsic(EntityUid uid, EntityUid ownerBiome, Vector2i chunk, Vector2i chunkIndex)
+    {
+        var intrinsic = EnsureComp<BiomeIntrinsicComponent>(uid);
+        intrinsic.Chunk = chunk;
+        intrinsic.ChunkIndex = chunkIndex;
+        intrinsic.UnloadTime = TimeSpan.Zero;
+        intrinsic.OwnerBiome = ownerBiome;
+    }
+
+    /// <summary>
+    ///     Called when the biome system pauses or unpauses an entity on a biome.
+    /// </summary>
+    private void UpdateBiomePause(Entity<MetaDataComponent> ent, bool isPausing)
+    {
+        _meta.SetEntityPaused(ent, isPausing);
+        if (!_intrinsicQuery.TryComp(ent, out var intrinsic))
+            return;
+
+        intrinsic.UnloadTime = isPausing ? _timing.CurTime : TimeSpan.Zero;
+    }
 
     private sealed class FakeEntitySubscriber : IEntityEventSubscriber;
+
+    /// <summary>
+    ///     Marker component for entities loaded by the biome system, shouldn't be used outside of the biome system and cleanup.
+    /// </summary>
+    [RegisterComponent]
+    public sealed partial class BiomeIntrinsicComponent : Component
+    {
+        [DataField]
+        public Vector2i Chunk, ChunkIndex;
+
+        [DataField]
+        public EntityUid OwnerBiome;
+
+        /// <summary>
+        ///     If this entity was unloaded via biome pause, this stores the moment it was paused. Zero if not paused.
+        /// </summary>
+        [DataField]
+        public TimeSpan UnloadTime = TimeSpan.Zero;
+
+        /// <summary>
+        ///     Set & read by the cleanup system when this mob was last within a player's load radius.
+        ///     Used to determine if it should be deleted as part of the cleanup process.
+        /// </summary>
+        [DataField]
+        public TimeSpan LastModified = TimeSpan.Zero;
+    }
 }
 
 // Vulpstation

@@ -866,7 +866,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 // Even if we don't save the entity, it will still be picked up later during anchored entity unloading/pausing
                 // It just will undergo less permissive checks
                 if (isNative)
+                {
                     loadedEntities.Add(ent, indices);
+                    MarkAsBiomeIntrinsic(ent, gridUid, chunk, indices);
+                }
             }
         }
 
@@ -878,7 +881,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta))
                     continue;
 
-                _meta.SetEntityPaused(ent, false, meta);
+                UpdateBiomePause((ent, meta), false);
             }
 
         // Decals
@@ -1126,7 +1129,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 continue;
 
             pausedEntities.Add(ent);
-            _meta.SetEntityPaused(ent, true, meta);
+            UpdateBiomePause((ent, meta), true);
         }
 
         grid.SetTiles(tiles);
