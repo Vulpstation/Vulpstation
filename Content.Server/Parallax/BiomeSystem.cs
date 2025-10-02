@@ -854,14 +854,15 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 else if (!TryGetEntity(indices, component, grid, out entPrototype))
                     continue;
 
-                var ent = Spawn(entPrototype, _mapSystem.GridTileToLocal(gridUid, grid, indices));
+                var ent = EntityManager.CreateEntityUninitialized(entPrototype, _mapSystem.GridTileToLocal(gridUid, grid, indices));
+                if (isNative)
+                    MarkAsBiomeIntrinsic(ent, gridUid, chunk, indices); // Has to be done BEFORE mapinit to avoid spawners spawning before being marked
+                EntityManager.InitializeAndStartEntity(ent);
 
                 // At least for now unless we do lookups or smth, only work with anchoring.
                 // Vulpstation - only anchor if it is anchorable
                 if (_xformQuery.TryGetComponent(ent, out var xform) && !xform.Anchored && HasComp<AnchorableComponent>(ent))
-                {
                     _transform.AnchorEntity(ent, xform, gridUid, grid, indices);
-                }
 
                 // Even if we don't save the entity, it will still be picked up later during anchored entity unloading/pausing
                 // It just will undergo less permissive checks
@@ -878,7 +879,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 if (!_metaQuery.TryComp(ent, out var meta) || TerminatingOrDeleted(ent, meta))
                     continue;
 
-                _meta.SetEntityPaused(ent, false, meta);
+                UpdateBiomePause((ent, meta), false);
             }
 
         // Decals
@@ -1126,7 +1127,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 continue;
 
             pausedEntities.Add(ent);
-            _meta.SetEntityPaused(ent, true, meta);
+            UpdateBiomePause((ent, meta), true);
         }
 
         grid.SetTiles(tiles);

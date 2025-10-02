@@ -35,6 +35,7 @@ using Robust.Shared.Toolshed;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Server.Silicons.Laws;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Robust.Server.Player;
@@ -155,14 +156,18 @@ namespace Content.Server.Administration.Systems
                             var profile = _ticker.GetPlayerProfile(targetActor.PlayerSession);
                             var mobUid = _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
                             var targetMind = _mindSystem.GetMind(args.Target);
+                            var session = targetActor.PlayerSession;
 
                             if (targetMind != null)
                             {
                                 _mindSystem.TransferTo(targetMind.Value, mobUid, true);
                             }
-                            // Vulpstation - raise PlayerSpawnCompleteEvent to load traits and loadouts. TODO this doesn't work if the player joined as an observer.
+
+
+                            // Vulpstation - raise PlayerSpawnCompleteEvent to load traits and loadouts.
+                            AddComp(mobUid, new LoadoutComponent { StartingGear = [ "PassengerGear" ] }, true);
                             RaiseLocalEvent(mobUid,
-                                new PlayerSpawnCompleteEvent(mobUid, targetActor.PlayerSession, "Passenger", false, 0, stationUid ?? EntityUid.Invalid, profile),
+                                new PlayerSpawnCompleteEvent(mobUid, session, "Passenger", false, 0, stationUid ?? EntityUid.Invalid, profile),
                                 true);
                         },
                         ConfirmationPopup = true,

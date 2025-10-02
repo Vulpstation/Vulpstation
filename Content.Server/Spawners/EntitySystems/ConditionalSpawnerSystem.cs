@@ -1,8 +1,10 @@
 using System.Numerics;
 using Content.Server.GameTicking;
+using Content.Server.Parallax;
 using Content.Server.Spawners.Components;
 using Content.Shared.EntityTable;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Parallax.Biomes;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
@@ -89,7 +91,11 @@ namespace Content.Server.Spawners.EntitySystems
             }
 
             if (!Deleted(uid))
-                EntityManager.SpawnEntity(_robustRandom.Pick(component.Prototypes), Transform(uid).Coordinates);
+            {
+                var spawned = EntityManager.SpawnEntity(_robustRandom.Pick(component.Prototypes), Transform(uid).Coordinates);
+                // Vulpstation
+                CopyBiomeIntrinsicality((uid, null), spawned, Vector2i.Zero);
+            }
         }
 
         private void Spawn(EntityUid uid, RandomSpawnerComponent component)
@@ -122,7 +128,8 @@ namespace Content.Server.Spawners.EntitySystems
             var picked = _robustRandom.Pick(component.Prototypes);
             try
             {
-                EntityManager.SpawnEntity(picked, coordinates);
+                var spawned = EntityManager.SpawnEntity(picked, coordinates);
+                CopyBiomeIntrinsicality((uid, null), spawned, new Vector2(xOffset, yOffset).Floored()); // Vulpstation
             }
             catch (EntityCreationException e)
             {
@@ -136,6 +143,7 @@ namespace Content.Server.Spawners.EntitySystems
                 return;
 
             var coords = Transform(ent).Coordinates;
+            var biomeIntrinsic = CompOrNull<BiomeSystem.BiomeIntrinsicComponent>(ent); // Vulpstation
 
             var spawns = _entityTable.GetSpawns(ent.Comp.Table);
             foreach (var proto in spawns)
@@ -144,8 +152,26 @@ namespace Content.Server.Spawners.EntitySystems
                 var yOffset = _robustRandom.NextFloat(-ent.Comp.Offset, ent.Comp.Offset);
                 var trueCoords = coords.Offset(new Vector2(xOffset, yOffset));
 
-                Spawn(proto, trueCoords);
+                var spawned = Spawn(proto, trueCoords);
+
+                // Vulpstation
+                if (biomeIntrinsic is not null)
+                    CopyBiomeIntrinsicality((ent, biomeIntrinsic), spawned, new Vector2(xOffset, yOffset).Floored());
             }
+        }
+
+        // Vulpstation. This is a hack, I don't want to work around this system. Just transfers BiomeIntrinsic to the spawned entity.
+        private void CopyBiomeIntrinsicality(Entity<BiomeSystem.BiomeIntrinsicComponent?> spawner, EntityUid spawned, Vector2i offset)
+        {
+            if (spawner.Comp == null && !Resolve(spawned, ref spawner.Comp, false))
+                return;
+
+            var biomeIntrinsic = spawner.Comp!;
+            var intrinsicSpawn = EnsureComp<BiomeSystem.BiomeIntrinsicComponent>(spawned);
+            intrinsicSpawn.ChunkIndex = biomeIntrinsic.ChunkIndex + offset;
+            intrinsicSpawn.Chunk = intrinsicSpawn.ChunkIndex / SharedBiomeSystem.ChunkSize * SharedBiomeSystem.ChunkSize;
+            intrinsicSpawn.OwnerBiome = biomeIntrinsic.OwnerBiome;
+            intrinsicSpawn.LastModified = biomeIntrinsic.LastModified;
         }
     }
 }
