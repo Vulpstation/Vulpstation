@@ -151,12 +151,14 @@ public sealed class AutoCleanupSystem : EntitySystem
         // Just. Guh.
         var query = EntityQueryEnumerator<GameRuleComponent>();
         var activeQuery = GetEntityQuery<ActiveGameRuleComponent>();
+        var endedQuery = GetEntityQuery<EndedGameRuleComponent>();
 
         while (query.MoveNext(out var uid, out var rule))
         {
-            if (activeQuery.HasComp(uid))
+            if (activeQuery.HasComp(uid) || !endedQuery.HasComp(uid))
                 continue;
 
+            // TODO this may not work for gamerules that don't start and don't end? Idk if I saw those before
             // Guh.
             QueueDel(uid);
             _deletedGamerules++;
